@@ -8,10 +8,10 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 ## Grupo 14
 
 * **Franco Nicolini** - [integrante1](https://github.com/franconicolini1)
-* **Integrante 2** - [integrante2](https://github.com/integrante2)
+* **Gonzalo Rizzo Ehrenbock** - [integrante2](https://github.com/grizzoeh)
 * **Nicolás Olano Soley** - [integrante3](https://github.com/nicoolano9)
-* **Nicolas Amigo** - [Nicolas Amigo](https://github.com/NicolasAmigo)
-* **Tomás Della Vecchia** - [Tomas Della Vecchia](https://github.com/tomdv18)
+* **Nicolas Amigo** - [integrante4](https://github.com/NicolasAmigo)
+* **Tomás Della Vecchia** - [integrante5](https://github.com/tomdv18)
 
 Corrector: **Edson Justo**
 
