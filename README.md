@@ -1,18 +1,19 @@
 ![tp2](https://github.com/fiuba/algo3_proyecto_base_tp2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2)
 
-# TP2 Algoritmos 3: {nombre} 
+# TP2 Algoritmos 3: "A.L.T.E.G.O."
+
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo 14
 
 * **Franco Nicolini** - [integrante1](https://github.com/franconicolini1)
 * **Integrante 2** - [integrante2](https://github.com/integrante2)
 * **Nicolás Olano Soley** - [integrante3](https://github.com/nicoolano9)
 * **Nicolas Amigo** - [Nicolas Amigo](https://github.com/NicolasAmigo)
-* **Integrante 5** - [integrante4](https://github.com/integrante4)
+* **Tomás Della Vecchia** - [Tomas Della Vecchia](https://github.com/tomdv18)
 
-Corrector: **{Corrector}**
+Corrector: **Edson Justo**
 
 ## Aplicación
 
