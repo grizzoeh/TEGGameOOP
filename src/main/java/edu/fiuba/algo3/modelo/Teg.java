@@ -1,11 +1,21 @@
 package edu.fiuba.algo3.modelo;
 
-public class Teg {
-    private int cantidadMAxJugadores;
-    private Mapa mapa;
+import java.util.ArrayList;
 
-    public Teg(int cantidadMaxJugadores) {
-        this.cantidadMAxJugadores = cantidadMaxJugadores;
+public class Teg {
+    private int cantidadJugadores;
+    private Mapa mapa;
+    private ArrayList<Jugador> jugadores;
+
+    public Teg(ArrayList<String> nombresJugadores) {
+        this.cantidadJugadores = nombresJugadores.size();
         this.mapa = new Mapa();
+        this.jugadores = new ArrayList<Jugador>();
+
+        String[] colores = {"rojo", "azul", "verde", "amarillo", "rosa", "negro"};
+
+        for (int i = 0; i < this.cantidadJugadores; i++) {
+            this.jugadores.add(new Jugador(nombresJugadores.get(i), colores[i]));
+        }
     }
 }
