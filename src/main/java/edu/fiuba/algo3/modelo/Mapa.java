@@ -54,7 +54,7 @@ public class Mapa {
         int cantidadPaises = paises.size();
         int cantidadJugadores = jugadores.size();
         Pais paisAux;
-        Collection<String> keys = paises.keySet();
+        String[] keys = paises.keySet().toArray(new String[0]);
 
         int i = 0;
         while(i < cantidadPaises){
@@ -65,6 +65,17 @@ public class Mapa {
                 i++;
             }
         }
+    }
+    public boolean todosLosPaisesOcupados(){
+        boolean estanOcupados = true;
+        int i = 0;
+        String[] keys = paises.keySet().toArray(new String[0]);
+
+        while(estanOcupados && i < paises.size()){
+            estanOcupados = estanOcupados && (paises.get(keys[i]).estaOcupado());
+            i++;
+        }
+        return estanOcupados;
     }
 
 

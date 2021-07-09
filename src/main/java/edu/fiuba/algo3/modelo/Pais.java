@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-
 public class Pais {
     private String nombre;
     private Pais[] frontera;
@@ -22,5 +20,17 @@ public class Pais {
 
     public void agregarEjercito(){
         cantidadEjercitos++;
+    }
+
+    public String obtenerNombre(){
+        return this.nombre;
+    }
+
+    public Ejercito getEjercito(){
+        return this.ejercito;
+    }
+
+    public boolean estaOcupado(){
+        return(this.cantidadEjercitos > 0);
     }
 }
