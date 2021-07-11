@@ -21,4 +21,8 @@ public class Teg {
         mapa.repartirPaises(jugadores);
 
     }
+
+    public boolean todosLosPaisesOcupados(){
+        return this.mapa.todosLosPaisesOcupados();
+    }
 }

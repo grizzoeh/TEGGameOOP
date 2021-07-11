@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestEntrega1 {
     @Test
@@ -13,5 +14,6 @@ public class TestEntrega1 {
         jugadores.add("Tomi");
 
         Teg teg = new Teg(jugadores);
+        assertTrue(teg.todosLosPaisesOcupados());
     }
 }
