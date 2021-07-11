@@ -15,7 +15,14 @@ public class Teg {
         String[] colores = {"rojo", "azul", "verde", "amarillo", "rosa", "negro"};
 
         for (int i = 0; i < this.cantidadJugadores; i++) {
-            this.jugadores.add(new Jugador(nombresJugadores.get(i), colores[i]));
+            this.jugadores.add(new Jugador(nombresJugadores.get(i), new Ejercito(colores[i])));
         }
+
+        mapa.repartirPaises(jugadores);
+
+    }
+
+    public boolean todosLosPaisesOcupados(){
+        return this.mapa.todosLosPaisesOcupados();
     }
 }

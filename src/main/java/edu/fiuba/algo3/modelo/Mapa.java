@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Hashtable;
+import java.util.Set;
 
 public class Mapa {
     private Hashtable<String, Pais> paises;
@@ -47,13 +49,34 @@ public class Mapa {
 
     }
 
+    //Esta funcion no aplica aleatoriedad.
+    public void repartirPaises(ArrayList<Jugador> jugadores){
+        int cantidadPaises = paises.size();
+        int cantidadJugadores = jugadores.size();
+        Pais paisAux;
+        String[] keys = paises.keySet().toArray(new String[0]);
+
+        int i = 0;
+        while(i < cantidadPaises){
+            for(int j = 0; j < cantidadJugadores; j++){
+                paisAux = paises.get(keys[i]);
+                paisAux.asignarEjercito(jugadores.get(j).getEjercito());
+                paisAux.agregarEjercito();
+                i++;
+            }
+        }
+    }
+    public boolean todosLosPaisesOcupados(){
+        boolean estanOcupados = true;
+        int i = 0;
+        String[] keys = paises.keySet().toArray(new String[0]);
+
+        while(estanOcupados && i < paises.size()){
+            estanOcupados = estanOcupados && (paises.get(keys[i]).estaOcupado());
+            i++;
+        }
+        return estanOcupados;
+    }
+
 
 }
-
-
-/*'Africa': ['Egipto', 'Etiopia', 'Madagascar', 'Sahara', 'Sudafrica', 'Zaire'],
-        'America del Sur': ['Argentina', 'Brasil', 'Chile', 'Colombia', 'Peru', 'Uruguay'],
-        'America del Norte': ['Alaska', 'California', 'Canada', 'Groenlandia', 'Labrador', 'Nueva York', 'Mexico', 'Oregon', 'Terranova', 'Yukon'],
-        'Asia': ['Arabia', 'Aral', 'China', 'Gobi', 'India', 'Iran', 'Israel', 'Japon', 'Kamchatka', 'Malasia', 'Mongolia', 'Siberia', 'Taimir', 'Tartaria', 'Turquia'],
-        'Europa': ['Alemania', 'Espana', 'Francia', 'Gran Bretana', 'Islandia', 'Italia', 'Polonia', 'Rusia', 'Suecia'],
-        'Oceania': ['Australia', 'Borneo', 'Java', 'Sumatra'],*/
