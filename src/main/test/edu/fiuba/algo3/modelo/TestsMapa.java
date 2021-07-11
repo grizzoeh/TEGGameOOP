@@ -18,7 +18,6 @@ public class TestsMapa {
 
     assertTrue(mapa.todosLosPaisesOcupados());
 
-
     }
 }
 
