@@ -11,7 +11,7 @@ public class Dados {
     public ArrayList<Integer> tirarDados(int cantDados) {
         ArrayList<Integer> resultado = new ArrayList<Integer>();
 
-        //Tiar dados
+        //Tirar dados
         int valor_dado;
 
         for (int i = 0; i < cantDados; i++) {
@@ -28,17 +28,9 @@ public class Dados {
     public ArrayList<Integer> tirarDadosPonderados(int cantDados, int valorDado) {
         ArrayList<Integer> resultado = new ArrayList<Integer>();
 
-        //Tiar dados
-        int valor_dado;
-
         for (int i = 0; i < cantDados; i++) {
-            valor_dado = valorDado;
-            resultado.add(valor_dado);
-
+            resultado.add(valorDado);
         }
-        //Ordenar Dados
-        Collections.sort(resultado);
-        Collections.reverse(resultado);
         return resultado;
     }
 }
