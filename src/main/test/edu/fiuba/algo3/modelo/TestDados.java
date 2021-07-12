@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestsDados {
+public class TestDados {
     @Test
     public void test01TirarDadosRandomDevuelveLaCantidadPedida() {
         Dados dado = new Dados();
