@@ -15,21 +15,15 @@ public class CombateMock {
     }
 
     public void generarCombateAtacanteGanador() {
-
-
         int perdidosAtacante = 0;
         int perdidosDefensor = 1;
-
 
         informarResultados(perdidosAtacante, perdidosDefensor);
     }
 
     public void generarCombateDefensorGanador() {
-
-
         int perdidosAtacante = 1;
         int perdidosDefensor = 0;
-
 
         informarResultados(perdidosAtacante, perdidosDefensor);
     }
