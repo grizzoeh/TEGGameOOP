@@ -1,9 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Set;
+import java.io.File;
+import java.util.Scanner;
 
 public class Mapa {
     private Hashtable<String, Pais> paises;
@@ -14,8 +17,22 @@ public class Mapa {
     }
 
     //Transformar este metodo a una lectura de archivos (un archivo de paises y otro de fronteras)
-    private void crearPaises(){
+    public void crearPaises() {
         /*
+        Path current = Paths.get("../archivosDeTexto/paises.txt");
+        String s = current.toAbsolutePath().toString();
+
+        File f = new File(s);
+        Scanner fr = new Scanner(f);
+
+        while(fr.hasNextLine()) {
+            String linea = fr.nextLine();
+            linea = linea.replace("\n", "").replace("\r", "");
+            paises.put(linea, new Pais(linea));
+        }
+
+        fr.close();
+
         String[] nombresPaises = {"Egipto", "Etiopia", "Madagascar", "Sahara", "Sudafrica", "Zaire"};
         Pais paisAux;
 
