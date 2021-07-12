@@ -39,7 +39,6 @@ public class TestEntrega1 {
         assertEquals(1,paisDefensa.obtenerCantidadEjercitos());
         assertEquals(1,paisAtaque.obtenerCantidadEjercitos());
         assertEquals(ejercitoCeleste, paisDefensa.getEjercito());
-
     }
 
     @Test
@@ -61,10 +60,8 @@ public class TestEntrega1 {
         CombateMock combate = new CombateMock(paisAtaque,paisDefensa,1);
         combate.generarCombateAtacanteGanador();
 
-
         assertEquals(1,paisDefensa.obtenerCantidadEjercitos());
         assertEquals(1,paisAtaque.obtenerCantidadEjercitos());
         assertEquals(ejercitoVerde, paisDefensa.getEjercito());
-
     }
 }
