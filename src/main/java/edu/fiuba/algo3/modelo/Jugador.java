@@ -12,4 +12,8 @@ public class Jugador {
     public Ejercito getEjercito(){
         return ejercito;
     }
+
+    public String getNombre(){
+        return this.nombre;
+    }
 }

@@ -6,4 +6,8 @@ public class Ejercito {
     public Ejercito(String colorRecibido){
         this.color = colorRecibido;
     }
+
+    public String getColor(){
+        return this.color;
+    }
 }
