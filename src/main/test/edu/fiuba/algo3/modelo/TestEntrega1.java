@@ -19,7 +19,6 @@ public class TestEntrega1 {
 
     @Test
     public void test02CombateDefensorGanador() {
-
         Ejercito ejercitoCeleste = new Ejercito("Celeste");
         Ejercito ejercitoVerde = new Ejercito("Verde");
 
