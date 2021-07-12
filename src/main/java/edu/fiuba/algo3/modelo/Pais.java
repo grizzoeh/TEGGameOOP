@@ -33,4 +33,14 @@ public class Pais {
     public boolean estaOcupado(){
         return(this.cantidadEjercitos > 0);
     }
+
+    public void eliminarEjercitos(int cantidad) { this.cantidadEjercitos -= cantidad; }
+
+    public int obtenerCantidadEjercitos() { return this.cantidadEjercitos; }
+
+    public void invadir(Pais paisAInvadir) {
+        this.cantidadEjercitos--;
+        paisAInvadir.asignarEjercito(this.ejercito);
+        paisAInvadir.agregarEjercito();
+    }
 }

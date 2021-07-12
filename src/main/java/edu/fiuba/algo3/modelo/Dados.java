@@ -14,13 +14,14 @@ public class Dados {
         //Tiar dados
         int valor_dado;
 
-        for (int i = 0; i < cantDados - 1; i++) {
+        for (int i = 0; i < cantDados; i++) {
             valor_dado = (int)(Math.random()*6+1);
             resultado.add(valor_dado);
 
         }
         //Ordenar Dados
         Collections.sort(resultado);
+        Collections.reverse(resultado);
         return resultado;
     }
 }
