@@ -1,8 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.HashSet;
+
 public class Pais {
     private String nombre;
-    private Pais[] frontera;
+    private HashSet<Pais> frontera;
     private Ejercito ejercito;
     private int cantidadEjercitos = 0;
 
@@ -10,9 +12,11 @@ public class Pais {
         this.nombre = nombreRecibido;
     }
 
-    public void agregarFrontera(Pais[] fronteraRecibida){
+    public void agregarFrontera(HashSet<Pais> fronteraRecibida){
         this.frontera = fronteraRecibida;
     }
+
+    public boolean estaEnFrontera(Pais pais){return frontera.contains(pais);}
 
     public void asignarEjercito(Ejercito ejercitoAsignado){
         this.ejercito = ejercitoAsignado;

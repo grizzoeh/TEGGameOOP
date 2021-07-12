@@ -25,4 +25,8 @@ public class Teg {
     public boolean todosLosPaisesOcupados(){
         return this.mapa.todosLosPaisesOcupados();
     }
+
+    public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos){
+        mapa.atacar(paisAtaque, paisDefensa, cantEjercitos);
+    }
 }

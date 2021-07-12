@@ -15,6 +15,7 @@ public class Mapa {
 
     //Transformar este metodo a una lectura de archivos (un archivo de paises y otro de fronteras)
     private void crearPaises(){
+        /*
         String[] nombresPaises = {"Egipto", "Etiopia", "Madagascar", "Sahara", "Sudafrica", "Zaire"};
         Pais paisAux;
 
@@ -46,8 +47,10 @@ public class Mapa {
         fronteraAux = new Pais[]{paises.get("Etiopia") ,paises.get("Madagascar"), paises.get("Sahara"), paises.get("Sudafrica")};
         paisAux.agregarFrontera(fronteraAux);
 
-
+        */
     }
+
+
 
     //Esta funcion no aplica aleatoriedad.
     public void repartirPaises(ArrayList<Jugador> jugadores){
@@ -79,4 +82,20 @@ public class Mapa {
     }
 
 
+    public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) {
+
+        Pais paisAtacante = paises.get(paisAtaque);
+        Pais paisDefensor = paises.get(paisDefensa);
+        Combate combate = new Combate(paisAtacante, paisDefensor, cantEjercitos);
+        combate.generarCombate();
+    }
+
+    public boolean sonContiguos(String pais1, String pais2) {
+        Pais paisUno = paises.get(pais1);
+        Pais paisDos = paises.get(pais2);
+
+        return paisUno.estaEnFrontera(paisDos);
+
+
+    }
 }

@@ -24,4 +24,21 @@ public class Dados {
         Collections.reverse(resultado);
         return resultado;
     }
+
+    public ArrayList<Integer> tirarDadosPonderados(int cantDados, int valorDado) {
+        ArrayList<Integer> resultado = new ArrayList<Integer>();
+
+        //Tiar dados
+        int valor_dado;
+
+        for (int i = 0; i < cantDados; i++) {
+            valor_dado = valorDado;
+            resultado.add(valor_dado);
+
+        }
+        //Ordenar Dados
+        Collections.sort(resultado);
+        Collections.reverse(resultado);
+        return resultado;
+    }
 }
