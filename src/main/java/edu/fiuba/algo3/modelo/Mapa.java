@@ -2,11 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Set;
+import java.util.*;
 import java.io.File;
-import java.util.Scanner;
 
 public class Mapa {
     private Hashtable<String, Pais> paises;
@@ -33,6 +30,8 @@ public class Mapa {
 
         fr.close();
 
+         */
+
         String[] nombresPaises = {"Egipto", "Etiopia", "Madagascar", "Sahara", "Sudafrica", "Zaire"};
         Pais paisAux;
 
@@ -40,31 +39,44 @@ public class Mapa {
             paises.put(nombresPaises[i], new Pais(nombresPaises[i]));
         }
 
+        HashSet<Pais> fronteraAux = new HashSet<Pais>();
+
         paisAux = paises.get("Egipto");
-        Pais[] fronteraAux = {paises.get("Etiopia"), paises.get("Madagascar"), paises.get("Sahara")};
+        Pais[] frontera = {paises.get("Etiopia"), paises.get("Madagascar"), paises.get("Sahara")};
+        fronteraAux.addAll(Arrays.asList(frontera));
         paisAux.agregarFrontera(fronteraAux);
 
         paisAux = paises.get("Etiopia");
-        fronteraAux = new Pais[]{paises.get("Egipto"), paises.get("Sahara"), paises.get("Zaire"), paises.get("Sudafrica")};
+        frontera = new Pais[]{paises.get("Egipto"), paises.get("Sahara"), paises.get("Zaire"), paises.get("Sudafrica")};
+        fronteraAux.clear();
+        fronteraAux.addAll(Arrays.asList(frontera));
         paisAux.agregarFrontera(fronteraAux);
 
         paisAux = paises.get("Madagascar");
-        fronteraAux = new Pais[]{paises.get("Egipto"), paises.get("Zaire")};
+        frontera = new Pais[]{paises.get("Egipto"), paises.get("Zaire")};
+        fronteraAux.clear();
+        fronteraAux.addAll(Arrays.asList(frontera));
         paisAux.agregarFrontera(fronteraAux);
 
         paisAux = paises.get("Sahara");
-        fronteraAux = new Pais[]{paises.get("Egipto"), paises.get("Etiopia") ,paises.get("Zaire")};
+        frontera = new Pais[]{paises.get("Egipto"), paises.get("Etiopia") ,paises.get("Zaire")};
+        fronteraAux.clear();
+        fronteraAux.addAll(Arrays.asList(frontera));
         paisAux.agregarFrontera(fronteraAux);
 
         paisAux = paises.get("Sudafrica");
-        fronteraAux = new Pais[]{paises.get("Etiopia") ,paises.get("Zaire")};
+        frontera = new Pais[]{paises.get("Etiopia") ,paises.get("Zaire")};
+        fronteraAux.clear();
+        fronteraAux.addAll(Arrays.asList(frontera));
         paisAux.agregarFrontera(fronteraAux);
 
         paisAux = paises.get("Zaire");
-        fronteraAux = new Pais[]{paises.get("Etiopia") ,paises.get("Madagascar"), paises.get("Sahara"), paises.get("Sudafrica")};
+        frontera = new Pais[]{paises.get("Etiopia") ,paises.get("Madagascar"), paises.get("Sahara"), paises.get("Sudafrica")};
+        fronteraAux.clear();
+        fronteraAux.addAll(Arrays.asList(frontera));
         paisAux.agregarFrontera(fronteraAux);
 
-        */
+
     }
 
 
@@ -114,5 +126,28 @@ public class Mapa {
         return paisUno.estaEnFrontera(paisDos);
 
 
+    }
+
+    public Ejercito ejercitoEnPais(String nombrePais){
+        Pais paisBuscado = paises.get(nombrePais);
+
+        return paisBuscado.getEjercito();
+    }
+
+    public Integer paisesConEjercito(String colorEjercito){
+        int contadorEjercito = 0;
+        Ejercito ejercitoAux;
+        int i = 0;
+        String[] keys = paises.keySet().toArray(new String[0]);
+
+        while (i < this.paises.size()){
+            ejercitoAux = ejercitoEnPais(keys[i]);
+            if(ejercitoAux.getColor() == colorEjercito){
+                contadorEjercito++;
+            }
+            i++;
+        }
+
+        return contadorEjercito;
     }
 }
