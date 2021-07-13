@@ -15,6 +15,8 @@ public class CombateMock {
     }
 
     public void generarCombateAtacanteGanador() {
+        if (this.paisAtacante.obtenerCantidadEjercitos() < 2) return;
+
         int perdidosAtacante = 0;
         int perdidosDefensor = 1;
 
@@ -22,6 +24,8 @@ public class CombateMock {
     }
 
     public void generarCombateDefensorGanador() {
+        if (this.paisAtacante.obtenerCantidadEjercitos() < 2) return;
+
         int perdidosAtacante = 1;
         int perdidosDefensor = 0;
 
