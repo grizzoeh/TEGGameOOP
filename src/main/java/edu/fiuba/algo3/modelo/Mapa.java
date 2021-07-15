@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
+import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
+import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
+
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -96,15 +100,17 @@ public class Mapa {
         return paisEncontrado;
     }
 
-    public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) {
+    public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws PaisesNoContinuosException, PaisesConMismoDuenoException, PaisSinEjercitosSuficientesException {
 
         Pais paisAtacante = obtenerPais(paisAtaque);
         Pais paisDefensor = obtenerPais(paisDefensa);
 
-        if(!sonContiguos(paisAtacante, paisDefensor)) return; //LANZAR ERROR PAISES NO SON ADYACENTES
-        if(!paisAtacante.tienenEjercitosDiferentes(paisDefensor)) return; //LANZAR ERROR PAISES DEL MISMO DUEÑO
-        if(!paisAtacante.esAptoParaAtacar()) return; //LANZAR ERROR PAIS SIN EJERCITOS SUFICIENTES
-
+        if(!sonContiguos(paisAtacante, paisDefensor))
+            throw new PaisesNoContinuosException();
+        if(!paisAtacante.tienenEjercitosDiferentes(paisDefensor))
+            throw new PaisesConMismoDuenoException();
+        if(!paisAtacante.esAptoParaAtacar())
+            throw new PaisSinEjercitosSuficientesException();
 
         //En caso de ningun error, se realiza el ataque
         Combate combate = new Combate(paisAtacante, paisDefensor, cantEjercitos);

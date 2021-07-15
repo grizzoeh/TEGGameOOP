@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
+import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
+import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
+
 import java.util.ArrayList;
 
 public class Teg {
@@ -27,6 +31,14 @@ public class Teg {
     }
 
     public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos){
-        mapa.atacar(paisAtaque, paisDefensa, cantEjercitos);
+        try {
+            mapa.atacar(paisAtaque, paisDefensa, cantEjercitos);
+        } catch (PaisesNoContinuosException e) {
+            e.printStackTrace();
+        } catch (PaisesConMismoDuenoException e) {
+            e.printStackTrace();
+        } catch (PaisSinEjercitosSuficientesException e) {
+            e.printStackTrace();
+        }
     }
 }
