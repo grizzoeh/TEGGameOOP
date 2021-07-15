@@ -16,9 +16,9 @@ public class Combate {
     }
 
     public void generarCombate() {
-        if (this.paisAtacante.obtenerCantidadEjercitos() < 2) return;
 
         ArrayList<Integer> dadosAtacante = dados.tirarDados(this.cantAtacante);
+
         int cantidadEjercitosDefensor = this.paisDefensor.obtenerCantidadEjercitos() <= 3 ? this.paisDefensor.obtenerCantidadEjercitos() : 3;
         ArrayList<Integer> dadosDefensor = dados.tirarDados(cantidadEjercitosDefensor);
 

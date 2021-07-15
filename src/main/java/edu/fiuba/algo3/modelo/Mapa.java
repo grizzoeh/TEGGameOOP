@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
-import java.io.File;
+import java.util.stream.Stream;
 
 public class Mapa {
     private Hashtable<String, Pais> paises;
@@ -15,22 +13,6 @@ public class Mapa {
 
     //Transformar este metodo a una lectura de archivos (un archivo de paises y otro de fronteras)
     public void crearPaises() {
-        /*
-        Path current = Paths.get("../archivosDeTexto/paises.txt");
-        String s = current.toAbsolutePath().toString();
-
-        File f = new File(s);
-        Scanner fr = new Scanner(f);
-
-        while(fr.hasNextLine()) {
-            String linea = fr.nextLine();
-            linea = linea.replace("\n", "").replace("\r", "");
-            paises.put(linea, new Pais(linea));
-        }
-
-        fr.close();
-
-         */
 
         String[] nombresPaises = {"Egipto", "Etiopia", "Madagascar", "Sahara", "Sudafrica", "Zaire"};
         Pais paisAux;
@@ -39,7 +21,7 @@ public class Mapa {
             paises.put(nombresPaises[i], new Pais(nombresPaises[i]));
         }
 
-        HashSet<Pais> fronteraAux = new HashSet<Pais>();
+        HashSet<Pais> fronteraAux = new HashSet<>();
 
         paisAux = paises.get("Egipto");
         Pais[] frontera = {paises.get("Etiopia"), paises.get("Madagascar"), paises.get("Sahara")};
@@ -102,27 +84,34 @@ public class Mapa {
         boolean estanOcupados = true;
         int i = 0;
         String[] keys = paises.keySet().toArray(new String[0]);
-
         while(estanOcupados && i < paises.size()){
             estanOcupados = estanOcupados && (paises.get(keys[i]).estaOcupado());
             i++;
         }
         return estanOcupados;
     }
-
+    //Tal vez esta funcion deberia tener una excepcion por si no existe ese país
+    public Pais obtenerPais(String paisABuscar){
+        Pais paisEncontrado = paises.get(paisABuscar);
+        return paisEncontrado;
+    }
 
     public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) {
 
-        Pais paisAtacante = paises.get(paisAtaque);
-        Pais paisDefensor = paises.get(paisDefensa);
+        Pais paisAtacante = obtenerPais(paisAtaque);
+        Pais paisDefensor = obtenerPais(paisDefensa);
+
+        if(!sonContiguos(paisAtacante, paisDefensor)) return; //LANZAR ERROR PAISES NO SON ADYACENTES
+        if(!paisAtacante.tienenEjercitosDiferentes(paisDefensor)) return; //LANZAR ERROR PAISES DEL MISMO DUEÑO
+        if(!paisAtacante.esAptoParaAtacar()) return; //LANZAR ERROR PAIS SIN EJERCITOS SUFICIENTES
+
+
+        //En caso de ningun error, se realiza el ataque
         Combate combate = new Combate(paisAtacante, paisDefensor, cantEjercitos);
         combate.generarCombate();
     }
 
-    public boolean sonContiguos(String pais1, String pais2) {
-        Pais paisUno = paises.get(pais1);
-        Pais paisDos = paises.get(pais2);
-
+    public boolean sonContiguos(Pais paisUno, Pais paisDos) {
         return paisUno.estaEnFrontera(paisDos);
 
 
@@ -142,7 +131,7 @@ public class Mapa {
 
         while (i < this.paises.size()){
             ejercitoAux = ejercitoEnPais(keys[i]);
-            if(ejercitoAux.getColor() == colorEjercito){
+            if(ejercitoAux.getColor().equals(colorEjercito)){
                 contadorEjercito++;
             }
             i++;
