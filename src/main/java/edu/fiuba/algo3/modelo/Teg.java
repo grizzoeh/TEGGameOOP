@@ -33,11 +33,7 @@ public class Teg {
     public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos){
         try {
             mapa.atacar(paisAtaque, paisDefensa, cantEjercitos);
-        } catch (PaisesNoContinuosException e) {
-            e.printStackTrace();
-        } catch (PaisesConMismoDuenoException e) {
-            e.printStackTrace();
-        } catch (PaisSinEjercitosSuficientesException e) {
+        } catch (PaisesNoContinuosException | PaisesConMismoDuenoException | PaisSinEjercitosSuficientesException e) {
             e.printStackTrace();
         }
     }
