@@ -86,7 +86,7 @@ public class TestPais {
     @Test
     public void test11UnPaisSinFronteraNoContieneAOtroPaisEnElla(){
         Pais segundoPais = new Pais("Australia");
-        HashSet<Pais> fronteraPrueba = new HashSet<Pais>();
+        HashSet<Pais> fronteraPrueba = new HashSet<>();
 
         paisPrueba.agregarFrontera(fronteraPrueba);
 
@@ -96,7 +96,7 @@ public class TestPais {
     @Test
     public void test12SePuedenAgregarPaisesALaFrontera(){
         Pais segundoPais = new Pais("Chile");
-        HashSet<Pais> fronteraPrueba = new HashSet<Pais>();
+        HashSet<Pais> fronteraPrueba = new HashSet<>();
         fronteraPrueba.add(segundoPais);
 
         paisPrueba.agregarFrontera(fronteraPrueba);
@@ -109,7 +109,7 @@ public class TestPais {
         Pais segundoPais = new Pais("Chile");
         Pais tercerPais = new Pais("Uruguay");
         Pais cuartoPais = new Pais("Varsil");
-        HashSet<Pais> fronteraPrueba = new HashSet<Pais>();
+        HashSet<Pais> fronteraPrueba = new HashSet<>();
 
         fronteraPrueba.add(segundoPais);
         fronteraPrueba.add(tercerPais);
@@ -151,6 +151,44 @@ public class TestPais {
 
         assertEquals(ejercito,paisPrueba.getEjercito());
         assertEquals(ejercito,segundoPais.getEjercito());
+
+    }
+    @Test
+    public void test16TrasSumarUnEjercitoElPaisNoEsAptoParaAtacar(){
+
+        paisPrueba.agregarEjercito();
+
+        assertFalse(paisPrueba.esAptoParaAtacar());
+    }
+    @Test
+    public void test17TrasSumarDosEjercitosElPaisEsAptoParaAtacar(){
+
+        paisPrueba.agregarEjercito();
+        paisPrueba.agregarEjercito();
+
+        assertTrue(paisPrueba.esAptoParaAtacar());
+    }
+    @Test
+    public void test18DosPaisesConElMismoEjercitoDebenTenerElMismoColor(){
+        Pais segundoPais = new Pais("Chile");
+        Ejercito ejercito = new Ejercito("Azul");
+
+        paisPrueba.asignarEjercito(ejercito);
+        segundoPais.asignarEjercito(ejercito);
+
+        assertFalse(paisPrueba.tienenEjercitosDiferentes(segundoPais));
+
+    }
+    @Test
+    public void test18DosPaisesConDistintoEjercitoNoDebenTenerElMismoColor(){
+        Pais segundoPais = new Pais("Chile");
+        Ejercito ejercito = new Ejercito("Azul");
+        Ejercito ejercito2 = new Ejercito("Rojo");
+
+        paisPrueba.asignarEjercito(ejercito);
+        segundoPais.asignarEjercito(ejercito2);
+
+        assertTrue(paisPrueba.tienenEjercitosDiferentes(segundoPais));
 
     }
 }
