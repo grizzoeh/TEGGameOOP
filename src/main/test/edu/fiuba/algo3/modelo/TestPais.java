@@ -37,15 +37,14 @@ public class TestPais {
     @Test
     public void test05TrasSumarUnEjercitoElPaisEstaOcupado(){
 
-        paisPrueba.agregarEjercito();
+        paisPrueba.agregarEjercito(1);
 
         assertTrue(paisPrueba.estaOcupado());
     }
     @Test
     public void test06UnPaisConDosEjercitosAlQuitarUnoSigueOcupado(){
 
-        paisPrueba.agregarEjercito();
-        paisPrueba.agregarEjercito();
+        paisPrueba.agregarEjercito(2);
 
         paisPrueba.eliminarEjercitos(1);
 
@@ -54,8 +53,7 @@ public class TestPais {
     @Test
     public void test07UnPaisConDosEjercitosAlQuitarDosNoSigueOcupado(){
 
-        paisPrueba.agregarEjercito();
-        paisPrueba.agregarEjercito();
+        paisPrueba.agregarEjercito(2);
 
         paisPrueba.eliminarEjercitos(2);
 
@@ -64,9 +62,7 @@ public class TestPais {
     @Test
     public void test08TrasSumar20EjercitosLaCantidadEsCorrecta(){
 
-        for (int i = 1; i <= 20; i++ ){
-                paisPrueba.agregarEjercito();
-        }
+        paisPrueba.agregarEjercito(20);
 
         assertEquals(20,paisPrueba.obtenerCantidadEjercitos());
     }
@@ -129,8 +125,7 @@ public class TestPais {
 
         paisPrueba.asignarEjercito(ejercito);
 
-        paisPrueba.agregarEjercito();
-        paisPrueba.agregarEjercito();
+        paisPrueba.agregarEjercito(2);
 
         paisPrueba.invadir(segundoPais);
 
@@ -144,8 +139,7 @@ public class TestPais {
 
         paisPrueba.asignarEjercito(ejercito);
 
-        paisPrueba.agregarEjercito();
-        paisPrueba.agregarEjercito();
+        paisPrueba.agregarEjercito(2);
 
         paisPrueba.invadir(segundoPais);
 
@@ -156,15 +150,14 @@ public class TestPais {
     @Test
     public void test16TrasSumarUnEjercitoElPaisNoEsAptoParaAtacar(){
 
-        paisPrueba.agregarEjercito();
+        paisPrueba.agregarEjercito(1);
 
         assertFalse(paisPrueba.esAptoParaAtacar());
     }
     @Test
     public void test17TrasSumarDosEjercitosElPaisEsAptoParaAtacar(){
 
-        paisPrueba.agregarEjercito();
-        paisPrueba.agregarEjercito();
+        paisPrueba.agregarEjercito(2);
 
         assertTrue(paisPrueba.esAptoParaAtacar());
     }

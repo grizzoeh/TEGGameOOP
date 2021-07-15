@@ -79,7 +79,7 @@ public class Mapa {
             for(int j = 0; j < cantidadJugadores; j++){
                 paisAux = paises.get(keys[i]);
                 paisAux.asignarEjercito(jugadores.get(j).getEjercito());
-                paisAux.agregarEjercito();
+                paisAux.agregarEjercito(1);
                 i++;
             }
         }
@@ -119,8 +119,6 @@ public class Mapa {
 
     public boolean sonContiguos(Pais paisUno, Pais paisDos) {
         return paisUno.estaEnFrontera(paisDos);
-
-
     }
 
     public Ejercito ejercitoEnPais(String nombrePais){
@@ -145,4 +143,20 @@ public class Mapa {
 
         return contadorEjercito;
     }
+    public void moverEjercitos(String paisOrigen, String paisDestino, Integer cantidadAMover){
+        Pais origen = obtenerPais(paisOrigen);
+        Pais destino = obtenerPais(paisDestino);
+
+        if (!sonContiguos(origen,destino)) return; //LANZAR ERROR PAISES NO SON ADYACENTES
+        if (origen.tienenEjercitosDiferentes(destino)) return; //LANZAR ERROR PAISES NO SON DEL MISMO DUEÑO
+        if (!origen.sePuedeMoverEstaCantidadDeEjercitos(cantidadAMover)) return; // LANZAR ERROR DE QUE NO ALCANZAN LAS TROPAS
+
+        origen.eliminarEjercitos(cantidadAMover);
+        destino.agregarEjercito(cantidadAMover);
+
+    }
+    public Collection<Pais> todosLosPaises(){
+        return paises.values();
+    }
+
 }

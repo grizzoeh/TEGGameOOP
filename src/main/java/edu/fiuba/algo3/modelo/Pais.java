@@ -29,8 +29,8 @@ public class Pais {
         this.ejercito = ejercitoAsignado;
     }
 
-    public void agregarEjercito(){
-        cantidadEjercitos++;
+    public void agregarEjercito(Integer cantidad){
+        this.cantidadEjercitos += cantidad;
     }
 
     public String obtenerNombre(){
@@ -52,6 +52,9 @@ public class Pais {
     public void invadir(Pais paisAInvadir) {
         this.cantidadEjercitos--;
         paisAInvadir.asignarEjercito(this.ejercito);
-        paisAInvadir.agregarEjercito();
+        paisAInvadir.agregarEjercito(1);
+    }
+    public boolean sePuedeMoverEstaCantidadDeEjercitos(Integer cantidad){
+        return (cantidadEjercitos >= cantidad + 1);
     }
 }
