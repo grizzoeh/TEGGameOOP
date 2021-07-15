@@ -16,6 +16,13 @@ public class Pais {
         this.frontera = fronteraRecibida;
     }
 
+    public boolean esAptoParaAtacar(){
+        return cantidadEjercitos >= 2;
+    }
+
+    public boolean tienenEjercitosDiferentes(Pais paisAAtacar){
+        return (!(paisAAtacar.getEjercito().getColor().equals(this.ejercito.getColor())));
+    }
     public boolean estaEnFrontera(Pais pais){return frontera.contains(pais);}
 
     public void asignarEjercito(Ejercito ejercitoAsignado){
