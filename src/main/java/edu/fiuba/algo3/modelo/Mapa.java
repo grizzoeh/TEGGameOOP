@@ -148,7 +148,9 @@ public class Mapa {
         origen.eliminarEjercitos(cantidadAMover);
         destino.agregarEjercito(cantidadAMover);
 
-
-
     }
+    public Collection<Pais> todosLosPaises(){
+        return paises.values();
+    }
+
 }
