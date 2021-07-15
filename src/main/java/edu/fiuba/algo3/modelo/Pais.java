@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.HashSet;
 
 public class Pais {
-    private String nombre;
+    private final String nombre;
     private HashSet<Pais> frontera;
     private Ejercito ejercito;
     private int cantidadEjercitos = 0;
