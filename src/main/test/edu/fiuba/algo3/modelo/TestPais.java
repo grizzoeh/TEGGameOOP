@@ -184,5 +184,33 @@ public class TestPais {
         assertTrue(paisPrueba.tienenEjercitosDiferentes(segundoPais));
 
     }
+    @Test
+    public void test19UnPaisConUnEjercitoNuncaPodriaMoverTres(){
+        paisPrueba.agregarEjercito(1);
+
+        assertFalse(paisPrueba.sePuedeMoverEstaCantidadDeEjercitos(3));
+
+    }
+    @Test
+    public void test20UnPaisConDosEjercitosNuncaPodriaMoverTres(){
+        paisPrueba.agregarEjercito(2);
+
+        assertFalse(paisPrueba.sePuedeMoverEstaCantidadDeEjercitos(3));
+
+    }
+    @Test
+    public void test21UnPaisConTresEjercitosNuncaPodriaMoverTres(){
+        paisPrueba.agregarEjercito(3);
+
+        assertFalse(paisPrueba.sePuedeMoverEstaCantidadDeEjercitos(3));
+
+    }
+    @Test
+    public void test22UnPaisConCuatroEjercitosOMasPodriaMoverTres(){
+        paisPrueba.agregarEjercito(4);
+
+        assertTrue(paisPrueba.sePuedeMoverEstaCantidadDeEjercitos(3));
+
+    }
 }
 

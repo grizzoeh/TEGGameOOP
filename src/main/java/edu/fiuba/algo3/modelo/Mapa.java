@@ -23,6 +23,7 @@ public class Mapa {
 
         for(int i = 0; i < (nombresPaises.length); i++){
             paises.put(nombresPaises[i], new Pais(nombresPaises[i]));
+
         }
 
         HashSet<Pais> fronteraAux = new HashSet<>();
@@ -95,7 +96,7 @@ public class Mapa {
         return estanOcupados;
     }
     //Tal vez esta funcion deberia tener una excepcion por si no existe ese país
-    public Pais obtenerPais(String paisABuscar){
+    public Pais obtenerPais(String paisABuscar) {
         Pais paisEncontrado = paises.get(paisABuscar);
         return paisEncontrado;
     }

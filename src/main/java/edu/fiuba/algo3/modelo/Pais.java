@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Pais {
@@ -16,6 +17,16 @@ public class Pais {
         this.frontera = fronteraRecibida;
     }
 
+    public void imprimirFrontera(){
+        Object[] array = frontera.toArray();
+        Pais paisAux;
+        for (int i = 0; i < frontera.size(); i++){
+            paisAux = (Pais) array[i];
+            System.out.println(paisAux.obtenerNombre());
+
+        }
+        System.out.println("\n");
+    }
     public boolean esAptoParaAtacar(){
         return cantidadEjercitos >= 2;
     }
