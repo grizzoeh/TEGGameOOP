@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -82,7 +83,7 @@ public class TestPais {
     @Test
     public void test11UnPaisSinFronteraNoContieneAOtroPaisEnElla(){
         Pais segundoPais = new Pais("Australia");
-        HashSet<Pais> fronteraPrueba = new HashSet<>();
+        ArrayList<Pais> fronteraPrueba = new ArrayList<>();
 
         paisPrueba.agregarFrontera(fronteraPrueba);
 
@@ -92,7 +93,7 @@ public class TestPais {
     @Test
     public void test12SePuedenAgregarPaisesALaFrontera(){
         Pais segundoPais = new Pais("Chile");
-        HashSet<Pais> fronteraPrueba = new HashSet<>();
+        ArrayList<Pais> fronteraPrueba = new ArrayList<>();
         fronteraPrueba.add(segundoPais);
 
         paisPrueba.agregarFrontera(fronteraPrueba);
@@ -105,7 +106,7 @@ public class TestPais {
         Pais segundoPais = new Pais("Chile");
         Pais tercerPais = new Pais("Uruguay");
         Pais cuartoPais = new Pais("Varsil");
-        HashSet<Pais> fronteraPrueba = new HashSet<>();
+        ArrayList<Pais> fronteraPrueba = new ArrayList<>();
 
         fronteraPrueba.add(segundoPais);
         fronteraPrueba.add(tercerPais);

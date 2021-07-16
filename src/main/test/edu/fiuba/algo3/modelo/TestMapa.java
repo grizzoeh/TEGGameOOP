@@ -11,7 +11,7 @@ public class TestMapa {
     Mapa mapa = new Mapa();
     @Test
     public void test01TodosLosPaisesSeInicializanConAlMenosUnEjercito() {
-        ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+        ArrayList<Jugador> jugadores = new ArrayList<>();
 
         Jugador jugador1 = new Jugador("Estebanquito", new Ejercito("Blanquito"));
         jugadores.add(jugador1);
@@ -22,7 +22,7 @@ public class TestMapa {
 
     @Test
     public void test02TodosLosPaisesSeRepartenCuandoHayMasDeUnJugador(){
-        ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+        ArrayList<Jugador> jugadores = new ArrayList<>();
 
         Jugador jugador1 = new Jugador("Estebanquito", new Ejercito("Blanquito"));
         jugadores.add(jugador1);
@@ -37,7 +37,7 @@ public class TestMapa {
 
     @Test
     public void test03TodosLosPaisesSeRepartenEquitativamente(){
-        ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+        ArrayList<Jugador> jugadores = new ArrayList<>();
 
         Jugador jugador1 = new Jugador("Estebanquito", new Ejercito("Blanquito"));
         jugadores.add(jugador1);
@@ -61,7 +61,6 @@ public class TestMapa {
 
         Pais origen = mapa.obtenerPais("Sahara");
         Pais destino = mapa.obtenerPais("Madagascar");
-
         assertFalse(mapa.sonContiguos(origen,destino));
     }
     @Test
@@ -78,7 +77,7 @@ public class TestMapa {
 
         mapa.moverEjercitos("Egipto","Madagascar", 2);
 
-        assertTrue(destino.obtenerCantidadEjercitos() == 3);
+        assertEquals(3 ,destino.obtenerCantidadEjercitos());
 
     }
 
