@@ -1,10 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 
 public class Pais {
-    private String nombre;
-    private HashSet<Pais> frontera;
+    private final String nombre;
+    private Collection<Pais> frontera;
     private Ejercito ejercito;
     private int cantidadEjercitos = 0;
 
@@ -12,18 +14,25 @@ public class Pais {
         this.nombre = nombreRecibido;
     }
 
-    public void agregarFrontera(HashSet<Pais> fronteraRecibida){
+    public void agregarFrontera(ArrayList<Pais> fronteraRecibida){
         this.frontera = fronteraRecibida;
     }
 
+    public boolean esAptoParaAtacar(){
+        return cantidadEjercitos >= 2;
+    }
+
+    public boolean tienenEjercitosDiferentes(Pais paisAAtacar){
+        return (!(paisAAtacar.getEjercito().getColor().equals(this.ejercito.getColor())));
+    }
     public boolean estaEnFrontera(Pais pais){return frontera.contains(pais);}
 
     public void asignarEjercito(Ejercito ejercitoAsignado){
         this.ejercito = ejercitoAsignado;
     }
 
-    public void agregarEjercito(){
-        cantidadEjercitos++;
+    public void agregarEjercito(Integer cantidad){
+        this.cantidadEjercitos += cantidad;
     }
 
     public String obtenerNombre(){
@@ -45,6 +54,9 @@ public class Pais {
     public void invadir(Pais paisAInvadir) {
         this.cantidadEjercitos--;
         paisAInvadir.asignarEjercito(this.ejercito);
-        paisAInvadir.agregarEjercito();
+        paisAInvadir.agregarEjercito(1);
+    }
+    public boolean sePuedeMoverEstaCantidadDeEjercitos(Integer cantidad){
+        return (cantidadEjercitos >= cantidad + 1);
     }
 }

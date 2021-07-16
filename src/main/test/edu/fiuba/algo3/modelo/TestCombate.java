@@ -15,9 +15,9 @@ public class TestCombate {
         paisDefensa.asignarEjercito(ejercitoRojo);
         paisAtaque.asignarEjercito(ejercitoVerde);
 
-        paisDefensa.agregarEjercito();
-        paisAtaque.agregarEjercito();
-        paisAtaque.agregarEjercito();
+        paisDefensa.agregarEjercito(1);
+        paisAtaque.agregarEjercito(2);
+
 
         CombateMock combate = new CombateMock(paisAtaque,paisDefensa,1);
         combate.generarCombateDefensorGanador();
@@ -35,9 +35,8 @@ public class TestCombate {
         paisDefensa.asignarEjercito(ejercitoRojo);
         paisAtaque.asignarEjercito(ejercitoVerde);
 
-        paisDefensa.agregarEjercito();
-        paisAtaque.agregarEjercito();
-        paisAtaque.agregarEjercito();
+        paisDefensa.agregarEjercito(1);
+        paisAtaque.agregarEjercito(2);
 
         CombateMock combate = new CombateMock(paisAtaque,paisDefensa,1);
         combate.generarCombateAtacanteGanador();
@@ -55,15 +54,17 @@ public class TestCombate {
         paisDefensa.asignarEjercito(ejercitoRojo);
         paisAtaque.asignarEjercito(ejercitoVerde);
 
-        paisDefensa.agregarEjercito();
-        paisAtaque.agregarEjercito();
-        paisAtaque.agregarEjercito();
+        paisDefensa.agregarEjercito(1);
+        paisAtaque.agregarEjercito(2);
 
         CombateMock combate = new CombateMock(paisAtaque,paisDefensa,1);
         combate.generarCombateAtacanteGanador();
 
         assertEquals(ejercitoVerde,paisDefensa.getEjercito());
     }
+    /*
+
+    ESTE TEST DEBE SER ELIMINADO, YA QUE NO ES REESPOSABILIDAD DE LA CLASE COMBATE EL VERIFICAR ESTA SITUACION
     @Test
     public void test04AtacanteConSoloUnEjercitoNoPuedeAtacar() {
         Ejercito ejercitoRojo = new Ejercito("Rojo");
@@ -84,4 +85,6 @@ public class TestCombate {
         assertEquals(1,paisAtaque.obtenerCantidadEjercitos());
         assertEquals(1,paisDefensa.obtenerCantidadEjercitos());
     }
+     */
 }
+

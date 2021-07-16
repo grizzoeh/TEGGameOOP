@@ -1,17 +1,17 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestMapa {
+    Mapa mapa = new Mapa();
     @Test
     public void test01TodosLosPaisesSeInicializanConAlMenosUnEjercito() {
-        Mapa mapa = new Mapa();
-        ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+        ArrayList<Jugador> jugadores = new ArrayList<>();
 
         Jugador jugador1 = new Jugador("Estebanquito", new Ejercito("Blanquito"));
         jugadores.add(jugador1);
@@ -22,8 +22,7 @@ public class TestMapa {
 
     @Test
     public void test02TodosLosPaisesSeRepartenCuandoHayMasDeUnJugador(){
-        Mapa mapa = new Mapa();
-        ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+        ArrayList<Jugador> jugadores = new ArrayList<>();
 
         Jugador jugador1 = new Jugador("Estebanquito", new Ejercito("Blanquito"));
         jugadores.add(jugador1);
@@ -38,8 +37,7 @@ public class TestMapa {
 
     @Test
     public void test03TodosLosPaisesSeRepartenEquitativamente(){
-        Mapa mapa = new Mapa();
-        ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+        ArrayList<Jugador> jugadores = new ArrayList<>();
 
         Jugador jugador1 = new Jugador("Estebanquito", new Ejercito("Blanquito"));
         jugadores.add(jugador1);
@@ -50,5 +48,42 @@ public class TestMapa {
 
         assertEquals(3, mapa.paisesConEjercito("Blanco"));
     }
+    @Test
+    public void test04DosPaisesVecinosSonContiguos(){
+
+        Pais origen = mapa.obtenerPais("Egipto");
+        Pais destino = mapa.obtenerPais("Madagascar");
+
+        assertTrue(mapa.sonContiguos(origen,destino));
+    }
+    @Test
+    public void test05DosPaisesNOVecinosNOSonContiguos(){
+
+        Pais origen = mapa.obtenerPais("Sahara");
+        Pais destino = mapa.obtenerPais("Madagascar");
+        assertFalse(mapa.sonContiguos(origen,destino));
+    }
+    @Test
+    public void test06DosPaisesVecinosConElMismoDuenioConMasDeUnEjercitoPuedeIntercambiarTropas(){
+        Ejercito ejercito = new Ejercito("Blanco");
+
+        Pais origen = mapa.obtenerPais("Egipto");
+        Pais destino = mapa.obtenerPais("Madagascar");
+
+        origen.asignarEjercito(ejercito);
+        destino.asignarEjercito(ejercito);
+        origen.agregarEjercito(3);
+        destino.agregarEjercito(1);
+
+        mapa.moverEjercitos("Egipto","Madagascar", 2);
+
+        assertEquals(3 ,destino.obtenerCantidadEjercitos());
+
+    }
+
+    /*@Test
+    public void TestExcepcionO1NoSePuedeRealizarUnAtaqueSiLosPaisesNoSonContiguos() throws Exception{
+        mapa.atacar("Sahara", "Madagascar", 3);
+    }*/
 }
 
