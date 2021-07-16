@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+
 public class Mazo {
 
     ArrayList<Tarjeta> tarjetas;
@@ -22,11 +23,7 @@ public class Mazo {
     }
 /*
     public void usarTarjeta(Pais pais){
-        Tarjeta tarjeta = tarjetas.stream().findAny(buscada -> buscada.obtenerPais())
-    }
-
-
-
 */
+
 
 }

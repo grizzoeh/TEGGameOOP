@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.stream.Stream;
@@ -23,43 +24,63 @@ public class Mapa {
 
         for(int i = 0; i < (nombresPaises.length); i++){
             paises.put(nombresPaises[i], new Pais(nombresPaises[i]));
+
         }
 
-        HashSet<Pais> fronteraAux = new HashSet<>();
-
+        ArrayList<Pais> fronteraAux = new ArrayList<>();
         paisAux = paises.get("Egipto");
-        Pais[] frontera = {paises.get("Etiopia"), paises.get("Madagascar"), paises.get("Sahara")};
-        fronteraAux.addAll(Arrays.asList(frontera));
+
+        fronteraAux.add( paises.get("Etiopia"));
+        fronteraAux.add( paises.get("Madagascar"));
+        fronteraAux.add( paises.get("Sahara"));
+
         paisAux.agregarFrontera(fronteraAux);
 
         paisAux = paises.get("Etiopia");
-        frontera = new Pais[]{paises.get("Egipto"), paises.get("Sahara"), paises.get("Zaire"), paises.get("Sudafrica")};
-        fronteraAux.clear();
-        fronteraAux.addAll(Arrays.asList(frontera));
+
+        fronteraAux = new ArrayList<>();
+
+        fronteraAux.add( paises.get("Egipto"));
+        fronteraAux.add( paises.get("Zaire"));
+        fronteraAux.add( paises.get("Sahara"));
+        fronteraAux.add( paises.get("Sudafrica"));
+
         paisAux.agregarFrontera(fronteraAux);
 
         paisAux = paises.get("Madagascar");
-        frontera = new Pais[]{paises.get("Egipto"), paises.get("Zaire")};
-        fronteraAux.clear();
-        fronteraAux.addAll(Arrays.asList(frontera));
+
+        fronteraAux = new ArrayList<>();
+        fronteraAux.add( paises.get("Egipto"));
+        fronteraAux.add( paises.get("Zaire"));
+
         paisAux.agregarFrontera(fronteraAux);
 
         paisAux = paises.get("Sahara");
-        frontera = new Pais[]{paises.get("Egipto"), paises.get("Etiopia") ,paises.get("Zaire")};
-        fronteraAux.clear();
-        fronteraAux.addAll(Arrays.asList(frontera));
+
+        fronteraAux = new ArrayList<>();
+        fronteraAux.add( paises.get("Egipto"));
+        fronteraAux.add( paises.get("Zaire"));
+        fronteraAux.add( paises.get("Etiopia"));
+
         paisAux.agregarFrontera(fronteraAux);
 
-        paisAux = paises.get("Sudafrica");
-        frontera = new Pais[]{paises.get("Etiopia") ,paises.get("Zaire")};
-        fronteraAux.clear();
-        fronteraAux.addAll(Arrays.asList(frontera));
+        paisAux = (paises.get("Sudafrica"));
+
+        fronteraAux = new ArrayList<>();
+        fronteraAux.add( paises.get("Zaire"));
+        fronteraAux.add( paises.get("Etiopia"));
+
         paisAux.agregarFrontera(fronteraAux);
 
         paisAux = paises.get("Zaire");
-        frontera = new Pais[]{paises.get("Etiopia") ,paises.get("Madagascar"), paises.get("Sahara"), paises.get("Sudafrica")};
-        fronteraAux.clear();
-        fronteraAux.addAll(Arrays.asList(frontera));
+
+        fronteraAux = new ArrayList<>();
+
+        fronteraAux.add( paises.get("Madagascar"));
+        fronteraAux.add( paises.get("Etiopia"));
+        fronteraAux.add( paises.get("Sahara"));
+        fronteraAux.add(paises.get("Sudafrica"));
+
         paisAux.agregarFrontera(fronteraAux);
 
 
@@ -95,7 +116,7 @@ public class Mapa {
         return estanOcupados;
     }
     //Tal vez esta funcion deberia tener una excepcion por si no existe ese país
-    public Pais obtenerPais(String paisABuscar){
+    public Pais obtenerPais(String paisABuscar) {
         Pais paisEncontrado = paises.get(paisABuscar);
         return paisEncontrado;
     }

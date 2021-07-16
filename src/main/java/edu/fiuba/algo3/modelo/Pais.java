@@ -1,10 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 
 public class Pais {
     private final String nombre;
-    private HashSet<Pais> frontera;
+    private Collection<Pais> frontera;
     private Ejercito ejercito;
     private int cantidadEjercitos = 0;
 
@@ -12,7 +14,7 @@ public class Pais {
         this.nombre = nombreRecibido;
     }
 
-    public void agregarFrontera(HashSet<Pais> fronteraRecibida){
+    public void agregarFrontera(ArrayList<Pais> fronteraRecibida){
         this.frontera = fronteraRecibida;
     }
 
