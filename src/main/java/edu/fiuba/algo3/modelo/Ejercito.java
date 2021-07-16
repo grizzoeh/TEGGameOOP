@@ -7,7 +7,5 @@ public class Ejercito {
         this.color = colorRecibido;
     }
 
-    public String getColor(){
-        return this.color;
-    }
+    public String getColor(){ return this.color; }
 }
