@@ -181,13 +181,13 @@ public class Mapa {
     }
 
 		public boolean paisLePertenece(String pais, Jugador jugador) {
-			private Mapa objetoMapa = paises.get(pais);
-			return jugador.getEjercito() == paisAtaque.getEjercito();
+			Pais paisAux = paises.get(pais);
+			return jugador.getEjercito() == paisAux.getEjercito();
 		}
 
 	public void agregarEjercitos(String paisIngresado, int cantidad) {
-		private Pais pais;
-		pais.agregarEjercito(cantidad)
+		Pais pais = paises.get(paisIngresado);
+		pais.agregarEjercito(cantidad);
 	}
 
 }

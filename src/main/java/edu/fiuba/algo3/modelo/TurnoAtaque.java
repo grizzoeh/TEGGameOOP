@@ -1,3 +1,7 @@
+package edu.fiuba.algo3.modelo;
+
+import edu.fiuba.algo3.modelo.excepciones.*;
+
 public class TurnoAtaque implements Turno {
 	private Mapa mapa;
 	private Jugador jugador;
@@ -11,7 +15,11 @@ public class TurnoAtaque implements Turno {
 		if(!mapa.paisLePertenece(paisAtaque, jugador)) {
 			throw new PaisNoLePerteneceException();
 		}
-		mapa.atacar(paisAtaque, paisDefensa, cantEjercitos);
+		try {
+			mapa.atacar(paisAtaque, paisDefensa, cantEjercitos);
+		} catch (PaisesNoContinuosException | PaisesConMismoDuenoException | PaisSinEjercitosSuficientesException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void asignarEjercito(String pais, int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException {
@@ -22,7 +30,7 @@ public class TurnoAtaque implements Turno {
 		throw new EtapaEquivocadaException();
 	}
 
-	public Turno avanzarEtapa() {
-		return new TurnoReagrupar();
+	public TurnoReagrupar avanzarEtapa() {
+		return new TurnoReagrupar(jugador, mapa);
 	}
 }

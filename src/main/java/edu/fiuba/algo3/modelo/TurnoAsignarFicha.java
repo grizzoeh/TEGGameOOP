@@ -1,3 +1,8 @@
+package edu.fiuba.algo3.modelo;
+
+import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
+
 public class TurnoAsignarFicha implements Turno {
 	private Mapa mapa;
 	private Jugador jugador;
@@ -12,7 +17,7 @@ public class TurnoAsignarFicha implements Turno {
 	}
 
 	public void asignarEjercito(String pais, int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException {
-		if(!mapa.paisLePertenece(paisOrigen, jugador)) {
+		if(!mapa.paisLePertenece(pais, jugador)) {
 			throw new PaisNoLePerteneceException();
 		}
 

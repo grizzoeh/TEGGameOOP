@@ -1,3 +1,8 @@
+package edu.fiuba.algo3.modelo;
+
+import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
+
 public class TurnoReagrupar implements Turno {
 	private Mapa mapa;
 	private Jugador jugador;
@@ -25,6 +30,6 @@ public class TurnoReagrupar implements Turno {
 	}
 
 	public Turno avanzarEtapa() {
-		return new TurnoAsignarFicha();
+		return new TurnoAsignarFicha(jugador, mapa);
 	}
 }
