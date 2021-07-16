@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.stream.Stream;
+
 
 public class Mazo {
 
@@ -23,11 +23,7 @@ public class Mazo {
     }
 /*
     public void usarTarjeta(Pais pais){
-        Stream<Tarjeta> stream = tarjetas.stream();
-       stream.findAny(buscada -> buscada.obtenerSimbolo());
-    }
+*/
 
-
-/*/
 
 }
