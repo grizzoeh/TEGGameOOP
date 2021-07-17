@@ -12,7 +12,12 @@ public class Tarjeta {
     public String obtenerSimbolo(){
         return simbolo;
     }
+
     public Pais obtenerPais(){
             return paisPerteciente;
+    }
+
+    public Boolean perteneceAEstePais(Pais pais){
+        return (pais == paisPerteciente);
     }
 }
