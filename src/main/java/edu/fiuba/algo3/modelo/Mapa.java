@@ -3,10 +3,8 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 public class Mapa {
     private Hashtable<String, Pais> paises;
@@ -137,6 +135,16 @@ public class Mapa {
         }
         return estanOcupados;
     }
+    public boolean todosLosPaisesOcupados2(){
+        boolean estanOcupados = true;
+        int i = 0;
+        String[] keys = paises.keySet().toArray(new String[0]);
+        while(estanOcupados && i < paises.size()){
+            estanOcupados = estanOcupados && (paises.get(keys[i]).estaOcupado());
+            i++;
+        }
+        return estanOcupados;
+    }
     //Tal vez esta funcion deberia tener una excepcion por si no existe ese país
     public Pais obtenerPais(String paisABuscar) {
         Pais paisEncontrado = paises.get(paisABuscar);
@@ -198,13 +206,15 @@ public class Mapa {
         destino.agregarEjercito(cantidadAMover);
 
     }
-    public Collection<Pais> todosLosPaises(){
-        return paises.values();
+    public Object[] todosLosPaises(){
+        return paises.values().toArray();
     }
+
 
     public boolean paisLePertenece(String pais, Jugador jugador) {
         Pais paisAux = paises.get(pais);
         return jugador.getEjercito() == paisAux.getEjercito();
+
     }
 
 	public void agregarEjercitos(String paisIngresado, int cantidad) {

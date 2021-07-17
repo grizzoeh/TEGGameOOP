@@ -3,6 +3,8 @@ package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -18,10 +20,12 @@ public class TestDados {
         Dados dado = new Dados();
         ArrayList<Integer> dados = dado.tirarDados(100);
         boolean estado = true;
-        for (int i = 0; i < 100; i++) {
-            estado = (dados.get(i) > 0 && dados.get(i) < 7);
-        }
-        assertTrue(estado);
+        boolean estadoSuperior = true;
+
+        estado = dados.stream().allMatch(u -> u > 0);
+        estadoSuperior = dados.stream().allMatch(u -> u < 7);
+
+        assertTrue(estado && estadoSuperior);
     }
     @Test
     public void test03TirarDadosRandomDevuelveNumerosOrdenadosDeMayorAMenor() {
