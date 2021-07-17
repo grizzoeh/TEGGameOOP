@@ -37,4 +37,21 @@ public class Teg {
             e.printStackTrace();
         }
     }
+
+    public void asignarFichas(Jugador jugador){
+
+
+
+        int fichasPorPaises = mapa.paisesConEjercito(jugador.getEjercito())/2;
+
+
+        int fichasPorContinentesControlado = mapa.fichasPorContinentesControlados(jugador.getEjercito());
+
+
+
+
+
+    }
+
+
 }

@@ -46,7 +46,7 @@ public class TestMapa {
 
         mapa.repartirPaises(jugadores);
 
-        assertEquals(3, mapa.paisesConEjercito("Blanco"));
+        assertEquals(3, mapa.paisesConEjercito(jugador2.getEjercito()));
     }
     @Test
     public void test04DosPaisesVecinosSonContiguos(){
