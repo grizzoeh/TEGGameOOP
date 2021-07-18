@@ -8,9 +8,11 @@ import java.util.*;
 
 public class Mapa {
     private Hashtable<String, Pais> paises;
+    private Hashtable<String, Continente> continentes;
 
     public Mapa(){
         this.paises = new Hashtable<String, Pais>();
+        this.continentes = new Hashtable<String, Continente>();
         this.crearPaises();
     }
 
@@ -85,6 +87,26 @@ public class Mapa {
     }
 
 
+    public void crearContinentes(){
+        ArrayList<Integer> bonusFichas = new ArrayList<>();
+        bonusFichas.add(5);
+        bonusFichas.add(3);
+        bonusFichas.add(7);
+        bonusFichas.add(3);
+        bonusFichas.add(5);
+        bonusFichas.add(2);
+        String[] nombresContinentes = {"América del Norte", "América del Sur", "Asia", "África", "Europa", "Oceanía"};
+        for(int i = 0; i < (nombresContinentes.length); i++){
+            continentes.put(nombresContinentes[i], new Continente(nombresContinentes[i],bonusFichas.get(i)));
+
+        }
+
+    }
+
+
+
+
+
 
     //Esta funcion no aplica aleatoriedad.
     public void repartirPaises(ArrayList<Jugador> jugadores){
@@ -147,7 +169,7 @@ public class Mapa {
         return paisBuscado.getEjercito();
     }
 
-    public Integer paisesConEjercito(String colorEjercito){
+    public Integer paisesConEjercito(Ejercito ejercito){
         int contadorEjercito = 0;
         Ejercito ejercitoAux;
         int i = 0;
@@ -155,7 +177,7 @@ public class Mapa {
 
         while (i < this.paises.size()){
             ejercitoAux = ejercitoEnPais(keys[i]);
-            if(ejercitoAux.getColor().equals(colorEjercito)){
+            if(ejercitoAux == ejercito){
                 contadorEjercito++;
             }
             i++;
@@ -181,8 +203,9 @@ public class Mapa {
 
 
     public boolean paisLePertenece(String pais, Jugador jugador) {
-			Pais paisAux = paises.get(pais);
-			return jugador.getEjercito() == paisAux.getEjercito();
+        Pais paisAux = paises.get(pais);
+        return jugador.getEjercito() == paisAux.getEjercito();
+
     }
 
 	public void agregarEjercitos(String paisIngresado, int cantidad) {
@@ -190,4 +213,29 @@ public class Mapa {
 		pais.agregarEjercito(cantidad);
 	}
 
+
+    public boolean jugadorControlaContinente(Continente continente, Jugador jugador) {
+        return continente.jugadorControlaContinente(jugador.getEjercito());
+    }
+
+
+    public int fichasPorContinentesControlados(Ejercito ejercito) {
+        int fichas = 0;
+
+        Set<String> keys = continentes.keySet();
+
+        Iterator<String> itr = keys.iterator();
+
+        while(itr.hasNext()){
+            String contienteNombre = itr.next();
+            Continente continente = continentes.get(contienteNombre);
+
+            if (continente.jugadorControlaContinente(ejercito)){
+                fichas += continente.getBonusConquista();
+            }
+
+        }
+
+        return fichas;
+    }
 }
