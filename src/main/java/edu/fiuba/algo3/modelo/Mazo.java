@@ -62,6 +62,7 @@ public class Mazo {
     }
 
         public Tarjeta repartirTarjeta(){
+        if(tarjetas.size() <= 0) return null;
 
         Tarjeta tarjetaaux = tarjetas.get(0);
         tarjetas.remove(0);

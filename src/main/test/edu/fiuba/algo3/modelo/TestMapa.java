@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
+import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
 import org.junit.jupiter.api.Test;
 
@@ -81,9 +83,34 @@ public class TestMapa {
 
     }
 
-    /*@Test
-    public void TestExcepcionO1NoSePuedeRealizarUnAtaqueSiLosPaisesNoSonContiguos() throws Exception{
-        mapa.atacar("Sahara", "Madagascar", 3);
-    }*/
+
+    @Test
+    //Este Test Podria no llegar a pasar si no se posee JUNIT 5
+    public void TestExcepcionO1NoSePuedeRealizarUnAtaqueSiLosPaisesNoSonContiguos() {
+        assertThrows(PaisesNoContinuosException.class,
+                () -> {
+                    mapa.atacar("Sahara", "Madagascar", 3);;
+                });
+
+    }
+    @Test
+    //Este Test Podria no llegar a pasar si no se posee JUNIT 5
+    public void TestExcepcionO2NoSePuedeRealizarUnAtaqueSiLosPaisesTienenElMismoDueño() {
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+        Jugador jugador = new Jugador("Esteban", new Ejercito("Blanco"));
+        jugadores.add(jugador);
+
+        mapa.repartirPaises(jugadores);
+
+        assertThrows(PaisesConMismoDuenoException.class,
+                () -> {
+                    mapa.atacar("Sahara", "Egipto", 3);;
+                });
+
+    }
+
+
 }
+
+
 

@@ -135,16 +135,7 @@ public class Mapa {
         }
         return estanOcupados;
     }
-    public boolean todosLosPaisesOcupados2(){
-        boolean estanOcupados = true;
-        int i = 0;
-        String[] keys = paises.keySet().toArray(new String[0]);
-        while(estanOcupados && i < paises.size()){
-            estanOcupados = estanOcupados && (paises.get(keys[i]).estaOcupado());
-            i++;
-        }
-        return estanOcupados;
-    }
+
     //Tal vez esta funcion deberia tener una excepcion por si no existe ese país
     public Pais obtenerPais(String paisABuscar) {
         Pais paisEncontrado = paises.get(paisABuscar);
