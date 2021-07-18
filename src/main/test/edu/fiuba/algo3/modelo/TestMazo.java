@@ -108,5 +108,6 @@ public class TestMazo {
 
         assertTrue(eliminada == null);
 
+
     }
 }
