@@ -105,9 +105,6 @@ public class Mapa {
 
 
 
-
-
-
     //Esta funcion no aplica aleatoriedad.
     public void repartirPaises(ArrayList<Jugador> jugadores){
         int cantidadPaises = paises.size();
@@ -208,11 +205,30 @@ public class Mapa {
 
     }
 
+
 	public void agregarEjercitos(String paisIngresado, int cantidad) {
 		Pais pais = paises.get(paisIngresado);
 		pais.agregarEjercito(cantidad);
 	}
 
+	public boolean canjeoDeTarjeta(Integer cantidadDeCanjes, Pais pais){
+        Integer cantidadASumar;
+        switch (cantidadDeCanjes)
+        {
+            case 0 : cantidadASumar = 4 ;
+                break;
+            case 1 : cantidadASumar = 7;
+                break;
+            case 2 : cantidadASumar = 10;
+                break;
+            case 3 : cantidadASumar = 15;
+                break;
+            default : cantidadASumar = cantidadDeCanjes * 5;
+                break;
+        }
+        pais.agregarEjercito(cantidadASumar);
+        return true;
+    }
 
     public boolean jugadorControlaContinente(Continente continente, Jugador jugador) {
         return continente.jugadorControlaContinente(jugador.getEjercito());
