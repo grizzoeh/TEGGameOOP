@@ -10,11 +10,14 @@ public class Teg {
     private int cantidadJugadores;
     private Mapa mapa;
     private ArrayList<Jugador> jugadores;
+    private Turno turnoActual;
+    private int numeroJugadorActual;
 
     public Teg(ArrayList<String> nombresJugadores) {
         this.cantidadJugadores = nombresJugadores.size();
         this.mapa = new Mapa();
         this.jugadores = new ArrayList<Jugador>();
+        this.numeroJugadorActual = 0;
 
         String[] colores = {"rojo", "azul", "verde", "amarillo", "rosa", "negro"};
 
@@ -24,6 +27,7 @@ public class Teg {
 
         mapa.repartirPaises(jugadores);
 
+        turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual),mapa);
     }
 
     public boolean todosLosPaisesOcupados(){
@@ -38,20 +42,16 @@ public class Teg {
         }
     }
 
-    public void asignarFichas(Jugador jugador){
+    public void avanzarEtapa(){
+        turnoActual = turnoActual.avanzarEtapa();
 
-
-
-        int fichasPorPaises = mapa.paisesConEjercito(jugador.getEjercito())/2;
-
-
-        int fichasPorContinentesControlado = mapa.fichasPorContinentesControlados(jugador.getEjercito());
-
-
-
-
-
+        if(turnoActual == null){
+            numeroJugadorActual++;
+            numeroJugadorActual %= jugadores.size();
+            turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual),mapa);
+        }
     }
+
 
 
 }
