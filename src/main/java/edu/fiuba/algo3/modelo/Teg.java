@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
-import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
-import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
+import edu.fiuba.algo3.modelo.excepciones.*;
 
 import java.util.ArrayList;
 
@@ -34,13 +32,19 @@ public class Teg {
         return this.mapa.todosLosPaisesOcupados();
     }
 
-    public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos){
-        try {
-            mapa.atacar(paisAtaque, paisDefensa, cantEjercitos);
-        } catch (PaisesNoContinuosException | PaisesConMismoDuenoException | PaisSinEjercitosSuficientesException e) {
-            e.printStackTrace();
-        }
+    public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+        turnoActual.atacar(paisAtaque,paisDefensa,cantEjercitos);
     }
+
+    public void moverEjercito(String paisDesde, String paisHasta,int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+        turnoActual.moverEjercito(paisDesde,paisHasta,cantidad);
+    }
+
+    public void asignarEjercito(String pais,int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+        turnoActual.asignarEjercito(pais,cantidad);
+    }
+
+
 
     public void avanzarEtapa(){
         turnoActual = turnoActual.avanzarEtapa();
@@ -50,6 +54,11 @@ public class Teg {
             numeroJugadorActual %= jugadores.size();
             turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual),mapa);
         }
+    }
+
+    public int cantEjercitosEn(String nombrePais){
+        return mapa.numeroEjercitosEn(nombrePais);
+
     }
 
 

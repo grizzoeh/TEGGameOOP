@@ -1,4 +1,6 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -33,9 +35,26 @@ public class TestEntrega2 {
 
 
     }
-
+    */
     @Test
-    public void test02RondaDeDosJugadoresConColocacionDeEjercitos(){
+    public void test02RondaDeDosJugadoresConColocacionDeEjercitos() throws EtapaEquivocadaException, PaisNoLePerteneceException {
+        ArrayList<String> nombresJugadores = new ArrayList<>();
+        nombresJugadores.add("Gonza");
+        nombresJugadores.add("Fran");
+
+        Teg teg = new Teg(nombresJugadores);
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
+
+        teg.asignarEjercito("Madagascar",1);
+
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
+        teg.asignarEjercito("Etiopia",1);
+
+        assertEquals(2, teg.cantEjercitosEn("Madagascar"));
+        assertEquals(2, teg.cantEjercitosEn("Etiopia"));
 
     }
     @Test
@@ -46,7 +65,7 @@ public class TestEntrega2 {
     public void test04RondaDeDosJugadoresConAtaqueYConquistaDeDosPaises(){
 
     }
- */
+
 }
 
 

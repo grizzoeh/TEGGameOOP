@@ -19,7 +19,7 @@ public class Mapa {
     //Transformar este metodo a una lectura de archivos (un archivo de paises y otro de fronteras)
     public void crearPaises() {
 
-        String[] nombresPaises = {"Egipto", "Etiopia", "Madagascar", "Sahara", "Sudafrica", "Zaire"};
+        String[] nombresPaises = {"Madagascar", "Etiopia", "Egipto", "Sahara", "Sudafrica", "Zaire"};
         Pais paisAux;
 
         for(int i = 0; i < (nombresPaises.length); i++){
@@ -115,6 +115,7 @@ public class Mapa {
         int i = 0;
         while(i < cantidadPaises){
             for(int j = 0; j < cantidadJugadores; j++){
+
                 paisAux = paises.get(keys[i]);
                 paisAux.asignarEjercito(jugadores.get(j).getEjercito());
                 paisAux.agregarEjercito(1);
@@ -164,6 +165,12 @@ public class Mapa {
         Pais paisBuscado = paises.get(nombrePais);
 
         return paisBuscado.getEjercito();
+    }
+
+    public int numeroEjercitosEn(String nombrePais){
+        Pais paisBuscado = paises.get(nombrePais);
+
+        return paisBuscado.obtenerCantidadEjercitos();
     }
 
     public Integer paisesConEjercito(Ejercito ejercito){
