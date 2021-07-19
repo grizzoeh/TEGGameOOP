@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 //El codigo esta comentado para poder compilar sin problemas
 public class TestEntrega2 {
-
+/*
     @Test
     public void test01ActivacionDeTarjetas(){
         ArrayList<Jugador> jugadores = new ArrayList<>();
@@ -33,7 +33,7 @@ public class TestEntrega2 {
 
 
     }
-      /*
+
     @Test
     public void test02RondaDeDosJugadoresConColocacionDeEjercitos(){
 
