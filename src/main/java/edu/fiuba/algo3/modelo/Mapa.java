@@ -13,13 +13,14 @@ public class Mapa {
     public Mapa(){
         this.paises = new Hashtable<String, Pais>();
         this.continentes = new Hashtable<String, Continente>();
+        this.crearContinentes();
         this.crearPaises();
     }
 
     //Transformar este metodo a una lectura de archivos (un archivo de paises y otro de fronteras)
     public void crearPaises() {
 
-        String[] nombresPaises = {"Madagascar", "Etiopia", "Egipto", "Sahara", "Sudafrica", "Zaire"};
+        String[] nombresPaises = {"Madagascar", "Etiopia", "Egipto", "Sahara", "Sudafrica", "Zaire", "Arabia", "Turquia"};
         Pais paisAux;
 
         for(int i = 0; i < (nombresPaises.length); i++){
@@ -30,13 +31,16 @@ public class Mapa {
         ArrayList<Pais> fronteraAux = new ArrayList<>();
         paisAux = paises.get("Egipto");
 
+        continentes.get("África").agregarPais(paisAux);
+
         fronteraAux.add( paises.get("Etiopia"));
         fronteraAux.add( paises.get("Madagascar"));
         fronteraAux.add( paises.get("Sahara"));
-
         paisAux.agregarFrontera(fronteraAux);
 
         paisAux = paises.get("Etiopia");
+
+        continentes.get("África").agregarPais(paisAux);
 
         fronteraAux = new ArrayList<>();
 
@@ -49,6 +53,8 @@ public class Mapa {
 
         paisAux = paises.get("Madagascar");
 
+        continentes.get("África").agregarPais(paisAux);
+
         fronteraAux = new ArrayList<>();
         fronteraAux.add( paises.get("Egipto"));
         fronteraAux.add( paises.get("Zaire"));
@@ -56,6 +62,8 @@ public class Mapa {
         paisAux.agregarFrontera(fronteraAux);
 
         paisAux = paises.get("Sahara");
+
+        continentes.get("África").agregarPais(paisAux);
 
         fronteraAux = new ArrayList<>();
         fronteraAux.add( paises.get("Egipto"));
@@ -66,6 +74,8 @@ public class Mapa {
 
         paisAux = (paises.get("Sudafrica"));
 
+        continentes.get("África").agregarPais(paisAux);
+
         fronteraAux = new ArrayList<>();
         fronteraAux.add( paises.get("Zaire"));
         fronteraAux.add( paises.get("Etiopia"));
@@ -74,6 +84,8 @@ public class Mapa {
 
         paisAux = paises.get("Zaire");
 
+        continentes.get("África").agregarPais(paisAux);
+
         fronteraAux = new ArrayList<>();
 
         fronteraAux.add( paises.get("Madagascar"));
@@ -81,6 +93,25 @@ public class Mapa {
         fronteraAux.add( paises.get("Sahara"));
         fronteraAux.add(paises.get("Sudafrica"));
 
+        paisAux.agregarFrontera(fronteraAux);
+
+        paisAux = paises.get("Turquia");
+
+        continentes.get("Asia").agregarPais(paisAux);
+
+        fronteraAux = new ArrayList<>();
+
+        fronteraAux.add( paises.get("Arabia"));
+
+        paisAux.agregarFrontera(fronteraAux);
+
+        paisAux = paises.get("Arabia");
+
+        continentes.get("Asia").agregarPais(paisAux);
+
+        fronteraAux = new ArrayList<>();
+
+        fronteraAux.add( paises.get("Turquia"));
         paisAux.agregarFrontera(fronteraAux);
 
 

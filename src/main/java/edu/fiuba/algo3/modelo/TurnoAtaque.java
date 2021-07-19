@@ -33,4 +33,8 @@ public class TurnoAtaque implements Turno {
 	public TurnoReagrupar avanzarEtapa() {
 		return new TurnoReagrupar(jugador, mapa);
 	}
+
+	public String enQueFaseDelTurnoEsta(){
+		return "Ataque Entre Jugadores";
+	}
 }

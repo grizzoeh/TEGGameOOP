@@ -32,4 +32,8 @@ public class TestTurnoReagrupar {
         Turno real = new TurnoAsignarFicha(jugador, mapa);
         assertEquals(actual.getClass(), real.getClass());
     }
+    @Test
+    public void test04SeDevuelveLaFaseCorrecta(){
+        assertEquals("Reagrupación de Tropas",turno.enQueFaseDelTurnoEsta());
+    }
 }

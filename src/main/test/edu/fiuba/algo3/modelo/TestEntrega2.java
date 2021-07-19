@@ -10,9 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 //El codigo esta comentado para poder compilar sin problemas
 public class TestEntrega2 {
-/*
+
     @Test
-    public void test01ActivacionDeTarjetas(){
+    public void test01ActivacionDeTarjetas() throws PaisNoLePerteneceException {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         Jugador jugador1 = new Jugador("Pablito Lezcano", new Ejercito("Verde"));
         jugadores.add(jugador1);
@@ -25,9 +25,9 @@ public class TestEntrega2 {
 
         Tarjeta tarjetaDelJugador = jugador1.usarTarjeta(egipto);
 
-        if(mapa.canjeoDeTarjeta(jugador1.cuantosCanjesRealizados(), tarjetaDelJugador.obtenerPais())){
-            jugador1.agregarCanje();
-        }
+        TurnoAsignarFicha turnoDeColocacion = new TurnoAsignarFicha(jugador1, mapa);
+
+        turnoDeColocacion.canjeoDeTarjeta("Egipto");
 
 
         assertEquals(5, egipto.obtenerCantidadEjercitos());
@@ -35,7 +35,7 @@ public class TestEntrega2 {
 
 
     }
-    */
+
     @Test
     public void test02RondaDeDosJugadoresConColocacionDeEjercitos() throws EtapaEquivocadaException, PaisNoLePerteneceException {
         ArrayList<String> nombresJugadores = new ArrayList<>();
@@ -59,6 +59,7 @@ public class TestEntrega2 {
     }
     @Test
     public void test03RondaDeTresJugadoresConColocacionDeEjercitos(){
+
 
     }
     @Test

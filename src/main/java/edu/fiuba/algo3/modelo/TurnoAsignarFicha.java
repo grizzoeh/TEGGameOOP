@@ -60,5 +60,9 @@ public class TurnoAsignarFicha implements Turno {
 		}
 
 		mapa.agregarEjercitos(nombrePais,cantidadASumar);
+		jugador.agregarCanje();
+	}
+	public String enQueFaseDelTurnoEsta(){
+		return "Asignación De Fichas";
 	}
 }
