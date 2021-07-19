@@ -71,6 +71,7 @@ public class Mazo {
 
     //Esta funcion solo tiene utilidad en procesos de Testeo
     public Tarjeta obtenerTarjetaEspecifica(Pais pais){
+        if (tarjetas.size() <= 0) return null;
         boolean encontrado = false;
         int i = 0;
         Tarjeta tarjetaAux = null;

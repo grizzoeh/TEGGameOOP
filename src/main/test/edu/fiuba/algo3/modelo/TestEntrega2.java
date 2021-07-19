@@ -102,7 +102,45 @@ public class TestEntrega2 {
 
     }
     @Test
-    public void test04RondaDeDosJugadoresConAtaqueYConquistaDeDosPaises(){
+    public void test04RondaDeDosJugadoresConAtaqueYConquistaDeDosPaises() throws EtapaEquivocadaException, PaisNoLePerteneceException {
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+
+        Ejercito ejercitoJug1 = new Ejercito("Verde");
+
+        Jugador jugador1 = new Jugador("Ribery", ejercitoJug1);
+        Jugador jugador2 = new Jugador("Toto Salvio", new Ejercito("Amarillo"));
+
+        jugadores.add(jugador1);
+        jugadores.add(jugador2);
+
+        Mapa mapa = new Mapa();
+        mapa.repartirPaises(jugadores);
+
+        Integer cantidadDePaisesDominadosPorJug1 = mapa.paisesConEjercito(ejercitoJug1);
+
+        Pais madagascar = mapa.obtenerPais("Madagascar");
+        Pais zaire = mapa.obtenerPais("Zaire");
+        Pais egipto = mapa.obtenerPais("Egipto");
+        Pais sudafrica = mapa.obtenerPais("Sudafrica");
+
+        madagascar.agregarEjercito(2);
+        zaire.agregarEjercito(2);
+
+        CombateMock combate = new CombateMock(madagascar,egipto,2);
+        combate.generarCombateAtacanteGanador();
+
+        combate = new CombateMock(zaire, sudafrica, 2);
+        combate.generarCombateAtacanteGanador();
+
+        assertEquals(ejercitoJug1, mapa.ejercitoEnPais("Egipto"));
+        assertEquals(ejercitoJug1, mapa.ejercitoEnPais("Sudafrica"));
+
+        assertEquals(1, mapa.numeroEjercitosEn("Egipto"));
+        assertEquals(1, mapa.numeroEjercitosEn("Sudafrica"));
+
+        assertEquals((cantidadDePaisesDominadosPorJug1 + 2), mapa.paisesConEjercito(ejercitoJug1));
+
+
 
     }
 
