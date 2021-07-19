@@ -26,7 +26,6 @@ public class TurnoAsignarFicha implements Turno {
 		cantidad = cantidad >= cantidadFichas ? cantidadFichas : cantidad;
 		mapa.agregarEjercitos(pais, cantidad);
 		cantidadFichas -= cantidad;
-
 	}
 
 	public void moverEjercito(String paisOrigen, String paisDestino, int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException {
