@@ -142,18 +142,20 @@ public class Mapa {
         int cantidadJugadores = jugadores.size();
         Pais paisAux;
         String[] keys = paises.keySet().toArray(new String[0]);
-
         int i = 0;
-        while(i < cantidadPaises){
-            for(int j = 0; j < cantidadJugadores; j++){
-
-                paisAux = paises.get(keys[i]);
-                paisAux.asignarEjercito(jugadores.get(j).getEjercito());
-                paisAux.agregarEjercito(1);
-                i++;
-            }
+        int j = 0;
+        int jugActual;
+        while(i < cantidadPaises ){
+            jugActual = j % cantidadJugadores;
+            paisAux = paises.get(keys[i]);
+            paisAux.asignarEjercito(jugadores.get(jugActual).getEjercito());
+            paisAux.agregarEjercito(1);
+            i++;
+            j++;
         }
     }
+
+
     public boolean todosLosPaisesOcupados(){
         boolean estanOcupados = true;
         int i = 0;
@@ -250,8 +252,8 @@ public class Mapa {
 	}
 
 
-    public boolean jugadorControlaContinente(Continente continente, Jugador jugador) {
-        return continente.jugadorControlaContinente(jugador.getEjercito());
+    public boolean jugadorControlaContinente(String  continente, Jugador jugador) {
+        return continentes.get(continente).jugadorControlaContinente(jugador.getEjercito());
     }
 
 

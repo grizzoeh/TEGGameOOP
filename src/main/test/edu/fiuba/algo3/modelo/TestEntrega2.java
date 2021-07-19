@@ -58,7 +58,46 @@ public class TestEntrega2 {
 
     }
     @Test
-    public void test03RondaDeTresJugadoresConColocacionDeEjercitos(){
+    public void test03RondaDeTresJugadoresConColocacionDeEjercitos() throws EtapaEquivocadaException, PaisNoLePerteneceException {
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+
+        Ejercito ejercitoJugador2 = new Ejercito("Azul");
+
+        Jugador jugador1 = new Jugador("Briasco", new Ejercito("Verde"));
+        Jugador jugador2 = new Jugador("Pavon", ejercitoJugador2);
+        Jugador jugador3 = new Jugador("Villa", new Ejercito("Amarillo"));
+
+        jugadores.add(jugador1);
+        jugadores.add(jugador2);
+        jugadores.add(jugador3);
+
+        Mapa mapa = new Mapa();
+        mapa.repartirPaises(jugadores);
+
+        Pais turquia = mapa.obtenerPais("Turquia");
+        Pais arabia = mapa.obtenerPais("Arabia");
+
+        turquia.asignarEjercito(ejercitoJugador2);
+        arabia.asignarEjercito(ejercitoJugador2);
+
+        Turno turno;
+
+        turno = new TurnoAsignarFicha(jugador1, mapa);
+        turno.asignarEjercito("Egipto", 1);
+
+        turno = new TurnoAsignarFicha(jugador2, mapa);
+        turno.asignarEjercito("Turquia", 2);
+
+        turno = new TurnoAsignarFicha(jugador3, mapa);
+        turno.asignarEjercito("Sahara", 1);
+
+        assertTrue(mapa.jugadorControlaContinente("Asia", jugador2));
+
+        assertEquals(2, mapa.numeroEjercitosEn("Egipto"));
+
+        assertEquals(3, mapa.numeroEjercitosEn("Turquia"));
+
+        assertEquals(1, mapa.numeroEjercitosEn("Sahara")); // El jugador 3 no puede insertar ejercitos por tener pocas fichas en el mapa
 
 
     }
