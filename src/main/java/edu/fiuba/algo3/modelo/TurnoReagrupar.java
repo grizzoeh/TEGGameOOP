@@ -32,4 +32,8 @@ public class TurnoReagrupar implements Turno {
 	public Turno avanzarEtapa() {
 		return new TurnoAsignarFicha(jugador, mapa);
 	}
+
+	public String enQueFaseDelTurnoEsta(){
+		return "Reagrupación de Tropas";
+	}
 }

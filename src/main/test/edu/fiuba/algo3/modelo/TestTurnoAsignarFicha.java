@@ -30,4 +30,9 @@ public class TestTurnoAsignarFicha {
     public void test03AvanzarEtapaDevuelveNull() {
         assertEquals(turno.avanzarEtapa(), null);
     }
+
+    @Test
+    public void test04SeDevuelveLaFaseCorrecta(){
+        assertEquals("Asignación De Fichas",turno.enQueFaseDelTurnoEsta());
+    }
 }

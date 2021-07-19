@@ -19,7 +19,7 @@ public class TestContinente {
         assertEquals(continente.jugadorControlaContinente(rojo), false);
     }
     @Test
-    public void test03JugadorNoControlaContinenteEsFalse(){
+    public void test03JugadorControlaContinenteEsFalse(){
         Continente continente = new Continente("America del sur", 4);
         Pais pais1 = new Pais("Argentina");
         Pais pais2 = new Pais("Brasil");

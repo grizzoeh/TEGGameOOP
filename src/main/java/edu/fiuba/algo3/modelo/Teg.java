@@ -60,7 +60,13 @@ public class Teg {
         return mapa.numeroEjercitosEn(nombrePais);
 
     }
-
-
-
+    public int cantidadJugadores(){
+        return cantidadJugadores;
+    }
+    public String enQueFaseEstaElJuego(){
+        return turnoActual.enQueFaseDelTurnoEsta();
+    }
+    public String aQueJugadorLeToca(){
+        return jugadores.get(numeroJugadorActual).getNombre();
+    }
 }

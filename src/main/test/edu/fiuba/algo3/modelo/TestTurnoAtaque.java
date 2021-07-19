@@ -32,4 +32,9 @@ public class TestTurnoAtaque {
         Turno real = new TurnoReagrupar(jugador, mapa);
         assertEquals(actual.getClass(), real.getClass());
     }
+    @Test
+    public void test04SeDevuelveLaFaseCorrecta(){
+        assertEquals("Ataque Entre Jugadores",turno.enQueFaseDelTurnoEsta());
+    }
+
 }
