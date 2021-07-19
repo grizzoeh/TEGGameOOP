@@ -30,7 +30,7 @@ public class TestMazo {
         assertEquals(0, mazo.cantidadDeTarjetasRepartidas());
     }
     @Test
-    public void test02DosTarjetasConMismoSimboloNoSerianCanjeables(){
+    public void test03DosTarjetasConMismoSimboloNoSerianCanjeables(){
 
         ArrayList<Tarjeta> tarjetas = new ArrayList<>();
         Pais paisAux = new Pais("Qatar");
@@ -45,7 +45,7 @@ public class TestMazo {
         assertFalse(mazo.sonAptasParaCanje(tarjetas));
     }
     @Test
-    public void test03TresTarjetasConElMismoSimboloSonCanjeables(){
+    public void test04TresTarjetasConElMismoSimboloSonCanjeables(){
 
         ArrayList<Tarjeta> tarjetas = new ArrayList<>();
         Pais paisAux = new Pais("Qatar");
@@ -85,7 +85,18 @@ public class TestMazo {
         assertEquals(tarjetaABuscar.obtenerPais(), paisAux);
     }
     @Test
-    public void test07TrasRepartirTarjetaSeActualizanCantidadesCorrectamente(){
+    public void test07SiNoExisteLaTarjetaBuscadaSeDevuelveNull(){
+        Pais paisAux = new Pais("Qatar");
+        ArrayList<Pais> paises = new ArrayList<>();
+
+        Mazo mazo = new Mazo(paises);
+
+        Tarjeta tarjetaABuscar = mazo.obtenerTarjetaEspecifica(paisAux);
+
+        assertEquals(null, tarjetaABuscar);
+    }
+    @Test
+    public void test08TrasRepartirTarjetaSeActualizanCantidadesCorrectamente(){
         Pais paisAux = new Pais("Qatar");
         ArrayList<Pais> paises = new ArrayList<>();
         paises.add(paisAux);
@@ -97,8 +108,9 @@ public class TestMazo {
         assertEquals(0, mazo.cantidadDeTarjetasEnElMazo());
         assertEquals(1, mazo.cantidadDeTarjetasRepartidas());
     }
+
     @Test
-    public void test08PedirleTarjetasAUnMazoVacioDevuelveNull(){
+    public void test09PedirleTarjetasAUnMazoVacioDevuelveNull(){
         ArrayList<Pais> paises = new ArrayList<>();
         Mazo mazo = new Mazo(paises);
 
