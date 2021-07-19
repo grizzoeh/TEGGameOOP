@@ -23,8 +23,11 @@ public class Continente {
     }
 
     public boolean jugadorControlaContinente(Ejercito ejercito) {
-        Set<String> keys = paises.keySet();
+        if(paises.isEmpty()){
+            return false;
+        }
 
+        Set<String> keys = paises.keySet();
         Iterator<String> itr = keys.iterator();
 
         while(itr.hasNext()){
