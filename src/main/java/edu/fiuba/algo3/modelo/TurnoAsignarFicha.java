@@ -11,7 +11,8 @@ public class TurnoAsignarFicha implements Turno {
 	public TurnoAsignarFicha(Jugador jugadorIngresado, Mapa mapaIngresado) {
 		this.jugador = jugadorIngresado;
 		this.mapa = mapaIngresado;
-		this.cantidadFichas = mapa.paisesConEjercito(jugador.getEjercito())/2 + mapa.fichasPorContinentesControlados(jugador.getEjercito());
+		this.cantidadFichas = (mapa.paisesConEjercito(jugador.getEjercito())/2  >= 3 ? mapa.paisesConEjercito(jugador.getEjercito())/2 : 3)
+				+ mapa.fichasPorContinentesControlados(jugador.getEjercito());
 	}
 
 	public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws EtapaEquivocadaException, PaisNoLePerteneceException {

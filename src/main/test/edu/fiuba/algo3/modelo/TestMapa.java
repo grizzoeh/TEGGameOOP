@@ -21,7 +21,6 @@ public class TestMapa {
 
         assertTrue(mapa.todosLosPaisesOcupados());
     }
-
     @Test
     public void test02TodosLosPaisesSeRepartenCuandoHayMasDeUnJugador(){
         ArrayList<Jugador> jugadores = new ArrayList<>();
@@ -34,7 +33,6 @@ public class TestMapa {
         mapa.repartirPaises(jugadores);
 
         assertTrue(mapa.todosLosPaisesOcupados());
-
     }
 
     @Test
@@ -80,7 +78,6 @@ public class TestMapa {
         mapa.moverEjercitos("Egipto","Madagascar", 2);
 
         assertEquals(3 ,destino.obtenerCantidadEjercitos());
-
     }
 
     /*
@@ -159,7 +156,6 @@ public class TestMapa {
                 () -> {
                     mapa.atacar("Sahara", "Madagascar", 3);
                 });
-
     }
     @Test
     //Este Test Podria no llegar a pasar si no se posee JUNIT 5
@@ -174,11 +170,5 @@ public class TestMapa {
                 () -> {
                     mapa.atacar("Sahara", "Egipto", 3);
                 });
-
     }
-
-
 }
-
-
-

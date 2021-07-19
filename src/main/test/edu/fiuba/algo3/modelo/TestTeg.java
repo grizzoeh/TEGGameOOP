@@ -17,7 +17,6 @@ public class TestTeg {
         Teg teg = new Teg(nombresJugadores);
 
         assertTrue(teg.todosLosPaisesOcupados());
-
     }
     @Test
     public void test02AlInicializarseLaCantidadDeJugadoresEsCorrecta(){
@@ -26,7 +25,6 @@ public class TestTeg {
         Teg teg = new Teg(nombresJugadores);
 
         assertEquals(1, teg.cantidadJugadores());
-
     }
     @Test
     public void test03AlInicializarseSeComienzaEnLaFaseDeAtaque(){
@@ -35,7 +33,6 @@ public class TestTeg {
         Teg teg = new Teg(nombresJugadores);
 
         assertEquals("Ataque Entre Jugadores", teg.enQueFaseEstaElJuego());
-
     }
     @Test
     public void test04AlAvanzarUnaEtapaSucedeLaReagrupacion(){
@@ -45,7 +42,6 @@ public class TestTeg {
         teg.avanzarEtapa();
 
         assertEquals("Reagrupación de Tropas", teg.enQueFaseEstaElJuego());
-
     }
     @Test
     public void test05AlAvanzarDosEtapasSucedeLaAsignacionDeNuevasFichas(){
@@ -56,7 +52,6 @@ public class TestTeg {
         teg.avanzarEtapa();
 
         assertEquals("Asignación De Fichas", teg.enQueFaseEstaElJuego());
-
     }
     @Test
     public void test06AlIniciarLaPartidaLeTocaAlJugador1(){
@@ -66,7 +61,6 @@ public class TestTeg {
 
         assertEquals("BetaTester", teg.aQueJugadorLeToca());
     }
-
     @Test
     public void test07CuandoUnJugadorTerminaSuTurnoPasaAlAtaqueDelSiguiente(){
         ArrayList<String> nombresJugadores = new ArrayList<>();
@@ -78,7 +72,6 @@ public class TestTeg {
         teg.avanzarEtapa();
 
         assertEquals("Ataque Entre Jugadores", teg.enQueFaseEstaElJuego());
-
     }
     @Test
     public void test08CuandoUnJugadorTerminaSuTurnoPasaAlSiguienteJugador(){
@@ -91,7 +84,6 @@ public class TestTeg {
         teg.avanzarEtapa();
 
         assertEquals("Sech", teg.aQueJugadorLeToca());
-
     }
     @Test
     public void test09TrasUnaRondaEnteraLeTocaDeNuevoAlPrimerJugador(){
@@ -108,6 +100,5 @@ public class TestTeg {
         teg.avanzarEtapa();
 
         assertEquals("Carzo", teg.aQueJugadorLeToca());
-
     }
 }

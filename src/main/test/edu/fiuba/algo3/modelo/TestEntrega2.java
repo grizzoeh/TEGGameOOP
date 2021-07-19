@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-//El codigo esta comentado para poder compilar sin problemas
 public class TestEntrega2 {
-
     @Test
     public void test01ActivacionDeTarjetas() throws PaisNoLePerteneceException {
         ArrayList<Jugador> jugadores = new ArrayList<>();
@@ -29,13 +27,9 @@ public class TestEntrega2 {
 
         turnoDeColocacion.canjeoDeTarjeta("Egipto");
 
-
         assertEquals(5, egipto.obtenerCantidadEjercitos());
         assertEquals(1, jugador1.cuantosCanjesRealizados());
-
-
     }
-
     @Test
     public void test02RondaDeDosJugadoresConColocacionDeEjercitos() throws EtapaEquivocadaException, PaisNoLePerteneceException {
         ArrayList<String> nombresJugadores = new ArrayList<>();
@@ -55,7 +49,6 @@ public class TestEntrega2 {
 
         assertEquals(2, teg.cantEjercitosEn("Madagascar"));
         assertEquals(2, teg.cantEjercitosEn("Etiopia"));
-
     }
     @Test
     public void test03RondaDeTresJugadoresConColocacionDeEjercitos() throws EtapaEquivocadaException, PaisNoLePerteneceException {
@@ -82,11 +75,15 @@ public class TestEntrega2 {
 
         Turno turno;
 
+        turno = new TurnoAsignarFicha(jugador2, mapa); // Para asignar los ejercitos por continente.
+        turno.asignarEjercito("Turquia", 1);
+
+
         turno = new TurnoAsignarFicha(jugador1, mapa);
         turno.asignarEjercito("Egipto", 1);
 
         turno = new TurnoAsignarFicha(jugador2, mapa);
-        turno.asignarEjercito("Turquia", 2);
+        turno.asignarEjercito("Turquia", 7);
 
         turno = new TurnoAsignarFicha(jugador3, mapa);
         turno.asignarEjercito("Sahara", 1);
@@ -95,11 +92,9 @@ public class TestEntrega2 {
 
         assertEquals(2, mapa.numeroEjercitosEn("Egipto"));
 
-        assertEquals(3, mapa.numeroEjercitosEn("Turquia"));
+        assertEquals(9, mapa.numeroEjercitosEn("Turquia"));
 
-        assertEquals(1, mapa.numeroEjercitosEn("Sahara")); // El jugador 3 no puede insertar ejercitos por tener pocas fichas en el mapa
-
-
+        assertEquals(2, mapa.numeroEjercitosEn("Sahara"));
     }
     @Test
     public void test04RondaDeDosJugadoresConAtaqueYConquistaDeDosPaises() throws EtapaEquivocadaException, PaisNoLePerteneceException {
@@ -139,11 +134,7 @@ public class TestEntrega2 {
         assertEquals(1, mapa.numeroEjercitosEn("Sudafrica"));
 
         assertEquals((cantidadDePaisesDominadosPorJug1 + 2), mapa.paisesConEjercito(ejercitoJug1));
-
-
-
     }
-
 }
 
 
