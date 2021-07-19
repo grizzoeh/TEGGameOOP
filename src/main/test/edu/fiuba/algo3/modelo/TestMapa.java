@@ -82,6 +82,8 @@ public class TestMapa {
         assertEquals(3 ,destino.obtenerCantidadEjercitos());
 
     }
+
+    /*
     @Test
     public void test07ConNingunCanjeSeSuman4Ejercitos(){
         Ejercito ejercito = new Ejercito("Blanco");
@@ -149,6 +151,7 @@ public class TestMapa {
 
     }
 
+    */
     @Test
     //Este Test Podria no llegar a pasar si no se posee JUNIT 5
     public void testExcepcionO1NoSePuedeRealizarUnAtaqueSiLosPaisesNoSonContiguos() {
