@@ -57,11 +57,9 @@ public class Mazo {
         }
 
         tarjetas.addAll(tarjetasADevolver);
-
-
     }
 
-        public Tarjeta repartirTarjeta(){
+    public Tarjeta repartirTarjeta(){
         if(tarjetas.size() <= 0) return null;
 
         Tarjeta tarjetaaux = tarjetas.get(0);
@@ -69,7 +67,6 @@ public class Mazo {
         tarjetasRepartidas.add(tarjetaaux);
 
         return tarjetaaux;
-
     }
 
     //Esta funcion solo tiene utilidad en procesos de Testeo
@@ -86,7 +83,6 @@ public class Mazo {
         tarjetasRepartidas.add(tarjetaAux);
 
         return tarjetaAux;
-
     }
 }
 
