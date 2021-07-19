@@ -19,14 +19,12 @@ public class Continente {
 
     public void agregarPais(Pais pais) {
         paises.put(pais.obtenerNombre(),pais);
-
     }
 
     public boolean jugadorControlaContinente(Ejercito ejercito) {
         if(paises.isEmpty()){
             return false;
         }
-
         Set<String> keys = paises.keySet();
         Iterator<String> itr = keys.iterator();
 
@@ -37,10 +35,8 @@ public class Continente {
             if (pais.getEjercito() != ejercito){
                 return false;
             }
-
         }
         return true;
-
     }
 
     public int getBonusConquista(){
