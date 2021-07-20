@@ -113,10 +113,7 @@ public class Mapa {
 
         fronteraAux.add( paises.get("Turquia"));
         paisAux.agregarFrontera(fronteraAux);
-
-
     }
-
 
     public void crearContinentes(){
         ArrayList<Integer> bonusFichas = new ArrayList<>();
@@ -129,14 +126,9 @@ public class Mapa {
         String[] nombresContinentes = {"América del Norte", "América del Sur", "Asia", "África", "Europa", "Oceanía"};
         for(int i = 0; i < (nombresContinentes.length); i++){
             continentes.put(nombresContinentes[i], new Continente(nombresContinentes[i],bonusFichas.get(i)));
-
         }
-
     }
 
-
-
-    //Esta funcion no aplica aleatoriedad.
     public void repartirPaises(ArrayList<Jugador> jugadores){
         int cantidadPaises = paises.size();
         int cantidadJugadores = jugadores.size();
@@ -145,7 +137,7 @@ public class Mapa {
         int i = 0;
         int j = 0;
         int jugActual;
-        while(i < cantidadPaises ){
+        while(i < cantidadPaises){
             jugActual = j % cantidadJugadores;
             paisAux = paises.get(keys[i]);
             paisAux.asignarEjercito(jugadores.get(jugActual).getEjercito());
@@ -154,7 +146,6 @@ public class Mapa {
             j++;
         }
     }
-
 
     public boolean todosLosPaisesOcupados(){
         boolean estanOcupados = true;
@@ -174,7 +165,6 @@ public class Mapa {
     }
 
     public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws PaisesNoContinuosException, PaisesConMismoDuenoException, PaisSinEjercitosSuficientesException {
-
         Pais paisAtacante = obtenerPais(paisAtaque);
         Pais paisDefensor = obtenerPais(paisDefensa);
 
@@ -185,7 +175,6 @@ public class Mapa {
         if(!paisAtacante.esAptoParaAtacar())
             throw new PaisSinEjercitosSuficientesException();
 
-        //En caso de ningun error, se realiza el ataque
         Combate combate = new Combate(paisAtacante, paisDefensor, cantEjercitos);
         combate.generarCombate();
     }
@@ -196,13 +185,11 @@ public class Mapa {
 
     public Ejercito ejercitoEnPais(String nombrePais){
         Pais paisBuscado = paises.get(nombrePais);
-
         return paisBuscado.getEjercito();
     }
 
     public int numeroEjercitosEn(String nombrePais){
         Pais paisBuscado = paises.get(nombrePais);
-
         return paisBuscado.obtenerCantidadEjercitos();
     }
 
@@ -219,9 +206,9 @@ public class Mapa {
             }
             i++;
         }
-
         return contadorEjercito;
     }
+
     public void moverEjercitos(String paisOrigen, String paisDestino, Integer cantidadAMover){
         Pais origen = obtenerPais(paisOrigen);
         Pais destino = obtenerPais(paisDestino);
@@ -232,30 +219,28 @@ public class Mapa {
 
         origen.eliminarEjercitos(cantidadAMover);
         destino.agregarEjercito(cantidadAMover);
-
     }
+
+    /*
+    COMENTADO POR NO SER USADO
     public Object[] todosLosPaises(){
         return paises.values().toArray();
     }
-
+     */
 
     public boolean paisLePertenece(String pais, Jugador jugador) {
         Pais paisAux = paises.get(pais);
         return jugador.getEjercito() == paisAux.getEjercito();
-
     }
-
 
 	public void agregarEjercitos(String paisIngresado, int cantidad) {
 		Pais pais = paises.get(paisIngresado);
 		pais.agregarEjercito(cantidad);
 	}
 
-
     public boolean jugadorControlaContinente(String  continente, Jugador jugador) {
         return continentes.get(continente).jugadorControlaContinente(jugador.getEjercito());
     }
-
 
     public int fichasPorContinentesControlados(Ejercito ejercito) {
         int fichas = 0;
@@ -271,10 +256,7 @@ public class Mapa {
             if (continente.jugadorControlaContinente(ejercito)){
                 fichas += continente.getBonusConquista();
             }
-
         }
-
         return fichas;
     }
 }
-

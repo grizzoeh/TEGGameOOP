@@ -39,10 +39,15 @@ public class Jugador {
         cantidadDeCanjes++;
     }
 
+    /*
+    NO SE USA ACTUALMENTE
+
     public  ArrayList<Tarjeta> mostrarTarjetas(){
         ArrayList<Tarjeta> tarjetasPropias = (ArrayList<Tarjeta>) this.tarjetasPais.clone();
         return tarjetasPropias;
     }
+    */
+
     public Tarjeta usarTarjeta(Pais pais){
         int i = 0;
         boolean encontrado = false;

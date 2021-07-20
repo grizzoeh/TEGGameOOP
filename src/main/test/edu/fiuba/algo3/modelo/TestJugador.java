@@ -43,7 +43,6 @@ public class TestJugador {
     }
     @Test
     public void test06LaCantidadDeTarjetasInicialesEsCero(){
-
         assertEquals(0, jugador.cantidadDeTarjetas());
     }
     @Test

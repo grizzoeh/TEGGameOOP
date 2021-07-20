@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
 import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.Test;
@@ -100,5 +102,48 @@ public class TestTeg {
         teg.avanzarEtapa();
 
         assertEquals("Carzo", teg.aQueJugadorLeToca());
+    }
+    @Test
+    public void test10AtacarFuncionaCorrectamente() throws EtapaEquivocadaException, PaisNoLePerteneceException {
+        ArrayList<String> nombresJugadores = new ArrayList<>();
+        nombresJugadores.add("Carzo");
+        nombresJugadores.add("Diaz");
+        Teg teg = new Teg(nombresJugadores);
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
+
+        teg.asignarEjercito("Zaire", 1);
+
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
+
+        teg.atacar("Zaire", "Etiopia", 1);
+
+        assertEquals(teg.cantEjercitosEn("Zaire"), 1);
+        assertEquals(teg.cantEjercitosEn("Etiopia"), 1);
+    }
+    @Test
+    public void test10MoverEjercitoFuncionaCorrectamente() throws EtapaEquivocadaException, PaisNoLePerteneceException {
+        ArrayList<String> nombresJugadores = new ArrayList<>();
+        nombresJugadores.add("Carzo");
+        nombresJugadores.add("Diaz");
+        Teg teg = new Teg(nombresJugadores);
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
+
+        teg.asignarEjercito("Zaire", 1);
+
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
+
+        teg.moverEjercito("Zaire", "Madagascar", 1);
+
+        assertEquals(teg.cantEjercitosEn("Zaire"), 1);
+        assertEquals(teg.cantEjercitosEn("Madagascar"), 2);
     }
 }

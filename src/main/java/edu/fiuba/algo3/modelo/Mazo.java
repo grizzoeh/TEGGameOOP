@@ -22,6 +22,7 @@ public class Mazo {
         }
 
     }
+
     public Integer cantidadDeTarjetasRepartidas(){
         return tarjetasRepartidas.size();
     }
@@ -49,14 +50,6 @@ public class Mazo {
         todosDistintos = ((!simboloPrimera.equals(simboloSegunda) && !simboloPrimera.equals(simboloTercera)) && !simboloTercera.equals(simboloSegunda));
 
         return (todosDistintos || mismoSimbolo);
-    }
-
-    public void devolverTarjetas(ArrayList<Tarjeta> tarjetasADevolver){
-        for (int i = 0; i < tarjetasADevolver.size(); i++ ){
-            tarjetasRepartidas.remove(tarjetasADevolver.get(i));
-        }
-
-        tarjetas.addAll(tarjetasADevolver);
     }
 
     public Tarjeta repartirTarjeta(){

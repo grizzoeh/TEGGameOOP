@@ -79,78 +79,32 @@ public class TestMapa {
 
         assertEquals(3 ,destino.obtenerCantidadEjercitos());
     }
-
-    /*
     @Test
-    public void test07ConNingunCanjeSeSuman4Ejercitos(){
-        Ejercito ejercito = new Ejercito("Blanco");
+    public void test07MapaAtacarFuncionaCorrectamenteEnCasoQuePuedeAtacar() {
+        Mapa mapaAux = new Mapa();
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+        Jugador jugador1 = new Jugador("Esteban", new Ejercito("Blanco"));
+        Jugador jugador2 = new Jugador("Franco", new Ejercito("Rojo"));
+        jugadores.add(jugador1);
+        jugadores.add(jugador2);
 
-        Pais pais = mapa.obtenerPais("Egipto");
+        mapaAux.agregarEjercitos("Zaire", 1);
+        mapaAux.repartirPaises(jugadores);
+        try {
+            mapaAux.atacar("Zaire", "Etiopia", 1);
+        } catch (PaisesConMismoDuenoException e) {
+            e.printStackTrace();
+        } catch (PaisSinEjercitosSuficientesException e) {
+            e.printStackTrace();
+        } catch (PaisesNoContinuosException e) {
+            e.printStackTrace();
+        }
 
-        mapa.canjeoDeTarjeta(0,pais);
-
-        assertEquals(4 ,pais.obtenerCantidadEjercitos());
-
-    }
-    @Test
-    public void test08ConUnCanjeSeSuman7Ejercitos(){
-        Ejercito ejercito = new Ejercito("Blanco");
-
-        Pais pais = mapa.obtenerPais("Egipto");
-
-        mapa.canjeoDeTarjeta(1,pais);
-
-        assertEquals(7 ,pais.obtenerCantidadEjercitos());
-
-    }
-    @Test
-    public void test09ConDosCanjesSeSuman10Ejercitos(){
-        Ejercito ejercito = new Ejercito("Blanco");
-
-        Pais pais = mapa.obtenerPais("Egipto");
-
-        mapa.canjeoDeTarjeta(2,pais);
-
-        assertEquals(10 ,pais.obtenerCantidadEjercitos());
-
-    }
-    @Test
-    public void test10ConTresCanjesSeSuman15Ejercitos(){
-        Ejercito ejercito = new Ejercito("Blanco");
-
-        Pais pais = mapa.obtenerPais("Egipto");
-
-        mapa.canjeoDeTarjeta(3,pais);
-
-        assertEquals(15 ,pais.obtenerCantidadEjercitos());
-
-    }
-    @Test
-    public void test11ConCuatroCanjesSeSuman20Ejercitos(){
-        Ejercito ejercito = new Ejercito("Blanco");
-
-        Pais pais = mapa.obtenerPais("Egipto");
-
-        mapa.canjeoDeTarjeta(4,pais);
-
-        assertEquals(20 ,pais.obtenerCantidadEjercitos());
-
-    }
-    @Test
-    public void test11ConCienCanjesSeSuman500Ejercitos(){
-        Ejercito ejercito = new Ejercito("Blanco");
-
-        Pais pais = mapa.obtenerPais("Egipto");
-
-        mapa.canjeoDeTarjeta(100,pais);
-
-        assertEquals(500 ,pais.obtenerCantidadEjercitos());
-
+        assertEquals(mapaAux.numeroEjercitosEn("Zaire"), 1);
+        assertEquals(mapaAux.numeroEjercitosEn("Etiopia"), 1);
     }
 
-    */
     @Test
-    //Este Test Podria no llegar a pasar si no se posee JUNIT 5
     public void testExcepcionO1NoSePuedeRealizarUnAtaqueSiLosPaisesNoSonContiguos() {
         assertThrows(PaisesNoContinuosException.class,
                 () -> {
@@ -158,7 +112,6 @@ public class TestMapa {
                 });
     }
     @Test
-    //Este Test Podria no llegar a pasar si no se posee JUNIT 5
     public void testExcepcionO2NoSePuedeRealizarUnAtaqueSiLosPaisesTienenElMismoDueño() {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         Jugador jugador = new Jugador("Esteban", new Ejercito("Blanco"));
@@ -169,6 +122,21 @@ public class TestMapa {
         assertThrows(PaisesConMismoDuenoException.class,
                 () -> {
                     mapa.atacar("Sahara", "Egipto", 3);
+                });
+    }
+    @Test
+    public void testExcepcionO3NoSePuedeRealizarUnAtaqueSiElAtacanteTieneUnEjercito() {
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+        Jugador jugador1 = new Jugador("Esteban", new Ejercito("Blanco"));
+        Jugador jugador2 = new Jugador("Franco", new Ejercito("Rojo"));
+        jugadores.add(jugador1);
+        jugadores.add(jugador2);
+
+        mapa.repartirPaises(jugadores);
+
+        assertThrows(PaisSinEjercitosSuficientesException.class,
+                () -> {
+                    mapa.atacar("Zaire", "Etiopia", 1);
                 });
     }
 }
