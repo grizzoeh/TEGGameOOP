@@ -15,7 +15,6 @@ public class Jugador {
         tarjetasPais = new ArrayList<>();
     }
 
-
     public Ejercito getEjercito(){
         return ejercito;
     }
@@ -25,7 +24,7 @@ public class Jugador {
     }
 
     public void agregarTarjeta(Tarjeta tarjetaRecibida){
-        if (tarjetaRecibida != null ) tarjetasPais.add(tarjetaRecibida);
+        tarjetasPais.add(tarjetaRecibida);
     }
 
     public  int cantidadDeTarjetas(){
