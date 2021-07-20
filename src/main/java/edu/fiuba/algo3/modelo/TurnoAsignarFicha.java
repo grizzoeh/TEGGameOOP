@@ -44,19 +44,19 @@ public class TurnoAsignarFicha implements Turno {
 		}
 		
 		Integer cantidadASumar;
-		Integer cantidadDeCanjes = jugador.cuantosCanjesRealizados();
+		Integer cantidadDeCanjes = jugador.cuantosCanjesRealizados() + 1;
 
 		switch (cantidadDeCanjes)
 		{
-			case 0 : cantidadASumar = 4 ;
+			case 1 : cantidadASumar = 4 ;
 				break;
-			case 1 : cantidadASumar = 7;
+			case 2 : cantidadASumar = 7;
 				break;
-			case 2 : cantidadASumar = 10;
+			case 3 : cantidadASumar = 10;
 				break;
-			case 3 : cantidadASumar = 15;
+			case 4 : cantidadASumar = 15;
 				break;
-			default : cantidadASumar = cantidadDeCanjes * 5;
+			default : cantidadASumar = (cantidadDeCanjes - 1) * 5;
 				break;
 		}
 
