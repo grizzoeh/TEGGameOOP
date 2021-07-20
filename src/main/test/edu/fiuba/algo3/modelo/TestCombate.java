@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestCombate {
     @Test
@@ -17,7 +18,6 @@ public class TestCombate {
 
         paisDefensa.agregarEjercito(1);
         paisAtaque.agregarEjercito(2);
-
 
         CombateMock combate = new CombateMock(paisAtaque,paisDefensa,1);
         combate.generarCombateDefensorGanador();
@@ -62,11 +62,8 @@ public class TestCombate {
 
         assertEquals(ejercitoVerde,paisDefensa.getEjercito());
     }
-    /*
-
-    ESTE TEST DEBE SER ELIMINADO, YA QUE NO ES REESPOSABILIDAD DE LA CLASE COMBATE EL VERIFICAR ESTA SITUACION
     @Test
-    public void test04AtacanteConSoloUnEjercitoNoPuedeAtacar() {
+    public void test04CantidadDeEjercitosDespuesDeCombateEsCorrecta() {
         Ejercito ejercitoRojo = new Ejercito("Rojo");
         Ejercito ejercitoVerde = new Ejercito("Verde");
 
@@ -76,15 +73,35 @@ public class TestCombate {
         paisDefensa.asignarEjercito(ejercitoRojo);
         paisAtaque.asignarEjercito(ejercitoVerde);
 
-        paisDefensa.agregarEjercito();
-        paisAtaque.agregarEjercito();
+        paisDefensa.agregarEjercito(1);
+        paisAtaque.agregarEjercito(2);
 
         Combate combate = new Combate(paisAtaque,paisDefensa,1);
         combate.generarCombate();
 
-        assertEquals(1,paisAtaque.obtenerCantidadEjercitos());
-        assertEquals(1,paisDefensa.obtenerCantidadEjercitos());
+        assertEquals(paisAtaque.obtenerCantidadEjercitos(), 1);
+        assertEquals(paisDefensa.obtenerCantidadEjercitos(), 1);
     }
-     */
+    @Test
+    public void test05ResultadosDeCombateSonCorrectos() {
+        Ejercito ejercitoRojo = new Ejercito("Rojo");
+        Ejercito ejercitoVerde = new Ejercito("Verde");
+
+        Pais paisDefensa = new Pais("Argentina");
+        Pais paisAtaque = new Pais("Brasil");
+
+        paisDefensa.asignarEjercito(ejercitoRojo);
+        paisAtaque.asignarEjercito(ejercitoVerde);
+
+        paisDefensa.agregarEjercito(1);
+        paisAtaque.agregarEjercito(2);
+
+        Combate combate = new Combate(paisAtaque,paisDefensa,1);
+        combate.generarCombate();
+
+        assertEquals(paisAtaque.getEjercito(), ejercitoVerde);
+        boolean estado = (paisDefensa.getEjercito() == ejercitoVerde || paisDefensa.getEjercito() == ejercitoRojo);
+        assertTrue(estado);
+    }
 }
 

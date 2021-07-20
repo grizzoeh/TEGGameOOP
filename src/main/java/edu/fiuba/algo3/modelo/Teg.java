@@ -44,8 +44,6 @@ public class Teg {
         turnoActual.asignarEjercito(pais,cantidad);
     }
 
-
-
     public void avanzarEtapa(){
         turnoActual = turnoActual.avanzarEtapa();
 
