@@ -2,7 +2,9 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Continente {
 
@@ -22,21 +24,17 @@ public class Continente {
     }
 
     public boolean jugadorControlaContinente(Ejercito ejercito) {
-        if(paises.isEmpty()){
+        if (paises.isEmpty()){
             return false;
         }
-        Set<String> keys = paises.keySet();
-        Iterator<String> itr = keys.iterator();
 
-        while(itr.hasNext()){
-            String paisNombre = itr.next();
-            Pais pais = paises.get(paisNombre);
+        AtomicBoolean estado = new AtomicBoolean(true);
 
-            if (pais.getEjercito() != ejercito){
-                return false;
-            }
-        }
-        return true;
+        paises.forEach((key, value) -> {
+            Ejercito color = value.getEjercito();
+            if (color != ejercito) estado.set(false);
+        });
+        return estado.get();
     }
 
     public int getBonusConquista(){

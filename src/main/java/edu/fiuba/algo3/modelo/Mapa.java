@@ -5,6 +5,8 @@ import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Mapa {
     private Hashtable<String, Pais> paises;
@@ -124,12 +126,24 @@ public class Mapa {
         bonusFichas.add(5);
         bonusFichas.add(2);
         String[] nombresContinentes = {"América del Norte", "América del Sur", "Asia", "África", "Europa", "Oceanía"};
-        for(int i = 0; i < (nombresContinentes.length); i++){
+        for (int i = 0; i < (nombresContinentes.length); i++){
             continentes.put(nombresContinentes[i], new Continente(nombresContinentes[i],bonusFichas.get(i)));
         }
     }
 
     public void repartirPaises(ArrayList<Jugador> jugadores){
+        /*
+        ARREGLAR LO COMENTADO
+        AtomicInteger j = new AtomicInteger();
+
+        paises.forEach((stringPais, objetoPais) -> {
+            int posJugActual = j.get() % jugadores.size();
+            objetoPais.asignarEjercito(jugadores.get(posJugActual).getEjercito());
+            objetoPais.agregarEjercito(1);
+            j.getAndIncrement();
+            System.out.println(j);
+        });
+        */
         int cantidadPaises = paises.size();
         int cantidadJugadores = jugadores.size();
         Pais paisAux;
@@ -148,20 +162,16 @@ public class Mapa {
     }
 
     public boolean todosLosPaisesOcupados(){
-        boolean estanOcupados = true;
-        int i = 0;
-        String[] keys = paises.keySet().toArray(new String[0]);
-        while(estanOcupados && i < paises.size()){
-            estanOcupados = estanOcupados && (paises.get(keys[i]).estaOcupado());
-            i++;
-        }
-        return estanOcupados;
+        AtomicBoolean estanOcupados = new AtomicBoolean(true);
+
+        paises.forEach((stringPais, objetoPais) -> {
+            estanOcupados.set(estanOcupados.get() && (objetoPais.estaOcupado()));
+        });
+        return estanOcupados.get();
     }
 
-    //Tal vez esta funcion deberia tener una excepcion por si no existe ese país
     public Pais obtenerPais(String paisABuscar) {
-        Pais paisEncontrado = paises.get(paisABuscar);
-        return paisEncontrado;
+        return paises.get(paisABuscar);
     }
 
     public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws PaisesNoContinuosException, PaisesConMismoDuenoException, PaisSinEjercitosSuficientesException {
@@ -194,19 +204,15 @@ public class Mapa {
     }
 
     public Integer paisesConEjercito(Ejercito ejercito){
-        int contadorEjercito = 0;
+        AtomicInteger contadorEjercito = new AtomicInteger();
         Ejercito ejercitoAux;
-        int i = 0;
-        String[] keys = paises.keySet().toArray(new String[0]);
 
-        while (i < this.paises.size()){
-            ejercitoAux = ejercitoEnPais(keys[i]);
-            if(ejercitoAux == ejercito){
-                contadorEjercito++;
-            }
-            i++;
-        }
-        return contadorEjercito;
+        AtomicBoolean estado = new AtomicBoolean(true);
+
+        paises.forEach((stringPais, objetoPais) -> {
+            if (ejercitoEnPais(stringPais) == ejercito) contadorEjercito.getAndIncrement();
+        });
+        return contadorEjercito.get();
     }
 
     public void moverEjercitos(String paisOrigen, String paisDestino, Integer cantidadAMover){
@@ -243,20 +249,11 @@ public class Mapa {
     }
 
     public int fichasPorContinentesControlados(Ejercito ejercito) {
-        int fichas = 0;
+        AtomicInteger fichas = new AtomicInteger();
 
-        Set<String> keys = continentes.keySet();
-
-        Iterator<String> itr = keys.iterator();
-
-        while(itr.hasNext()){
-            String contienteNombre = itr.next();
-            Continente continente = continentes.get(contienteNombre);
-
-            if (continente.jugadorControlaContinente(ejercito)){
-                fichas += continente.getBonusConquista();
-            }
-        }
-        return fichas;
+        continentes.forEach((stringContinente, objetoContinente) -> {
+            if (objetoContinente.jugadorControlaContinente(ejercito)) fichas.addAndGet(objetoContinente.getBonusConquista());
+        });
+        return fichas.get();
     }
 }

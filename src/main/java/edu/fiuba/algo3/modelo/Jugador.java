@@ -23,13 +23,10 @@ public class Jugador {
         return this.nombre;
     }
 
-    public void agregarTarjeta(Tarjeta tarjetaRecibida){
-        tarjetasPais.add(tarjetaRecibida);
-    }
+    public void agregarTarjeta(Tarjeta tarjetaRecibida){ tarjetasPais.add(tarjetaRecibida); }
 
-    public  int cantidadDeTarjetas(){
-        return tarjetasPais.size();
-    }
+    public int cantidadDeTarjetas(){ return tarjetasPais.size(); }
+
     public int cuantosCanjesRealizados(){
         return cantidadDeCanjes;
     }

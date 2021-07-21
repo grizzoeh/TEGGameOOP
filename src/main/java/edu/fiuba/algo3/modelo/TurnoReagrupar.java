@@ -24,9 +24,7 @@ public class TurnoReagrupar implements Turno {
 		if(!mapa.paisLePertenece(paisOrigen, jugador)) {
 			throw new PaisNoLePerteneceException();
 		}
-		
 		mapa.moverEjercitos(paisOrigen, paisDestino, cantidad);
-
 	}
 
 	public Turno avanzarEtapa() {
