@@ -37,20 +37,5 @@ public class TestDados {
         }
         assertTrue(estado);
     }
-    @Test
-    public void test04TirarDadosPonderadosDevuelveLaCantidadPedida() {
-        Dados dado = new Dados();
-        ArrayList<Integer> dados = dado.tirarDadosPonderados(3, 6);
-        assertEquals(dados.size(), 3);
-    }
-    @Test
-    public void test05TirarDadosPonderadosDevuelveLosNumerosPedidos() {
-        Dados dado = new Dados();
-        ArrayList<Integer> dados = dado.tirarDadosPonderados(100, 6);
-        boolean estado = true;
-        for (int i = 0; i < 100; i++) {
-            estado = (dados.get(i) == 6);
-        }
-        assertTrue(estado);
-    }
+
 }

@@ -41,25 +41,44 @@ public class TestTurnoAsignarFicha {
         assertEquals("Asignación De Fichas",turno.enQueFaseDelTurnoEsta());
     }
     @Test
-    public void test05CanjeFuncionaCorrectamente() throws PaisNoLePerteneceException {
+    public void test05CanjeDeVariasTarjetasFuncionaCorrectamente() {
         lista.add(jugador);
         mapa.repartirPaises(lista);
+
         TurnoAsignarFicha turno = new TurnoAsignarFicha(jugador, mapa);
-        turno.canjeoDeTarjeta("Zaire");
+        turno.canjeoDeTresTarjetas();
 
-        assertEquals(mapa.numeroEjercitosEn("Zaire"), 5);
-        turno.canjeoDeTarjeta("Zaire");
 
-        assertEquals(mapa.numeroEjercitosEn("Zaire"), 12);
-        turno.canjeoDeTarjeta("Zaire");
+        assertEquals(turno.getCantidadFichasTrasCanje(), 4);
+        turno.canjeoDeTresTarjetas();
 
-        assertEquals(mapa.numeroEjercitosEn("Zaire"), 22);
-        turno.canjeoDeTarjeta("Zaire");
+        assertEquals(turno.getCantidadFichasTrasCanje(), 7);
+        turno.canjeoDeTresTarjetas();
 
-        assertEquals(mapa.numeroEjercitosEn("Zaire"), 37);
-        turno.canjeoDeTarjeta("Zaire");
+        assertEquals(turno.getCantidadFichasTrasCanje(), 10);
+        turno.canjeoDeTresTarjetas();
 
-        assertEquals(mapa.numeroEjercitosEn("Zaire"), 57);
+        assertEquals(turno.getCantidadFichasTrasCanje(), 15);
+    }
+    @Test
+    public  void test06CanjearUnaTarjetaAgregaDosTropas() throws PaisNoLePerteneceException {
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+        Jugador jugador1 = new Jugador("Pablito Lezcano", new Ejercito("Verde"));
+        jugadores.add(jugador1);
+        Mapa mapa = new Mapa();
+        mapa.repartirPaises(jugadores);
+
+        Pais egipto = mapa.obtenerPais("Egipto");
+
+        Integer cantidad = egipto.obtenerCantidadEjercitos();
+
+        TurnoAsignarFicha turnoDeColocacion = new TurnoAsignarFicha(jugador1, mapa);
+
+        turnoDeColocacion.canjeoUnicoTarjeta("Egipto");
+
+        assertEquals((cantidad + 2), egipto.obtenerCantidadEjercitos());
+
+
     }
     @Test
     public void testExcepcion01CanjeoDeTarjetaDevuelveExcepcionSiNoLePerteneceElPais() {
@@ -72,7 +91,7 @@ public class TestTurnoAsignarFicha {
 
         assertThrows(PaisNoLePerteneceException.class,
                 () -> {
-                    turno.canjeoDeTarjeta("Etiopia");
+                    turno.canjeoUnicoTarjeta("Etiopia");
                 });
     }
     @Test
