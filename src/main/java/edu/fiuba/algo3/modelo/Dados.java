@@ -24,12 +24,4 @@ public class Dados {
         return resultado;
     }
 
-    public ArrayList<Integer> tirarDadosPonderados(int cantDados, int valorDado) {
-        ArrayList<Integer> resultado = new ArrayList<>();
-
-        for (int i = 0; i < cantDados; i++) {
-            resultado.add(valorDado);
-        }
-        return resultado;
-    }
 }

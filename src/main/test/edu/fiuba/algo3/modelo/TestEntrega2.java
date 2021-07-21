@@ -25,10 +25,9 @@ public class TestEntrega2 {
 
         TurnoAsignarFicha turnoDeColocacion = new TurnoAsignarFicha(jugador1, mapa);
 
-        turnoDeColocacion.canjeoDeTarjeta("Egipto");
+        turnoDeColocacion.canjeoUnicoTarjeta("Egipto");
 
-        assertEquals(5, egipto.obtenerCantidadEjercitos());
-        assertEquals(1, jugador1.cuantosCanjesRealizados());
+        assertEquals(3, egipto.obtenerCantidadEjercitos());
     }
     @Test
     public void test02RondaDeDosJugadoresConColocacionDeEjercitos() throws EtapaEquivocadaException, PaisNoLePerteneceException {

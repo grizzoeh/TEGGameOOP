@@ -3,10 +3,14 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
 
+import java.util.ArrayList;
+
 public class TurnoAsignarFicha implements Turno {
 	private Mapa mapa;
 	private Jugador jugador;
 	private int cantidadFichas;
+	private int fichasTrasCanje;
+
 
 	public TurnoAsignarFicha(Jugador jugadorIngresado, Mapa mapaIngresado) {
 		this.jugador = jugadorIngresado;
@@ -38,10 +42,7 @@ public class TurnoAsignarFicha implements Turno {
 	}
 
 
-	public void canjeoDeTarjeta(String nombrePais) throws PaisNoLePerteneceException{
-		if(!mapa.paisLePertenece(nombrePais, jugador)) {
-			throw new PaisNoLePerteneceException();
-		}
+	public void canjeoDeTresTarjetas(){
 		
 		Integer cantidadASumar;
 		Integer cantidadDeCanjes = jugador.cuantosCanjesRealizados() + 1;
@@ -59,11 +60,23 @@ public class TurnoAsignarFicha implements Turno {
 			default : cantidadASumar = (cantidadDeCanjes - 1) * 5;
 				break;
 		}
-
-		mapa.agregarEjercitos(nombrePais,cantidadASumar);
 		jugador.agregarCanje();
+		cantidadFichas += cantidadASumar;
+		fichasTrasCanje = cantidadASumar;
 	}
+
+	public void canjeoUnicoTarjeta(String pais)throws PaisNoLePerteneceException{
+		if(!mapa.paisLePertenece(pais, jugador)) {
+			throw new PaisNoLePerteneceException();
+		}
+		mapa.agregarEjercitos(pais, 2);
+	}
+
 	public String enQueFaseDelTurnoEsta(){
 		return "Asignación De Fichas";
+	}
+
+	public  int getCantidadFichasTrasCanje(){
+		return fichasTrasCanje;
 	}
 }
