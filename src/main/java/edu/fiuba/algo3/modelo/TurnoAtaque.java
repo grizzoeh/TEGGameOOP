@@ -37,4 +37,14 @@ public class TurnoAtaque implements Turno {
 	public String enQueFaseDelTurnoEsta(){
 		return "Ataque Entre Jugadores";
 	}
+
+	public void canjeoDeTresTarjetas() throws EtapaEquivocadaException{
+		throw new EtapaEquivocadaException();
+	}
+
+	public void canjeoUnicoTarjeta(String pais) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+		throw new EtapaEquivocadaException();
+	}
+
+
 }
