@@ -14,4 +14,8 @@ public interface Turno{
 	public void moverEjercito(String paisDesde, String paisHasta, int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException;
 
 	public String enQueFaseDelTurnoEsta();
+
+	 public void canjeoDeTresTarjetas() throws EtapaEquivocadaException;
+
+	 public  void canjeoUnicoTarjeta(String pais) throws EtapaEquivocadaException, PaisNoLePerteneceException;
 }

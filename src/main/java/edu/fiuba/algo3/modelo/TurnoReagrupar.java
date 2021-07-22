@@ -34,4 +34,12 @@ public class TurnoReagrupar implements Turno {
 	public String enQueFaseDelTurnoEsta(){
 		return "Reagrupación de Tropas";
 	}
+
+	public void canjeoDeTresTarjetas() throws EtapaEquivocadaException{
+		throw new EtapaEquivocadaException();
+	}
+
+	public void canjeoUnicoTarjeta(String pais) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+		throw new EtapaEquivocadaException();
+	}
 }
