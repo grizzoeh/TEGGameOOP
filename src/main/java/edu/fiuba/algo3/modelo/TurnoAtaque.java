@@ -46,5 +46,5 @@ public class TurnoAtaque implements Turno {
 		throw new EtapaEquivocadaException();
 	}
 
-
+	public boolean estaFinalizado() {return false;}
 }
