@@ -31,10 +31,6 @@ public class TestTurnoAsignarFicha {
                     turno.atacar("Argentina", "Brasil", 3);
                 });
     }
-    @Test
-    public void test03AvanzarEtapaDevuelveNull() {
-        assertEquals(turno.avanzarEtapa(), null);
-    }
 
     @Test
     public void test04SeDevuelveLaFaseCorrecta() {

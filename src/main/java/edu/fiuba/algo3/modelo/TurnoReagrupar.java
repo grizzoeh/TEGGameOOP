@@ -42,4 +42,6 @@ public class TurnoReagrupar implements Turno {
 	public void canjeoUnicoTarjeta(String pais) throws EtapaEquivocadaException, PaisNoLePerteneceException {
 		throw new EtapaEquivocadaException();
 	}
+
+	public boolean estaFinalizado() {return false;}
 }

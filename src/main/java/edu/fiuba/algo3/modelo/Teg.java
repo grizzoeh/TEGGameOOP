@@ -47,7 +47,7 @@ public class Teg {
     public void avanzarEtapa(){
         turnoActual = turnoActual.avanzarEtapa();
 
-        if(turnoActual == null){
+        if(turnoActual.estaFinalizado()){
             numeroJugadorActual++;
             numeroJugadorActual %= jugadores.size();
             turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual),mapa);
