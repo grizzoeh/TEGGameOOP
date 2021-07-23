@@ -9,16 +9,13 @@ public class TurnoEtapaInicial implements Turno {
     private Mapa mapa;
     private Jugador jugador;
     private int cantidadFichas;
-    private int fichasTrasCanje;
 
 
-    public TurnoAsignarFicha(Jugador jugadorIngresado, Mapa mapaIngresado) {
+    public TurnoEtapaInicial(Jugador jugadorIngresado, Mapa mapaIngresado, Integer fichasAColocar) {
         this.jugador = jugadorIngresado;
         this.mapa = mapaIngresado;
-        this.cantidadFichas = (mapa.paisesConEjercito(jugador.getEjercito())/2  >= 3 ? mapa.paisesConEjercito(jugador.getEjercito())/2 : 3)
-                + mapa.fichasPorContinentesControlados(jugador.getEjercito());
+        this.cantidadFichas = fichasAColocar;
     }
-
     public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws EtapaEquivocadaException, PaisNoLePerteneceException {
         throw new EtapaEquivocadaException();
     }
@@ -42,43 +39,27 @@ public class TurnoEtapaInicial implements Turno {
     }
 
 
-    public void canjeoDeTresTarjetas(){
-
-        Integer cantidadASumar;
-        Integer cantidadDeCanjes = jugador.cuantosCanjesRealizados() + 1;
-
-        switch (cantidadDeCanjes)
-        {
-            case 1 : cantidadASumar = 4 ;
-                break;
-            case 2 : cantidadASumar = 7;
-                break;
-            case 3 : cantidadASumar = 10;
-                break;
-            case 4 : cantidadASumar = 15;
-                break;
-            default : cantidadASumar = (cantidadDeCanjes - 1) * 5;
-                break;
-        }
-        jugador.agregarCanje();
-        cantidadFichas += cantidadASumar;
-        fichasTrasCanje = cantidadASumar;
+    public void canjeoDeTresTarjetas() throws EtapaEquivocadaException {
+        throw new EtapaEquivocadaException();
     }
 
-    public void canjeoUnicoTarjeta(String pais)throws PaisNoLePerteneceException{
-        if(!mapa.paisLePertenece(pais, jugador)) {
-            throw new PaisNoLePerteneceException();
-        }
-        mapa.agregarEjercitos(pais, 2);
+    public void canjeoUnicoTarjeta(String pais) throws PaisNoLePerteneceException, EtapaEquivocadaException {
+        throw new EtapaEquivocadaException();
     }
 
     public String enQueFaseDelTurnoEsta(){
-        return "Asignación De Fichas";
+        return "Etapa Inicial";
     }
 
-    public  int getCantidadFichasTrasCanje(){
-        return fichasTrasCanje;
+    public  int getCantidadFichasTrasCanje() throws EtapaEquivocadaException {
+        throw new EtapaEquivocadaException();
     }
 
-    public boolean estaFinalizado() {return false;}
+    public boolean todasLasFichasColocadas(){
+        return (cantidadFichas == 0);
+    }
+
+    public boolean estaFinalizado() {
+        return false;
+    }
 }

@@ -20,4 +20,6 @@ public interface Turno{
 	 public  void canjeoUnicoTarjeta(String pais) throws EtapaEquivocadaException, PaisNoLePerteneceException;
 
 	 public boolean estaFinalizado();
+
+	public boolean todasLasFichasColocadas() throws EtapaEquivocadaException;
 }

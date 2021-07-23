@@ -80,5 +80,9 @@ public class TurnoAsignarFicha implements Turno {
 		return fichasTrasCanje;
 	}
 
+	public boolean todasLasFichasColocadas(){
+		return (cantidadFichas == 0);
+	}
+
 	public boolean estaFinalizado() {return false;}
 }

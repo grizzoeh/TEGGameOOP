@@ -69,6 +69,7 @@ public class TestTeg {
         nombresJugadores.add("Ozuna");
         nombresJugadores.add("Sech");
         Teg teg = new Teg(nombresJugadores);
+
         teg.avanzarEtapa();
         teg.avanzarEtapa();
         teg.avanzarEtapa();
