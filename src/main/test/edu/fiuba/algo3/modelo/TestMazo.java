@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaParaElPaisException;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
@@ -73,7 +74,7 @@ public class TestMazo {
         assertTrue(mazo.sonAptasParaCanje(tarjetas));
     }
     @Test
-    public void test06ObtenerUnaTarjetaEspecificaDevuelveLaTarjetaBuscada(){
+    public void test06ObtenerUnaTarjetaEspecificaDevuelveLaTarjetaBuscada() throws NoExisteTarjetaParaElPaisException {
         Pais paisAux = new Pais("Qatar");
         ArrayList<Pais> paises = new ArrayList<>();
         paises.add(paisAux);
@@ -85,7 +86,7 @@ public class TestMazo {
         assertEquals(tarjetaABuscar.obtenerPais(), paisAux);
     }
     @Test
-    public void test07SiNoExisteLaTarjetaBuscadaSeDevuelveNull(){
+    public void test07SiNoExisteLaTarjetaBuscadaSeDevuelveNull() throws NoExisteTarjetaParaElPaisException {
         Pais paisAux = new Pais("Qatar");
         ArrayList<Pais> paises = new ArrayList<>();
 

@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaParaElPaisException;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -62,21 +64,18 @@ public class Mazo {
         return tarjetaaux;
     }
 
-    //Esta funcion solo tiene utilidad en procesos de Testeo
-    public Tarjeta obtenerTarjetaEspecifica(Pais pais){
-        if (tarjetas.size() <= 0) return null;
-        boolean encontrado = false;
-        int i = 0;
-        Tarjeta tarjetaAux = null;
-        while (!encontrado || i < tarjetas.size()){
-            tarjetaAux = tarjetas.get(i);
-            if (tarjetaAux.obtenerPais() == pais) encontrado = true;
-            i++;
-        }
-        tarjetas.remove(tarjetaAux);
-        tarjetasRepartidas.add(tarjetaAux);
 
-        return tarjetaAux;
+
+    public Tarjeta obtenerTarjetaEspecifica(Pais pais) throws NoExisteTarjetaParaElPaisException {
+        if (tarjetas.size() <= 0) return null;
+        Tarjeta tarjeta = tarjetas.stream()
+                .filter(t -> t.perteneceAEstePais(pais))
+                .findFirst() //findFirst devuelve Optional<Tipo>, es decir o el tipo del elememento o null
+                .orElseThrow(()-> new NoExisteTarjetaParaElPaisException());
+        tarjetas.remove(tarjeta);
+        tarjetasRepartidas.add(tarjeta);
+
+        return tarjeta;
     }
 }
 

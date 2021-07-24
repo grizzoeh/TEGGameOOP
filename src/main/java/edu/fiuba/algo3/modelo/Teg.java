@@ -36,7 +36,7 @@ public class Teg {
         turnoActual.atacar(paisAtaque,paisDefensa,cantEjercitos);
     }
 
-    public void moverEjercito(String paisDesde, String paisHasta,int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+    public void moverEjercito(String paisDesde, String paisHasta,int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException, PaisesNoSonDelMismoDuenoException, PaisSinEjercitosSuficientesException, PaisesNoContinuosException {
         turnoActual.moverEjercito(paisDesde,paisHasta,cantidad);
     }
 

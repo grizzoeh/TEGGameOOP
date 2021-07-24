@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
+import edu.fiuba.algo3.modelo.excepciones.PaisesNoSonDelMismoDuenoException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class TestMapa {
         assertFalse(mapa.sonContiguos(origen,destino));
     }
     @Test
-    public void test06DosPaisesVecinosConElMismoDuenioConMasDeUnEjercitoPuedeIntercambiarTropas(){
+    public void test06DosPaisesVecinosConElMismoDuenioConMasDeUnEjercitoPuedeIntercambiarTropas() throws PaisesNoSonDelMismoDuenoException, PaisSinEjercitosSuficientesException, PaisesNoContinuosException {
         Ejercito ejercito = new Ejercito("Blanco");
 
         Pais origen = mapa.obtenerPais("Egipto");
@@ -75,7 +76,13 @@ public class TestMapa {
         origen.agregarEjercito(3);
         destino.agregarEjercito(1);
 
-        mapa.moverEjercitos("Egipto","Madagascar", 2);
+        try {
+            mapa.moverEjercitos("Egipto","Madagascar", 2);
+
+        }catch (PaisesNoSonDelMismoDuenoException e) {
+            e.printStackTrace();
+        }
+
 
         assertEquals(3 ,destino.obtenerCantidadEjercitos());
     }
