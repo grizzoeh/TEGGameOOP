@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,15 +38,14 @@ public class TestPais {
     @Test
     public void test05TrasSumarUnEjercitoElPaisEstaOcupado(){
 
-        paisPrueba.agregarEjercito();
+        paisPrueba.agregarEjercito(1);
 
         assertTrue(paisPrueba.estaOcupado());
     }
     @Test
     public void test06UnPaisConDosEjercitosAlQuitarUnoSigueOcupado(){
 
-        paisPrueba.agregarEjercito();
-        paisPrueba.agregarEjercito();
+        paisPrueba.agregarEjercito(2);
 
         paisPrueba.eliminarEjercitos(1);
 
@@ -54,8 +54,7 @@ public class TestPais {
     @Test
     public void test07UnPaisConDosEjercitosAlQuitarDosNoSigueOcupado(){
 
-        paisPrueba.agregarEjercito();
-        paisPrueba.agregarEjercito();
+        paisPrueba.agregarEjercito(2);
 
         paisPrueba.eliminarEjercitos(2);
 
@@ -64,9 +63,7 @@ public class TestPais {
     @Test
     public void test08TrasSumar20EjercitosLaCantidadEsCorrecta(){
 
-        for (int i = 1; i <= 20; i++ ){
-                paisPrueba.agregarEjercito();
-        }
+        paisPrueba.agregarEjercito(20);
 
         assertEquals(20,paisPrueba.obtenerCantidadEjercitos());
     }
@@ -86,7 +83,7 @@ public class TestPais {
     @Test
     public void test11UnPaisSinFronteraNoContieneAOtroPaisEnElla(){
         Pais segundoPais = new Pais("Australia");
-        HashSet<Pais> fronteraPrueba = new HashSet<Pais>();
+        ArrayList<Pais> fronteraPrueba = new ArrayList<>();
 
         paisPrueba.agregarFrontera(fronteraPrueba);
 
@@ -96,7 +93,7 @@ public class TestPais {
     @Test
     public void test12SePuedenAgregarPaisesALaFrontera(){
         Pais segundoPais = new Pais("Chile");
-        HashSet<Pais> fronteraPrueba = new HashSet<Pais>();
+        ArrayList<Pais> fronteraPrueba = new ArrayList<>();
         fronteraPrueba.add(segundoPais);
 
         paisPrueba.agregarFrontera(fronteraPrueba);
@@ -109,7 +106,7 @@ public class TestPais {
         Pais segundoPais = new Pais("Chile");
         Pais tercerPais = new Pais("Uruguay");
         Pais cuartoPais = new Pais("Varsil");
-        HashSet<Pais> fronteraPrueba = new HashSet<Pais>();
+        ArrayList<Pais> fronteraPrueba = new ArrayList<>();
 
         fronteraPrueba.add(segundoPais);
         fronteraPrueba.add(tercerPais);
@@ -129,8 +126,7 @@ public class TestPais {
 
         paisPrueba.asignarEjercito(ejercito);
 
-        paisPrueba.agregarEjercito();
-        paisPrueba.agregarEjercito();
+        paisPrueba.agregarEjercito(2);
 
         paisPrueba.invadir(segundoPais);
 
@@ -144,13 +140,77 @@ public class TestPais {
 
         paisPrueba.asignarEjercito(ejercito);
 
-        paisPrueba.agregarEjercito();
-        paisPrueba.agregarEjercito();
+        paisPrueba.agregarEjercito(2);
 
         paisPrueba.invadir(segundoPais);
 
         assertEquals(ejercito,paisPrueba.getEjercito());
         assertEquals(ejercito,segundoPais.getEjercito());
+
+    }
+    @Test
+    public void test16TrasSumarUnEjercitoElPaisNoEsAptoParaAtacar(){
+
+        paisPrueba.agregarEjercito(1);
+
+        assertFalse(paisPrueba.esAptoParaAtacar());
+    }
+    @Test
+    public void test17TrasSumarDosEjercitosElPaisEsAptoParaAtacar(){
+
+        paisPrueba.agregarEjercito(2);
+
+        assertTrue(paisPrueba.esAptoParaAtacar());
+    }
+    @Test
+    public void test18DosPaisesConElMismoEjercitoDebenTenerElMismoColor(){
+        Pais segundoPais = new Pais("Chile");
+        Ejercito ejercito = new Ejercito("Azul");
+
+        paisPrueba.asignarEjercito(ejercito);
+        segundoPais.asignarEjercito(ejercito);
+
+        assertFalse(paisPrueba.tienenEjercitosDiferentes(segundoPais));
+
+    }
+    @Test
+    public void test18DosPaisesConDistintoEjercitoNoDebenTenerElMismoColor(){
+        Pais segundoPais = new Pais("Chile");
+        Ejercito ejercito = new Ejercito("Azul");
+        Ejercito ejercito2 = new Ejercito("Rojo");
+
+        paisPrueba.asignarEjercito(ejercito);
+        segundoPais.asignarEjercito(ejercito2);
+
+        assertTrue(paisPrueba.tienenEjercitosDiferentes(segundoPais));
+
+    }
+    @Test
+    public void test19UnPaisConUnEjercitoNuncaPodriaMoverTres(){
+        paisPrueba.agregarEjercito(1);
+
+        assertFalse(paisPrueba.sePuedeMoverEstaCantidadDeEjercitos(3));
+
+    }
+    @Test
+    public void test20UnPaisConDosEjercitosNuncaPodriaMoverTres(){
+        paisPrueba.agregarEjercito(2);
+
+        assertFalse(paisPrueba.sePuedeMoverEstaCantidadDeEjercitos(3));
+
+    }
+    @Test
+    public void test21UnPaisConTresEjercitosNuncaPodriaMoverTres(){
+        paisPrueba.agregarEjercito(3);
+
+        assertFalse(paisPrueba.sePuedeMoverEstaCantidadDeEjercitos(3));
+
+    }
+    @Test
+    public void test22UnPaisConCuatroEjercitosOMasPodriaMoverTres(){
+        paisPrueba.agregarEjercito(4);
+
+        assertTrue(paisPrueba.sePuedeMoverEstaCantidadDeEjercitos(3));
 
     }
 }

@@ -9,7 +9,7 @@ public class Dados {
     public Dados() {
     }
     public ArrayList<Integer> tirarDados(int cantDados) {
-        ArrayList<Integer> resultado = new ArrayList<Integer>();
+        ArrayList<Integer> resultado = new ArrayList<>();
 
         //Tirar dados
         int valor_dado;
@@ -20,17 +20,8 @@ public class Dados {
 
         }
         //Ordenar Dados
-        Collections.sort(resultado);
-        Collections.reverse(resultado);
+        Collections.sort(resultado, Collections.reverseOrder());
         return resultado;
     }
 
-    public ArrayList<Integer> tirarDadosPonderados(int cantDados, int valorDado) {
-        ArrayList<Integer> resultado = new ArrayList<Integer>();
-
-        for (int i = 0; i < cantDados; i++) {
-            resultado.add(valorDado);
-        }
-        return resultado;
-    }
 }

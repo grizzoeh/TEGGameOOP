@@ -28,9 +28,8 @@ public class TestEntrega1 {
         paisDefensa.asignarEjercito(ejercitoCeleste);
         paisAtaque.asignarEjercito(ejercitoVerde);
 
-        paisDefensa.agregarEjercito();
-        paisAtaque.agregarEjercito();
-        paisAtaque.agregarEjercito();
+        paisDefensa.agregarEjercito(1);
+        paisAtaque.agregarEjercito(2);
 
         CombateMock combate = new CombateMock(paisAtaque,paisDefensa,1);
         combate.generarCombateDefensorGanador();
@@ -53,9 +52,8 @@ public class TestEntrega1 {
         paisDefensa.asignarEjercito(ejercitoCeleste);
         paisAtaque.asignarEjercito(ejercitoVerde);
 
-        paisDefensa.agregarEjercito();
-        paisAtaque.agregarEjercito();
-        paisAtaque.agregarEjercito();
+        paisDefensa.agregarEjercito(1);
+        paisAtaque.agregarEjercito(2);
 
         CombateMock combate = new CombateMock(paisAtaque,paisDefensa,1);
         combate.generarCombateAtacanteGanador();
