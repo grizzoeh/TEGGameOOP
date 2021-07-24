@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
+import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaParaElPaisException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestEntrega2 {
     @Test
-    public void test01ActivacionDeTarjetas() throws PaisNoLePerteneceException {
+    public void test01ActivacionDeTarjetas() throws PaisNoLePerteneceException, NoExisteTarjetaParaElPaisException {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         Jugador jugador1 = new Jugador("Pablito Lezcano", new Ejercito("Verde"));
         jugadores.add(jugador1);
@@ -36,6 +37,7 @@ public class TestEntrega2 {
         nombresJugadores.add("Fran");
 
         Teg teg = new Teg(nombresJugadores);
+        teg.saltearColocacionInicial();
         teg.avanzarEtapa();
         teg.avanzarEtapa();
 

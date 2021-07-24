@@ -38,7 +38,7 @@ public class TurnoAsignarFicha implements Turno {
 	}
 
 	public Turno avanzarEtapa() {
-		return null;
+		return new TurnoFinalizado();
 	}
 
 
@@ -79,4 +79,10 @@ public class TurnoAsignarFicha implements Turno {
 	public  int getCantidadFichasTrasCanje(){
 		return fichasTrasCanje;
 	}
+
+	public boolean todasLasFichasColocadas(){
+		return (cantidadFichas == 0);
+	}
+
+	public boolean estaFinalizado() {return false;}
 }

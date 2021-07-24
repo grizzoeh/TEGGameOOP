@@ -25,7 +25,7 @@ public class Teg {
 
         mapa.repartirPaises(jugadores);
 
-        turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual),mapa);
+        turnoActual = new TurnoEtapaInicial(jugadores.get(numeroJugadorActual),mapa, 5);
     }
 
     public boolean todosLosPaisesOcupados(){
@@ -36,7 +36,7 @@ public class Teg {
         turnoActual.atacar(paisAtaque,paisDefensa,cantEjercitos);
     }
 
-    public void moverEjercito(String paisDesde, String paisHasta,int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+    public void moverEjercito(String paisDesde, String paisHasta,int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException, PaisesNoSonDelMismoDuenoException, PaisSinEjercitosSuficientesException, PaisesNoContinuosException {
         turnoActual.moverEjercito(paisDesde,paisHasta,cantidad);
     }
 
@@ -44,10 +44,60 @@ public class Teg {
         turnoActual.asignarEjercito(pais,cantidad);
     }
 
+    public void avanzarPrimeraEtapaColocacion(){
+        if (numeroJugadorActual == jugadores.size()){
+            numeroJugadorActual = 0;
+            turnoActual = new TurnoEtapaInicial(jugadores.get(0),mapa, 3);
+            return;
+        }
+        numeroJugadorActual++;
+        Integer jugActual = numeroJugadorActual % jugadores.size();
+        turnoActual = new TurnoEtapaInicial(jugadores.get(jugActual),mapa, 5);
+    }
+    public void avanzarSegundaEtapaColocacion(){
+
+        if (numeroJugadorActual == jugadores.size()){
+            numeroJugadorActual = 0;
+            turnoActual = new TurnoAtaque(jugadores.get(0),mapa);
+            return;
+        }
+        numeroJugadorActual++;
+        Integer jugActual = numeroJugadorActual % jugadores.size();
+        turnoActual = new TurnoEtapaInicial(jugadores.get(jugActual),mapa, 3);
+    }
+
+
+    public void saltearColocacionInicial(){
+        numeroJugadorActual = 0;
+        turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual), mapa);
+    }
+    /*
+    public void colocacionesIniciales() throws EtapaEquivocadaException, PaisNoLePerteneceException {
+        if(turnoActual.todasLasFichasColocadas()){
+            turnoActual = turnoActual.avanzarEtapa();
+        }
+
+        if(turnoActual.estaFinalizado() && (numeroJugadorActual < cantidadJugadores)){
+            numeroJugadorActual++;
+            numeroJugadorActual %= jugadores.size();
+            turnoActual = new TurnoEtapaInicial(jugadores.get(numeroJugadorActual),mapa, 5);
+        }
+
+        if(numeroJugadorActual == cantidadJugadores){
+            turnoActual = new TurnoEtapaInicial(jugadores.get(numeroJugadorActual),mapa, 3);
+        }
+
+        if(turnoActual.estaFinalizado() &&  ((numeroJugadorActual > cantidadJugadores) && (numeroJugadorActual < (cantidadJugadores * 2)))){
+            numeroJugadorActual++;
+            numeroJugadorActual %= jugadores.size();
+            turnoActual = new TurnoEtapaInicial(jugadores.get(numeroJugadorActual),mapa, 3);
+        }
+    }
+*/
     public void avanzarEtapa(){
         turnoActual = turnoActual.avanzarEtapa();
 
-        if(turnoActual == null){
+        if(turnoActual.estaFinalizado()){
             numeroJugadorActual++;
             numeroJugadorActual %= jugadores.size();
             turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual),mapa);

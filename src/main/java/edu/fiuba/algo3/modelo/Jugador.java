@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaParaElPaisException;
+
 import java.util.ArrayList;
 
 public class Jugador {
@@ -44,16 +46,12 @@ public class Jugador {
     }
     */
 
-    public Tarjeta usarTarjeta(Pais pais){
-        int i = 0;
-        boolean encontrado = false;
-        Tarjeta tarjetaux = null;
-        while (!encontrado && i < tarjetasPais.size()){
-            tarjetaux = tarjetasPais.get(i);
-            if (tarjetaux.obtenerPais().equals(pais)) encontrado = true;
-            i++;
-        }
-        tarjetasPais.remove(tarjetaux);
-        return  tarjetaux;
+    public Tarjeta usarTarjeta(Pais unPais) throws NoExisteTarjetaParaElPaisException {
+        Tarjeta tarjeta = tarjetasPais.stream()
+                .filter(t -> t.perteneceAEstePais(unPais))
+                .findFirst() //findFirst devuelve Optional<Tipo>, es decir o el tipo del elememento o null
+                .orElseThrow(()-> new NoExisteTarjetaParaElPaisException());
+        tarjetasPais.remove(tarjeta);
+        return tarjeta;
     }
 }

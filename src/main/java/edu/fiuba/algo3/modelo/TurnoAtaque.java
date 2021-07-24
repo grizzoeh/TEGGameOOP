@@ -45,6 +45,9 @@ public class TurnoAtaque implements Turno {
 	public void canjeoUnicoTarjeta(String pais) throws EtapaEquivocadaException, PaisNoLePerteneceException {
 		throw new EtapaEquivocadaException();
 	}
+	public boolean todasLasFichasColocadas() throws EtapaEquivocadaException {
+		throw new EtapaEquivocadaException();
+	}
 
-
+	public boolean estaFinalizado() {return false;}
 }

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaParaElPaisException;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -55,7 +56,7 @@ public class TestJugador {
         assertEquals(1, jugador.cantidadDeTarjetas());
     }
     @Test
-    public void test08LaCantidadDeTarjetasTrasUsarUnaEsCorrecta(){
+    public void test08LaCantidadDeTarjetasTrasUsarUnaEsCorrecta() throws NoExisteTarjetaParaElPaisException {
         Pais pais = new Pais("Suiza");
         Tarjeta tarjeta = new Tarjeta(pais, "Chocolate Suizo");
 

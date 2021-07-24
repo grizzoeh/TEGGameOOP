@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
+import edu.fiuba.algo3.modelo.excepciones.PaisesNoSonDelMismoDuenoException;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -132,18 +133,7 @@ public class Mapa {
     }
 
     public void repartirPaises(ArrayList<Jugador> jugadores){
-        /*
-        ARREGLAR LO COMENTADO
-        AtomicInteger j = new AtomicInteger();
 
-        paises.forEach((stringPais, objetoPais) -> {
-            int posJugActual = j.get() % jugadores.size();
-            objetoPais.asignarEjercito(jugadores.get(posJugActual).getEjercito());
-            objetoPais.agregarEjercito(1);
-            j.getAndIncrement();
-            System.out.println(j);
-        });
-        */
         int cantidadPaises = paises.size();
         int cantidadJugadores = jugadores.size();
         Pais paisAux;
@@ -215,24 +205,18 @@ public class Mapa {
         return contadorEjercito.get();
     }
 
-    public void moverEjercitos(String paisOrigen, String paisDestino, Integer cantidadAMover){
+    public void moverEjercitos(String paisOrigen, String paisDestino, Integer cantidadAMover) throws PaisesNoContinuosException, PaisSinEjercitosSuficientesException, PaisesNoSonDelMismoDuenoException {
         Pais origen = obtenerPais(paisOrigen);
         Pais destino = obtenerPais(paisDestino);
 
-        if (!sonContiguos(origen,destino)) return; //LANZAR ERROR PAISES NO SON ADYACENTES
-        if (origen.tienenEjercitosDiferentes(destino)) return; //LANZAR ERROR PAISES NO SON DEL MISMO DUEÑO
-        if (!origen.sePuedeMoverEstaCantidadDeEjercitos(cantidadAMover)) return; // LANZAR ERROR DE QUE NO ALCANZAN LAS TROPAS
+        if (!sonContiguos(origen,destino)) throw new PaisesNoContinuosException();
+        if (origen.tienenEjercitosDiferentes(destino)) throw new PaisesNoSonDelMismoDuenoException();
+        if (!origen.sePuedeMoverEstaCantidadDeEjercitos(cantidadAMover)) throw new PaisSinEjercitosSuficientesException();
 
         origen.eliminarEjercitos(cantidadAMover);
         destino.agregarEjercito(cantidadAMover);
     }
 
-    /*
-    COMENTADO POR NO SER USADO
-    public Object[] todosLosPaises(){
-        return paises.values().toArray();
-    }
-     */
 
     public boolean paisLePertenece(String pais, Jugador jugador) {
         Pais paisAux = paises.get(pais);
