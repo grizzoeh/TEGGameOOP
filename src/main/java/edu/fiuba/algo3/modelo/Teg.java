@@ -44,6 +44,34 @@ public class Teg {
         turnoActual.asignarEjercito(pais,cantidad);
     }
 
+    public void avanzarPrimeraEtapaColocacion(){
+        if (numeroJugadorActual == jugadores.size()){
+            numeroJugadorActual = 0;
+            turnoActual = new TurnoEtapaInicial(jugadores.get(0),mapa, 3);
+            return;
+        }
+        numeroJugadorActual++;
+        Integer jugActual = numeroJugadorActual % jugadores.size();
+        turnoActual = new TurnoEtapaInicial(jugadores.get(jugActual),mapa, 5);
+    }
+    public void avanzarSegundaEtapaColocacion(){
+
+        if (numeroJugadorActual == jugadores.size()){
+            numeroJugadorActual = 0;
+            turnoActual = new TurnoAtaque(jugadores.get(0),mapa);
+            return;
+        }
+        numeroJugadorActual++;
+        Integer jugActual = numeroJugadorActual % jugadores.size();
+        turnoActual = new TurnoEtapaInicial(jugadores.get(jugActual),mapa, 3);
+    }
+
+
+    public void saltearColocacionInicial(){
+        numeroJugadorActual = 0;
+        turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual), mapa);
+    }
+    /*
     public void colocacionesIniciales() throws EtapaEquivocadaException, PaisNoLePerteneceException {
         if(turnoActual.todasLasFichasColocadas()){
             turnoActual = turnoActual.avanzarEtapa();
@@ -65,12 +93,7 @@ public class Teg {
             turnoActual = new TurnoEtapaInicial(jugadores.get(numeroJugadorActual),mapa, 3);
         }
     }
-
-    public void comenzarJuego(){
-        numeroJugadorActual = 0;
-        turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual), mapa);
-    }
-
+*/
     public void avanzarEtapa(){
         turnoActual = turnoActual.avanzarEtapa();
 
