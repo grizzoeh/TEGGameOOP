@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
-import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
+import edu.fiuba.algo3.modelo.excepciones.*;
 import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.Test;
@@ -165,7 +164,7 @@ public class TestTeg {
         assertEquals(teg.cantEjercitosEn("Etiopia"), 1);
     }
     @Test
-    public void test14MoverEjercitoFuncionaCorrectamente() throws EtapaEquivocadaException, PaisNoLePerteneceException {
+    public void test14MoverEjercitoFuncionaCorrectamente() throws EtapaEquivocadaException, PaisNoLePerteneceException, PaisesNoSonDelMismoDuenoException, PaisSinEjercitosSuficientesException, PaisesNoContinuosException {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Carzo");
         nombresJugadores.add("Diaz");
