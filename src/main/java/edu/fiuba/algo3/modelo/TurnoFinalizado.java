@@ -32,6 +32,11 @@ public class TurnoFinalizado implements Turno{
     public  void canjeoUnicoTarjeta(String pais) throws EtapaEquivocadaException, PaisNoLePerteneceException {
         return;
     }
+
+    public boolean todasLasFichasColocadas() throws EtapaEquivocadaException {
+        throw new EtapaEquivocadaException();
+    }
+    
     public boolean estaFinalizado() {
         return true;
     }
