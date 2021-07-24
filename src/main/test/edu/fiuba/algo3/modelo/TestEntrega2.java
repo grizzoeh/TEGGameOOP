@@ -36,6 +36,7 @@ public class TestEntrega2 {
         nombresJugadores.add("Fran");
 
         Teg teg = new Teg(nombresJugadores);
+        teg.saltearColocacionInicial();
         teg.avanzarEtapa();
         teg.avanzarEtapa();
 

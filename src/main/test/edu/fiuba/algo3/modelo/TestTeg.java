@@ -29,34 +29,67 @@ public class TestTeg {
         assertEquals(1, teg.cantidadJugadores());
     }
     @Test
-    public void test03AlInicializarseSeComienzaEnLaFaseDeAtaque(){
+    public void test03AlInicializarseSeComienzaEnLaFaseDeColocacionInicial(){
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ricardo");
         Teg teg = new Teg(nombresJugadores);
 
-        assertEquals("Ataque Entre Jugadores", teg.enQueFaseEstaElJuego());
+        assertEquals("Etapa Inicial", teg.enQueFaseEstaElJuego());
     }
     @Test
-    public void test04AlAvanzarUnaEtapaSucedeLaReagrupacion(){
+    public void test04AlAvanzarTurnoSeSigueEnLaFaseDeColocacionInicial(){
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ricardo");
         Teg teg = new Teg(nombresJugadores);
+        teg.avanzarPrimeraEtapaColocacion();
+
+        assertEquals("Etapa Inicial", teg.enQueFaseEstaElJuego());
+    }
+    @Test
+    public void test05AlAvanzarDosVecesElTurnoNoSeSigueEnLaFaseDeColocacionInicial(){
+        ArrayList<String> nombresJugadores = new ArrayList<>();
+        nombresJugadores.add("Ricardo");
+        Teg teg = new Teg(nombresJugadores);
+        teg.avanzarPrimeraEtapaColocacion();
+        teg.avanzarSegundaEtapaColocacion();
+
+        assertEquals("Ataque Entre Jugadores", teg.enQueFaseEstaElJuego());
+    }
+
+
+
+
+    @Test
+    public void test06AlInicializarseSalteandoseLaColocacionEsFaseDeAtaque(){
+        ArrayList<String> nombresJugadores = new ArrayList<>();
+        nombresJugadores.add("Ricardo");
+        Teg teg = new Teg(nombresJugadores);
+        teg.saltearColocacionInicial();
+        assertEquals("Ataque Entre Jugadores", teg.enQueFaseEstaElJuego());
+    }
+    @Test
+    public void test07AlAvanzarUnaEtapaDespuesDeSaltearSucedeLaReagrupacion(){
+        ArrayList<String> nombresJugadores = new ArrayList<>();
+        nombresJugadores.add("Ricardo");
+        Teg teg = new Teg(nombresJugadores);
+        teg.saltearColocacionInicial();
         teg.avanzarEtapa();
 
         assertEquals("Reagrupación de Tropas", teg.enQueFaseEstaElJuego());
     }
     @Test
-    public void test05AlAvanzarDosEtapasSucedeLaAsignacionDeNuevasFichas(){
+    public void test08AlAvanzarDosEtapasDespuesDeSaltearSucedeLaAsignacionDeNuevasFichas(){
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Bad Bunny");
         Teg teg = new Teg(nombresJugadores);
+        teg.saltearColocacionInicial();
         teg.avanzarEtapa();
         teg.avanzarEtapa();
 
         assertEquals("Asignación De Fichas", teg.enQueFaseEstaElJuego());
     }
     @Test
-    public void test06AlIniciarLaPartidaLeTocaAlJugador1(){
+    public void test09AlIniciarLaPartidaLeTocaAlJugador1(){
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("BetaTester");
         Teg teg = new Teg(nombresJugadores);
@@ -64,11 +97,13 @@ public class TestTeg {
         assertEquals("BetaTester", teg.aQueJugadorLeToca());
     }
     @Test
-    public void test07CuandoUnJugadorTerminaSuTurnoPasaAlAtaqueDelSiguiente(){
+    public void test10CuandoUnJugadorTerminaSuTurnoPasaAlAtaqueDelSiguiente(){
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ozuna");
         nombresJugadores.add("Sech");
         Teg teg = new Teg(nombresJugadores);
+        teg.saltearColocacionInicial();
+
         teg.avanzarEtapa();
         teg.avanzarEtapa();
         teg.avanzarEtapa();
@@ -76,11 +111,13 @@ public class TestTeg {
         assertEquals("Ataque Entre Jugadores", teg.enQueFaseEstaElJuego());
     }
     @Test
-    public void test08CuandoUnJugadorTerminaSuTurnoPasaAlSiguienteJugador(){
+    public void test11CuandoUnJugadorTerminaSuTurnoPasaAlSiguienteJugador(){
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ozuna");
         nombresJugadores.add("Sech");
         Teg teg = new Teg(nombresJugadores);
+        teg.saltearColocacionInicial();
+
         teg.avanzarEtapa();
         teg.avanzarEtapa();
         teg.avanzarEtapa();
@@ -88,11 +125,13 @@ public class TestTeg {
         assertEquals("Sech", teg.aQueJugadorLeToca());
     }
     @Test
-    public void test09TrasUnaRondaEnteraLeTocaDeNuevoAlPrimerJugador(){
+    public void test12TrasUnaRondaEnteraLeTocaDeNuevoAlPrimerJugador(){
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Carzo");
         nombresJugadores.add("Diaz");
         Teg teg = new Teg(nombresJugadores);
+        teg.saltearColocacionInicial();
+
         teg.avanzarEtapa();
         teg.avanzarEtapa();
         teg.avanzarEtapa();
@@ -104,11 +143,12 @@ public class TestTeg {
         assertEquals("Carzo", teg.aQueJugadorLeToca());
     }
     @Test
-    public void test10AtacarFuncionaCorrectamente() throws EtapaEquivocadaException, PaisNoLePerteneceException {
+    public void test13AtacarFuncionaCorrectamente() throws EtapaEquivocadaException, PaisNoLePerteneceException {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Carzo");
         nombresJugadores.add("Diaz");
         Teg teg = new Teg(nombresJugadores);
+        teg.saltearColocacionInicial();
         teg.avanzarEtapa();
         teg.avanzarEtapa();
 
@@ -125,11 +165,13 @@ public class TestTeg {
         assertEquals(teg.cantEjercitosEn("Etiopia"), 1);
     }
     @Test
-    public void test10MoverEjercitoFuncionaCorrectamente() throws EtapaEquivocadaException, PaisNoLePerteneceException {
+    public void test14MoverEjercitoFuncionaCorrectamente() throws EtapaEquivocadaException, PaisNoLePerteneceException {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Carzo");
         nombresJugadores.add("Diaz");
         Teg teg = new Teg(nombresJugadores);
+        teg.saltearColocacionInicial();
+
         teg.avanzarEtapa();
         teg.avanzarEtapa();
 
@@ -146,4 +188,6 @@ public class TestTeg {
         assertEquals(teg.cantEjercitosEn("Zaire"), 1);
         assertEquals(teg.cantEjercitosEn("Madagascar"), 2);
     }
+
+
 }
