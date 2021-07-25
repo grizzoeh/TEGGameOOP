@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import com.opencsv.CSVReader;
 import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
@@ -7,18 +8,17 @@ import edu.fiuba.algo3.modelo.excepciones.PaisesNoSonDelMismoDuenoException;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-import com.opencsv.CSVReader;
 
 
-
-public class Mapa {
+public class MapaMock {
     private Hashtable<String, Pais> paises;
     private Hashtable<String, Continente> continentes;
 
-    public Mapa(){
+    public MapaMock(){
         this.paises = new Hashtable<String, Pais>();
         this.continentes = new Hashtable<String, Continente>();
         this.crearContinentes();
@@ -30,7 +30,7 @@ public class Mapa {
     }
 
     public void crearPaises() throws FileNotFoundException {
-        FileReader fileReader = new FileReader("archivosDeTexto/fronteras.csv");
+        FileReader fileReader = new FileReader("archivosDeTexto/fronterasParaPruebas.csv");
         CSVReader csvReader = new CSVReader(fileReader);
 
         ArrayList<String> listaLector;
@@ -190,9 +190,5 @@ public class Mapa {
             if (objetoContinente.jugadorControlaContinente(ejercito)) fichas.addAndGet(objetoContinente.getBonusConquista());
         });
         return fichas.get();
-    }
-
-    public Continente getContinente(String nombre){
-        return continentes.get(nombre);
     }
 }

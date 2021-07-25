@@ -41,12 +41,12 @@ public class TestEntrega2 {
         teg.avanzarEtapa();
         teg.avanzarEtapa();
 
-        teg.asignarEjercito("Madagascar",1);
+        teg.asignarEjercito("Egipto",1);
 
         teg.avanzarEtapa();
         teg.avanzarEtapa();
         teg.avanzarEtapa();
-        teg.asignarEjercito("Etiopia",1);
+        teg.asignarEjercito("Madagascar",1);
 
         assertEquals(2, teg.cantEjercitosEn("Madagascar"));
         assertEquals(2, teg.cantEjercitosEn("Etiopia"));
@@ -81,13 +81,13 @@ public class TestEntrega2 {
 
 
         turno = new TurnoAsignarFicha(jugador1, mapa);
-        turno.asignarEjercito("Egipto", 1);
+        turno.asignarEjercito("Etiopia", 1);
 
         turno = new TurnoAsignarFicha(jugador2, mapa);
         turno.asignarEjercito("Turquia", 7);
 
         turno = new TurnoAsignarFicha(jugador3, mapa);
-        turno.asignarEjercito("Sahara", 1);
+        turno.asignarEjercito("Arabia", 1);
 
         assertTrue(mapa.jugadorControlaContinente("Asia", jugador2));
 
