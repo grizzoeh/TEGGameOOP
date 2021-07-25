@@ -240,4 +240,8 @@ public class Mapa {
         });
         return fichas.get();
     }
+
+    public Continente getContinente(String nombre){
+        return continentes.get(nombre);
+    }
 }
