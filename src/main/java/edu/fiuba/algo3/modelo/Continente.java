@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Continente {
 
@@ -18,6 +16,7 @@ public class Continente {
         this.bonusConquista = fichasPorConquista;
         this.paises = new Hashtable<String, Pais>();
     }
+
 
     public void agregarPais(Pais pais) {
         paises.put(pais.obtenerNombre(),pais);
@@ -35,6 +34,17 @@ public class Continente {
             if (color != ejercito) estado.set(false);
         });
         return estado.get();
+    }
+
+    public int cuantosPaisesDelContinenteDomina(Ejercito ejercito){
+       AtomicInteger paisesDominados = new AtomicInteger();
+
+        paises.forEach((key, value) -> {
+            Ejercito color = value.getEjercito();
+            if (color == ejercito) paisesDominados.getAndIncrement();
+        });
+
+        return paisesDominados.get();
     }
 
     public int getBonusConquista(){

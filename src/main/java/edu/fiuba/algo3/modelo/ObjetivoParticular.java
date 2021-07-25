@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ObjetivoParticular implements Objetivo {
     private String objetivo;
@@ -12,7 +14,18 @@ public class ObjetivoParticular implements Objetivo {
     }
 
     @Override
-    public boolean objetivoCumplido() {
-        return false;
+    public boolean objetivoCumplido(Ejercito ejercito) {
+        if (subobjetivos.size() == 0) return false;
+        AtomicBoolean ocupado = new AtomicBoolean(true);
+
+        subobjetivos.forEach((subobjetivo) -> {
+            ocupado.set(ocupado.get() && (subobjetivo.cumplido(ejercito)));
+        });
+
+       return ocupado.get();
+    }
+    @Override
+    public String mostrarObjetivo(){
+        return objetivo;
     }
 }

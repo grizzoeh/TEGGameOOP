@@ -1,21 +1,23 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.NoHayMasObjetivosException;
+
 import java.util.ArrayList;
 
 public class ListaObjetivos{
-    private ArrayList<Objetivo> objetivos;
+    private ArrayList<ObjetivoParticular> objetivos;
     private Mapa mapa;
     private ObjetivoComun objetivoComun;
 
     public ListaObjetivos(Mapa mapaRecibido){
         this.mapa = mapaRecibido;
-        this.objetivos = new ArrayList<Objetivo>();
+        this.objetivos = new ArrayList<ObjetivoParticular>();
         this.objetivoComun = new ObjetivoComun(mapa);
         crearObjetivos();
     }
 
     private void crearObjetivos(){
-        Objetivo objetivoAux;
+        ObjetivoParticular objetivoAux;
         Subobjetivo subobjetivoAux;
         ArrayList<Subobjetivo> listaSubobjetivosAux = new ArrayList<Subobjetivo>();
 
@@ -104,10 +106,30 @@ public class ListaObjetivos{
 
 
     }
+    public int cantidadDeObjetivos (){
+        return objetivos.size();
+    }
+
+    public ObjetivoComun asignarObjetivoComun(){
+        return objetivoComun;
+    }
+
+    public ObjetivoParticular asignarObjetivoParticular(){
+        if (objetivos.size() <= 0) throw new NoHayMasObjetivosException();
 
 
+        int numeroObjetivo = (int)(Math.random()*objetivos.size());
+        ObjetivoParticular objetivoAleatorio = objetivos.get(numeroObjetivo);
+        objetivos.remove(numeroObjetivo);
+        return objetivoAleatorio;
+    }
 
-
-
+    //Esta funcion solo tiene usos en funciones de testeo
+    public ObjetivoParticular asignarObjetivoParticularEspecifico(Integer numObjetivo){
+        if (objetivos.size() <= 0) throw new NoHayMasObjetivosException();
+        ObjetivoParticular objetivo = objetivos.get(numObjetivo);
+        objetivos.remove(numObjetivo);
+        return objetivo;
+    }
 
 }
