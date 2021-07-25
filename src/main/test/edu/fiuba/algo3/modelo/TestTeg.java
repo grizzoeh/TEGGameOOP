@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestTeg {
     @Test
@@ -36,7 +35,7 @@ public class TestTeg {
         assertEquals("Etapa Inicial", teg.enQueFaseEstaElJuego());
     }
     @Test
-    public void test04AlAvanzarTurnoSeSigueEnLaFaseDeColocacionInicial(){
+    public void test04AlAvanzarTurnoSeSigueEnLaFaseDeColocacionInicial() throws ColocacionFinalizadaException {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ricardo");
         Teg teg = new Teg(nombresJugadores);
@@ -45,7 +44,7 @@ public class TestTeg {
         assertEquals("Etapa Inicial", teg.enQueFaseEstaElJuego());
     }
     @Test
-    public void test05AlAvanzarDosVecesElTurnoNoSeSigueEnLaFaseDeColocacionInicial(){
+    public void test05AlAvanzarDosVecesElTurnoNoSeSigueEnLaFaseDeColocacionInicial() throws ColocacionFinalizadaException {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ricardo");
         Teg teg = new Teg(nombresJugadores);
@@ -142,7 +141,7 @@ public class TestTeg {
         assertEquals("Carzo", teg.aQueJugadorLeToca());
     }
     @Test
-    public void test13AtacarFuncionaCorrectamente() throws EtapaEquivocadaException, PaisNoLePerteneceException {
+    public void test13AtacarFuncionaCorrectamente() throws EtapaEquivocadaException {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Carzo");
         nombresJugadores.add("Diaz");
@@ -164,7 +163,7 @@ public class TestTeg {
         assertEquals(teg.cantEjercitosEn("Etiopia"), 1);
     }
     @Test
-    public void test14MoverEjercitoFuncionaCorrectamente() throws EtapaEquivocadaException, PaisNoLePerteneceException, PaisesNoSonDelMismoDuenoException, PaisSinEjercitosSuficientesException, PaisesNoContinuosException {
+    public void test14MoverEjercitoFuncionaCorrectamente() throws EtapaEquivocadaException, PaisesNoSonDelMismoDuenoException, PaisSinEjercitosSuficientesException, PaisesNoContinuosException {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Carzo");
         nombresJugadores.add("Diaz");
