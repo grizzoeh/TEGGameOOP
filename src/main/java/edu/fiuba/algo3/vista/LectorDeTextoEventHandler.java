@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.vista;
 
 
 import javafx.event.ActionEvent;
@@ -7,7 +7,6 @@ import javafx.event.ActionEvent;
         import javafx.scene.control.Button;
         import javafx.scene.input.KeyCode;
         import javafx.scene.input.KeyEvent;
-        import javafx.scene.paint.Color;
 
 public class LectorDeTextoEventHandler implements EventHandler<KeyEvent> {
 

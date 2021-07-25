@@ -3,5 +3,5 @@ module edu.fiuba.algo3 {
     requires annotations;
     exports edu.fiuba.algo3;
     exports edu.fiuba.algo3.modelo;
-    exports edu.fiuba.algo3.interfaz;
+    exports edu.fiuba.algo3.vista;
 }

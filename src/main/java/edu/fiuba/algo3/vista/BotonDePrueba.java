@@ -1,10 +1,7 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.vista;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,7 +13,9 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-public class BotonDePrueba extends Application {
+public class BotonDePrueba<palabras> extends Application {
+        ArrayList<String> palabras = new ArrayList();
+
 
     public static void main(String[] args){
         launch(args);
@@ -29,9 +28,6 @@ public class BotonDePrueba extends Application {
         Label comentario = new Label();
 
 
-        ArrayList<String> palabras = new ArrayList<>();
-
-
         Button boton = new Button("Presiona aqui");
 
         TextField texto = new TextField();
@@ -41,7 +37,6 @@ public class BotonDePrueba extends Application {
 
         LectorDeTextoEventHandler textoEventHandler = new LectorDeTextoEventHandler(boton);
         texto.setOnKeyPressed(textoEventHandler);
-
 
 
         HBox contenedorPrincipal = new HBox(boton, comentario);
@@ -60,7 +55,7 @@ public class BotonDePrueba extends Application {
 
         stage.setScene(scene);
         stage.show();
-
+        System.out.println("Hola");
         System.out.println(palabras);
     }
 }
