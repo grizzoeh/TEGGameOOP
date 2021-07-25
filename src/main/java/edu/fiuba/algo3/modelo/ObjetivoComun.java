@@ -10,8 +10,11 @@ public class ObjetivoComun implements Objetivo{
     }
 
     @Override
-    public boolean objetivoCumplido() {
-        return false;
+    public boolean objetivoCumplido(Ejercito ejercito) {
+        return (30 == mapa.paisesConEjercito(ejercito));
     }
-
+    @Override
+    public String mostrarObjetivo(){
+        return objetivo;
+    }
 }

@@ -17,6 +17,7 @@ public class Continente {
         this.paises = new Hashtable<String, Pais>();
     }
 
+
     public void agregarPais(Pais pais) {
         paises.put(pais.obtenerNombre(),pais);
     }
