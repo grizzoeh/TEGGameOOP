@@ -17,12 +17,14 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
     private VBox vbox;
     private Label label;
     private Stage stage;
+    private Scene scene;
 
-    public BotonConfirmarJugadoresEventHandler(VBox VBoxrecibida, Label labelRecibida, Stage stageRecibida) {
+    public BotonConfirmarJugadoresEventHandler(VBox VBoxrecibida, Label labelRecibida, Stage stageRecibida, Scene sceneRecibida) {
 
         stage = stageRecibida;
         vbox = VBoxrecibida;
         label = labelRecibida;
+        scene = sceneRecibida;
 
     }
 
@@ -51,8 +53,7 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
 
 
         }
-        var sceneNueva = new Scene(new HBox(label,vbox), 1080, 720);
-        stage.setScene(sceneNueva);
+        stage.setScene(scene);
 
         stage.show();
 

@@ -12,34 +12,17 @@ import javafx.stage.Stage;
 
 public class BotonInicioEventHandler implements EventHandler<ActionEvent> {
     private Stage stage;
+    private Scene scene;
 
-    public BotonInicioEventHandler(Stage stageRecibida) {
+    public BotonInicioEventHandler(Stage stageRecibida,Scene sceneRecibida) {
         stage = stageRecibida;
+        scene = sceneRecibida;
 
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        var label = new Label("Nueva Fase");
-        Button botonEnviar = new Button();
-        botonEnviar.setText("Enviar");
-        final ComboBox cantJugadoresBox = new ComboBox();
-        cantJugadoresBox.getItems().addAll(
-                "2",
-                "3",
-                "4",
-                "5",
-                "6"
-        );
-        VBox vbox = new VBox();
-
-        cantJugadoresBox.setOnAction(new EnviarCantJugadoresEventHandler(vbox,cantJugadoresBox));
-
-        Label alertaJugadoreVacios = new Label();
-        botonEnviar.setOnAction(new BotonConfirmarJugadoresEventHandler(vbox,alertaJugadoreVacios,stage));
-
-        var sceneNueva = new Scene(new HBox(label,vbox,cantJugadoresBox,botonEnviar,alertaJugadoreVacios), 1080, 720);
-        stage.setScene(sceneNueva);
+        stage.setScene(scene);
 
         stage.show();
 
