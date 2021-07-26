@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -29,8 +30,12 @@ public class App extends Application {
         var javafxVersion = SystemInfo.javafxVersion();
 
         var label = new Label("Bienvenido al Juego Teg");
+        label.setFont(new Font("Serif", 24));
+
         Button boton = new Button();
         boton.setText("Iniciar Juego");
+        boton.setPrefSize(240,60);
+        boton.setFont(new Font("Serif", 20));
 
         VBox contenedorPrincipal = new VBox(label,boton);
         contenedorPrincipal.setSpacing(20);
@@ -47,9 +52,14 @@ public class App extends Application {
 
     public Scene crearSceneJugadores(Stage stage){
         Scene sceneSiguiente = crearSceneComenzarJuego(stage);
-        var label = new Label("Nueva Fase");
+        var label = new Label("Por favor, selecciona la cantidad de jugadores");
+        label.setFont(new Font("Serif", 18));
+
         Button botonEnviar = new Button();
         botonEnviar.setText("Enviar");
+        botonEnviar.setFont(new Font(12));
+        botonEnviar.setPrefSize(60,20);
+
         final ComboBox cantJugadoresBox = new ComboBox();
         cantJugadoresBox.getItems().addAll(
                 "2",
@@ -58,14 +68,26 @@ public class App extends Application {
                 "5",
                 "6"
         );
-        VBox vbox = new VBox();
-
-        cantJugadoresBox.setOnAction(new EnviarCantJugadoresEventHandler(vbox,cantJugadoresBox));
 
         Label alertaJugadoreVacios = new Label();
+        VBox vbox = new VBox();
+        HBox contenedorSuperior = new HBox(label);
+        HBox contenedorCentral = new HBox(cantJugadoresBox,botonEnviar);
+        HBox contenedorInferior = new HBox(vbox,alertaJugadoreVacios);
+
+        contenedorSuperior.setAlignment(Pos.TOP_CENTER);
+        contenedorCentral.setAlignment(Pos.CENTER);
+        contenedorCentral.setSpacing(10);
+        contenedorInferior.setAlignment(Pos.CENTER);
+        VBox contenedor = new VBox(contenedorSuperior,contenedorCentral,contenedorInferior);
+        contenedorCentral.setSpacing(46);
+        cantJugadoresBox.setOnAction(new EnviarCantJugadoresEventHandler(vbox,cantJugadoresBox));
+        contenedor.setAlignment(Pos.CENTER);
+
         botonEnviar.setOnAction(new BotonConfirmarJugadoresEventHandler(vbox,alertaJugadoreVacios,stage,sceneSiguiente));
 
-        var sceneNueva = new Scene(new HBox(label,vbox,cantJugadoresBox,botonEnviar,alertaJugadoreVacios), 1080, 720);
+        var sceneNueva = new Scene(new StackPane(contenedor), 1080, 720);
+
         return sceneNueva;
     }
 
@@ -75,8 +97,10 @@ public class App extends Application {
         imageView.setImage(image);
         imageView.setX(10);
         imageView.setY(10);
-        imageView.setFitWidth(575);
+        imageView.setFitWidth(900);
         imageView.setPreserveRatio(true);
+
+
         var sceneNueva = new Scene(new HBox(imageView), 1080, 720);
 
         return sceneNueva;

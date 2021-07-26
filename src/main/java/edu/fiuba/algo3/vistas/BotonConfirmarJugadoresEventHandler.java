@@ -42,11 +42,13 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
             if (nombreJugador.equals("")){
                 label.setText("Completar campos de Jugadores");
                 label.setTextFill(Color.RED);
+                textFieldAux.requestFocus();
                 return;
             }
             if(nombresJugadores.contains(nombreJugador)){
                 label.setText("Jugador repetido");
                 label.setTextFill(Color.RED);
+                textFieldAux.requestFocus();
                 return;
             }
             nombresJugadores.add(nombreJugador);

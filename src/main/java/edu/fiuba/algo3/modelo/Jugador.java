@@ -9,6 +9,8 @@ public class Jugador {
     private Ejercito ejercito;
     private ArrayList<Tarjeta> tarjetasPais;
     private int cantidadDeCanjes = 0;
+    ObjetivoComun objetivoComun;
+    ObjetivoParticular objetivoParticular;
 
 
     public Jugador(String nombre, Ejercito ejercitoRecibido) {
@@ -37,6 +39,12 @@ public class Jugador {
         cantidadDeCanjes++;
     }
 
+    public void asignarObjetivoParticular(ObjetivoParticular objetivoRecibido){
+        this.objetivoParticular = objetivoRecibido;
+    }
+    public void asignarObjetivoGeneral(ObjetivoComun objetivoRecibido){
+        this.objetivoComun = objetivoRecibido;
+    }
     /*
     NO SE USA ACTUALMENTE
 
@@ -54,4 +62,8 @@ public class Jugador {
         tarjetasPais.remove(tarjeta);
         return tarjeta;
     }
+    public boolean objetivoCumplido(){
+        return (objetivoComun.objetivoCumplido(ejercito) || objetivoParticular.objetivoCumplido(ejercito));
+    }
+
 }
