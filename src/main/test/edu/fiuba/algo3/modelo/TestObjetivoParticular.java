@@ -7,50 +7,53 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestObjetivoParticular {
-    /*
 
-    ContinenteControladoMock continente1 = new ContinenteControladoMock("America", 2);
-    ContinenteControladoEnDosPaisesMock continente2 = new ContinenteControladoEnDosPaisesMock("America", 2);
-    ContinenteControladoEnDosPaisesMock continente3 = new ContinenteControladoEnDosPaisesMock("America", 2);
-
-    Subobjetivo subobjetivo1 = new Subobjetivo( continente1, 0 );
-    Subobjetivo subobjetivo2 = new Subobjetivo(continente2, 2);
-    Subobjetivo subobjetivo3 = new Subobjetivo(continente3, 0);
-
-
+    Continente continente1 =   new Continente("Prueba", 2);
+    Pais pais = new Pais("Argentina");
+    Ejercito ejercito = new Ejercito("Azul");
+    ArrayList<Subobjetivo> subObje = new ArrayList<Subobjetivo>();
 
     @Test
     public void test01SeDevuelveElObjetivoCorrectamente(){
-        ArrayList<Subobjetivo> subObje = new ArrayList<Subobjetivo>();
-        subObje.add(subobjetivo1);
-        subObje.add(subobjetivo2);
-        ObjetivoParticular objetivoParticular = new ObjetivoParticular("Conquistar Un Continente y dos paises de otro.",subObje);
+        ObjetivoParticular objetivoParticular = new ObjetivoParticular("Conquistar Un Continente.",subObje);
 
-
-        assertEquals("Conquistar Un Continente y dos paises de otro.", objetivoParticular.mostrarObjetivo());
+        assertEquals("Conquistar Un Continente.", objetivoParticular.mostrarObjetivo());
 
     }
+
     @Test
-    public void test02BajoEstasCondicionesElObjetivoEstaCumplido(){
-        ArrayList<Subobjetivo> subObje = new ArrayList<Subobjetivo>();
+    public void test02SiNoHayObjetivosNoEstaCumplido(){
+        ObjetivoParticular objetivoParticular = new ObjetivoParticular("Conquistar Un Continente.",subObje);
+
+        assertFalse(objetivoParticular.objetivoCumplido(ejercito));
+
+    }
+
+    @Test
+    public void test03BajoCondicionCumplidaElObjetivoEstaCumplido(){
+        pais.asignarEjercito(ejercito);
+        Subobjetivo subobjetivo1 = new Subobjetivo(continente1, 0);
         subObje.add(subobjetivo1);
-        subObje.add(subobjetivo2);
-        ObjetivoParticular objetivoParticular = new ObjetivoParticular("Conquistar Un Continente y dos paises de otro.",subObje);
-        Ejercito ejercito = new Ejercito("Blancpo");
+        continente1.agregarPais(pais);
+
+        ObjetivoParticular objetivoParticular = new ObjetivoParticular("Conquistar Un Continente.",subObje);
 
         assertTrue(objetivoParticular.objetivoCumplido(ejercito));
 
     }
     @Test
-    public void test02BajoEstasCondicionesElObjetivoNoEstaCumplido(){
-        ArrayList<Subobjetivo> subObje = new ArrayList<Subobjetivo>();
+    public void test04BajoUnaCondicionNOCumplidaElObjetivoNOEstaCumplido(){
+        Ejercito ejercito2 = new Ejercito("Az");
+
+        pais.asignarEjercito(ejercito);
+        Subobjetivo subobjetivo1 = new Subobjetivo(continente1, 0);
         subObje.add(subobjetivo1);
-        subObje.add(subobjetivo2);
-        subObje.add(subobjetivo3);
-        ObjetivoParticular objetivoParticular = new ObjetivoParticular("Conquistar Un Continente y dos paises de otro.",subObje);
-        Ejercito ejercito = new Ejercito("Blancpo");
+        continente1.agregarPais(pais);
 
-        assertFalse(objetivoParticular.objetivoCumplido(ejercito));
+        ObjetivoParticular objetivoParticular = new ObjetivoParticular("Conquistar Un Continente.",subObje);
 
-    }*/
+        assertFalse(objetivoParticular.objetivoCumplido(ejercito2));
+
+    }
+
 }
