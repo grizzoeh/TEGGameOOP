@@ -17,12 +17,14 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
     private VBox vbox;
     private Label label;
     private Stage stage;
+    private Scene scene;
 
-    public BotonConfirmarJugadoresEventHandler(VBox VBoxrecibida, Label labelRecibida, Stage stageRecibida) {
+    public BotonConfirmarJugadoresEventHandler(VBox VBoxrecibida, Label labelRecibida, Stage stageRecibida, Scene sceneRecibida) {
 
         stage = stageRecibida;
         vbox = VBoxrecibida;
         label = labelRecibida;
+        scene = sceneRecibida;
 
     }
 
@@ -40,19 +42,20 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
             if (nombreJugador.equals("")){
                 label.setText("Completar campos de Jugadores");
                 label.setTextFill(Color.RED);
+                textFieldAux.requestFocus();
                 return;
             }
             if(nombresJugadores.contains(nombreJugador)){
                 label.setText("Jugador repetido");
                 label.setTextFill(Color.RED);
+                textFieldAux.requestFocus();
                 return;
             }
             nombresJugadores.add(nombreJugador);
 
 
         }
-        var sceneNueva = new Scene(new HBox(label,vbox), 1080, 720);
-        stage.setScene(sceneNueva);
+        stage.setScene(scene);
 
         stage.show();
 

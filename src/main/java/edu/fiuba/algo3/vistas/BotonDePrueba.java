@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vistas;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -50,7 +51,6 @@ public class BotonDePrueba<palabras> extends Application {
         contenedorGeneral.setPadding(new Insets(2));
 
         StackPane layout = new StackPane(contenedorGeneral);
-
         Scene scene = new Scene(layout, 300,250);
 
         stage.setScene(scene);
