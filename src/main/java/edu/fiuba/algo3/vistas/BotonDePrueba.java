@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista;
+package edu.fiuba.algo3.vistas;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
