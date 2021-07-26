@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestObjetivoParticular {
+    /*
+
     ContinenteControladoMock continente1 = new ContinenteControladoMock("America", 2);
     ContinenteControladoEnDosPaisesMock continente2 = new ContinenteControladoEnDosPaisesMock("America", 2);
     ContinenteControladoEnDosPaisesMock continente3 = new ContinenteControladoEnDosPaisesMock("America", 2);
@@ -14,7 +16,6 @@ public class TestObjetivoParticular {
     Subobjetivo subobjetivo1 = new Subobjetivo( continente1, 0 );
     Subobjetivo subobjetivo2 = new Subobjetivo(continente2, 2);
     Subobjetivo subobjetivo3 = new Subobjetivo(continente3, 0);
-
 
 
 
@@ -51,5 +52,5 @@ public class TestObjetivoParticular {
 
         assertFalse(objetivoParticular.objetivoCumplido(ejercito));
 
-    }
+    }*/
 }

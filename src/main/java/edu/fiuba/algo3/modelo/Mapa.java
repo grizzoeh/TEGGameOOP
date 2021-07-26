@@ -17,10 +17,12 @@ import com.opencsv.CSVReader;
 public class Mapa {
     private Hashtable<String, Pais> paises;
     private Hashtable<String, Continente> continentes;
+    private String rutaArchivo;
 
-    public Mapa(){
+    public Mapa(String rutaArchivo){
         this.paises = new Hashtable<String, Pais>();
         this.continentes = new Hashtable<String, Continente>();
+        this.rutaArchivo = rutaArchivo;
         this.crearContinentes();
         try {
             this.crearPaises();
@@ -30,7 +32,7 @@ public class Mapa {
     }
 
     public void crearPaises() throws FileNotFoundException {
-        FileReader fileReader = new FileReader("archivosDeTexto/fronteras.csv");
+        FileReader fileReader = new FileReader(rutaArchivo);
         CSVReader csvReader = new CSVReader(fileReader);
 
         ArrayList<String> listaLector;
@@ -44,7 +46,7 @@ public class Mapa {
 
             }
 
-            fileReader = new FileReader("archivosDeTexto/fronteras.csv");
+            fileReader = new FileReader(rutaArchivo);
             csvReader = new CSVReader(fileReader);
             csvReader.readNext();
             while ((linea = csvReader.readNext()) != null) {

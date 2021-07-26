@@ -15,7 +15,7 @@ public class TestEntrega2 {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         Jugador jugador1 = new Jugador("Pablito Lezcano", new Ejercito("Verde"));
         jugadores.add(jugador1);
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa("archivosDeTexto/fronterasParaPrueba.csv");
         mapa.repartirPaises(jugadores);
         Pais egipto = mapa.obtenerPais("Egipto");
         Tarjeta tarjeta = new Tarjeta(egipto, "Barco");
@@ -36,20 +36,20 @@ public class TestEntrega2 {
         nombresJugadores.add("Gonza");
         nombresJugadores.add("Fran");
 
-        Teg teg = new Teg(nombresJugadores);
+        Teg teg = new Teg(nombresJugadores, "archivosDeTexto/fronterasParaPrueba.csv");
         teg.saltearColocacionInicial();
         teg.avanzarEtapa();
         teg.avanzarEtapa();
 
-        teg.asignarEjercito("Egipto",1);
-
-        teg.avanzarEtapa();
-        teg.avanzarEtapa();
-        teg.avanzarEtapa();
         teg.asignarEjercito("Madagascar",1);
 
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
+        teg.asignarEjercito("Egipto",1);
+
         assertEquals(2, teg.cantEjercitosEn("Madagascar"));
-        assertEquals(2, teg.cantEjercitosEn("Etiopia"));
+        assertEquals(2, teg.cantEjercitosEn("Egipto"));
     }
     @Test
     public void test03RondaDeTresJugadoresConColocacionDeEjercitos() throws EtapaEquivocadaException, PaisNoLePerteneceException {
@@ -65,7 +65,7 @@ public class TestEntrega2 {
         jugadores.add(jugador2);
         jugadores.add(jugador3);
 
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa("archivosDeTexto/fronterasParaPrueba.csv");
         mapa.repartirPaises(jugadores);
 
         Pais turquia = mapa.obtenerPais("Turquia");
@@ -77,23 +77,22 @@ public class TestEntrega2 {
         Turno turno;
 
         turno = new TurnoAsignarFicha(jugador2, mapa); // Para asignar los ejercitos por continente.
-        turno.asignarEjercito("Turquia", 1);
-
+        turno.asignarEjercito("Arabia", 1);
 
         turno = new TurnoAsignarFicha(jugador1, mapa);
-        turno.asignarEjercito("Etiopia", 1);
+        turno.asignarEjercito("Egipto", 1);
 
         turno = new TurnoAsignarFicha(jugador2, mapa);
-        turno.asignarEjercito("Turquia", 7);
+        turno.asignarEjercito("Arabia", 7);
 
         turno = new TurnoAsignarFicha(jugador3, mapa);
-        turno.asignarEjercito("Arabia", 1);
+        turno.asignarEjercito("Sahara", 1);
 
         assertTrue(mapa.jugadorControlaContinente("Asia", jugador2));
 
         assertEquals(2, mapa.numeroEjercitosEn("Egipto"));
 
-        assertEquals(9, mapa.numeroEjercitosEn("Turquia"));
+        assertEquals(9, mapa.numeroEjercitosEn("Arabia"));
 
         assertEquals(2, mapa.numeroEjercitosEn("Sahara"));
     }
@@ -109,7 +108,7 @@ public class TestEntrega2 {
         jugadores.add(jugador1);
         jugadores.add(jugador2);
 
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa("archivosDeTexto/fronterasParaPrueba.csv");
         mapa.repartirPaises(jugadores);
 
         Integer cantidadDePaisesDominadosPorJug1 = mapa.paisesConEjercito(ejercitoJug1);
