@@ -4,5 +4,5 @@ module edu.fiuba.algo3 {
     requires opencsv;
     exports edu.fiuba.algo3;
     exports edu.fiuba.algo3.modelo;
-    exports edu.fiuba.algo3.vista;
+    exports edu.fiuba.algo3.vistas;
 }
