@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestMapa {
-    Mapa mapa = new Mapa();
+    Mapa mapa = new Mapa("archivosDeTexto/fronterasParaPrueba.csv");
     @Test
     public void test01TodosLosPaisesSeInicializanConAlMenosUnEjercito() {
         ArrayList<Jugador> jugadores = new ArrayList<>();
@@ -88,7 +88,7 @@ public class TestMapa {
     }
     @Test
     public void test07MapaAtacarFuncionaCorrectamenteEnCasoQuePuedeAtacar() {
-        Mapa mapaAux = new Mapa();
+        Mapa mapaAux = new Mapa("archivosDeTexto/fronterasParaPrueba.csv");
         ArrayList<Jugador> jugadores = new ArrayList<>();
         Jugador jugador1 = new Jugador("Esteban", new Ejercito("Blanco"));
         Jugador jugador2 = new Jugador("Franco", new Ejercito("Rojo"));

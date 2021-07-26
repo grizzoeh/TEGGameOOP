@@ -12,8 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestListaObjetivos {
-    Mapa mapa = new Mapa();
-
+    Mapa mapa = new Mapa("archivosDeTexto/fronterasParaPrueba.csv");
 
     @Test
     public void test01AlCrearseSeInicializanLosOchoObjetivos(){

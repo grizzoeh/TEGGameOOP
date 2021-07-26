@@ -11,9 +11,9 @@ public class Teg {
     private Turno turnoActual;
     private int numeroJugadorActual;
 
-    public Teg(ArrayList<String> nombresJugadores) {
+    public Teg(ArrayList<String> nombresJugadores, String rutaArchivo) {
         this.cantidadJugadores = nombresJugadores.size();
-        this.mapa = new Mapa();
+        this.mapa = new Mapa(rutaArchivo);
         this.jugadores = new ArrayList<Jugador>();
         this.numeroJugadorActual = 0;
 
