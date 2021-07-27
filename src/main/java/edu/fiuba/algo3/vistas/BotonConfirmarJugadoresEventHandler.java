@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -18,19 +19,26 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
     private Label label;
     private Stage stage;
     private Scene scene;
+    private ComboBox jugadoresBox;
 
-    public BotonConfirmarJugadoresEventHandler(VBox VBoxrecibida, Label labelRecibida, Stage stageRecibida, Scene sceneRecibida) {
+    public BotonConfirmarJugadoresEventHandler(VBox VBoxrecibida, Label labelRecibida, Stage stageRecibida, Scene sceneRecibida, ComboBox jugadoresBoxRecibida) {
 
         stage = stageRecibida;
         vbox = VBoxrecibida;
         label = labelRecibida;
         scene = sceneRecibida;
+        jugadoresBox = jugadoresBoxRecibida;
 
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-
+        if(jugadoresBox.getSelectionModel().isEmpty()){
+            label.setText("Seleccionar cantidad de jugadores.");
+            label.setTextFill(Color.RED);
+            label.setFont(new Font(14));
+            return;
+        }
 
         Integer cantJugadores = vbox.getChildren().size();
         ArrayList<String> nombresJugadores = new ArrayList();

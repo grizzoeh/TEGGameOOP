@@ -2,6 +2,7 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.vistas.BotonConfirmarJugadoresEventHandler;
 import edu.fiuba.algo3.vistas.BotonInicioEventHandler;
+import edu.fiuba.algo3.vistas.BotonObjetivoEventHandler;
 import edu.fiuba.algo3.vistas.EnviarCantJugadoresEventHandler;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -51,8 +52,8 @@ public class App extends Application {
     }
 
     public Scene crearSceneJugadores(Stage stage){
-        Scene sceneSiguiente = crearSceneComenzarJuego(stage);
-        var label = new Label("Por favor, selecciona la cantidad de jugadores");
+        Scene sceneSiguiente = crearSceneEtapaInicial(stage);
+        var label = new Label("Seleccione la cantidad de jugadores:\t");
         label.setFont(new Font("Serif", 18));
 
         Button botonEnviar = new Button();
@@ -60,7 +61,7 @@ public class App extends Application {
         botonEnviar.setFont(new Font(12));
         botonEnviar.setPrefSize(60,20);
 
-        final ComboBox cantJugadoresBox = new ComboBox();
+        ComboBox cantJugadoresBox = new ComboBox();
         cantJugadoresBox.getItems().addAll(
                 "2",
                 "3",
@@ -71,27 +72,28 @@ public class App extends Application {
 
         Label alertaJugadoreVacios = new Label();
         VBox vbox = new VBox();
-        HBox contenedorSuperior = new HBox(label);
-        HBox contenedorCentral = new HBox(cantJugadoresBox,botonEnviar);
-        HBox contenedorInferior = new HBox(vbox,alertaJugadoreVacios);
+        HBox contenedorSuperior = new HBox(label,cantJugadoresBox);
+        HBox contenedorCentral = new HBox(vbox);
+        VBox contenedorInferior = new VBox(botonEnviar, alertaJugadoreVacios);
 
         contenedorSuperior.setAlignment(Pos.TOP_CENTER);
         contenedorCentral.setAlignment(Pos.CENTER);
         contenedorCentral.setSpacing(10);
         contenedorInferior.setAlignment(Pos.CENTER);
+
         VBox contenedor = new VBox(contenedorSuperior,contenedorCentral,contenedorInferior);
         contenedorCentral.setSpacing(46);
         cantJugadoresBox.setOnAction(new EnviarCantJugadoresEventHandler(vbox,cantJugadoresBox));
         contenedor.setAlignment(Pos.CENTER);
 
-        botonEnviar.setOnAction(new BotonConfirmarJugadoresEventHandler(vbox,alertaJugadoreVacios,stage,sceneSiguiente));
+        botonEnviar.setOnAction(new BotonConfirmarJugadoresEventHandler(vbox,alertaJugadoreVacios,stage,sceneSiguiente,cantJugadoresBox));
 
         var sceneNueva = new Scene(new StackPane(contenedor), 1080, 720);
 
         return sceneNueva;
     }
 
-    public Scene crearSceneComenzarJuego(Stage stage) {
+    private HBox crearImagenJuego() {
         Image image = new Image("file:imagenes/mapaTeg.png");
         ImageView imageView = new ImageView();
         imageView.setImage(image);
@@ -100,8 +102,34 @@ public class App extends Application {
         imageView.setFitWidth(900);
         imageView.setPreserveRatio(true);
 
+        HBox caja = new HBox(imageView);
+        return caja;
+    }
 
-        var sceneNueva = new Scene(new HBox(imageView), 1080, 720);
+
+    public Scene crearSceneEtapaInicial(Stage stage) {
+        HBox imageView = crearImagenJuego();
+
+        var nombre = new Label("Nombre: ");
+        var color = new Label("Color: ");
+
+        //no funciona xd
+        Button objetivoButton = new Button();
+        objetivoButton.setText("Ver Objetivo");
+        objetivoButton.setFont(new Font(12));
+        objetivoButton.setOnAction(new BotonObjetivoEventHandler(stage));
+
+        var etapa = new Label("Etapa Inicial:\t");
+        etapa.setFont(new Font("Serif", 18));
+
+
+        VBox conteSupDer = new VBox(nombre, color, objetivoButton);
+        conteSupDer.setAlignment(Pos.TOP_RIGHT);
+
+        HBox contInfIzq = new HBox(etapa);
+        contInfIzq.setAlignment(Pos.BOTTOM_LEFT);
+
+        var sceneNueva = new Scene(new StackPane(conteSupDer,contInfIzq,imageView), 1080, 720);
 
         return sceneNueva;
     }
