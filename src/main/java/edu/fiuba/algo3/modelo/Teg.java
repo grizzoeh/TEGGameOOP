@@ -73,7 +73,11 @@ public class Teg {
         numeroJugadorActual = 0;
         turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual), mapa);
     }
+    public ArrayList<Pais> paisesDeJugador(Jugador jugador){
+        ArrayList<Pais> lista = mapa.listaPaisesConEjercito(jugador.getEjercito());
+        return lista;
 
+    }
     public void avanzarEtapa(){
         turnoActual = turnoActual.avanzarEtapa();
 

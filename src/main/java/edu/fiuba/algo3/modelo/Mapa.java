@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import com.opencsv.CSVReader;
 import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
@@ -7,10 +8,10 @@ import edu.fiuba.algo3.modelo.excepciones.PaisesNoSonDelMismoDuenoException;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-import com.opencsv.CSVReader;
 
 
 
@@ -145,8 +146,15 @@ public class Mapa {
         Pais paisBuscado = paises.get(nombrePais);
         return paisBuscado.obtenerCantidadEjercitos();
     }
+    public ArrayList<Pais> listaPaisesConEjercito(Ejercito ejercito) {
+        ArrayList<Pais> paisesPertenecientes = new ArrayList<>();
+        paises.forEach((stringPais, objetoPais) -> {
+            if (ejercitoEnPais(stringPais) == ejercito) paisesPertenecientes.add(objetoPais);
+        });
+        return paisesPertenecientes;
+    }
 
-    public Integer paisesConEjercito(Ejercito ejercito){
+        public Integer paisesConEjercito(Ejercito ejercito){
         AtomicInteger contadorEjercito = new AtomicInteger();
         Ejercito ejercitoAux;
 
@@ -197,4 +205,6 @@ public class Mapa {
     public Continente getContinente(String nombre){
         return continentes.get(nombre);
     }
+
+
 }
