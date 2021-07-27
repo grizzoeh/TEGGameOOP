@@ -6,12 +6,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionEvent> {
@@ -63,11 +65,36 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
 
 
         }
+        try {
+            reproducirAudio("sonidos/tamboresAlInicio.aiff");
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        }
         stage.setScene(scene);
+
 
         stage.show();
 
 
 
     }
-}
+    public void reproducirAudio(String file)throws UnsupportedAudioFileException,
+            IOException, LineUnavailableException {
+        Clip clip;
+        AudioInputStream audioStream;
+        audioStream = AudioSystem.getAudioInputStream(new File("sonidos/tamboresAlInicio.aiff").getAbsoluteFile());
+
+        clip = AudioSystem.getClip();
+
+        clip.open(audioStream);
+        clip.start();
+
+
+    }
+
+    }
+
