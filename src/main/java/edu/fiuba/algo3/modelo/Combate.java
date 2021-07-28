@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
+
 import java.util.ArrayList;
 
 public class Combate {

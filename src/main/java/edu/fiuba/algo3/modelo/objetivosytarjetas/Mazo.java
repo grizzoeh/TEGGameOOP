@@ -1,10 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.objetivosytarjetas;
 
+import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaParaElPaisException;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 
 
 public class Mazo {

@@ -1,4 +1,7 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.objetivosytarjetas;
+
+import edu.fiuba.algo3.modelo.Ejercito;
+import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 
 public class ObjetivoComun implements Objetivo{
     private String objetivo;

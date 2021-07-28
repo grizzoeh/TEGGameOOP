@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 import com.opencsv.CSVReader;
+import edu.fiuba.algo3.modelo.distribuciondepaises.Continente;
+import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;

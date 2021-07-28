@@ -1,12 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaParaElPaisException;
-import org.jetbrains.annotations.NotNull;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.Mazo;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.Tarjeta;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

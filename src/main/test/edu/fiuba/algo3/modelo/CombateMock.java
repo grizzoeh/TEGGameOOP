@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
+import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 
 public class CombateMock {
     private Pais paisAtacante;

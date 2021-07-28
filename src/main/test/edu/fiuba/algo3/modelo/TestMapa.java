@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
+import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;

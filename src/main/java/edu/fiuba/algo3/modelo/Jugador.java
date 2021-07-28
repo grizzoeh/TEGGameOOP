@@ -1,6 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaParaElPaisException;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.ObjetivoComun;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.ObjetivoParticular;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.Tarjeta;
 
 import java.util.ArrayList;
 
@@ -45,16 +49,14 @@ public class Jugador {
     public void asignarObjetivoGeneral(ObjetivoComun objetivoRecibido){
         this.objetivoComun = objetivoRecibido;
     }
-    /*
-    NO SE USA ACTUALMENTE
+
 
     public  ArrayList<Tarjeta> mostrarTarjetas(){
         ArrayList<Tarjeta> tarjetasPropias = (ArrayList<Tarjeta>) this.tarjetasPais.clone();
         return tarjetasPropias;
     }
-    */
 
-    public Tarjeta usarTarjeta(Pais unPais) throws NoExisteTarjetaParaElPaisException {
+    public Tarjeta usarTarjeta(Pais unPais) {
         Tarjeta tarjeta = tarjetasPais.stream()
                 .filter(t -> t.perteneceAEstePais(unPais))
                 .findFirst() //findFirst devuelve Optional<Tipo>, es decir o el tipo del elememento o null

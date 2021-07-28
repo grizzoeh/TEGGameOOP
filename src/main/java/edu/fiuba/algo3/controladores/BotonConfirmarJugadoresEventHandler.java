@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vistas;
+package edu.fiuba.algo3.controladores;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -66,7 +66,7 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
 
         }
         try {
-            reproducirAudio("sonidos/tamboresAlInicio.aiff");
+            reproducirAudio("recursos/sonidos/tamboresAlInicio.aiff");
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -86,7 +86,7 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
             IOException, LineUnavailableException {
         Clip clip;
         AudioInputStream audioStream;
-        audioStream = AudioSystem.getAudioInputStream(new File("sonidos/tamboresAlInicio.aiff").getAbsoluteFile());
+        audioStream = AudioSystem.getAudioInputStream(new File(file).getAbsoluteFile());
 
         clip = AudioSystem.getClip();
 

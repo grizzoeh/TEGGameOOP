@@ -1,8 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.objetivosytarjetas;
+
+import edu.fiuba.algo3.modelo.Ejercito;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class ObjetivoParticular implements Objetivo {
     private String objetivo;

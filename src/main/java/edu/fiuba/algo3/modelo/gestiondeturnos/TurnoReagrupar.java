@@ -1,5 +1,7 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.gestiondeturnos;
 
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
 public class TurnoReagrupar implements Turno {
@@ -19,7 +21,7 @@ public class TurnoReagrupar implements Turno {
 		throw new EtapaEquivocadaException();
 	}
 
-	public void moverEjercito(String paisOrigen, String paisDestino, int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException, PaisesNoSonDelMismoDuenoException, PaisSinEjercitosSuficientesException, PaisesNoContinuosException {
+	public void moverEjercito(String paisOrigen, String paisDestino, int cantidad)  {
 		if(!mapa.paisLePertenece(paisOrigen, jugador)) {
 			throw new PaisNoLePerteneceException();
 		}
@@ -34,15 +36,15 @@ public class TurnoReagrupar implements Turno {
 		return "Reagrupación de Tropas";
 	}
 
-	public void canjeoDeTresTarjetas() throws EtapaEquivocadaException{
+	public void canjeoDeTresTarjetas() {
 		throw new EtapaEquivocadaException();
 	}
 
-	public void canjeoUnicoTarjeta(String pais) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+	public void canjeoUnicoTarjeta(String pais) {
 		throw new EtapaEquivocadaException();
 	}
 
-	public boolean todasLasFichasColocadas() throws EtapaEquivocadaException {
+	public boolean todasLasFichasColocadas() {
 		throw new EtapaEquivocadaException();
 	}
 

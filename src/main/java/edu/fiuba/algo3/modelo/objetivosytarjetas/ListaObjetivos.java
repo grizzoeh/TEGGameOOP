@@ -1,5 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.objetivosytarjetas;
 
+import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.NoHayMasObjetivosException;
 
 import java.util.ArrayList;
