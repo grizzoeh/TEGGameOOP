@@ -1,9 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.gestiondeturnos;
 
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
-
-import java.util.ArrayList;
 
 public class TurnoAsignarFicha implements Turno {
 	private Mapa mapa;
@@ -19,11 +19,11 @@ public class TurnoAsignarFicha implements Turno {
 				+ mapa.fichasPorContinentesControlados(jugador.getEjercito());
 	}
 
-	public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+	public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos){
 		throw new EtapaEquivocadaException();
 	}
 
-	public void asignarEjercito(String pais, int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+	public void asignarEjercito(String pais, int cantidad) {
 		if(!mapa.paisLePertenece(pais, jugador)) {
 			throw new PaisNoLePerteneceException();
 		}
@@ -33,7 +33,7 @@ public class TurnoAsignarFicha implements Turno {
 		cantidadFichas -= cantidad;
 	}
 
-	public void moverEjercito(String paisOrigen, String paisDestino, int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+	public void moverEjercito(String paisOrigen, String paisDestino, int cantidad) {
 		throw new EtapaEquivocadaException();
 	}
 
@@ -65,7 +65,7 @@ public class TurnoAsignarFicha implements Turno {
 		fichasTrasCanje = cantidadASumar;
 	}
 
-	public void canjeoUnicoTarjeta(String pais)throws PaisNoLePerteneceException{
+	public void canjeoUnicoTarjeta(String pais){
 		if(!mapa.paisLePertenece(pais, jugador)) {
 			throw new PaisNoLePerteneceException();
 		}

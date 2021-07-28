@@ -1,8 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.distribuciondepaises;
+
+import edu.fiuba.algo3.modelo.Ejercito;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 
 public class Pais {
     private final String nombre;

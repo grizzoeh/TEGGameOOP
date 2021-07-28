@@ -1,9 +1,9 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.vistas.BotonConfirmarJugadoresEventHandler;
-import edu.fiuba.algo3.vistas.BotonInicioEventHandler;
-import edu.fiuba.algo3.vistas.BotonObjetivoEventHandler;
-import edu.fiuba.algo3.vistas.EnviarCantJugadoresEventHandler;
+import edu.fiuba.algo3.controladores.BotonConfirmarJugadoresEventHandler;
+import edu.fiuba.algo3.controladores.BotonInicioEventHandler;
+import edu.fiuba.algo3.controladores.BotonObjetivoEventHandler;
+import edu.fiuba.algo3.controladores.EnviarCantJugadoresEventHandler;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -46,7 +46,7 @@ public class App extends Application {
         boton.setOnAction(new BotonInicioEventHandler(stage,sceneCreacionJugadores));
         stage.setScene(sceneBienvenida);
         stage.setTitle("Teg");
-        stage.getIcons().add(new Image("file:imagenes/tegIcono.jpg"));
+        stage.getIcons().add(new Image("file:recursos/imagenes/tegIcono.jpg"));
         stage.show();
 
     }
@@ -94,7 +94,7 @@ public class App extends Application {
     }
 
     private ImageView crearImagenJuego() {
-        Image image = new Image("file:imagenes/mapaTeg.png");
+        Image image = new Image("file:recursos/imagenes/mapaTeg.png");
         ImageView imageView = new ImageView();
         imageView.setImage(image);
         imageView.setX(10);

@@ -1,7 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
+import edu.fiuba.algo3.modelo.gestiondeturnos.Turno;
+import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoAtaque;
+import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoReagrupar;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

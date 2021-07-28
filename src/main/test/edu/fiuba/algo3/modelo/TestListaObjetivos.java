@@ -1,12 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.NoHayMasObjetivosException;
-import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
-import org.junit.jupiter.api.BeforeAll;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.ListaObjetivos;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.ObjetivoComun;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.ObjetivoParticular;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

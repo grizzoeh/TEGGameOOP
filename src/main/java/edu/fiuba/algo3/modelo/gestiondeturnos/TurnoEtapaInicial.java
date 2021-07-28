@@ -1,9 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.gestiondeturnos;
 
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
-
-import java.util.ArrayList;
 
 public class TurnoEtapaInicial implements Turno {
     private Mapa mapa;
@@ -16,11 +16,11 @@ public class TurnoEtapaInicial implements Turno {
         this.mapa = mapaIngresado;
         this.cantidadFichas = fichasAColocar;
     }
-    public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+    public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) {
         throw new EtapaEquivocadaException();
     }
 
-    public void asignarEjercito(String pais, int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+    public void asignarEjercito(String pais, int cantidad) {
         if(!mapa.paisLePertenece(pais, jugador)) {
             throw new PaisNoLePerteneceException();
         }
@@ -30,7 +30,7 @@ public class TurnoEtapaInicial implements Turno {
         cantidadFichas -= cantidad;
     }
 
-    public void moverEjercito(String paisOrigen, String paisDestino, int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+    public void moverEjercito(String paisOrigen, String paisDestino, int cantidad) {
         throw new EtapaEquivocadaException();
     }
 
@@ -39,11 +39,11 @@ public class TurnoEtapaInicial implements Turno {
     }
 
 
-    public void canjeoDeTresTarjetas() throws EtapaEquivocadaException {
+    public void canjeoDeTresTarjetas() {
         throw new EtapaEquivocadaException();
     }
 
-    public void canjeoUnicoTarjeta(String pais) throws PaisNoLePerteneceException, EtapaEquivocadaException {
+    public void canjeoUnicoTarjeta(String pais) {
         throw new EtapaEquivocadaException();
     }
 
@@ -51,7 +51,7 @@ public class TurnoEtapaInicial implements Turno {
         return "Etapa Inicial";
     }
 
-    public  int getCantidadFichasTrasCanje() throws EtapaEquivocadaException {
+    public  int getCantidadFichasTrasCanje() {
         throw new EtapaEquivocadaException();
     }
 

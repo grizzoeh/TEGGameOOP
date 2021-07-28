@@ -1,4 +1,7 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.objetivosytarjetas;
+
+import edu.fiuba.algo3.modelo.distribuciondepaises.Continente;
+import edu.fiuba.algo3.modelo.Ejercito;
 
 public class Subobjetivo {
     private Continente continenteAOcupar;
