@@ -1,0 +1,9 @@
+Pais,Continente,Limita con
+Madagascar,Africa,"Egipto,Zaire"
+Etiopia,Africa,"Sahara,Egipto,Zaire,Sudafrica"
+Egipto,Africa,"Turquia,Madagascar,Etiopia,Sahara"
+Sahara,Africa,"Egipto,Etiopia,Zaire"
+Sudafrica,Africa,"Zaire,Etiopia"
+Zaire,Africa,"Madagascar,Sudafrica,Etiopia,Sahara"
+Arabia,Asia,"Turquia"
+Turquia,Asia,"Egipto,Polonia,Rusia,Iran,Israel,Arabia"

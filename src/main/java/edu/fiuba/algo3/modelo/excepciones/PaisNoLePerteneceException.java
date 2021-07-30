@@ -1,4 +1,4 @@
 package edu.fiuba.algo3.modelo.excepciones;
 
-public class PaisNoLePerteneceException extends Exception{
+public class PaisNoLePerteneceException extends RuntimeException{
 }

@@ -1,8 +1,0 @@
-Egipto:Etiopia,Madagascar,Sahara
-Etiopia:Egipto,Zaire,Sahara,Sudafrica
-Madagascar:Egipto,Zaire
-Sahara:Egipto,Zaire,Etiopia
-Sudafrica:Zaire,Etiopia
-Zaire:Madagascar,Etiopia,Sahara,Sudafrica
-Turquia:Arabia
-Arabia:Turquia

@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
+import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
 import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestMapa {
-    Mapa mapa = new Mapa();
+    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
     @Test
     public void test01TodosLosPaisesSeInicializanConAlMenosUnEjercito() {
         ArrayList<Jugador> jugadores = new ArrayList<>();
@@ -88,7 +90,7 @@ public class TestMapa {
     }
     @Test
     public void test07MapaAtacarFuncionaCorrectamenteEnCasoQuePuedeAtacar() {
-        Mapa mapaAux = new Mapa();
+        Mapa mapaAux = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
         ArrayList<Jugador> jugadores = new ArrayList<>();
         Jugador jugador1 = new Jugador("Esteban", new Ejercito("Blanco"));
         Jugador jugador2 = new Jugador("Franco", new Ejercito("Rojo"));

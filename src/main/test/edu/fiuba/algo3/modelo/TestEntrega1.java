@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,11 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TestEntrega1 {
     @Test
     public void test01ColocacionDeEjercitos() {
-        ArrayList<String> jugadores = new ArrayList<String>();
+        ArrayList<String> jugadores = new ArrayList<>();
         jugadores.add("Nico");
         jugadores.add("Tomi");
 
-        Teg teg = new Teg(jugadores);
+        Teg teg = new Teg(jugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
         assertTrue(teg.todosLosPaisesOcupados());
     }
 

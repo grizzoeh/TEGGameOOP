@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
+import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoEtapaInicial;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestTurnoEtapaInicial {
-    Mapa mapa = new Mapa();
+    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronteras.csv");
     Ejercito azul = new Ejercito("Azul");
     Jugador jugador = new Jugador("Tomi", azul);
     ArrayList lista = new ArrayList<>();

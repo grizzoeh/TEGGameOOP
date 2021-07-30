@@ -1,4 +1,4 @@
 package edu.fiuba.algo3.modelo.excepciones;
 
-public class PaisSinEjercitosSuficientesException extends Exception{
+public class PaisSinEjercitosSuficientesException extends RuntimeException{
 }

@@ -1,9 +1,17 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.controladores.BotonInicioEventHandler;
+import edu.fiuba.algo3.controladores.ProveedorDeConstantes;
+import edu.fiuba.algo3.vistas.EscenaIntroducirJugadores;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -16,11 +24,33 @@ public class App extends Application {
         var javaVersion = SystemInfo.javaVersion();
         var javafxVersion = SystemInfo.javafxVersion();
 
-        var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        var scene = new Scene(new StackPane(label), 640, 480);
-        stage.setScene(scene);
+        var label = new Label("Bienvenido al Juego Teg");
+        label.setFont(new Font("Serif", 24));
+
+
+        Button boton = new Button();
+        boton.setText("Iniciar Juego");
+        boton.setPrefSize(240,60);
+        boton.setFont(new Font("Serif", 20));
+
+        VBox contenedorPrincipal = new VBox(label,boton);
+        contenedorPrincipal.setSpacing(20);
+        contenedorPrincipal.setAlignment(Pos.CENTER);
+
+        Scene sceneBienvenida = new Scene(new StackPane(contenedorPrincipal), 1080, 720);
+
+        Scene sceneCreacionJugadores = EscenaIntroducirJugadores.crearSceneJugadores(sceneBienvenida, stage);
+
+        boton.setOnAction(new BotonInicioEventHandler(stage,sceneCreacionJugadores));
+
+        stage.setScene(sceneBienvenida);
+        stage.setTitle("TEG");
+        stage.getIcons().add(new Image(ProveedorDeConstantes.obtenerIconoDelJuego()));
+
         stage.show();
+
     }
+
 
     public static void main(String[] args) {
         launch();
