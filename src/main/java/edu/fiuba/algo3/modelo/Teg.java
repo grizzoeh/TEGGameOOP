@@ -3,9 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 import edu.fiuba.algo3.modelo.excepciones.*;
-import edu.fiuba.algo3.modelo.gestiondeturnos.Turno;
-import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoAtaque;
-import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoEtapaInicial;
+import edu.fiuba.algo3.modelo.gestiondeturnos.*;
 
 import java.util.ArrayList;
 
@@ -38,15 +36,15 @@ public class Teg {
     }
 
     public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws EtapaEquivocadaException, PaisNoLePerteneceException {
-        turnoActual.atacar(paisAtaque,paisDefensa,cantEjercitos);
+        ((TurnoJugable) turnoActual).atacar(paisAtaque,paisDefensa,cantEjercitos);
     }
 
     public void moverEjercito(String paisDesde, String paisHasta,int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException, PaisesNoSonDelMismoDuenoException, PaisSinEjercitosSuficientesException, PaisesNoContinuosException {
-        turnoActual.moverEjercito(paisDesde,paisHasta,cantidad);
+        ((TurnoJugable) turnoActual).moverEjercito(paisDesde,paisHasta,cantidad);
     }
 
     public void asignarEjercito(String pais,int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException {
-        turnoActual.asignarEjercito(pais,cantidad);
+        ((TurnoJugable) turnoActual).asignarEjercito(pais,cantidad);
     }
 
     public void avanzarPrimeraEtapaColocacion() throws ColocacionFinalizadaException {
@@ -84,9 +82,9 @@ public class Teg {
 
     }
     public void avanzarEtapa(){
-        turnoActual = turnoActual.avanzarEtapa();
+         turnoActual = ((TurnoJugable) turnoActual).avanzarEtapa();
 
-        if(turnoActual.estaFinalizado()){
+        if(((TurnoBasico) turnoActual).estaFinalizado()){
             numeroJugadorActual++;
             numeroJugadorActual %= jugadores.size();
             turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual),mapa);
@@ -101,7 +99,7 @@ public class Teg {
         return cantidadJugadores;
     }
     public String enQueFaseEstaElJuego(){
-        return turnoActual.enQueFaseDelTurnoEsta();
+        return ((TurnoBasico) turnoActual).enQueFaseDelTurnoEsta();
     }
     public String aQueJugadorLeToca(){
         return jugadores.get(numeroJugadorActual).getNombre();

@@ -10,11 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TestEntrega1 {
     @Test
     public void test01ColocacionDeEjercitos() {
-        ArrayList<String> jugadores = new ArrayList<String>();
+        ArrayList<String> jugadores = new ArrayList<>();
         jugadores.add("Nico");
         jugadores.add("Tomi");
 
-        Teg teg = new Teg(jugadores, "archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(jugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
         assertTrue(teg.todosLosPaisesOcupados());
     }
 

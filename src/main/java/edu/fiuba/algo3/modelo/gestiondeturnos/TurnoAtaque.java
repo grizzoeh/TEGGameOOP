@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class TurnoAtaque implements Turno {
+public class TurnoAtaque implements TurnoJugable, TurnoBasico {
 	private Mapa mapa;
 	private Jugador jugador;
 
@@ -32,7 +32,7 @@ public class TurnoAtaque implements Turno {
 		throw new EtapaEquivocadaException();
 	}
 
-	public TurnoReagrupar avanzarEtapa() {
+	public Turno avanzarEtapa() {
 		return new TurnoReagrupar(jugador, mapa);
 	}
 

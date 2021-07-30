@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.controladores;
 
+import edu.fiuba.algo3.modelo.excepciones.NombreInvalidoException;
+import edu.fiuba.algo3.modelo.excepciones.NombreRepetidoException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -45,28 +47,33 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
         Integer cantJugadores = vbox.getChildren().size();
         ArrayList<String> nombresJugadores = new ArrayList();
 
+        try {
+
 
         for (Integer i = 0; i<cantJugadores; i++){
             TextField textFieldAux = (TextField) vbox.getChildren().get(i);
             String nombreJugador = textFieldAux.getText().trim();
-            if (nombreJugador.equals("")){
-                label.setText("Completar campos de Jugadores");
-                label.setTextFill(Color.RED);
-                textFieldAux.requestFocus();
-                return;
-            }
-            if(nombresJugadores.contains(nombreJugador)){
-                label.setText("Jugador repetido");
-                label.setTextFill(Color.RED);
-                textFieldAux.requestFocus();
-                return;
-            }
+
+            validarNombreValido(nombreJugador, label, textFieldAux);
+
+            validarNombreNoRepetido(nombreJugador, nombresJugadores, label, textFieldAux);
+
+
             nombresJugadores.add(nombreJugador);
-
-
         }
+
+        }catch (NombreInvalidoException e){
+            e.printStackTrace();
+            return;
+        }
+        catch (NombreRepetidoException e) {
+            e.printStackTrace();
+            return;
+        }
+
+
         try {
-            reproducirAudio("recursos/sonidos/tamboresAlInicio.aiff");
+            reproducirAudio(ProveedorDeConstantes.obtenerSonidoTambores());
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -74,12 +81,12 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
         } catch (LineUnavailableException e) {
             e.printStackTrace();
         }
+
+
         stage.setScene(scene);
 
 
         stage.show();
-
-
 
     }
     public void reproducirAudio(String file)throws UnsupportedAudioFileException,
@@ -95,6 +102,24 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
 
 
     }
+    public void validarNombreValido(String nombre, Label label, TextField textFieldAux){
+        if (nombre.equals("")){
+            label.setText("Completar campos de Jugadores");
+            label.setTextFill(Color.RED);
+            textFieldAux.requestFocus();
 
+            throw new NombreInvalidoException();
+        }
+
+    }
+    public void validarNombreNoRepetido(String nombre, ArrayList<String> nombresJugadores, Label label, TextField textFieldAux){
+        if(nombresJugadores.contains(nombre)){
+            label.setText("Jugador repetido");
+            label.setTextFill(Color.RED);
+            textFieldAux.requestFocus();
+
+            throw new NombreRepetidoException();
+        }
+    }
     }
 

@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestTurnoAsignarFicha {
-    Mapa mapa = new Mapa("archivosDeTexto/fronteras.csv");
+    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronteras.csv");
     Ejercito rojo = new Ejercito("rojo");
     Jugador jugador = new Jugador("Fran", rojo);
     ArrayList lista = new ArrayList<>();
@@ -63,7 +63,7 @@ public class TestTurnoAsignarFicha {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         Jugador jugador1 = new Jugador("Pablito Lezcano", new Ejercito("Verde"));
         jugadores.add(jugador1);
-        Mapa mapa = new Mapa("archivosDeTexto/fronterasParaPrueba.csv");
+        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
         mapa.repartirPaises(jugadores);
 
         Pais egipto = mapa.obtenerPais("Egipto");

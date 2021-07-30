@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class TestObjetivoComun {
     Ejercito ejercito = new Ejercito("Amarillo");
-    Mapa mapa = new Mapa("archivosDeTexto/fronterasParaPrueba.csv");
+    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
     @Test
     public void test01SeDevuelveElObjetivoCorrectamente(){
         ObjetivoComun objetivoComun = new ObjetivoComun(mapa);
