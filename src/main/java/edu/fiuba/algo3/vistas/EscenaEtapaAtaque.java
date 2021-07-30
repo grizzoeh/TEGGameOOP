@@ -1,40 +1,45 @@
 package edu.fiuba.algo3.vistas;
 
-import edu.fiuba.algo3.controladores.BotonAvanzarAAtaqueEventHandler;
+import edu.fiuba.algo3.controladores.BotonAvanzarAReagrupacionEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class EscenaEtapaInicial {
-    public static Scene crearSceneEtapaInicial(Scene escenaRecibida, Stage stage) {
+public class EscenaEtapaAtaque {
+    public static Scene crearEscenaEtapaAtaque(Stage stage){
 
         ImageView imageView = LectorDeImagenMapa.crearImagenDelMapa();
 
-        VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor();
-        contSupDer.setSpacing(10);
 
-
-        var etapa = new Label("Etapa Inicial");
+        Label etapa = new Label("Etapa De ATAQUE");
         etapa.setFont(new Font("Serif", 18));
-        var paisesLabel = new Label("Paises Disponibles:");
-        ComboBox paises = new ComboBox();
-        paises.getItems().addAll(
-                "Paises..."
-        );
-        TextField cantFichas = new TextField();
-        cantFichas.setPromptText("Fichas Disponibles: [X]");
 
-        Button agregarButton = new Button();
-        agregarButton.setText("Agregar");
+        var paisesLabel = new Label("Desde:");
+        ComboBox paisesDesde = new ComboBox();
+        paisesDesde.getItems().addAll(
+                "Paises Atacantes"
+        );
+        Label atacados = new Label("Hacia:");
+
+        ComboBox paisesHacia = new ComboBox();
+        paisesHacia.getItems().addAll(
+                "Paises A Ser Atacados"
+        );
+
+        Button atacarButton = new Button();
+        atacarButton.setText("Lanzar Ataque");
+        ComboBox cantidadDeFichas = new ComboBox();
+        cantidadDeFichas.getItems().addAll(
+                "Cantidad"
+        );
 
         Label fichas = new Label("Fichas:");
 
@@ -42,8 +47,10 @@ public class EscenaEtapaInicial {
         avanzarButton.setText("Avanzar Etapa");
         avanzarButton.setAlignment(Pos.CENTER_RIGHT);
 
+        VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor();
+        contSupDer.setSpacing(10);
 
-        HBox seleccionador = new HBox(paisesLabel,paises,fichas,cantFichas, agregarButton, avanzarButton);
+        HBox seleccionador = new HBox(paisesLabel,paisesDesde, atacados, paisesHacia,fichas, cantidadDeFichas,atacarButton, avanzarButton);
         seleccionador.setSpacing(10);
         VBox contInfIzq = new VBox(etapa,seleccionador);
         contInfIzq.setPadding(new Insets(1));
@@ -56,9 +63,9 @@ public class EscenaEtapaInicial {
         contenedor.setPadding(new Insets(10));
 
         Scene sceneNueva = new Scene(contenedor, 1080, 720);
-        avanzarButton.setOnAction(new BotonAvanzarAAtaqueEventHandler(stage,sceneNueva));
-
+        avanzarButton.setOnAction(new BotonAvanzarAReagrupacionEventHandler(stage, sceneNueva));
         return sceneNueva;
+
     }
 
 }
