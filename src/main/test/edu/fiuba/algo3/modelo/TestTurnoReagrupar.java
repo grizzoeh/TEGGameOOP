@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
-import edu.fiuba.algo3.modelo.gestiondeturnos.Turno;
+import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoJugable;
 import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoAsignarFicha;
 import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoReagrupar;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestTurnoReagrupar {
-    Mapa mapa = new Mapa("archivosDeTexto/fronterasParaPrueba.csv");
+    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
     Ejercito rojo = new Ejercito("rojo");
     Jugador jugador = new Jugador("Fran", rojo);
     ArrayList lista = new ArrayList<>();
@@ -36,8 +36,8 @@ public class TestTurnoReagrupar {
     }
     @Test
     public void test03AvanzarEtapaDevuelveTurnoAsignarFicha() {
-        Turno actual = turno.avanzarEtapa();
-        Turno real = new TurnoAsignarFicha(jugador, mapa);
+        TurnoJugable actual = (TurnoJugable)turno.avanzarEtapa();
+        TurnoJugable real = new TurnoAsignarFicha(jugador, mapa);
         assertEquals(actual.getClass(), real.getClass());
     }
     @Test

@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
 
-public class TurnoAsignarFicha implements Turno {
+public class TurnoAsignarFicha implements TurnoJugable, TurnoBasico {
 	private Mapa mapa;
 	private Jugador jugador;
 	private int cantidadFichas;
@@ -85,4 +85,5 @@ public class TurnoAsignarFicha implements Turno {
 	}
 
 	public boolean estaFinalizado() {return false;}
+
 }

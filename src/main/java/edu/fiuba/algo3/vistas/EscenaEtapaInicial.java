@@ -13,12 +13,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-public class escenaEtapaInicial {
-    public Scene crearSceneEtapaInicial() {
-        ImageView imageView = crearImagenJuego();
+public class EscenaEtapaInicial {
+    public static Scene crearSceneEtapaInicial(Scene escenaRecibida) {
 
-        var nombre = new Label("Nombre: ");
-        var color = new Label("Color: ");
+        ImageView imageView = LectorDeImagenMapa.crearImagenDelMapa();
+
+        var nombre = new Label("Nombre: NombreJug");
+        var color = new Label("Color: ColorJug");
 
         Button objetivoButton = new Button();
         objetivoButton.setText("Ver Objetivo");
@@ -55,8 +56,8 @@ public class escenaEtapaInicial {
         VBox contenedor = new VBox(contSuperior,contInferior);
         contenedor.setPadding(new Insets(10));
 
-        var sceneNueva = new Scene(contenedor, 1080, 720);
-
+        Scene sceneNueva = new Scene(contenedor, 1080, 720);
+        return sceneNueva;
     }
 
 }

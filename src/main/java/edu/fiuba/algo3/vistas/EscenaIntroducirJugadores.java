@@ -13,10 +13,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class escenaIntroducirJugadores {
-    public void crearSceneJugadores(Scene escena,Stage stage){
-        escenaEtapaInicial escenaEtapaIni = new escenaEtapaInicial;
-        Scene sceneSiguiente = escenaEtapaIni.crearSceneEtapaInicial();
+public class EscenaIntroducirJugadores {
+    public static Scene crearSceneJugadores(Scene escena, Stage stage){
+
+        Scene sceneSiguiente = EscenaEtapaInicial.crearSceneEtapaInicial(escena);
+        
         var label = new Label("Seleccione la cantidad de jugadores:\t");
         label.setFont(new Font("Serif", 18));
 
@@ -35,24 +36,28 @@ public class escenaIntroducirJugadores {
         );
 
         Label alertaJugadoreVacios = new Label();
+
         VBox vbox = new VBox();
+
         HBox contenedorSuperior = new HBox(label,cantJugadoresBox);
+        contenedorSuperior.setAlignment(Pos.TOP_CENTER);
+
         HBox contenedorCentral = new HBox(vbox);
+        contenedorCentral.setAlignment(Pos.CENTER);
+        contenedorCentral.setSpacing(46);
+
         VBox contenedorInferior = new VBox(botonEnviar, alertaJugadoreVacios);
 
-        contenedorSuperior.setAlignment(Pos.TOP_CENTER);
-        contenedorCentral.setAlignment(Pos.CENTER);
-        contenedorCentral.setSpacing(10);
         contenedorInferior.setAlignment(Pos.CENTER);
 
         VBox contenedor = new VBox(contenedorSuperior,contenedorCentral,contenedorInferior);
-        contenedorCentral.setSpacing(46);
-        cantJugadoresBox.setOnAction(new EnviarCantJugadoresEventHandler(vbox,cantJugadoresBox));
         contenedor.setAlignment(Pos.CENTER);
+
+        cantJugadoresBox.setOnAction(new EnviarCantJugadoresEventHandler(vbox,cantJugadoresBox));
 
         botonEnviar.setOnAction(new BotonConfirmarJugadoresEventHandler(vbox,alertaJugadoreVacios,stage,sceneSiguiente,cantJugadoresBox));
 
-        var sceneNueva = new Scene(new StackPane(contenedor), 1080, 720);
+        Scene sceneNueva = new Scene(new StackPane(contenedor), 1080, 720);
 
         return sceneNueva;
     }

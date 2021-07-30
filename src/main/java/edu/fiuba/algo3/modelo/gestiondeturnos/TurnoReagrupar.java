@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
-public class TurnoReagrupar implements Turno {
+public class TurnoReagrupar implements TurnoJugable, TurnoBasico{
 	private Mapa mapa;
 	private Jugador jugador;
 
