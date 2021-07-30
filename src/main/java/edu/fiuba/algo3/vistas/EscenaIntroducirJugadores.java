@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 public class EscenaIntroducirJugadores {
     public static Scene crearSceneJugadores(Scene escena, Stage stage){
 
-        Scene sceneSiguiente = EscenaEtapaInicial.crearSceneEtapaInicial(escena);
+        Scene sceneSiguiente = EscenaEtapaInicial.crearSceneEtapaInicial(escena, stage);
         
         var label = new Label("Seleccione la cantidad de jugadores:\t");
         label.setFont(new Font("Serif", 18));
