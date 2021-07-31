@@ -31,6 +31,8 @@ public class Jugador {
         return this.nombre;
     }
 
+    public String getColor() { return this.ejercito.getColor();}
+
     public void agregarTarjeta(Tarjeta tarjetaRecibida){ tarjetasPais.add(tarjetaRecibida); }
 
     public int cantidadDeTarjetas(){ return tarjetasPais.size(); }
@@ -66,6 +68,9 @@ public class Jugador {
     }
     public boolean objetivoCumplido(){
         return (objetivoComun.objetivoCumplido(ejercito) || objetivoParticular.objetivoCumplido(ejercito));
+    }
+    public String mostrarObjetivo() {
+        return objetivoParticular.mostrarObjetivo();
     }
 
 }

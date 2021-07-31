@@ -9,14 +9,16 @@ import javafx.stage.Stage;
 
 public class BotonComezarPartidaEventHandler implements EventHandler<ActionEvent> {
     Stage stage;
+    ControladorMaestro controladorMaestro;
 
-    public BotonComezarPartidaEventHandler(Stage stageRecibida) {
+    public BotonComezarPartidaEventHandler(Stage stageRecibida, ControladorMaestro controladorMaestro) {
         stage = stageRecibida;
+        this.controladorMaestro = controladorMaestro;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        Scene scene = EscenaEtapaInicial.crearSceneEtapaInicial(stage);
+        Scene scene = EscenaEtapaInicial.crearSceneEtapaInicial(stage, controladorMaestro);
         stage.setScene(scene);
         stage.show();
     }

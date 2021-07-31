@@ -7,16 +7,18 @@ import javafx.scene.control.Alert;
 
 
 public class BotonObjetivoEventHandler implements EventHandler<ActionEvent> {
+    ControladorMaestro controladorMaestro;
 
-    public BotonObjetivoEventHandler() {
+    public BotonObjetivoEventHandler(ControladorMaestro controladorMaestro) {
+        this.controladorMaestro = controladorMaestro;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Objetivo");
-        alert.setHeaderText("Su objetivo:");
-        alert.setContentText("[Objetivo del Jugador Actual]");
+        alert.setHeaderText("");
+        alert.setContentText(controladorMaestro.objetivoJugadorActual());
 
         alert.showAndWait();
     }

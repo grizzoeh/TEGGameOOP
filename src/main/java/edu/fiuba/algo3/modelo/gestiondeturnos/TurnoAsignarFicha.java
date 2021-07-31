@@ -86,4 +86,7 @@ public class TurnoAsignarFicha implements TurnoJugable, TurnoBasico {
 
 	public boolean estaFinalizado() {return false;}
 
+	public int obtenerCantidadDeFichas() {
+		return cantidadFichas;
+	}
 }
