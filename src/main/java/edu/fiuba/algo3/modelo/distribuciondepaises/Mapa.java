@@ -114,10 +114,10 @@ public class Mapa {
         Pais paisBuscado = paises.get(nombrePais);
         return paisBuscado.obtenerCantidadEjercitos();
     }
-    public ArrayList<Pais> listaPaisesConEjercito(Ejercito ejercito) {
-        ArrayList<Pais> paisesPertenecientes = new ArrayList<>();
+    public ArrayList<String> listaPaisesConEjercito(Ejercito ejercito) {
+        ArrayList<String> paisesPertenecientes = new ArrayList<>();
         paises.forEach((stringPais, objetoPais) -> {
-            if (ejercitoEnPais(stringPais) == ejercito) paisesPertenecientes.add(objetoPais);
+            if (ejercitoEnPais(stringPais) == ejercito) paisesPertenecientes.add(stringPais);
         });
         return paisesPertenecientes;
     }

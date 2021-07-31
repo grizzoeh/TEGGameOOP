@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.BotonAvanzarAReagrupacionEventHandler;
 import edu.fiuba.algo3.controladores.BotonComezarPartidaEventHandler;
+import edu.fiuba.algo3.controladores.ControladorMaestro;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,7 +17,8 @@ import java.util.ArrayList;
 
 
 public class EscenaColoresJugadores {
-    public static Scene crearSceneColoresJugadores (Stage stage, ArrayList<String> jugadores) {
+    public static Scene crearSceneColoresJugadores (Stage stage, ControladorMaestro controladorMaestro , ArrayList<String> jugadores) {
+
         Label cartel = new Label("Jugadores en orden de jugada");
         cartel.setFont(new Font("Serif", 20));
 
@@ -34,7 +36,7 @@ public class EscenaColoresJugadores {
         }
 
         Button botonSiguiente = new Button("Empezar juego");
-        botonSiguiente.setOnAction(new BotonComezarPartidaEventHandler(stage));
+        botonSiguiente.setOnAction(new BotonComezarPartidaEventHandler(stage, controladorMaestro));
 
         tablero.getChildren().add(botonSiguiente);
 

@@ -52,4 +52,8 @@ public class TurnoAtaque implements TurnoJugable, TurnoBasico {
 	}
 
 	public boolean estaFinalizado() {return false;}
+
+	public int obtenerCantidadDeFichas() {
+		throw new EtapaEquivocadaException();
+	}
 }

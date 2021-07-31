@@ -81,7 +81,8 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
             e.printStackTrace();
         }
 
-        Scene scene = EscenaColoresJugadores.crearSceneColoresJugadores(stage, nombresJugadores);
+        ControladorMaestro controladorMaestro = new ControladorMaestro(nombresJugadores);
+        Scene scene = EscenaColoresJugadores.crearSceneColoresJugadores(stage, controladorMaestro, nombresJugadores);
         stage.setScene(scene);
         stage.show();
 

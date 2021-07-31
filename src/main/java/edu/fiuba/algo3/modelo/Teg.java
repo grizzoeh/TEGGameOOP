@@ -73,8 +73,8 @@ public class Teg {
             turnoActual = new TurnoEtapaInicial(jugadores.get(0),mapa, 3);
             return;
         }
-        numeroJugadorActual++;
         Integer jugActual = numeroJugadorActual % jugadores.size();
+        numeroJugadorActual++;
         turnoActual = new TurnoEtapaInicial(jugadores.get(jugActual),mapa, 5);
     }
     public void avanzarSegundaEtapaColocacion() throws ColocacionFinalizadaException {
@@ -94,10 +94,9 @@ public class Teg {
         numeroJugadorActual = 0;
         turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual), mapa);
     }
-    public ArrayList<Pais> paisesDeJugador(Jugador jugador){
-        ArrayList<Pais> lista = mapa.listaPaisesConEjercito(jugador.getEjercito());
-        return lista;
-
+    public ArrayList<String> paisesDelJugadorActual(){
+        Jugador jugador = jugadores.get(numeroJugadorActual);
+        return mapa.listaPaisesConEjercito(jugador.getEjercito());
     }
     public void avanzarEtapa(){
          turnoActual = ((TurnoJugable) turnoActual).avanzarEtapa();
@@ -134,13 +133,28 @@ public class Teg {
     public boolean jugadorGano(Jugador jugador){
         return jugador.objetivoCumplido();
     }
+
+    public int obtenerCantidadFichas() {
+        return ((TurnoJugable) turnoActual).obtenerCantidadDeFichas();
+    }
+
     public int cantidadJugadores(){
         return cantidadJugadores;
     }
     public String enQueFaseEstaElJuego(){
         return ((TurnoBasico) turnoActual).enQueFaseDelTurnoEsta();
     }
+    public String mostrarObjetivoJugadorActual() {
+        Jugador jugador = jugadores.get(numeroJugadorActual);
+        return jugador.mostrarObjetivo();
+    }
+
     public String aQueJugadorLeToca(){
         return jugadores.get(numeroJugadorActual).getNombre();
+    }
+
+    public String colorJugadorActual() {
+        Jugador jugador = jugadores.get(numeroJugadorActual);
+        return jugador.getColor();
     }
 }

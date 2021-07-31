@@ -8,17 +8,17 @@ import javafx.stage.Stage;
 
 public class BotonAvanzarAAtaqueEventHandler implements EventHandler<ActionEvent> {
     private Stage stage;
-    private Scene scene;
+    private ControladorMaestro controladorMaestro;
 
 
-    public BotonAvanzarAAtaqueEventHandler(Stage stageRecibida, Scene sceneRecibida)   {
+    public BotonAvanzarAAtaqueEventHandler(Stage stageRecibida, ControladorMaestro controladorMaestro)   {
         stage = stageRecibida;
-        scene = sceneRecibida;
+        this.controladorMaestro = controladorMaestro;
     }
 
     @Override
     public void handle(ActionEvent event) {
-        Scene nuevaEscena = EscenaEtapaAtaque.crearEscenaEtapaAtaque(stage);
+        Scene nuevaEscena = EscenaEtapaAtaque.crearEscenaEtapaAtaque(stage, controladorMaestro);
         stage.setScene(nuevaEscena);
         stage.show();
     }

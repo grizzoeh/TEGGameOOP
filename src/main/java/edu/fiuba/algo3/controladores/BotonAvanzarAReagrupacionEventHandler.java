@@ -8,16 +8,16 @@ import javafx.stage.Stage;
 
 public class BotonAvanzarAReagrupacionEventHandler implements EventHandler {
     private Stage stage;
-    private Scene scene;
+    private ControladorMaestro controladorMaestro;
 
-    public BotonAvanzarAReagrupacionEventHandler(Stage stageRecibida, Scene sceneRecibida)   {
+    public BotonAvanzarAReagrupacionEventHandler(Stage stageRecibida, ControladorMaestro controladorMaestro)   {
         stage = stageRecibida;
-        scene = sceneRecibida;
+        this.controladorMaestro = controladorMaestro;
     }
 
     @Override
     public void handle(Event event) {
-        Scene nuevaEscena = EscenaReagrupacionDeTropas.crearEscenaReagrupacion(scene, stage);
+        Scene nuevaEscena = EscenaReagrupacionDeTropas.crearEscenaReagrupacion(stage, controladorMaestro);
         stage.setScene(nuevaEscena);
         stage.show();
     }

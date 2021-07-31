@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.BotonAvanzarAColocacionEventHandler;
+import edu.fiuba.algo3.controladores.ControladorMaestro;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,7 +15,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class EscenaReagrupacionDeTropas {
-    public static Scene crearEscenaReagrupacion(Scene escenaRecibida, Stage stage) {
+    public static Scene crearEscenaReagrupacion(Stage stage, ControladorMaestro controladorMaestro) {
 
         ImageView imageView = LectorDeImagenMapa.crearImagenDelMapa();
 
@@ -47,7 +48,7 @@ public class EscenaReagrupacionDeTropas {
         avanzarButton.setText("Avanzar Etapa");
         avanzarButton.setAlignment(Pos.CENTER_RIGHT);
 
-        VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor();
+        VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(controladorMaestro);
         contSupDer.setSpacing(10);
 
         HBox seleccionador = new HBox(paisesLabel,paisesDesde, atacados, paisesHacia,fichas, cantidadDeFichas,atacarButton, avanzarButton);
@@ -64,7 +65,7 @@ public class EscenaReagrupacionDeTropas {
 
         Scene sceneNueva = new Scene(contenedor, 1080, 720);
 
-        avanzarButton.setOnAction(new BotonAvanzarAColocacionEventHandler(stage,sceneNueva));
+        avanzarButton.setOnAction(new BotonAvanzarAColocacionEventHandler(stage,controladorMaestro));
 
         return sceneNueva;
 

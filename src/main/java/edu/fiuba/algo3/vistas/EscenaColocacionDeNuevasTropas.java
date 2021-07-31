@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vistas;
 
+import edu.fiuba.algo3.controladores.ControladorMaestro;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,10 +13,10 @@ import javafx.stage.Stage;
 
 public class EscenaColocacionDeNuevasTropas {
 
-    public static Scene crearEscenaColocacion(Scene escenaRecibida, Stage stage){
+    public static Scene crearEscenaColocacion(ControladorMaestro controladorMaestro){
         ImageView imageView = LectorDeImagenMapa.crearImagenDelMapa();
 
-        VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor();
+        VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(controladorMaestro);
         contSupDer.setSpacing(10);
 
         var etapa = new Label("ETAPA DE COLOCACION");
@@ -23,7 +24,7 @@ public class EscenaColocacionDeNuevasTropas {
 
         Button avanzarButton = new Button();
 
-        HBox seleccionador = SelectorDeColocacion.crearSelector(avanzarButton);
+        HBox seleccionador = SelectorDeColocacion.crearSelector(avanzarButton, null); // CAMBIAR POR FAVOR
 
         seleccionador.setSpacing(10);
         VBox contInfIzq = new VBox(etapa,seleccionador);
