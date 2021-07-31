@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controladores;
 
 import edu.fiuba.algo3.modelo.aexcepciones.NombreInvalidoException;
 import edu.fiuba.algo3.modelo.aexcepciones.NombreRepetidoException;
+import edu.fiuba.algo3.vistas.EscenaColoresJugadores;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -22,15 +23,13 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
     private VBox vbox;
     private Label label;
     private Stage stage;
-    private Scene scene;
     private ComboBox jugadoresBox;
 
-    public BotonConfirmarJugadoresEventHandler(VBox VBoxrecibida, Label labelRecibida, Stage stageRecibida, Scene sceneRecibida, ComboBox jugadoresBoxRecibida) {
+    public BotonConfirmarJugadoresEventHandler(VBox VBoxrecibida, Label labelRecibida, Stage stageRecibida, ComboBox jugadoresBoxRecibida) {
 
         stage = stageRecibida;
         vbox = VBoxrecibida;
         label = labelRecibida;
-        scene = sceneRecibida;
         jugadoresBox = jugadoresBoxRecibida;
 
     }
@@ -82,10 +81,8 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
             e.printStackTrace();
         }
 
-
+        Scene scene = EscenaColoresJugadores.crearSceneColoresJugadores(stage, nombresJugadores);
         stage.setScene(scene);
-
-
         stage.show();
 
     }

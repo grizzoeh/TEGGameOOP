@@ -12,7 +12,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class EscenaEtapaInicial {
-    public static Scene crearSceneEtapaInicial(Scene escenaRecibida, Stage stage) {
+    public static Scene crearSceneEtapaInicial(Stage stage) {
 
         ImageView imageView = LectorDeImagenMapa.crearImagenDelMapa();
 

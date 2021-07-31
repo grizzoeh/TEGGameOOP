@@ -15,8 +15,6 @@ import javafx.stage.Stage;
 
 public class EscenaIntroducirJugadores {
     public static Scene crearSceneJugadores(Scene escena, Stage stage){
-
-        Scene sceneSiguiente = EscenaEtapaInicial.crearSceneEtapaInicial(escena, stage);
         
         var label = new Label("Seleccione la cantidad de jugadores:\t");
         label.setFont(new Font("Serif", 18));
@@ -55,7 +53,7 @@ public class EscenaIntroducirJugadores {
 
         cantJugadoresBox.setOnAction(new EnviarCantJugadoresEventHandler(vbox,cantJugadoresBox));
 
-        botonEnviar.setOnAction(new BotonConfirmarJugadoresEventHandler(vbox,alertaJugadoreVacios,stage,sceneSiguiente,cantJugadoresBox));
+        botonEnviar.setOnAction(new BotonConfirmarJugadoresEventHandler(vbox,alertaJugadoreVacios,stage,cantJugadoresBox));
 
         Scene sceneNueva = new Scene(new StackPane(contenedor), 1080, 720);
 
