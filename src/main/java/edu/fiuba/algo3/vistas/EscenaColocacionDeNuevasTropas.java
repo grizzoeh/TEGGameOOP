@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.vistas;
 
-import edu.fiuba.algo3.controladores.BotonAvanzarAAtaqueEventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,16 +10,15 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class EscenaEtapaInicial {
-    public static Scene crearSceneEtapaInicial(Scene escenaRecibida, Stage stage) {
+public class EscenaColocacionDeNuevasTropas {
 
+    public static Scene crearEscenaColocacion(Scene escenaRecibida, Stage stage){
         ImageView imageView = LectorDeImagenMapa.crearImagenDelMapa();
 
         VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor();
         contSupDer.setSpacing(10);
 
-
-        var etapa = new Label("ETAPA INICIAL");
+        var etapa = new Label("ETAPA DE COLOCACION");
         etapa.setFont(new Font("Serif", 18));
 
         Button avanzarButton = new Button();
@@ -40,9 +38,9 @@ public class EscenaEtapaInicial {
 
         Scene sceneNueva = new Scene(contenedor, 1080, 720);
 
-        avanzarButton.setOnAction(new BotonAvanzarAAtaqueEventHandler(stage,sceneNueva));
+        //avanzarButton.setOnAction(Hay que generar un comportamiento );
 
         return sceneNueva;
-    }
 
+    }
 }

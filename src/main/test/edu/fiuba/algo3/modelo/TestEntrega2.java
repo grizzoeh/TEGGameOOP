@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
-import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
-import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaParaElPaisException;
-import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
+import edu.fiuba.algo3.modelo.aexcepciones.EtapaEquivocadaException;
+import edu.fiuba.algo3.modelo.aexcepciones.NoExisteTarjetaParaElPaisException;
+import edu.fiuba.algo3.modelo.aexcepciones.PaisNoLePerteneceException;
 import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoJugable;
 import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoAsignarFicha;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.Tarjeta;
@@ -41,7 +41,7 @@ public class TestEntrega2 {
         nombresJugadores.add("Gonza");
         nombresJugadores.add("Fran");
 
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
         teg.saltearColocacionInicial();
         teg.avanzarEtapa();
         teg.avanzarEtapa();

@@ -13,7 +13,9 @@ public class Subobjetivo {
     }
 
     public boolean cumplido(Ejercito ejercito){
+
         if(cantidadPaises == 0)
+
             return continenteAOcupar.jugadorControlaContinente(ejercito);
 
         return (cantidadPaises == continenteAOcupar.cuantosPaisesDelContinenteDomina(ejercito));

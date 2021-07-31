@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.objetivosytarjetas;
 
 import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
-import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaParaElPaisException;
+import edu.fiuba.algo3.modelo.aexcepciones.NoExisteTarjetaParaElPaisException;
 
 import java.util.ArrayList;
 

@@ -19,7 +19,7 @@ public class EscenaEtapaAtaque {
         ImageView imageView = LectorDeImagenMapa.crearImagenDelMapa();
 
 
-        Label etapa = new Label("Etapa De ATAQUE");
+        Label etapa = new Label("ETAPA DE ATAQUE");
         etapa.setFont(new Font("Serif", 18));
 
         var paisesLabel = new Label("Desde:");

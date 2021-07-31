@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.gestiondeturnos;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
-import edu.fiuba.algo3.modelo.excepciones.*;
+import edu.fiuba.algo3.modelo.aexcepciones.*;
 
 public class TurnoReagrupar implements TurnoJugable, TurnoBasico{
 	private Mapa mapa;
