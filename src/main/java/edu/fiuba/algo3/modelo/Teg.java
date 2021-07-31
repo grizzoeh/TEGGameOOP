@@ -1,9 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.aexcepciones.*;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
-import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.gestiondeturnos.*;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.*;
 
 import java.util.ArrayList;
 
@@ -13,8 +14,10 @@ public class Teg {
     private ArrayList<Jugador> jugadores;
     private Turno turnoActual;
     private int numeroJugadorActual;
+    private Mazo mazo;
+    private ListaObjetivos posiblesObjetivos;
 
-    public Teg(ArrayList<String> nombresJugadores, String rutaArchivo) {
+    public Teg(ArrayList<String> nombresJugadores, String rutaArchivo, Boolean testMode) {
         this.cantidadJugadores = nombresJugadores.size();
         this.mapa = new Mapa(rutaArchivo);
         this.jugadores = new ArrayList<Jugador>();
@@ -28,9 +31,24 @@ public class Teg {
 
         mapa.repartirPaises(jugadores);
 
+        mazo = new Mazo(mapa.listaPaises());
+        posiblesObjetivos = new ListaObjetivos(mapa, testMode);
+
+        asignarObjetivosAJugadores();
+
         turnoActual = new TurnoEtapaInicial(jugadores.get(numeroJugadorActual),mapa, 5);
     }
 
+    public void asignarObjetivosAJugadores(){
+        Jugador jugAux;
+
+        for (int i = 0; i < this.cantidadJugadores; i++) {
+            jugAux = jugadores.get(i);
+            jugAux.asignarObjetivoGeneral(posiblesObjetivos.asignarObjetivoComun());
+            jugAux.asignarObjetivoParticular(posiblesObjetivos.asignarObjetivoParticular());
+
+        }
+    }
     public boolean todosLosPaisesOcupados(){
         return this.mapa.todosLosPaisesOcupados();
     }
@@ -85,15 +103,36 @@ public class Teg {
          turnoActual = ((TurnoJugable) turnoActual).avanzarEtapa();
 
         if(((TurnoBasico) turnoActual).estaFinalizado()){
+            if (jugadorGano(jugadores.get(numeroJugadorActual))){
+                this.anunciarGanador();
+            }
             numeroJugadorActual++;
             numeroJugadorActual %= jugadores.size();
+            if (jugadorEstaEliminado(jugadores.get(numeroJugadorActual))){
+                jugadores.remove(numeroJugadorActual);
+            }
             turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual),mapa);
         }
+    }
+
+    public void anunciarGanador() {
+        //Darle funcionalidad
+    }
+    public ArrayList<Jugador> obtenerListaJugadores(){
+        ArrayList<Jugador> lista = (ArrayList<Jugador>) jugadores.clone();
+        return lista;
+    }
+    public boolean jugadorEstaEliminado(Jugador jugador){
+        return !mapa.leQuedanEjercitos(jugador.getEjercito());
     }
 
     public int cantEjercitosEn(String nombrePais){
         return mapa.numeroEjercitosEn(nombrePais);
 
+    }
+
+    public boolean jugadorGano(Jugador jugador){
+        return jugador.objetivoCumplido();
     }
     public int cantidadJugadores(){
         return cantidadJugadores;

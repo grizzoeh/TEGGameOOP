@@ -2,7 +2,6 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.controladores.BotonInicioEventHandler;
 import edu.fiuba.algo3.controladores.ProveedorDeConstantes;
-import edu.fiuba.algo3.vistas.EscenaIntroducirJugadores;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -21,9 +20,6 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        var javaVersion = SystemInfo.javaVersion();
-        var javafxVersion = SystemInfo.javafxVersion();
-
         var label = new Label("Bienvenido al Juego Teg");
         label.setFont(new Font("Serif", 24));
 
@@ -39,9 +35,8 @@ public class App extends Application {
 
         Scene sceneBienvenida = new Scene(new StackPane(contenedorPrincipal), 1080, 720);
 
-        Scene sceneCreacionJugadores = EscenaIntroducirJugadores.crearSceneJugadores(sceneBienvenida, stage);
 
-        boton.setOnAction(new BotonInicioEventHandler(stage,sceneCreacionJugadores));
+        boton.setOnAction(new BotonInicioEventHandler(stage, sceneBienvenida));
 
         stage.setScene(sceneBienvenida);
         stage.setTitle("TEG");

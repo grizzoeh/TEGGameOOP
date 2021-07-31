@@ -2,10 +2,10 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
-import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
-import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
-import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
-import edu.fiuba.algo3.modelo.excepciones.PaisesNoSonDelMismoDuenoException;
+import edu.fiuba.algo3.modelo.aexcepciones.PaisSinEjercitosSuficientesException;
+import edu.fiuba.algo3.modelo.aexcepciones.PaisesConMismoDuenoException;
+import edu.fiuba.algo3.modelo.aexcepciones.PaisesNoContinuosException;
+import edu.fiuba.algo3.modelo.aexcepciones.PaisesNoSonDelMismoDuenoException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

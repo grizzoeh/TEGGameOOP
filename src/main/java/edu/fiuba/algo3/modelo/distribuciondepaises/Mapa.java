@@ -1,16 +1,14 @@
 package edu.fiuba.algo3.modelo.distribuciondepaises;
 
-import com.opencsv.CSVReader;
 import edu.fiuba.algo3.modelo.Combate;
 import edu.fiuba.algo3.modelo.Ejercito;
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
-import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
-import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
-import edu.fiuba.algo3.modelo.excepciones.PaisesNoSonDelMismoDuenoException;
+import edu.fiuba.algo3.modelo.aexcepciones.PaisSinEjercitosSuficientesException;
+import edu.fiuba.algo3.modelo.aexcepciones.PaisesConMismoDuenoException;
+import edu.fiuba.algo3.modelo.aexcepciones.PaisesNoContinuosException;
+import edu.fiuba.algo3.modelo.aexcepciones.PaisesNoSonDelMismoDuenoException;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -123,7 +121,13 @@ public class Mapa {
         });
         return paisesPertenecientes;
     }
-
+    public ArrayList<Pais> listaPaises() {
+        ArrayList<Pais> paisesADevolver = new ArrayList<>();
+        paises.forEach((stringPais, objetoPais) -> {
+             paisesADevolver.add(objetoPais);
+        });
+        return paisesADevolver;
+    }
         public Integer paisesConEjercito(Ejercito ejercito){
         AtomicInteger contadorEjercito = new AtomicInteger();
         Ejercito ejercitoAux;
@@ -177,4 +181,7 @@ public class Mapa {
     }
 
 
+    public boolean leQuedanEjercitos(Ejercito ejercito) {
+        return (this.paisesConEjercito(ejercito) != 0);
+    }
 }

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.controladores;
 
+import edu.fiuba.algo3.vistas.EscenaIntroducirJugadores;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -7,17 +8,18 @@ import javafx.stage.Stage;
 
 public class BotonInicioEventHandler implements EventHandler<ActionEvent> {
     private Stage stage;
-    private Scene scene;
+    private Scene sceneBienvenida;
 
-    public BotonInicioEventHandler(Stage stageRecibida,Scene sceneRecibida) {
+
+    public BotonInicioEventHandler(Stage stageRecibida, Scene sceneRec) {
         stage = stageRecibida;
-        scene = sceneRecibida;
-
+        sceneBienvenida = sceneRec;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        stage.setScene(scene);
+        Scene sceneCreacionJugadores = EscenaIntroducirJugadores.crearSceneJugadores(sceneBienvenida, stage);
+        stage.setScene(sceneCreacionJugadores);
         stage.show();
 
     }

@@ -14,7 +14,7 @@ public class TestEntrega1 {
         jugadores.add("Nico");
         jugadores.add("Tomi");
 
-        Teg teg = new Teg(jugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(jugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv", true);
         assertTrue(teg.todosLosPaisesOcupados());
     }
 

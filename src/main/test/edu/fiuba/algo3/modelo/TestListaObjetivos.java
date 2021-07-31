@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
-import edu.fiuba.algo3.modelo.excepciones.NoHayMasObjetivosException;
+import edu.fiuba.algo3.modelo.aexcepciones.NoHayMasObjetivosException;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.ListaObjetivos;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.ObjetivoComun;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.ObjetivoParticular;
@@ -15,13 +15,13 @@ public class TestListaObjetivos {
 
     @Test
     public void test01AlCrearseSeInicializanLosOchoObjetivos(){
-        ListaObjetivos listaobj = new ListaObjetivos(mapa);
+        ListaObjetivos listaobj = new ListaObjetivos(mapa, false);
 
         assertEquals(listaobj.cantidadDeObjetivos(), 8);
     }
     @Test
     public void test02AlPedirElObjetivoGeneralSeDevuelveAEste(){
-        ListaObjetivos listaobj = new ListaObjetivos(mapa);
+        ListaObjetivos listaobj = new ListaObjetivos(mapa, true);
         ObjetivoComun objetivoBuscado = listaobj.asignarObjetivoComun();
 
         assertEquals(objetivoBuscado.mostrarObjetivo(), "Ocupar 30 países.");
@@ -29,7 +29,7 @@ public class TestListaObjetivos {
 
     @Test
     public void test03SiPidoUnObjetivoSeReduceLaCantidadCorrectamente(){
-        ListaObjetivos listaobj = new ListaObjetivos(mapa);
+        ListaObjetivos listaobj = new ListaObjetivos(mapa,true);
 
         int cantidad = listaobj.cantidadDeObjetivos();
         ObjetivoParticular objetiv = listaobj.asignarObjetivoParticular();
@@ -38,11 +38,10 @@ public class TestListaObjetivos {
     }
     @Test
     public void test04SiPidoMasQueTodosLosObjetivoSeLanzaExcepcion(){
-        ListaObjetivos listaobj = new ListaObjetivos(mapa);
+        ListaObjetivos listaobj = new ListaObjetivos(mapa, true);
 
         int cantidad = listaobj.cantidadDeObjetivos();
         ObjetivoParticular objetiv = listaobj.asignarObjetivoParticular();
-        objetiv = listaobj.asignarObjetivoParticular();
         objetiv = listaobj.asignarObjetivoParticular();
         objetiv = listaobj.asignarObjetivoParticular();
         objetiv = listaobj.asignarObjetivoParticular();
@@ -58,7 +57,7 @@ public class TestListaObjetivos {
     }
     @Test
     public void test05ElPedirUnObjetivoEspecificoNosDevuelveElBuscado(){
-        ListaObjetivos listaobj = new ListaObjetivos(mapa);
+        ListaObjetivos listaobj = new ListaObjetivos(mapa, false);
 
         ObjetivoParticular objetiv = listaobj.asignarObjetivoParticularEspecifico(1);
 

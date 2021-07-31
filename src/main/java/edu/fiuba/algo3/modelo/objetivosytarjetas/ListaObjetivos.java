@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.objetivosytarjetas;
 
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
-import edu.fiuba.algo3.modelo.excepciones.NoHayMasObjetivosException;
+import edu.fiuba.algo3.modelo.aexcepciones.NoHayMasObjetivosException;
 
 import java.util.ArrayList;
 
@@ -10,11 +10,16 @@ public class ListaObjetivos{
     private Mapa mapa;
     private ObjetivoComun objetivoComun;
 
-    public ListaObjetivos(Mapa mapaRecibido){
+    public ListaObjetivos(Mapa mapaRecibido, boolean testMode){
         this.mapa = mapaRecibido;
         this.objetivos = new ArrayList<ObjetivoParticular>();
         this.objetivoComun = new ObjetivoComun(mapa);
-        crearObjetivos();
+        if(!testMode){
+            crearObjetivos();
+        }
+        else {
+            crearObjetivosDePrueba();
+        }
     }
 
     private void crearObjetivos(){
@@ -132,5 +137,68 @@ public class ListaObjetivos{
         objetivos.remove(numObjetivo);
         return objetivo;
     }
+    public void crearObjetivosDePrueba(){
+        ObjetivoParticular objetivoAux;
+        Subobjetivo subobjetivoAux;
 
+        ArrayList<Subobjetivo> listaSubobjetivosAux = new ArrayList<Subobjetivo>();
+
+        subobjetivoAux = new Subobjetivo(mapa.getContinente("Africa"), 0);
+        listaSubobjetivosAux.add(subobjetivoAux);
+
+        subobjetivoAux = new Subobjetivo(mapa.getContinente("Asia"), 4);
+        listaSubobjetivosAux.add(subobjetivoAux);
+        objetivoAux = new ObjetivoParticular("Ocupar África, y 4 países de Asia.", listaSubobjetivosAux);
+
+        objetivos.add(objetivoAux);
+        subobjetivoAux = new Subobjetivo(mapa.getContinente("Africa"), 0);
+        listaSubobjetivosAux.add(subobjetivoAux);
+
+        subobjetivoAux = new Subobjetivo(mapa.getContinente("Asia"), 4);
+        listaSubobjetivosAux.add(subobjetivoAux);
+        objetivoAux = new ObjetivoParticular("Ocupar África, y 4 países de Asia.", listaSubobjetivosAux);
+
+        objetivos.add(objetivoAux);
+        subobjetivoAux = new Subobjetivo(mapa.getContinente("Africa"), 0);
+        listaSubobjetivosAux.add(subobjetivoAux);
+
+        subobjetivoAux = new Subobjetivo(mapa.getContinente("Asia"), 4);
+        listaSubobjetivosAux.add(subobjetivoAux);
+        objetivoAux = new ObjetivoParticular("Ocupar África, y 4 países de Asia.", listaSubobjetivosAux);
+
+        objetivos.add(objetivoAux);
+        subobjetivoAux = new Subobjetivo(mapa.getContinente("Africa"), 0);
+        listaSubobjetivosAux.add(subobjetivoAux);
+
+        subobjetivoAux = new Subobjetivo(mapa.getContinente("Asia"), 4);
+        listaSubobjetivosAux.add(subobjetivoAux);
+        objetivoAux = new ObjetivoParticular("Ocupar África, y 4 países de Asia.", listaSubobjetivosAux);
+
+        objetivos.add(objetivoAux);
+        subobjetivoAux = new Subobjetivo(mapa.getContinente("Africa"), 0);
+        listaSubobjetivosAux.add(subobjetivoAux);
+
+        subobjetivoAux = new Subobjetivo(mapa.getContinente("Asia"), 4);
+        listaSubobjetivosAux.add(subobjetivoAux);
+        objetivoAux = new ObjetivoParticular("Ocupar África, y 4 países de Asia.", listaSubobjetivosAux);
+
+        objetivos.add(objetivoAux);
+        subobjetivoAux = new Subobjetivo(mapa.getContinente("Africa"), 0);
+        listaSubobjetivosAux.add(subobjetivoAux);
+
+        subobjetivoAux = new Subobjetivo(mapa.getContinente("Asia"), 4);
+        listaSubobjetivosAux.add(subobjetivoAux);
+        objetivoAux = new ObjetivoParticular("Ocupar África, y 4 países de Asia.", listaSubobjetivosAux);
+
+        objetivos.add(objetivoAux);
+        subobjetivoAux = new Subobjetivo(mapa.getContinente("Africa"), 0);
+        listaSubobjetivosAux.add(subobjetivoAux);
+
+        subobjetivoAux = new Subobjetivo(mapa.getContinente("Asia"), 4);
+        listaSubobjetivosAux.add(subobjetivoAux);
+        objetivoAux = new ObjetivoParticular("Ocupar África, y 4 países de Asia.", listaSubobjetivosAux);
+
+        objetivos.add(objetivoAux);
+
+    }
 }
