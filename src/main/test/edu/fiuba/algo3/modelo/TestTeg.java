@@ -37,7 +37,7 @@ public class TestTeg {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ricardo");
         Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
-        teg.avanzarPrimeraEtapaColocacion();
+        teg.avanzarEtapa();
 
         assertEquals("Etapa Inicial", teg.enQueFaseEstaElJuego());
     }
@@ -46,8 +46,8 @@ public class TestTeg {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ricardo");
         Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
-        teg.avanzarPrimeraEtapaColocacion();
-        teg.avanzarSegundaEtapaColocacion();
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
 
         assertEquals("Ataque Entre Jugadores", teg.enQueFaseEstaElJuego());
     }

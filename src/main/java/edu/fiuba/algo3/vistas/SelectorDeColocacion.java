@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vistas;
 
+import edu.fiuba.algo3.controladores.BotonAgregarEventHandler;
 import edu.fiuba.algo3.controladores.ControladorMaestro;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -23,6 +24,7 @@ public class SelectorDeColocacion {
 
         Button agregarButton = new Button();
         agregarButton.setText("Agregar");
+        agregarButton.setOnAction(new BotonAgregarEventHandler(controladorMaestro, paises, cantFichas));
 
         Label fichas = new Label("Fichas:");
 

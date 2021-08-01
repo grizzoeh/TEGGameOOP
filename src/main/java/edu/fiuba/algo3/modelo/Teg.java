@@ -36,7 +36,7 @@ public class Teg {
 
         asignarObjetivosAJugadores();
 
-        turnoActual = new TurnoEtapaInicial(jugadores.get(numeroJugadorActual),mapa, 5);
+        turnoActual = new TurnoEtapaInicial(jugadores, 0, mapa, 5);
     }
 
     public void asignarObjetivosAJugadores(){
@@ -65,39 +65,20 @@ public class Teg {
         ((TurnoJugable) turnoActual).asignarEjercito(pais,cantidad);
     }
 
-    public void avanzarPrimeraEtapaColocacion() throws ColocacionFinalizadaException {
-        if (numeroJugadorActual > jugadores.size()) throw new ColocacionFinalizadaException();
-
-        if (numeroJugadorActual == jugadores.size()){
-            numeroJugadorActual = 0;
-            turnoActual = new TurnoEtapaInicial(jugadores.get(0),mapa, 3);
-            return;
-        }
-        Integer jugActual = numeroJugadorActual % jugadores.size();
-        numeroJugadorActual++;
-        turnoActual = new TurnoEtapaInicial(jugadores.get(jugActual),mapa, 5);
-    }
-    public void avanzarSegundaEtapaColocacion() throws ColocacionFinalizadaException {
-        if (numeroJugadorActual > jugadores.size()) throw new ColocacionFinalizadaException();
-        if (numeroJugadorActual == jugadores.size()){
-            numeroJugadorActual = 0;
-            turnoActual = new TurnoAtaque(jugadores.get(0),mapa);
-            return;
-        }
-        numeroJugadorActual++;
-        Integer jugActual = numeroJugadorActual % jugadores.size();
-        turnoActual = new TurnoEtapaInicial(jugadores.get(jugActual),mapa, 3);
-    }
-
 
     public void saltearColocacionInicial(){
         numeroJugadorActual = 0;
         turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual), mapa);
     }
     public ArrayList<String> paisesDelJugadorActual(){
-        Jugador jugador = jugadores.get(numeroJugadorActual);
+        Jugador jugador = ((TurnoJugable) turnoActual).obtenerJugadorActual();
         return mapa.listaPaisesConEjercito(jugador.getEjercito());
     }
+
+    public ArrayList<String> paisesDisponiblesAtacar() {
+        return mapa.paisesPuedenAtacar(((TurnoJugable) turnoActual).obtenerJugadorActual().getEjercito());
+    }
+
     public void avanzarEtapa(){
          turnoActual = ((TurnoJugable) turnoActual).avanzarEtapa();
 
@@ -141,20 +122,20 @@ public class Teg {
     public int cantidadJugadores(){
         return cantidadJugadores;
     }
+
     public String enQueFaseEstaElJuego(){
         return ((TurnoBasico) turnoActual).enQueFaseDelTurnoEsta();
     }
+
     public String mostrarObjetivoJugadorActual() {
-        Jugador jugador = jugadores.get(numeroJugadorActual);
-        return jugador.mostrarObjetivo();
+        return ((TurnoJugable) turnoActual).obtenerJugadorActual().mostrarObjetivo();
     }
 
     public String aQueJugadorLeToca(){
-        return jugadores.get(numeroJugadorActual).getNombre();
+        return ((TurnoJugable) turnoActual).obtenerJugadorActual().getNombre();
     }
 
     public String colorJugadorActual() {
-        Jugador jugador = jugadores.get(numeroJugadorActual);
-        return jugador.getColor();
+        return ((TurnoJugable) turnoActual).obtenerJugadorActual().getColor();
     }
 }

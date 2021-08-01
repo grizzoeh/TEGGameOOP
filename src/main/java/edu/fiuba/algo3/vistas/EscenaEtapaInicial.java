@@ -43,6 +43,7 @@ public class EscenaEtapaInicial {
 
         avanzarButton.setOnAction(new BotonAvanzarAAtaqueEventHandler(stage, controladorMaestro));
 
+
         return sceneNueva;
     }
 

@@ -56,4 +56,8 @@ public class TurnoAtaque implements TurnoJugable, TurnoBasico {
 	public int obtenerCantidadDeFichas() {
 		throw new EtapaEquivocadaException();
 	}
+
+	public Jugador obtenerJugadorActual() {
+		return jugador;
+	}
 }
