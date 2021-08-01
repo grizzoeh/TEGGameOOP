@@ -53,4 +53,8 @@ public class TurnoReagrupar implements TurnoJugable, TurnoBasico{
 	public int obtenerCantidadDeFichas() {
 		throw new EtapaEquivocadaException();
 	}
+
+	public Jugador obtenerJugadorActual() {
+		return jugador;
+	}
 }

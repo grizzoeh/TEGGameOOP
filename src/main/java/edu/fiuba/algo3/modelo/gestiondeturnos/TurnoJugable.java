@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.gestiondeturnos;
 
+import edu.fiuba.algo3.modelo.Jugador;
+
 public interface TurnoJugable extends Turno {
 	Turno avanzarEtapa();
 
@@ -16,4 +18,6 @@ public interface TurnoJugable extends Turno {
 	boolean todasLasFichasColocadas();
 
 	int obtenerCantidadDeFichas();
+
+	Jugador obtenerJugadorActual();
 }

@@ -13,8 +13,13 @@ public class TestTurnoEtapaInicial {
     Mapa mapa = new Mapa("recursos/archivosDeTexto/fronteras.csv");
     Ejercito azul = new Ejercito("Azul");
     Jugador jugador = new Jugador("Tomi", azul);
-    ArrayList lista = new ArrayList<>();
-    TurnoEtapaInicial turno = new TurnoEtapaInicial(jugador, mapa,5);
+    ArrayList<Jugador> listaJugadores = new ArrayList<>();
+    TurnoEtapaInicial turno;
+
+    public TestTurnoEtapaInicial() {
+        listaJugadores.add(jugador);
+        turno = new TurnoEtapaInicial(listaJugadores,0, mapa,5);
+    }
 
     @Test
     public void test01MoverEjercitoDevuelveExepcion() {

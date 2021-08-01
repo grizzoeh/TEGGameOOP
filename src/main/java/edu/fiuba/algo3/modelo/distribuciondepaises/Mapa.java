@@ -121,6 +121,13 @@ public class Mapa {
         });
         return paisesPertenecientes;
     }
+
+    public ArrayList<String> paisesPuedenAtacar(Ejercito ejercito) {
+        ArrayList<String> paisesParaAtacar = this.listaPaisesConEjercito(ejercito);
+        paisesParaAtacar.removeIf(pais -> !paises.get(pais).esAptoParaAtacar());
+        return paisesParaAtacar;
+    }
+
     public ArrayList<Pais> listaPaises() {
         ArrayList<Pais> paisesADevolver = new ArrayList<>();
         paises.forEach((stringPais, objetoPais) -> {

@@ -25,9 +25,8 @@ public class EscenaEtapaAtaque {
 
         var paisesLabel = new Label("Desde:");
         ComboBox paisesDesde = new ComboBox();
-        paisesDesde.getItems().addAll(
-                "Paises Atacantes"
-        );
+        paisesDesde.getItems().addAll(controladorMaestro.paisesPuedenAtacar());
+
         Label atacados = new Label("Hacia:");
 
         ComboBox paisesHacia = new ComboBox();

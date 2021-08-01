@@ -5,23 +5,30 @@ import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.aexcepciones.EtapaEquivocadaException;
 import edu.fiuba.algo3.modelo.aexcepciones.PaisNoLePerteneceException;
 
+import java.util.ArrayList;
+
 public class TurnoEtapaInicial implements TurnoJugable, TurnoBasico {
     private Mapa mapa;
-    private Jugador jugador;
+    private ArrayList<Jugador> jugadores;
+    private int posActual;
     private int cantidadFichas;
+    private int fichasMax;
 
 
-    public TurnoEtapaInicial(Jugador jugadorIngresado, Mapa mapaIngresado, Integer fichasAColocar) {
-        this.jugador = jugadorIngresado;
+    public TurnoEtapaInicial(ArrayList<Jugador> jugadores, int jugadorActual, Mapa mapaIngresado, Integer fichasAColocar) {
+        this.jugadores = jugadores;
         this.mapa = mapaIngresado;
+        this.posActual = jugadorActual;
         this.cantidadFichas = fichasAColocar;
+        this.fichasMax = fichasAColocar;
+
     }
     public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) {
         throw new EtapaEquivocadaException();
     }
 
     public void asignarEjercito(String pais, int cantidad) {
-        if(!mapa.paisLePertenece(pais, jugador)) {
+        if(!mapa.paisLePertenece(pais, jugadores.get(posActual))) {
             throw new PaisNoLePerteneceException();
         }
 
@@ -35,7 +42,15 @@ public class TurnoEtapaInicial implements TurnoJugable, TurnoBasico {
     }
 
     public Turno avanzarEtapa() {
-        return (TurnoJugable) new TurnoFinalizado();
+        posActual++;
+        if (posActual >= jugadores.size()) {
+            if (fichasMax == 3) {
+                return new TurnoAtaque(jugadores.get(0), mapa);
+            } else {
+                return new TurnoEtapaInicial(jugadores, 0, mapa, 3);
+            }
+        }
+        return new TurnoEtapaInicial(jugadores, posActual, mapa, fichasMax);
     }
 
 
@@ -65,5 +80,9 @@ public class TurnoEtapaInicial implements TurnoJugable, TurnoBasico {
 
     public int obtenerCantidadDeFichas() {
         return cantidadFichas;
+    }
+
+    public Jugador obtenerJugadorActual() {
+        return jugadores.get(posActual);
     }
 }
