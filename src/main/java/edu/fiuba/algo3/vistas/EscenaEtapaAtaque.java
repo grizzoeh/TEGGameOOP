@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.BotonAvanzarAReagrupacionEventHandler;
 import edu.fiuba.algo3.controladores.ControladorMaestro;
+import edu.fiuba.algo3.controladores.ElegirPaisParaAtacarEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -26,20 +27,20 @@ public class EscenaEtapaAtaque {
         var paisesLabel = new Label("Desde:");
         ComboBox paisesDesde = new ComboBox();
         paisesDesde.getItems().addAll(controladorMaestro.paisesPuedenAtacar());
-
         Label atacados = new Label("Hacia:");
 
         ComboBox paisesHacia = new ComboBox();
         paisesHacia.getItems().addAll(
                 "Paises A Ser Atacados"
         );
-
         Button atacarButton = new Button();
         atacarButton.setText("Lanzar Ataque");
         ComboBox cantidadDeFichas = new ComboBox();
         cantidadDeFichas.getItems().addAll(
                 "Cantidad"
         );
+
+        paisesDesde.setOnAction(new ElegirPaisParaAtacarEventHandler(controladorMaestro, paisesDesde,paisesHacia, cantidadDeFichas));
 
         Label fichas = new Label("Fichas:");
 

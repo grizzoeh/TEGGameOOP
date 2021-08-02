@@ -12,25 +12,33 @@ public class ControladorMaestro {
         teg = new Teg(jugadores, ProveedorDeConstantes.obtenerDireccionTablero(), false);
 
     }
+
+
     public ArrayList<String> paisesJugadorActual() {
         return teg.paisesDelJugadorActual();
     }
+
     public ArrayList<String> paisesPuedenAtacar() {
         return teg.paisesDisponiblesAtacar();
     }
+
+    public ArrayList<String> paisesQueSePuedenAtacarDesde(String pais){
+        return teg.paisesQueSePuedenAtacarDesde(pais);
+    }
+
     public int fichasDisponiblesJugadorActual() {
         return teg.obtenerCantidadFichas();
     }
     public String objetivoJugadorActual() {
         return teg.mostrarObjetivoJugadorActual();
     }
+
     public String nombreJugadorActual() {
-        System.out.println(teg.aQueJugadorLeToca());
         return teg.aQueJugadorLeToca();
     }
-    public void avanzarEtapa() {
-        teg.avanzarEtapa();
-    }
+
+    public void avanzarEtapa() { teg.avanzarEtapa(); }
+
     public String etapaActual() {
         return teg.enQueFaseEstaElJuego();
     }
@@ -43,4 +51,11 @@ public class ControladorMaestro {
         teg.asignarEjercito(pais, cantidad);
     }
 
+    public int paisesDominadosPorJugActual(){
+        return teg.cuantosPaisesDominaElJugadorActual();
+    }
+
+    public int tropasDisponiblesEn(String pais) {
+        return teg.cantidadDeTropasDisponiblesParaAtacar(pais);
+    }
 }

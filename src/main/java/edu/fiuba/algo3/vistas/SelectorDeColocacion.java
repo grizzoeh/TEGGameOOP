@@ -8,6 +8,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -21,10 +22,11 @@ public class SelectorDeColocacion {
         paises.getItems().addAll(paisesControla);
         TextField cantFichas = new TextField();
         cantFichas.setPromptText("Fichas Disponibles: " + controladorMaestro.fichasDisponiblesJugadorActual());
-
+        Label errores = new Label();
+        errores.setTextFill(Color.RED);
         Button agregarButton = new Button();
         agregarButton.setText("Agregar");
-        agregarButton.setOnAction(new BotonAgregarEventHandler(controladorMaestro, paises, cantFichas));
+        agregarButton.setOnAction(new BotonAgregarEventHandler(controladorMaestro, paises, cantFichas, errores));
 
         Label fichas = new Label("Fichas:");
 
@@ -33,7 +35,7 @@ public class SelectorDeColocacion {
         boton.setAlignment(Pos.CENTER_RIGHT);
 
 
-        HBox seleccionador = new HBox(paisesLabel,paises,fichas,cantFichas, agregarButton, boton);
+        HBox seleccionador = new HBox(paisesLabel,paises,fichas,cantFichas, agregarButton, boton, errores);
         return seleccionador;
     }
 }

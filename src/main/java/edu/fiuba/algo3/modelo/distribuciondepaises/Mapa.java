@@ -191,4 +191,14 @@ public class Mapa {
     public boolean leQuedanEjercitos(Ejercito ejercito) {
         return (this.paisesConEjercito(ejercito) != 0);
     }
+
+    public ArrayList<String> paisesAtacablesDesde(String pais){
+        Pais atacante = this.obtenerPais(pais);
+        return atacante.paisesEnemigosEnFrontera();
+    }
+
+    public int cantidadDeTropasParaAtacar(String pais) {
+        Pais atacante = this.obtenerPais(pais);
+        return atacante.tropasDisponiblesParaAtacar();
+    }
 }

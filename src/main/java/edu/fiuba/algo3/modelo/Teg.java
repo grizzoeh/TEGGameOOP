@@ -23,7 +23,7 @@ public class Teg {
         this.jugadores = new ArrayList<Jugador>();
         this.numeroJugadorActual = 0;
 
-        String[] colores = {"rojo", "azul", "verde", "amarillo", "rosa", "negro"};
+        String[] colores = {"Rojo", "Azul", "Verde", "Amarillo", "Rosa", "Negro"};
 
         for (int i = 0; i < this.cantidadJugadores; i++) {
             this.jugadores.add(new Jugador(nombresJugadores.get(i), new Ejercito(colores[i])));
@@ -136,6 +136,20 @@ public class Teg {
     }
 
     public String colorJugadorActual() {
-        return ((TurnoJugable) turnoActual).obtenerJugadorActual().getColor();
+        String[] coloresHex = {"cc3311", "0077bb", "009988", "ee7733", "ee3377", "000000"};
+        Jugador jugador = ((TurnoJugable) turnoActual).obtenerJugadorActual();
+        String color = jugador.getColor() + "-" + coloresHex[jugadores.indexOf(jugador)];
+        return color;
+    }
+    public Integer cuantosPaisesDominaElJugadorActual(){
+        Ejercito ejercito = ((TurnoJugable) turnoActual).obtenerJugadorActual().getEjercito();
+        return mapa.paisesConEjercito(ejercito);
+    }
+
+    public ArrayList<String> paisesQueSePuedenAtacarDesde(String pais) {
+        return mapa.paisesAtacablesDesde(pais);
+    }
+    public int cantidadDeTropasDisponiblesParaAtacar(String pais){
+        return mapa.cantidadDeTropasParaAtacar(pais);
     }
 }

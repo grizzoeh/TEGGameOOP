@@ -20,14 +20,13 @@ public class BotonAvanzarAAtaqueEventHandler implements EventHandler<ActionEvent
     @Override
     public void handle(ActionEvent event) {
         controladorMaestro.avanzarEtapa();
-
+        Scene nuevaEscena;
         if (controladorMaestro.etapaActual().equals("Ataque Entre Jugadores")) {
-            Scene nuevaEscena = EscenaEtapaAtaque.crearEscenaEtapaAtaque(stage, controladorMaestro);
-            stage.setScene(nuevaEscena);
-            stage.show();
-            return;
+            nuevaEscena = EscenaEtapaAtaque.crearEscenaEtapaAtaque(stage, controladorMaestro);
         }
-        Scene nuevaEscena = EscenaEtapaInicial.crearSceneEtapaInicial(stage, controladorMaestro);
+        else{
+            nuevaEscena = EscenaEtapaInicial.crearSceneEtapaInicial(stage, controladorMaestro);
+        }
         stage.setScene(nuevaEscena);
         stage.show();
     }
