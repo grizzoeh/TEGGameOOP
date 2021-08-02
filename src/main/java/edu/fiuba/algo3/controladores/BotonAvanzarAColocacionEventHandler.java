@@ -17,8 +17,8 @@ public class BotonAvanzarAColocacionEventHandler implements EventHandler {
 
     @Override
     public void handle(Event event) {
-
-            Scene nuevaEscena =  EscenaColocacionDeNuevasTropas.crearEscenaColocacion(controladorMaestro);
+            controladorMaestro.avanzarEtapa();
+            Scene nuevaEscena =  EscenaColocacionDeNuevasTropas.crearEscenaColocacion(stage, controladorMaestro);
             stage.setScene(nuevaEscena);
             stage.show();
         }

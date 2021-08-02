@@ -60,4 +60,14 @@ public class Pais {
     public boolean sePuedeMoverEstaCantidadDeEjercitos(Integer cantidad){
         return (cantidadEjercitos >= cantidad + 1);
     }
+
+    public ArrayList<String> paisesEnemigosEnFrontera(){
+        ArrayList<String> paises = new ArrayList<>();
+        frontera.forEach(pais -> {if((pais.getEjercito()) != this.ejercito) paises.add(pais.obtenerNombre());} );
+        return paises;
+    }
+
+    public int tropasDisponiblesParaAtacar() {
+        return cantidadEjercitos - 1;
+    }
 }

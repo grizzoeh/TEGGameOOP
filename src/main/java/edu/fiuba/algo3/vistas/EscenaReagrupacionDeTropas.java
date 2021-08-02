@@ -19,7 +19,6 @@ public class EscenaReagrupacionDeTropas {
 
         ImageView imageView = LectorDeImagenMapa.crearImagenDelMapa();
 
-
         Label etapa = new Label("ETAPA DE REAGRUPACION");
         etapa.setFont(new Font("Serif", 18));
 

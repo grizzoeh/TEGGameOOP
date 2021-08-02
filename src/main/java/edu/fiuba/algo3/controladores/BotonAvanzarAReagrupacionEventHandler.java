@@ -17,6 +17,7 @@ public class BotonAvanzarAReagrupacionEventHandler implements EventHandler {
 
     @Override
     public void handle(Event event) {
+        controladorMaestro.avanzarEtapa();
         Scene nuevaEscena = EscenaReagrupacionDeTropas.crearEscenaReagrupacion(stage, controladorMaestro);
         stage.setScene(nuevaEscena);
         stage.show();

@@ -207,6 +207,6 @@ public class TestTeg {
 
 
         assertEquals(teg.obtenerListaJugadores().size(),3);
-    }
-
+    }       
 }
+
