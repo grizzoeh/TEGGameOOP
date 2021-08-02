@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ComboBox;
 
+import java.util.ArrayList;
+
 public class ElegirPaisParaAtacarEventHandler implements EventHandler<ActionEvent> {
     private ControladorMaestro controladorMaestro;
     private ComboBox paisesHacia;
@@ -23,8 +25,17 @@ public class ElegirPaisParaAtacarEventHandler implements EventHandler<ActionEven
     public void handle(ActionEvent event) {
         paisesHacia.getItems().clear();
         cantidad.getItems().clear();
-        colocarCantidad();
-        paisesHacia.getItems().addAll(controladorMaestro.paisesQueSePuedenAtacarDesde((String) paisesDesde.getValue()));
+        ArrayList<String> paisesAtacables;
+
+        if (paisesDesde.getValue() != null){
+            paisesAtacables = controladorMaestro.paisesQueSePuedenAtacarDesde((String) paisesDesde.getValue());
+            if (paisesAtacables.size() == 0){
+                paisesHacia.setPromptText("Conquistaste Toda Su Frontera!");
+                return;
+            }
+            colocarCantidad();
+            paisesHacia.getItems().addAll(paisesAtacables);
+        }
     }
     public void colocarCantidad(){
         for (int i = 0; i < controladorMaestro.tropasDisponiblesEn((String) paisesDesde.getValue()); i++ ){
