@@ -17,7 +17,8 @@ public class EscenaEtapaInicial {
 
         ImageView imageView = LectorDeImagenMapa.crearImagenDelMapa();
 
-        VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(controladorMaestro);
+
+        VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(stage, controladorMaestro);
         contSupDer.setSpacing(10);
 
 
@@ -39,9 +40,10 @@ public class EscenaEtapaInicial {
         VBox contenedor = new VBox(contSuperior,contInferior);
         contenedor.setPadding(new Insets(10));
 
-        Scene sceneNueva = new Scene(contenedor, 1080, 720);
 
         avanzarButton.setOnAction(new BotonAvanzarAAtaqueEventHandler(stage, controladorMaestro));
+
+        Scene sceneNueva = new Scene(contenedor, 1080, 720);
 
 
         return sceneNueva;

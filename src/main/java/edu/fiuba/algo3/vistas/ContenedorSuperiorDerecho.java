@@ -1,16 +1,19 @@
 package edu.fiuba.algo3.vistas;
 
+import edu.fiuba.algo3.controladores.BotonMostrarPaisesHandler;
 import edu.fiuba.algo3.controladores.BotonObjetivoEventHandler;
 import edu.fiuba.algo3.controladores.ControladorMaestro;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 public class ContenedorSuperiorDerecho {
-    public static VBox crearContenedor(ControladorMaestro controladorMaestro){
+    public static VBox crearContenedor(Stage stage , ControladorMaestro controladorMaestro){
         String colorConCodigo = controladorMaestro.colorJugadorActual();
         String[] codigoColor = colorConCodigo.split("-");
         Label nombre = new Label("Nombre: " + controladorMaestro.nombreJugadorActual());
@@ -25,7 +28,12 @@ public class ContenedorSuperiorDerecho {
         objetivoButton.setFont(new Font(12));
         objetivoButton.setOnAction(new BotonObjetivoEventHandler(controladorMaestro));
 
-        VBox contenedor = new VBox(nombre, hBox, cantidadPaises,objetivoButton);
+        Button paisesButton = new Button();
+        paisesButton.setText("Ver paises");
+        paisesButton.setFont(new Font(12));
+        paisesButton.setOnAction(new BotonMostrarPaisesHandler(stage , controladorMaestro));
+
+        VBox contenedor = new VBox(nombre, hBox, cantidadPaises,objetivoButton, paisesButton);
         return contenedor;
     }
 }

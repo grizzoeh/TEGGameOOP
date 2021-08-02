@@ -55,6 +55,10 @@ public class ControladorMaestro {
         return teg.cuantosPaisesDominaElJugadorActual();
     }
 
+    public ArrayList<ArrayList<String>> paisesPorJugador() {
+        return teg.paisesPorJugador();
+    }
+
     public int tropasDisponiblesEn(String pais) {
         return teg.cantidadDeTropasDisponiblesParaAtacar(pais);
     }
