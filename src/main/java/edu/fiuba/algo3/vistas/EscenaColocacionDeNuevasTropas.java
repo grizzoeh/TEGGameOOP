@@ -18,7 +18,8 @@ public class EscenaColocacionDeNuevasTropas {
     public static Scene crearEscenaColocacion(Stage stage, ControladorMaestro controladorMaestro){
         ImageView imageView = LectorDeImagenMapa.crearImagenDelMapa();
 
-        VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(controladorMaestro);
+
+        VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(stage, controladorMaestro);
         contSupDer.setSpacing(10);
 
         var etapa = new Label("ETAPA DE COLOCACION");
@@ -40,6 +41,7 @@ public class EscenaColocacionDeNuevasTropas {
         contenedor.setPadding(new Insets(10));
 
         Scene sceneNueva = new Scene(contenedor, 1080, 720);
+
 
         avanzarButton.setOnAction(new BotonAvanzarAAtaqueEventHandler(stage, controladorMaestro));
 

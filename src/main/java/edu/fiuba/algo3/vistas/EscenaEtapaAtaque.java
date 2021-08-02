@@ -59,7 +59,7 @@ public class EscenaEtapaAtaque {
         -Generar un pop up despues de atacar
          */
         atacarButton.setOnAction(new BotonAtacarEventHandler(stage, controladorMaestro, paisesDesde,paisesHacia,cantidadDeFichas, error));
-        VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(controladorMaestro);
+        VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(stage, controladorMaestro);
         contSupDer.setSpacing(10);
 
         HBox seleccionador = new HBox(paisesLabel,paisesDesde, atacados, paisesHacia,fichas, cantidadDeFichas,atacarButton, avanzarButton, error);
@@ -75,6 +75,7 @@ public class EscenaEtapaAtaque {
         contenedor.setPadding(new Insets(10));
 
         Scene sceneNueva = new Scene(contenedor, 1080, 720);
+
         avanzarButton.setOnAction(new BotonAvanzarAReagrupacionEventHandler(stage, controladorMaestro));
         return sceneNueva;
 

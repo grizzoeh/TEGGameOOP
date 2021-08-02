@@ -19,6 +19,7 @@ public class EscenaReagrupacionDeTropas {
 
         ImageView imageView = LectorDeImagenMapa.crearImagenDelMapa();
 
+
         Label etapa = new Label("ETAPA DE REAGRUPACION");
         etapa.setFont(new Font("Serif", 18));
 
@@ -47,7 +48,7 @@ public class EscenaReagrupacionDeTropas {
         avanzarButton.setText("Avanzar Etapa");
         avanzarButton.setAlignment(Pos.CENTER_RIGHT);
 
-        VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(controladorMaestro);
+        VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(stage, controladorMaestro);
         contSupDer.setSpacing(10);
 
         HBox seleccionador = new HBox(paisesLabel,paisesDesde, atacados, paisesHacia,fichas, cantidadDeFichas,atacarButton, avanzarButton);

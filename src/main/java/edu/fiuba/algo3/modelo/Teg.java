@@ -111,6 +111,19 @@ public class Teg {
 
     }
 
+    public ArrayList<ArrayList<String>> paisesPorJugador() {
+        ArrayList<ArrayList<String>> lista = new ArrayList();
+        for (Jugador persona : jugadores) {
+            ArrayList<String> sublista = new ArrayList();
+
+            sublista.add(persona.getNombre());
+            sublista.addAll(mapa.listaPaisesConEjercito(persona.getEjercito()));
+
+            lista.add(sublista);
+        }
+        return lista;
+    }
+
     public boolean jugadorGano(Jugador jugador){
         return jugador.objetivoCumplido();
     }

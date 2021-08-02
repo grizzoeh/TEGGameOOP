@@ -42,6 +42,8 @@ public class BotonAgregarEventHandler implements EventHandler {
             errores.setText("La Cantidad Debe Ser Mayor a Cero");
             return; }
 
+        errores.setText("");
+
         String pais = (String) cajaPaises.getValue();
         controladorMaestro.asignarFichas(cantidad ,(String) cajaPaises.getValue());
 
