@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Ejercito;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 public class Pais {
     private final String nombre;
@@ -64,6 +65,7 @@ public class Pais {
     public ArrayList<String> paisesEnemigosEnFrontera(){
         ArrayList<String> paises = new ArrayList<>();
         frontera.forEach(pais -> {if((pais.getEjercito()) != this.ejercito) paises.add(pais.obtenerNombre());} );
+        Collections.sort(paises);
         return paises;
     }
 

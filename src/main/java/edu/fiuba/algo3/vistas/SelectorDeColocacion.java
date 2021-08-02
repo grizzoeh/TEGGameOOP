@@ -19,6 +19,7 @@ public class SelectorDeColocacion {
         ComboBox paises = new ComboBox();
 
         ArrayList<String> paisesControla = controladorMaestro.paisesJugadorActual();
+        paisesControla.stream().sorted();
         paises.getItems().addAll(paisesControla);
         TextField cantFichas = new TextField();
         cantFichas.setPromptText("Fichas Disponibles: " + controladorMaestro.fichasDisponiblesJugadorActual());

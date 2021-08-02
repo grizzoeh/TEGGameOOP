@@ -58,4 +58,7 @@ public class ControladorMaestro {
     public int tropasDisponiblesEn(String pais) {
         return teg.cantidadDeTropasDisponiblesParaAtacar(pais);
     }
+    public void atacar(String desde, String hacia, Integer cantidad){
+        teg.atacar(desde,hacia,cantidad);
+    }
 }

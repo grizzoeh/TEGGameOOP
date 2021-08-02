@@ -10,6 +10,8 @@ import edu.fiuba.algo3.modelo.aexcepciones.PaisesNoSonDelMismoDuenoException;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -119,6 +121,7 @@ public class Mapa {
         paises.forEach((stringPais, objetoPais) -> {
             if (ejercitoEnPais(stringPais) == ejercito) paisesPertenecientes.add(stringPais);
         });
+        Collections.sort(paisesPertenecientes);
         return paisesPertenecientes;
     }
 

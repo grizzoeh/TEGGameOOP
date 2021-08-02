@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vistas;
 
+import edu.fiuba.algo3.controladores.BotonAtacarEventHandler;
 import edu.fiuba.algo3.controladores.BotonAvanzarAReagrupacionEventHandler;
 import edu.fiuba.algo3.controladores.ControladorMaestro;
 import edu.fiuba.algo3.controladores.ElegirPaisParaAtacarEventHandler;
@@ -43,15 +44,25 @@ public class EscenaEtapaAtaque {
         paisesDesde.setOnAction(new ElegirPaisParaAtacarEventHandler(controladorMaestro, paisesDesde,paisesHacia, cantidadDeFichas));
 
         Label fichas = new Label("Fichas:");
+        Label error = new Label();
 
         Button avanzarButton = new Button();
         avanzarButton.setText("Avanzar Etapa");
         avanzarButton.setAlignment(Pos.CENTER_RIGHT);
 
+        /*
+        Nota:
+        Aca tendriamos que decidir la forma en la que se notifica al usuario el resultado del ataque.
+        Las opciones que pensamos son
+        -Dejarlo tal como esta ahora (No informar)
+        -Tener una label, al lado del boton de avanzar el turno
+        -Generar un pop up despues de atacar
+         */
+        atacarButton.setOnAction(new BotonAtacarEventHandler(stage, controladorMaestro, paisesDesde,paisesHacia,cantidadDeFichas, error));
         VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(controladorMaestro);
         contSupDer.setSpacing(10);
 
-        HBox seleccionador = new HBox(paisesLabel,paisesDesde, atacados, paisesHacia,fichas, cantidadDeFichas,atacarButton, avanzarButton);
+        HBox seleccionador = new HBox(paisesLabel,paisesDesde, atacados, paisesHacia,fichas, cantidadDeFichas,atacarButton, avanzarButton, error);
         seleccionador.setSpacing(10);
         VBox contInfIzq = new VBox(etapa,seleccionador);
         contInfIzq.setPadding(new Insets(1));

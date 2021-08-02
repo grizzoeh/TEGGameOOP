@@ -52,6 +52,8 @@ public class EscenaIntroducirJugadores {
         contenedor.setAlignment(Pos.CENTER);
 
         cantJugadoresBox.setOnAction(new EnviarCantJugadoresEventHandler(vbox,cantJugadoresBox));
+        vbox.setSpacing(5);
+        contenedor.setSpacing(10);
 
         botonEnviar.setOnAction(new BotonConfirmarJugadoresEventHandler(vbox,alertaJugadoreVacios,stage,cantJugadoresBox));
 
