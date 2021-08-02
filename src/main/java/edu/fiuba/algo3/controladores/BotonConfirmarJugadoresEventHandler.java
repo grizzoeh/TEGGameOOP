@@ -94,7 +94,6 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
         audioStream = AudioSystem.getAudioInputStream(new File(file).getAbsoluteFile());
 
         clip = AudioSystem.getClip();
-
         clip.open(audioStream);
         clip.start();
 

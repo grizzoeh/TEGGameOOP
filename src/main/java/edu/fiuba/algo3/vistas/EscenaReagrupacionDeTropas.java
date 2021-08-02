@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.BotonAvanzarAColocacionEventHandler;
+import edu.fiuba.algo3.controladores.BotonElegirPaisAReagruparEventHandler;
+import edu.fiuba.algo3.controladores.BotonReagruparEventHandler;
 import edu.fiuba.algo3.controladores.ControladorMaestro;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -25,25 +27,22 @@ public class EscenaReagrupacionDeTropas {
 
         var paisesLabel = new Label("Desde:");
         ComboBox paisesDesde = new ComboBox();
-        paisesDesde.getItems().addAll(
-                "Paises Desde"
-        );
+        paisesDesde.getItems().addAll( controladorMaestro.paisesPuedenAtacar());
         Label atacados = new Label("Hacia:");
 
+
         ComboBox paisesHacia = new ComboBox();
-        paisesHacia.getItems().addAll(
-                "Paises Hacia"
-        );
 
-        Button atacarButton = new Button();
-        atacarButton.setText("Reagrupar");
+        Button reagruparButton = new Button();
+        reagruparButton.setText("Reagrupar");
         ComboBox cantidadDeFichas = new ComboBox();
-        cantidadDeFichas.getItems().addAll(
-                "Cantidad"
-        );
 
+        Label errores = new Label("");
+
+        paisesDesde.setOnAction(new BotonElegirPaisAReagruparEventHandler(controladorMaestro, paisesDesde, paisesHacia, cantidadDeFichas));
         Label fichas = new Label("Fichas:");
 
+        reagruparButton.setOnAction(new BotonReagruparEventHandler(controladorMaestro, paisesDesde, paisesHacia, cantidadDeFichas, errores));
         Button avanzarButton = new Button();
         avanzarButton.setText("Avanzar Etapa");
         avanzarButton.setAlignment(Pos.CENTER_RIGHT);
@@ -51,7 +50,7 @@ public class EscenaReagrupacionDeTropas {
         VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(stage, controladorMaestro);
         contSupDer.setSpacing(10);
 
-        HBox seleccionador = new HBox(paisesLabel,paisesDesde, atacados, paisesHacia,fichas, cantidadDeFichas,atacarButton, avanzarButton);
+        HBox seleccionador = new HBox(paisesLabel,paisesDesde, atacados, paisesHacia,fichas, cantidadDeFichas,reagruparButton, avanzarButton, errores);
         seleccionador.setSpacing(10);
         VBox contInfIzq = new VBox(etapa,seleccionador);
         contInfIzq.setPadding(new Insets(1));

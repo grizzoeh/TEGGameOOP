@@ -58,6 +58,7 @@ public class EscenaEtapaAtaque {
         -Tener una label, al lado del boton de avanzar el turno
         -Generar un pop up despues de atacar
          */
+
         atacarButton.setOnAction(new BotonAtacarEventHandler(stage, controladorMaestro, paisesDesde,paisesHacia,cantidadDeFichas, error));
         VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(stage, controladorMaestro);
         contSupDer.setSpacing(10);
