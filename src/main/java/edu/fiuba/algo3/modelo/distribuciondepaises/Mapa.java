@@ -204,4 +204,9 @@ public class Mapa {
         Pais atacante = this.obtenerPais(pais);
         return atacante.tropasDisponiblesParaAtacar();
     }
+
+    public ArrayList<String> paisesAliadosEnFronteraDe(String pais) {
+        Pais desde = this.obtenerPais(pais);
+        return desde.paisesAliadosEnFrontera();
+    }
 }

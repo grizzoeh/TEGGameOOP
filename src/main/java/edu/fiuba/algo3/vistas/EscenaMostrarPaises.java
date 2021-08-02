@@ -24,8 +24,9 @@ public class EscenaMostrarPaises {
 
         Button botonVolver = new Button("Volver al tablero");
         botonVolver.setOnAction(new BotonVolverATableroEventHandler(stage, sceneActual));
-
-        ScrollPane panelCentral = new ScrollPane(new VBox(columnas, botonVolver));
+        VBox vBox = new  VBox(columnas, botonVolver);
+        vBox.setAlignment(Pos.CENTER);
+        ScrollPane panelCentral = new ScrollPane(vBox);
 
         ArrayList<ArrayList<String>> paises = controladorMaestro.paisesPorJugador();
 

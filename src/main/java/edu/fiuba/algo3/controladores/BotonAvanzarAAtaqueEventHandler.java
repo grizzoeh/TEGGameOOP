@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.controladores;
 
+import edu.fiuba.algo3.modelo.aexcepciones.JuegoTerminadoException;
 import edu.fiuba.algo3.vistas.EscenaEtapaAtaque;
 import edu.fiuba.algo3.vistas.EscenaEtapaInicial;
+import edu.fiuba.algo3.vistas.EscenaFinal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -19,8 +21,16 @@ public class BotonAvanzarAAtaqueEventHandler implements EventHandler<ActionEvent
 
     @Override
     public void handle(ActionEvent event) {
-        controladorMaestro.avanzarEtapa();
         Scene nuevaEscena;
+        try {
+            controladorMaestro.avanzarEtapa();
+        }catch (JuegoTerminadoException e){
+            nuevaEscena = EscenaFinal.crearEscenaFinal(stage, e.obtenerGanador());
+            stage.setScene(nuevaEscena);
+            stage.show();
+            return;
+        }
+
         if (controladorMaestro.etapaActual().equals("Ataque Entre Jugadores")) {
             nuevaEscena = EscenaEtapaAtaque.crearEscenaEtapaAtaque(stage, controladorMaestro);
         }

@@ -59,10 +59,18 @@ public class ControladorMaestro {
         return teg.paisesPorJugador();
     }
 
+    public  ArrayList<String> paisesAliadosEnFronteraDe(String pais){
+        return teg.paisesAliadosEnFronteraDe(pais);
+    }
     public int tropasDisponiblesEn(String pais) {
         return teg.cantidadDeTropasDisponiblesParaAtacar(pais);
     }
+
     public void atacar(String desde, String hacia, Integer cantidad){
         teg.atacar(desde,hacia,cantidad);
+    }
+
+    public void reagrupar(String desde, String hacia, int cantidad) {
+        teg.moverEjercito(desde, hacia, cantidad);
     }
 }

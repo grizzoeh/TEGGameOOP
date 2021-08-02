@@ -84,6 +84,7 @@ public class Teg {
 
         if(((TurnoBasico) turnoActual).estaFinalizado()){
             if (jugadorGano(jugadores.get(numeroJugadorActual))){
+
                 this.anunciarGanador();
             }
             numeroJugadorActual++;
@@ -96,7 +97,7 @@ public class Teg {
     }
 
     public void anunciarGanador() {
-        //Darle funcionalidad
+        throw new JuegoTerminadoException(jugadores.get(numeroJugadorActual).getNombre());
     }
     public ArrayList<Jugador> obtenerListaJugadores(){
         ArrayList<Jugador> lista = (ArrayList<Jugador>) jugadores.clone();
@@ -123,7 +124,9 @@ public class Teg {
         }
         return lista;
     }
-
+    public  ArrayList<String> paisesAliadosEnFronteraDe(String pais){
+        return mapa.paisesAliadosEnFronteraDe(pais);
+    }
     public boolean jugadorGano(Jugador jugador){
         return jugador.objetivoCumplido();
     }
