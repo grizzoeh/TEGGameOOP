@@ -17,7 +17,7 @@ public class Combate {
         this.dados = new Dados();
     }
 
-    public void generarCombate() {
+    public boolean generarCombate() {
 
         ArrayList<Integer> dadosAtacante = dados.tirarDados(this.cantAtacante);
 
@@ -32,13 +32,17 @@ public class Combate {
             else perdidosDefensor++;
         }
 
-        informarResultados(perdidosAtacante, perdidosDefensor);
+        return informarResultados(perdidosAtacante, perdidosDefensor);
     }
 
-    public void informarResultados(int perdidosAtacante, int perdidosDefensor) {
+    public boolean informarResultados(int perdidosAtacante, int perdidosDefensor) {
         this.paisAtacante.eliminarEjercitos(perdidosAtacante);
         this.paisDefensor.eliminarEjercitos(perdidosDefensor);
 
-        if (!this.paisDefensor.estaOcupado()) this.paisAtacante.invadir(this.paisDefensor);
+        if (!this.paisDefensor.estaOcupado()){
+            this.paisAtacante.invadir(this.paisDefensor);
+            return true;
+        }
+        return false;
     }
 }

@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.aexcepciones.EtapaEquivocadaException;
 import edu.fiuba.algo3.modelo.aexcepciones.PaisNoLePerteneceException;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.Mazo;
 
 import java.util.ArrayList;
 
@@ -13,14 +14,16 @@ public class TurnoEtapaInicial implements TurnoJugable, TurnoBasico {
     private int posActual;
     private int cantidadFichas;
     private int fichasMax;
+    private Mazo mazo;
 
 
-    public TurnoEtapaInicial(ArrayList<Jugador> jugadores, int jugadorActual, Mapa mapaIngresado, Integer fichasAColocar) {
+    public TurnoEtapaInicial(ArrayList<Jugador> jugadores, int jugadorActual, Mapa mapaIngresado, Integer fichasAColocar, Mazo mazo) {
         this.jugadores = jugadores;
         this.mapa = mapaIngresado;
         this.posActual = jugadorActual;
         this.cantidadFichas = fichasAColocar;
         this.fichasMax = fichasAColocar;
+        this.mazo = mazo;
 
     }
     public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) {
@@ -45,7 +48,7 @@ public class TurnoEtapaInicial implements TurnoJugable, TurnoBasico {
         posActual++;
         if (posActual >= jugadores.size()) {
             if (fichasMax == 3) {
-                return new TurnoAtaque(jugadores.get(0), mapa);
+                return new TurnoAtaque(jugadores.get(0), mapa, mazo);
             } else {
                 return new TurnoEtapaInicial(jugadores, 0, mapa, 3);
             }

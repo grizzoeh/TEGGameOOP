@@ -18,7 +18,6 @@ public class EscenaColocacionDeNuevasTropas {
     public static Scene crearEscenaColocacion(Stage stage, ControladorMaestro controladorMaestro){
         ImageView imageView = LectorDeImagenMapa.crearImagenDelMapa();
 
-
         VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(stage, controladorMaestro);
         contSupDer.setSpacing(10);
 
@@ -29,13 +28,23 @@ public class EscenaColocacionDeNuevasTropas {
 
         HBox seleccionador = SelectorDeColocacion.crearSelector(avanzarButton, controladorMaestro);
 
+        Button canjearTarjetas = new Button();
+        canjearTarjetas.setText("Canjear Tarjeta");
+        Button canjearVariasTarjetas = new Button();
+        canjearVariasTarjetas.setText("Canjear 3 Tarjetas");
+        canjearTarjetas.setOnAction(new BotonCanjearTarjetasEventHandler(controladorMaestro));
+
         seleccionador.setSpacing(10);
+        seleccionador.getChildren().add(canjearTarjetas);
+        seleccionador.getChildren().add(canjearVariasTarjetas);
+
         VBox contInfIzq = new VBox(etapa,seleccionador);
         contInfIzq.setPadding(new Insets(1));
 
         HBox contSuperior = new HBox(imageView,contSupDer);
         contSuperior.setSpacing(5);
         HBox contInferior = new HBox(contInfIzq);
+
 
         VBox contenedor = new VBox(contSuperior,contInferior);
         contenedor.setPadding(new Insets(10));
