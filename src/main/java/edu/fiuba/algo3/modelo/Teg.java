@@ -36,10 +36,10 @@ public class Teg {
 
         asignarObjetivosAJugadores();
 
-        turnoActual = new TurnoEtapaInicial(jugadores, 0, mapa, 5);
+        turnoActual = new TurnoEtapaInicial(jugadores, 0, mapa, 5, mazo);
     }
 
-    public void asignarObjetivosAJugadores(){
+    public void asignarObjetivosAJugadores() {
         Jugador jugAux;
 
         for (int i = 0; i < this.cantidadJugadores; i++) {
@@ -49,28 +49,30 @@ public class Teg {
 
         }
     }
-    public boolean todosLosPaisesOcupados(){
+
+    public boolean todosLosPaisesOcupados() {
         return this.mapa.todosLosPaisesOcupados();
     }
 
     public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws EtapaEquivocadaException, PaisNoLePerteneceException {
-        ((TurnoJugable) turnoActual).atacar(paisAtaque,paisDefensa,cantEjercitos);
+        ((TurnoJugable) turnoActual).atacar(paisAtaque, paisDefensa, cantEjercitos);
     }
 
-    public void moverEjercito(String paisDesde, String paisHasta,int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException, PaisesNoSonDelMismoDuenoException, PaisSinEjercitosSuficientesException, PaisesNoContinuosException {
-        ((TurnoJugable) turnoActual).moverEjercito(paisDesde,paisHasta,cantidad);
+    public void moverEjercito(String paisDesde, String paisHasta, int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException, PaisesNoSonDelMismoDuenoException, PaisSinEjercitosSuficientesException, PaisesNoContinuosException {
+        ((TurnoJugable) turnoActual).moverEjercito(paisDesde, paisHasta, cantidad);
     }
 
-    public void asignarEjercito(String pais,int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException {
-        ((TurnoJugable) turnoActual).asignarEjercito(pais,cantidad);
+    public void asignarEjercito(String pais, int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+        ((TurnoJugable) turnoActual).asignarEjercito(pais, cantidad);
     }
 
 
-    public void saltearColocacionInicial(){
+    public void saltearColocacionInicial() {
         numeroJugadorActual = 0;
-        turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual), mapa);
+        turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual), mapa, mazo);
     }
-    public ArrayList<String> paisesDelJugadorActual(){
+
+    public ArrayList<String> paisesDelJugadorActual() {
         Jugador jugador = ((TurnoJugable) turnoActual).obtenerJugadorActual();
         return mapa.listaPaisesConEjercito(jugador.getEjercito());
     }
@@ -79,35 +81,36 @@ public class Teg {
         return mapa.paisesPuedenAtacar(((TurnoJugable) turnoActual).obtenerJugadorActual().getEjercito());
     }
 
-    public void avanzarEtapa(){
-         turnoActual = ((TurnoJugable) turnoActual).avanzarEtapa();
+    public void avanzarEtapa() {
+        turnoActual = ((TurnoJugable) turnoActual).avanzarEtapa();
 
-        if(((TurnoBasico) turnoActual).estaFinalizado()){
-            if (jugadorGano(jugadores.get(numeroJugadorActual))){
-
+        if (((TurnoBasico) turnoActual).estaFinalizado()) {
+            if (jugadorGano(jugadores.get(numeroJugadorActual))) {
                 this.anunciarGanador();
             }
             numeroJugadorActual++;
             numeroJugadorActual %= jugadores.size();
-            if (jugadorEstaEliminado(jugadores.get(numeroJugadorActual))){
+            if (jugadorEstaEliminado(jugadores.get(numeroJugadorActual))) {
                 jugadores.remove(numeroJugadorActual);
             }
-            turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual),mapa);
+            turnoActual = new TurnoAtaque(jugadores.get(numeroJugadorActual), mapa, mazo);
         }
     }
 
     public void anunciarGanador() {
         throw new JuegoTerminadoException(jugadores.get(numeroJugadorActual).getNombre());
     }
-    public ArrayList<Jugador> obtenerListaJugadores(){
+
+    public ArrayList<Jugador> obtenerListaJugadores() {
         ArrayList<Jugador> lista = (ArrayList<Jugador>) jugadores.clone();
         return lista;
     }
-    public boolean jugadorEstaEliminado(Jugador jugador){
+
+    public boolean jugadorEstaEliminado(Jugador jugador) {
         return !mapa.leQuedanEjercitos(jugador.getEjercito());
     }
 
-    public int cantEjercitosEn(String nombrePais){
+    public int cantEjercitosEn(String nombrePais) {
         return mapa.numeroEjercitosEn(nombrePais);
 
     }
@@ -124,10 +127,12 @@ public class Teg {
         }
         return lista;
     }
-    public  ArrayList<String> paisesAliadosEnFronteraDe(String pais){
+
+    public ArrayList<String> paisesAliadosEnFronteraDe(String pais) {
         return mapa.paisesAliadosEnFronteraDe(pais);
     }
-    public boolean jugadorGano(Jugador jugador){
+
+    public boolean jugadorGano(Jugador jugador) {
         return jugador.objetivoCumplido();
     }
 
@@ -135,11 +140,11 @@ public class Teg {
         return ((TurnoJugable) turnoActual).obtenerCantidadDeFichas();
     }
 
-    public int cantidadJugadores(){
+    public int cantidadJugadores() {
         return cantidadJugadores;
     }
 
-    public String enQueFaseEstaElJuego(){
+    public String enQueFaseEstaElJuego() {
         return ((TurnoBasico) turnoActual).enQueFaseDelTurnoEsta();
     }
 
@@ -147,7 +152,7 @@ public class Teg {
         return ((TurnoJugable) turnoActual).obtenerJugadorActual().mostrarObjetivo();
     }
 
-    public String aQueJugadorLeToca(){
+    public String aQueJugadorLeToca() {
         return ((TurnoJugable) turnoActual).obtenerJugadorActual().getNombre();
     }
 
@@ -157,7 +162,8 @@ public class Teg {
         String color = jugador.getColor() + "-" + coloresHex[jugadores.indexOf(jugador)];
         return color;
     }
-    public Integer cuantosPaisesDominaElJugadorActual(){
+
+    public Integer cuantosPaisesDominaElJugadorActual() {
         Ejercito ejercito = ((TurnoJugable) turnoActual).obtenerJugadorActual().getEjercito();
         return mapa.paisesConEjercito(ejercito);
     }
@@ -165,7 +171,11 @@ public class Teg {
     public ArrayList<String> paisesQueSePuedenAtacarDesde(String pais) {
         return mapa.paisesAtacablesDesde(pais);
     }
-    public int cantidadDeTropasDisponiblesParaAtacar(String pais){
+
+    public int cantidadDeTropasDisponiblesParaAtacar(String pais) {
         return mapa.cantidadDeTropasParaAtacar(pais);
     }
+
+
+
 }

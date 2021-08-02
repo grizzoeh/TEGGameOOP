@@ -88,7 +88,7 @@ public class Mapa {
         return paises.get(paisABuscar);
     }
 
-    public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws PaisesNoContinuosException, PaisesConMismoDuenoException, PaisSinEjercitosSuficientesException {
+    public boolean atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws PaisesNoContinuosException, PaisesConMismoDuenoException, PaisSinEjercitosSuficientesException {
         Pais paisAtacante = obtenerPais(paisAtaque);
         Pais paisDefensor = obtenerPais(paisDefensa);
 
@@ -100,7 +100,7 @@ public class Mapa {
             throw new PaisSinEjercitosSuficientesException();
 
         Combate combate = new Combate(paisAtacante, paisDefensor, cantEjercitos);
-        combate.generarCombate();
+        return combate.generarCombate();
     }
 
     public boolean sonContiguos(Pais paisUno, Pais paisDos) {

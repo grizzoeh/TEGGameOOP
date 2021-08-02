@@ -3,14 +3,19 @@ package edu.fiuba.algo3.modelo.gestiondeturnos;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.aexcepciones.*;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.Mazo;
 
 public class TurnoAtaque implements TurnoJugable, TurnoBasico {
 	private Mapa mapa;
 	private Jugador jugador;
+	private boolean gano;
+	private Mazo mazo;
 
-	public TurnoAtaque(Jugador jugadorIngresado, Mapa mapaIngresado) {
+	public TurnoAtaque(Jugador jugadorIngresado, Mapa mapaIngresado, Mazo mazo) {
 		this.jugador = jugadorIngresado;
 		this.mapa = mapaIngresado;
+		this.mazo = mazo;
+		gano = false;
 	}
 
 	public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) {
@@ -18,7 +23,9 @@ public class TurnoAtaque implements TurnoJugable, TurnoBasico {
 			throw new PaisNoLePerteneceException();
 		}
 		try {
-			mapa.atacar(paisAtaque, paisDefensa, cantEjercitos);
+			if(mapa.atacar(paisAtaque, paisDefensa, cantEjercitos)){
+				gano = true;
+			};
 		} catch (PaisesNoContinuosException | PaisesConMismoDuenoException | PaisSinEjercitosSuficientesException e) {
 			e.printStackTrace();
 		}
@@ -33,6 +40,8 @@ public class TurnoAtaque implements TurnoJugable, TurnoBasico {
 	}
 
 	public Turno avanzarEtapa() {
+		if (gano) jugador.agregarTarjeta(mazo.repartirTarjeta());
+
 		return new TurnoReagrupar(jugador, mapa);
 	}
 
