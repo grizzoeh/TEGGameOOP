@@ -16,7 +16,6 @@ public class TurnoEtapaInicial implements TurnoJugable, TurnoBasico {
     private int fichasMax;
     private Mazo mazo;
 
-
     public TurnoEtapaInicial(ArrayList<Jugador> jugadores, int jugadorActual, Mapa mapaIngresado, Integer fichasAColocar, Mazo mazo) {
         this.jugadores = jugadores;
         this.mapa = mapaIngresado;
@@ -24,8 +23,8 @@ public class TurnoEtapaInicial implements TurnoJugable, TurnoBasico {
         this.cantidadFichas = fichasAColocar;
         this.fichasMax = fichasAColocar;
         this.mazo = mazo;
-
     }
+
     public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) {
         throw new EtapaEquivocadaException();
     }
@@ -50,10 +49,10 @@ public class TurnoEtapaInicial implements TurnoJugable, TurnoBasico {
             if (fichasMax == 3) {
                 return new TurnoAtaque(jugadores.get(0), mapa, mazo);
             } else {
-                return new TurnoEtapaInicial(jugadores, 0, mapa, 3);
+                return new TurnoEtapaInicial(jugadores, 0, mapa, 3, mazo);
             }
         }
-        return new TurnoEtapaInicial(jugadores, posActual, mapa, fichasMax);
+        return new TurnoEtapaInicial(jugadores, posActual, mapa, fichasMax, mazo);
     }
 
 

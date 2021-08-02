@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.aexcepciones.PaisNoLePerteneceException;
 import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoJugable;
 import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoAtaque;
 import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoReagrupar;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.Mazo;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -17,8 +18,9 @@ public class TestTurnoAtaque {
     Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
     Ejercito rojo = new Ejercito("rojo");
     Jugador jugador = new Jugador("Fran", rojo);
+    Mazo mazo = new Mazo(mapa.listaPaises());
     ArrayList lista = new ArrayList<>();
-    TurnoAtaque turno = new TurnoAtaque(jugador, mapa);
+    TurnoAtaque turno = new TurnoAtaque(jugador, mapa, mazo);
 
     @Test
     public void test01AsignarEjercitoDevuelveExepcion() {
@@ -51,7 +53,7 @@ public class TestTurnoAtaque {
         lista.add(jugador);
         lista.add(jugadorAux);
         mapa.repartirPaises(lista);
-        TurnoAtaque turno = new TurnoAtaque(jugador, mapa);
+        TurnoAtaque turno = new TurnoAtaque(jugador, mapa, mazo);
 
         assertThrows(PaisNoLePerteneceException.class,
                 () -> {

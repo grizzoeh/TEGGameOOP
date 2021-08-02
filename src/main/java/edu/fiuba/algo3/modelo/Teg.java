@@ -36,7 +36,7 @@ public class Teg {
 
         asignarObjetivosAJugadores();
 
-        turnoActual = new TurnoEtapaInicial(jugadores, 0, mapa, 5);
+        turnoActual = new TurnoEtapaInicial(jugadores, 0, mapa, 5, mazo);
     }
 
     public void asignarObjetivosAJugadores() {
