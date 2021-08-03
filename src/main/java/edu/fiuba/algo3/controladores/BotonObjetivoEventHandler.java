@@ -3,7 +3,8 @@ package edu.fiuba.algo3.controladores;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 
 public class BotonObjetivoEventHandler implements EventHandler<ActionEvent> {
@@ -19,7 +20,7 @@ public class BotonObjetivoEventHandler implements EventHandler<ActionEvent> {
         alert.setTitle("Objetivo");
         alert.setHeaderText("");
         alert.setContentText(controladorMaestro.objetivoJugadorActual());
-
+        ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image(ProveedorDeConstantes.obtenerDireccionIconoAlerta()));
         alert.showAndWait();
     }
 

@@ -176,6 +176,8 @@ public class Teg {
         return mapa.cantidadDeTropasParaAtacar(pais);
     }
 
-
+    public ArrayList<String> enlistarTarjetasPaisJugadorActual(){
+        return jugadores.get(numeroJugadorActual).mostrarTarjetas();
+    }
 
 }

@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.BotonAvanzarAAtaqueEventHandler;
-import edu.fiuba.algo3.controladores.BotonAvanzarAColocacionEventHandler;
+import edu.fiuba.algo3.controladores.BotonCanjearTarjetasEventHandler;
 import edu.fiuba.algo3.controladores.ControladorMaestro;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;

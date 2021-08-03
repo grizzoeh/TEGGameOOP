@@ -73,4 +73,8 @@ public class ControladorMaestro {
     public void reagrupar(String desde, String hacia, int cantidad) {
         teg.moverEjercito(desde, hacia, cantidad);
     }
+
+    public ArrayList<String> mostrarTodasTarjetasJugadorActual() {
+     return teg.enlistarTarjetasPaisJugadorActual();
+    }
 }
