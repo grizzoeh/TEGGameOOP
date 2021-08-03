@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vistas;
 import edu.fiuba.algo3.controladores.BotonMostrarPaisesHandler;
 import edu.fiuba.algo3.controladores.BotonObjetivoEventHandler;
 import edu.fiuba.algo3.controladores.ControladorMaestro;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,24 +17,31 @@ public class ContenedorSuperiorDerecho {
     public static VBox crearContenedor(Stage stage , ControladorMaestro controladorMaestro){
         String colorConCodigo = controladorMaestro.colorJugadorActual();
         String[] codigoColor = colorConCodigo.split("-");
-        Label nombre = new Label("Nombre: " + controladorMaestro.nombreJugadorActual());
+
+        Label nombre = new Label("Jugador Actual: " + controladorMaestro.nombreJugadorActual());
+        nombre.setFont(new Font(13));
         Label nombreColor = new Label("Color: " );
+        nombreColor.setFont(new Font(13));
         Label color = new Label( codigoColor[0]);
+        color.setFont(new Font(13));
         Label cantidadPaises = new Label("Paises Dominados: " + controladorMaestro.paisesDominadosPorJugActual() + "/50");
+        cantidadPaises.setFont(new Font(13));
+
         HBox hBox = new HBox(nombreColor, color );
         color.setTextFill(Color.web(codigoColor[1]));
 
         Button objetivoButton = new Button();
         objetivoButton.setText("Ver Objetivo");
-        objetivoButton.setFont(new Font(12));
+        objetivoButton.setFont(new Font(13));
         objetivoButton.setOnAction(new BotonObjetivoEventHandler(controladorMaestro));
 
         Button paisesButton = new Button();
         paisesButton.setText("Ver paises");
-        paisesButton.setFont(new Font(12));
+        paisesButton.setFont(new Font(13));
         paisesButton.setOnAction(new BotonMostrarPaisesHandler(stage , controladorMaestro));
 
         VBox contenedor = new VBox(nombre, hBox, cantidadPaises,objetivoButton, paisesButton);
+        contenedor.setAlignment(Pos.TOP_CENTER);
         return contenedor;
     }
 }

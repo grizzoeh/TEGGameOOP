@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.objetivosytarjetas.ObjetivoParticular;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.Tarjeta;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Jugador {
     private String nombre;
@@ -33,7 +34,9 @@ public class Jugador {
 
     public String getColor() { return this.ejercito.getColor();}
 
-    public void agregarTarjeta(Tarjeta tarjetaRecibida){ tarjetasPais.add(tarjetaRecibida); }
+    public void agregarTarjeta(Tarjeta tarjetaRecibida){
+        tarjetasPais.add(tarjetaRecibida);
+    }
 
     public int cantidadDeTarjetas(){ return tarjetasPais.size(); }
 
@@ -53,8 +56,9 @@ public class Jugador {
     }
 
 
-    public  ArrayList<Tarjeta> mostrarTarjetas(){
-        ArrayList<Tarjeta> tarjetasPropias = (ArrayList<Tarjeta>) this.tarjetasPais.clone();
+    public  ArrayList<String> mostrarTarjetas(){
+        ArrayList<String> tarjetasPropias = new ArrayList<>();
+        tarjetasPais.forEach( tarjeta -> tarjetasPropias.add(tarjeta.obtenerPais().obtenerNombre() + " - " + tarjeta.obtenerSimbolo()));
         return tarjetasPropias;
     }
 
