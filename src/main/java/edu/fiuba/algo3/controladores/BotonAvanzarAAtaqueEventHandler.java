@@ -25,7 +25,7 @@ public class BotonAvanzarAAtaqueEventHandler implements EventHandler<ActionEvent
         try {
             controladorMaestro.avanzarEtapa();
         }catch (JuegoTerminadoException e){
-            nuevaEscena = EscenaFinal.crearEscenaFinal(stage, e.obtenerGanador());
+            nuevaEscena = EscenaFinal.crearEscenaFinal(stage, e.obtenerNombreGanador(), e.obtenerColorGanador());
             stage.setScene(nuevaEscena);
             stage.show();
             return;

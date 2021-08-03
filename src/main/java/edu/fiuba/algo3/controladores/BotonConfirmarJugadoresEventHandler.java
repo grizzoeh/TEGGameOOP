@@ -94,7 +94,11 @@ public class BotonConfirmarJugadoresEventHandler implements EventHandler<ActionE
         audioStream = AudioSystem.getAudioInputStream(new File(file).getAbsoluteFile());
 
         clip = AudioSystem.getClip();
+
         clip.open(audioStream);
+        FloatControl gainControl =
+                (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue(-10.0f); // Baja el volumen decibeles
         clip.start();
 
 
