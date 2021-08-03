@@ -98,7 +98,8 @@ public class Teg {
     }
 
     public void anunciarGanador() {
-        throw new JuegoTerminadoException(jugadores.get(numeroJugadorActual).getNombre());
+        String[] coloresHex = {"cc3311", "0077bb", "009988", "ee7733", "ee3377", "000000"};
+        throw new JuegoTerminadoException(jugadores.get(numeroJugadorActual), coloresHex[numeroJugadorActual]);
     }
 
     public ArrayList<Jugador> obtenerListaJugadores() {
