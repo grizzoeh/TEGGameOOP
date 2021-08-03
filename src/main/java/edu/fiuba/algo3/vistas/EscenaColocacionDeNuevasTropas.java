@@ -28,15 +28,17 @@ public class EscenaColocacionDeNuevasTropas {
 
         HBox seleccionador = SelectorDeColocacion.crearSelector(avanzarButton, controladorMaestro);
 
+        Label error = new Label("");
+
         Button canjearTarjetas = new Button();
-        canjearTarjetas.setText("Canjear Tarjeta");
-        Button canjearVariasTarjetas = new Button();
-        canjearVariasTarjetas.setText("Canjear 3 Tarjetas");
-        canjearTarjetas.setOnAction(new BotonCanjearTarjetasEventHandler(controladorMaestro));
+        canjearTarjetas.setText("Canjear Tarjetas");
+        canjearTarjetas.setOnAction(new BotonCanjearTarjetasEventHandler(stage, controladorMaestro, error));
+
 
         seleccionador.setSpacing(10);
         seleccionador.getChildren().add(canjearTarjetas);
-        seleccionador.getChildren().add(canjearVariasTarjetas);
+        seleccionador.getChildren().add(error);
+
 
         VBox contInfIzq = new VBox(etapa,seleccionador);
         contInfIzq.setPadding(new Insets(1));

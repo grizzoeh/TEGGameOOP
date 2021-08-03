@@ -70,6 +70,7 @@ public class TurnoAsignarFicha implements TurnoJugable, TurnoBasico {
 			throw new PaisNoLePerteneceException();
 		}
 		mapa.agregarEjercitos(pais, 2);
+		jugador.canjearTarjetaIndividual(pais);
 	}
 
 	public String enQueFaseDelTurnoEsta(){

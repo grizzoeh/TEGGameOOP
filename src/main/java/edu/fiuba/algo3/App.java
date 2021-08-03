@@ -1,6 +1,6 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.controladores.BotonInicioEventHandler;
+import edu.fiuba.algo3.controladores.titulo.BotonInicioEventHandler;
 import edu.fiuba.algo3.controladores.ProveedorDeConstantes;
 import javafx.application.Application;
 import javafx.geometry.Pos;
