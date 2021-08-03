@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vistas;
 
-import edu.fiuba.algo3.controladores.BotonConfirmarJugadoresEventHandler;
-import edu.fiuba.algo3.controladores.EnviarCantJugadoresEventHandler;
+import edu.fiuba.algo3.controladores.introducirJugadores.BotonConfirmarJugadoresEventHandler;
+import edu.fiuba.algo3.controladores.introducirJugadores.EnviarCantJugadoresEventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

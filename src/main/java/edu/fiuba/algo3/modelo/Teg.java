@@ -181,4 +181,8 @@ public class Teg {
         return jugadores.get(numeroJugadorActual).mostrarTarjetas();
     }
 
+    public void canjearTarjetaIndividual(String pais) {
+        ((TurnoJugable) turnoActual).canjeoUnicoTarjeta(pais);
+    }
+
 }

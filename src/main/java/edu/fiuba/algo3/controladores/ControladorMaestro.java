@@ -77,4 +77,8 @@ public class ControladorMaestro {
     public ArrayList<String> mostrarTodasTarjetasJugadorActual() {
      return teg.enlistarTarjetasPaisJugadorActual();
     }
+
+    public void canjearTarjetaIndividual(String pais) {
+        teg.canjearTarjetaIndividual(pais);
+    }
 }

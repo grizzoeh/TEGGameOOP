@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vistas;
 
-import edu.fiuba.algo3.controladores.BotonAvanzarAReagrupacionEventHandler;
-import edu.fiuba.algo3.controladores.BotonComezarPartidaEventHandler;
+import edu.fiuba.algo3.controladores.mostrarJugadores.BotonComezarPartidaEventHandler;
 import edu.fiuba.algo3.controladores.ControladorMaestro;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -9,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 

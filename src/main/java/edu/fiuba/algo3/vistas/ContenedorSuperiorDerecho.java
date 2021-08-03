@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.BotonMostrarPaisesHandler;
+import edu.fiuba.algo3.controladores.BotonMostrarTarjetasEventHandler;
 import edu.fiuba.algo3.controladores.BotonObjetivoEventHandler;
 import edu.fiuba.algo3.controladores.ControladorMaestro;
 import javafx.geometry.Pos;
@@ -40,7 +41,12 @@ public class ContenedorSuperiorDerecho {
         paisesButton.setFont(new Font(13));
         paisesButton.setOnAction(new BotonMostrarPaisesHandler(stage , controladorMaestro));
 
-        VBox contenedor = new VBox(nombre, hBox, cantidadPaises,objetivoButton, paisesButton);
+        Button tarjetasButton = new Button();
+        tarjetasButton.setText("Ver tarjetas");
+        tarjetasButton.setFont(new Font(13));
+        tarjetasButton.setOnAction(new BotonMostrarTarjetasEventHandler(stage , controladorMaestro));
+
+        VBox contenedor = new VBox(nombre, hBox, cantidadPaises,objetivoButton, paisesButton, tarjetasButton);
         contenedor.setAlignment(Pos.TOP_CENTER);
         return contenedor;
     }

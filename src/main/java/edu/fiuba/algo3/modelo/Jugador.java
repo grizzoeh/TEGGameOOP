@@ -70,6 +70,14 @@ public class Jugador {
         tarjetasPais.remove(tarjeta);
         return tarjeta;
     }
+    public void canjearTarjetaIndividual(String unPais) {
+        for (Tarjeta tarjeta : tarjetasPais) {
+            if (tarjeta.obtenerPais().obtenerNombre().equals(unPais)) {
+                tarjetasPais.remove(tarjeta);
+                return;
+            }
+        }
+    }
     public boolean objetivoCumplido(){
         return (objetivoComun.objetivoCumplido(ejercito) || objetivoParticular.objetivoCumplido(ejercito));
     }

@@ -44,8 +44,6 @@ public class EscenaCanjearTarjetas {
 
         }
 
-        ArrayList<String> paisesUsados = new ArrayList<>();
-        
         HBox canjeMultiple = new HBox();
         ComboBox<String> opcion1 = new ComboBox<>();
         ComboBox<String> opcion2 = new ComboBox<>();
