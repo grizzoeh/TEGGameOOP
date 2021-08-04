@@ -81,4 +81,12 @@ public class ControladorMaestro {
     public void canjearTarjetaIndividual(String pais) {
         teg.canjearTarjetaIndividual(pais);
     }
+
+    public boolean sePuedenCanjearTarjetas(String tarjeta1, String tarjeta2, String tarjeta3) {
+        return teg.sePuedenCanjearTarjetas(tarjeta1, tarjeta2, tarjeta3);
+    }
+    public void canjearTarjetaMultiple(String tarjeta1, String tarjeta2, String tarjeta3) {
+        teg.canjearTarjetaMultiple(tarjeta1, tarjeta2, tarjeta3);
+    }
+
 }

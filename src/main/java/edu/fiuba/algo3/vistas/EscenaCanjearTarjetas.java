@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.vistas;
 
-import edu.fiuba.algo3.controladores.BotonCanjeIndividualEventHandler;
-import edu.fiuba.algo3.controladores.BotonVolverATableroEventHandler;
-import edu.fiuba.algo3.controladores.ControladorMaestro;
+import edu.fiuba.algo3.controladores.*;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -44,10 +42,31 @@ public class EscenaCanjearTarjetas {
 
         }
 
+
+
         HBox canjeMultiple = new HBox();
         ComboBox<String> opcion1 = new ComboBox<>();
         ComboBox<String> opcion2 = new ComboBox<>();
         ComboBox<String> opcion3 = new ComboBox<>();
+
+        opcion1.getItems().addAll(tarjetas);
+        opcion2.getItems().addAll(tarjetas);
+        opcion3.getItems().addAll(tarjetas);
+
+        opcion1.setOnAction(new ComboBoxElejirTarjetaEventHandler(tarjetas, opcion1, opcion2, opcion3));
+        opcion2.setOnAction(new ComboBoxElejirTarjetaEventHandler(tarjetas, opcion2, opcion1, opcion3));
+        opcion3.setOnAction(new ComboBoxElejirTarjetaEventHandler(tarjetas, opcion3, opcion2, opcion1));
+
+        Button botonCanjeMultiple = new Button();
+        botonCanjeMultiple.setText("Confirmar canje multiple");
+        botonCanjeMultiple.setOnAction(new BotonCanjeMultipleEventHandler(controladorMaestro, canjeMultiple));
+
+        canjeMultiple.getChildren().add(opcion1);
+        canjeMultiple.getChildren().add(opcion2);
+        canjeMultiple.getChildren().add(opcion3);
+        canjeMultiple.getChildren().add(botonCanjeMultiple);
+
+        contenedorPrincipal.getChildren().add(canjeMultiple);
 
         // Reservado para canjear tarjetas
 

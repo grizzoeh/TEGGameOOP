@@ -185,4 +185,35 @@ public class Teg {
         ((TurnoJugable) turnoActual).canjeoUnicoTarjeta(pais);
     }
 
+    public boolean sePuedenCanjearTarjetas(String tarjeta1, String tarjeta2, String tarjeta3) {
+        Tarjeta objTarjeta1 = jugadores.get(numeroJugadorActual).getTarjeta(tarjeta1);
+        Tarjeta objTarjeta2 = jugadores.get(numeroJugadorActual).getTarjeta(tarjeta2);
+        Tarjeta objTarjeta3 = jugadores.get(numeroJugadorActual).getTarjeta(tarjeta3);
+
+        ArrayList<Tarjeta> tarjetas = new ArrayList<>();
+        tarjetas.add(objTarjeta1);
+        tarjetas.add(objTarjeta2);
+        tarjetas.add(objTarjeta3);
+
+        return mazo.sonAptasParaCanje(tarjetas);
+    }
+
+    public void canjearTarjetaMultiple(String tarjeta1, String tarjeta2, String tarjeta3) {
+
+        if (!this.sePuedenCanjearTarjetas(tarjeta1, tarjeta2, tarjeta3)) {
+            return;
+        }
+
+        ((TurnoJugable) turnoActual).canjeoDeTresTarjetas();
+
+        Jugador jugadorActual = jugadores.get(numeroJugadorActual);
+
+        jugadorActual.canjearTarjetaIndividual(tarjeta1);
+        jugadorActual.canjearTarjetaIndividual(tarjeta2);
+        jugadorActual.canjearTarjetaIndividual(tarjeta3);
+    }
+
+
+
+
 }
