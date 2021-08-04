@@ -1,10 +1,13 @@
 package edu.fiuba.algo3.controladores;
 
+import javafx.beans.value.ObservableNumberValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
+
+import java.util.Objects;
 
 public class BotonElegirPaisAReagruparEventHandler implements EventHandler<ActionEvent> {
     private ControladorMaestro controladorMaestro;
@@ -22,11 +25,10 @@ public class BotonElegirPaisAReagruparEventHandler implements EventHandler<Actio
 
     @Override
     public void handle(ActionEvent event) {
+        if (Objects.isNull(desde.getValue())) return;
         hacia.getItems().clear();
         cantidad.getItems().clear();
-
         hacia.getItems().addAll(controladorMaestro.paisesAliadosEnFronteraDe((String) desde.getValue()));
-
         agregarCantidad();
 
 

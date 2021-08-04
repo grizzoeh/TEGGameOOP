@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controladores.introducirJugadores;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -9,11 +10,13 @@ import javafx.scene.layout.VBox;
 public class EnviarCantJugadoresEventHandler implements EventHandler<ActionEvent> {
     private VBox vbox;
     private ComboBox dropdown;
+    private Button botonEnviar;
 
-    public EnviarCantJugadoresEventHandler(VBox VBoxrecibida, ComboBox dropdownRecibido) {
+    public EnviarCantJugadoresEventHandler(VBox VBoxrecibida, ComboBox dropdownRecibido, Button botonEnviar) {
 
         vbox = VBoxrecibida;
         dropdown = dropdownRecibido;
+        this.botonEnviar = botonEnviar;
 
     }
 
@@ -28,6 +31,7 @@ public class EnviarCantJugadoresEventHandler implements EventHandler<ActionEvent
         for (Integer i = 0; i<numeroInteger; i++){
             TextField textFieldAux = new TextField();
             textFieldAux.setPromptText("Nombre Jugador "+ Integer.toString(i+1));
+            textFieldAux.setOnKeyPressed(new TextoIntroducidoEventHandler(botonEnviar));
             vbox.getChildren().add(textFieldAux);
 
         }

@@ -20,7 +20,7 @@ public class BotonObjetivoEventHandler implements EventHandler<ActionEvent> {
         alert.setTitle("Objetivo");
         alert.setHeaderText("");
         alert.setContentText(controladorMaestro.objetivoJugadorActual());
-        ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image(ProveedorDeConstantes.obtenerDireccionIconoAlerta()));
+        ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image(ProveedorDeConstantes.obtenerDireccionIconoObjetivo()));
         alert.showAndWait();
     }
 

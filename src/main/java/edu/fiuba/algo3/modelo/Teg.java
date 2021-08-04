@@ -80,6 +80,10 @@ public class Teg {
     public ArrayList<String> paisesDisponiblesAtacar() {
         return mapa.paisesPuedenAtacar(((TurnoJugable) turnoActual).obtenerJugadorActual().getEjercito());
     }
+    public ArrayList<String> paisesDisponiblesReagrupar() {
+        return mapa.paisesPuedenReagrupar(((TurnoJugable) turnoActual).obtenerJugadorActual().getEjercito());
+    }
+
 
     public void avanzarEtapa() {
         turnoActual = ((TurnoJugable) turnoActual).avanzarEtapa();

@@ -25,10 +25,10 @@ public class EscenaReagrupacionDeTropas {
         Label etapa = new Label("ETAPA DE REAGRUPACION");
         etapa.setFont(new Font("Serif", 18));
 
-        var paisesLabel = new Label("Desde:");
+        var paisesLabel = new Label("Pais Desde:");
         ComboBox paisesDesde = new ComboBox();
-        paisesDesde.getItems().addAll( controladorMaestro.paisesPuedenAtacar());
-        Label atacados = new Label("Hacia:");
+        paisesDesde.getItems().addAll( controladorMaestro.paisesPuedenReagrupar());
+        Label atacados = new Label("Pais Hacia:");
 
 
         ComboBox paisesHacia = new ComboBox();

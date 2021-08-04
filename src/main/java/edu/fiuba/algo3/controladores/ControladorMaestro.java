@@ -22,9 +22,16 @@ public class ControladorMaestro {
         return teg.paisesDisponiblesAtacar();
     }
 
+    public ArrayList<String> paisesPuedenReagrupar() {
+        return teg.paisesDisponiblesReagrupar();
+    }
+
     public ArrayList<String> paisesQueSePuedenAtacarDesde(String pais){
         return teg.paisesQueSePuedenAtacarDesde(pais);
     }
+
+
+
 
     public int fichasDisponiblesJugadorActual() {
         return teg.obtenerCantidadFichas();

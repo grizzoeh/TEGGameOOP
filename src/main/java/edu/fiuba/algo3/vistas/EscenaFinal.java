@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vistas;
 
+import edu.fiuba.algo3.controladores.ProveedorDeConstantes;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -9,10 +10,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
+
 public class EscenaFinal {
 
 
-     public static Scene crearEscenaFinal(Stage stage, String nombreGanador, String colorGanador){
+     public static Scene crearEscenaFinal(Stage stage, String nombreGanador, String colorGanador) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
          String[] colorDesarmado = colorGanador.split("-");
          Label felicitacion = new Label("¡Juego Finalizado!");
          felicitacion.setFont(new Font("Times",36));
@@ -30,6 +35,22 @@ public class EscenaFinal {
          VBox vBox = new VBox(felicitacion,textoSup,anunciante, agradecimiento);
          vBox.setAlignment(Pos.CENTER);
          vBox.setSpacing(40);
+
+         Clip clip;
+         AudioInputStream audioStream;
+         audioStream = AudioSystem.getAudioInputStream(new File(ProveedorDeConstantes.obtenerSonidoVictoria()).getAbsoluteFile());
+
+         clip = AudioSystem.getClip();
+
+         clip.open(audioStream);
+         FloatControl gainControl =
+                 (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+         gainControl.setValue(-5.0f); // Baja el volumen decibeles
+         clip.start();
+
+
+
          return new Scene(vBox, 1080, 720);
     }
+
 }

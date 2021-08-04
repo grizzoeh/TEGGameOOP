@@ -11,9 +11,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class SelectorDeColocacion {
-    public static HBox crearSelector(Button boton, ControladorMaestro controladorMaestro){
+    public static HBox crearSelector(Button botonOpcional, Button boton, ControladorMaestro controladorMaestro){
 
         Label paisesLabel = new Label("Paises Disponibles:");
         ComboBox paises = new ComboBox();
@@ -36,7 +37,8 @@ public class SelectorDeColocacion {
         boton.setAlignment(Pos.CENTER_RIGHT);
 
 
-        HBox seleccionador = new HBox(paisesLabel,paises,fichas,cantFichas, agregarButton, boton, errores);
+        HBox seleccionador = new HBox(paisesLabel,paises,fichas,cantFichas, agregarButton, errores,botonOpcional, boton);
+
         return seleccionador;
     }
 }

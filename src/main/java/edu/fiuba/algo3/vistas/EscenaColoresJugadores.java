@@ -1,11 +1,13 @@
 package edu.fiuba.algo3.vistas;
 
+import edu.fiuba.algo3.controladores.BotonVerReglasEventHandler;
 import edu.fiuba.algo3.controladores.mostrarJugadores.BotonComezarPartidaEventHandler;
 import edu.fiuba.algo3.controladores.ControladorMaestro;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -32,11 +34,19 @@ public class EscenaColoresJugadores {
             labelAux.setTextFill(Color.web(coloresHex[i]));
             tablero.getChildren().add(labelAux);
         }
-
+        Button verReglas = new Button("Reglas");
+        verReglas.setPrefSize(70, 25);
+        verReglas.setOnAction(new BotonVerReglasEventHandler(stage));
         Button botonSiguiente = new Button("Empezar juego");
-        botonSiguiente.setOnAction(new BotonComezarPartidaEventHandler(stage, controladorMaestro));
+        botonSiguiente.setFont(new Font(14));
 
-        tablero.getChildren().add(botonSiguiente);
+        botonSiguiente.setOnAction(new BotonComezarPartidaEventHandler(stage, controladorMaestro));
+        botonSiguiente.requestFocus();
+        botonSiguiente.setPrefSize(140,45);
+        VBox botones = new VBox( verReglas, botonSiguiente);
+        botones.setAlignment(Pos.CENTER);
+        botones.setSpacing(10);
+        tablero.getChildren().add(botones);
 
         return new Scene(tablero, 1080, 720);
     }

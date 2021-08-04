@@ -9,6 +9,10 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
+
 public class BotonAvanzarAAtaqueEventHandler implements EventHandler<ActionEvent> {
     private Stage stage;
     private ControladorMaestro controladorMaestro;
@@ -21,11 +25,19 @@ public class BotonAvanzarAAtaqueEventHandler implements EventHandler<ActionEvent
 
     @Override
     public void handle(ActionEvent event) {
-        Scene nuevaEscena;
+        Scene nuevaEscena = null;
         try {
             controladorMaestro.avanzarEtapa();
         }catch (JuegoTerminadoException e){
-            nuevaEscena = EscenaFinal.crearEscenaFinal(stage, e.obtenerNombreGanador(), e.obtenerColorGanador());
+            try {
+                nuevaEscena = EscenaFinal.crearEscenaFinal(stage, e.obtenerNombreGanador(), e.obtenerColorGanador());
+            } catch (LineUnavailableException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (UnsupportedAudioFileException ex) {
+                ex.printStackTrace();
+            }
             stage.setScene(nuevaEscena);
             stage.show();
             return;
