@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
+import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
+import edu.fiuba.algo3.modelo.aexcepciones.EtapaEquivocadaException;
+import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoEtapaInicial;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.Mazo;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,11 +11,17 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestTurnoEtapaInicial {
-    Mapa mapa = new Mapa("archivosDeTexto/fronteras.csv");
+    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronteras.csv");
     Ejercito azul = new Ejercito("Azul");
+    Mazo mazo = new Mazo(mapa.listaPaises());
     Jugador jugador = new Jugador("Tomi", azul);
-    ArrayList lista = new ArrayList<>();
-    TurnoEtapaInicial turno = new TurnoEtapaInicial(jugador, mapa,5);
+    ArrayList<Jugador> listaJugadores = new ArrayList<>();
+    TurnoEtapaInicial turno;
+
+    public TestTurnoEtapaInicial() {
+        listaJugadores.add(jugador);
+        turno = new TurnoEtapaInicial(listaJugadores,0, mapa,5, mazo);
+    }
 
     @Test
     public void test01MoverEjercitoDevuelveExepcion() {
@@ -49,18 +58,13 @@ public class TestTurnoEtapaInicial {
         assertFalse(turno.todasLasFichasColocadas());
     }
 
-
-
     @Test
-
     public void test06SeDevuelveLaFaseCorrecta() {
         assertEquals("Etapa Inicial",turno.enQueFaseDelTurnoEsta());
     }
-
 
     @Test
     public void test07PorDefectoNoEstaFinalizado() {
         assertFalse(turno.estaFinalizado());
     }
-
 }

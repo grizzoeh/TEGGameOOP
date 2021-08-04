@@ -1,12 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaParaElPaisException;
-import org.jetbrains.annotations.NotNull;
+import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
+import edu.fiuba.algo3.modelo.aexcepciones.NoExisteTarjetaParaElPaisException;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.Mazo;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.Tarjeta;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -110,13 +110,4 @@ public class TestMazo {
         assertEquals(1, mazo.cantidadDeTarjetasRepartidas());
     }
 
-    @Test
-    public void test09PedirleTarjetasAUnMazoVacioDevuelveNull(){
-        ArrayList<Pais> paises = new ArrayList<>();
-        Mazo mazo = new Mazo(paises);
-
-        Tarjeta eliminada = mazo.repartirTarjeta();
-
-        assertTrue(eliminada == null);
-    }
 }
