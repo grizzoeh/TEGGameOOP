@@ -110,13 +110,4 @@ public class TestMazo {
         assertEquals(1, mazo.cantidadDeTarjetasRepartidas());
     }
 
-    @Test
-    public void test09PedirleTarjetasAUnMazoVacioDevuelveNull(){
-        ArrayList<Pais> paises = new ArrayList<>();
-        Mazo mazo = new Mazo(paises);
-
-        Tarjeta eliminada = mazo.repartirTarjeta();
-
-        assertTrue(eliminada == null);
-    }
 }
