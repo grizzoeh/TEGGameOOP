@@ -1,7 +1,12 @@
 package edu.fiuba.algo3.modelo;
-import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
-import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaParaElPaisException;
-import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
+import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
+import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
+import edu.fiuba.algo3.modelo.aexcepciones.EtapaEquivocadaException;
+import edu.fiuba.algo3.modelo.aexcepciones.NoExisteTarjetaParaElPaisException;
+import edu.fiuba.algo3.modelo.aexcepciones.PaisNoLePerteneceException;
+import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoJugable;
+import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoAsignarFicha;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.Tarjeta;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -15,14 +20,14 @@ public class TestEntrega2 {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         Jugador jugador1 = new Jugador("Pablito Lezcano", new Ejercito("Verde"));
         jugadores.add(jugador1);
-        Mapa mapa = new Mapa("archivosDeTexto/fronterasParaPrueba.csv");
+        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
         mapa.repartirPaises(jugadores);
         Pais egipto = mapa.obtenerPais("Egipto");
         Tarjeta tarjeta = new Tarjeta(egipto, "Barco");
 
         jugador1.agregarTarjeta(tarjeta);
 
-        Tarjeta tarjetaDelJugador = jugador1.usarTarjeta(egipto);
+        Tarjeta tarjetaDelJugador = jugador1.getTarjeta(egipto.obtenerNombre());
 
         TurnoAsignarFicha turnoDeColocacion = new TurnoAsignarFicha(jugador1, mapa);
 
@@ -36,7 +41,7 @@ public class TestEntrega2 {
         nombresJugadores.add("Gonza");
         nombresJugadores.add("Fran");
 
-        Teg teg = new Teg(nombresJugadores, "archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
         teg.saltearColocacionInicial();
         teg.avanzarEtapa();
         teg.avanzarEtapa();
@@ -65,7 +70,7 @@ public class TestEntrega2 {
         jugadores.add(jugador2);
         jugadores.add(jugador3);
 
-        Mapa mapa = new Mapa("archivosDeTexto/fronterasParaPrueba.csv");
+        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
         mapa.repartirPaises(jugadores);
 
         Pais turquia = mapa.obtenerPais("Turquia");
@@ -74,19 +79,19 @@ public class TestEntrega2 {
         turquia.asignarEjercito(ejercitoJugador2);
         arabia.asignarEjercito(ejercitoJugador2);
 
-        Turno turno;
+        TurnoJugable turnoJugable;
 
-        turno = new TurnoAsignarFicha(jugador2, mapa); // Para asignar los ejercitos por continente.
-        turno.asignarEjercito("Arabia", 1);
+        turnoJugable = new TurnoAsignarFicha(jugador2, mapa); // Para asignar los ejercitos por continente.
+        turnoJugable.asignarEjercito("Arabia", 1);
 
-        turno = new TurnoAsignarFicha(jugador1, mapa);
-        turno.asignarEjercito("Egipto", 1);
+        turnoJugable = new TurnoAsignarFicha(jugador1, mapa);
+        turnoJugable.asignarEjercito("Egipto", 1);
 
-        turno = new TurnoAsignarFicha(jugador2, mapa);
-        turno.asignarEjercito("Arabia", 7);
+        turnoJugable = new TurnoAsignarFicha(jugador2, mapa);
+        turnoJugable.asignarEjercito("Arabia", 7);
 
-        turno = new TurnoAsignarFicha(jugador3, mapa);
-        turno.asignarEjercito("Sahara", 1);
+        turnoJugable = new TurnoAsignarFicha(jugador3, mapa);
+        turnoJugable.asignarEjercito("Sahara", 1);
 
         assertTrue(mapa.jugadorControlaContinente("Asia", jugador2));
 
@@ -108,7 +113,7 @@ public class TestEntrega2 {
         jugadores.add(jugador1);
         jugadores.add(jugador2);
 
-        Mapa mapa = new Mapa("archivosDeTexto/fronterasParaPrueba.csv");
+        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
         mapa.repartirPaises(jugadores);
 
         Integer cantidadDePaisesDominadosPorJug1 = mapa.paisesConEjercito(ejercitoJug1);
