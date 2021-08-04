@@ -6,6 +6,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 public class BotonReagruparEventHandler implements EventHandler<ActionEvent> {
     private ControladorMaestro controladorMaestro;
     private ComboBox desde;
@@ -23,6 +25,7 @@ public class BotonReagruparEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+        ArrayList<String> valores = controladorMaestro.paisesPuedenReagrupar();
         if (desde.getValue() == null || hacia.getValue() == null ){
             this.label.setText("Ambos Paises Deben Estar Completos");
             this.label.setTextFill(Color.RED);
@@ -34,8 +37,13 @@ public class BotonReagruparEventHandler implements EventHandler<ActionEvent> {
             return;
         }
         controladorMaestro.reagrupar((String) desde.getValue(), (String) hacia.getValue(), (int )cantidad.getValue() );
+        desde.getItems().removeAll(valores);
+        valores = controladorMaestro.paisesPuedenReagrupar();
+        desde.getItems().addAll(valores);
+
         hacia.getItems().clear();
         cantidad.getItems().clear();
+
         this.label.setText("Tropas Reagrupadas");
         this.label.setTextFill(Color.GREEN);
     }

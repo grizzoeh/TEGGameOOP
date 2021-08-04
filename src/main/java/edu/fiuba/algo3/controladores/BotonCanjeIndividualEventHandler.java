@@ -26,7 +26,7 @@ public class BotonCanjeIndividualEventHandler implements EventHandler<ActionEven
 
         contenedorPrincipal.getChildren().remove(paisActual);
 
-        if (contenedorPrincipal.getChildren().size() == 1) {
+        if (contenedorPrincipal.getChildren().size() == 0) {
             Label advertencia = new Label();
             advertencia.setText("Ya no hay tarjetas para canjear");
             advertencia.setTextFill(Color.RED);

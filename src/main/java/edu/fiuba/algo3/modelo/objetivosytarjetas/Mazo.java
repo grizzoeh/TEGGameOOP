@@ -56,9 +56,9 @@ public class Mazo {
         return !(tarjetas.size() <= 0);
     }
     public Tarjeta repartirTarjeta(){
-
-        Tarjeta tarjetaaux = tarjetas.get(0);
-        tarjetas.remove(0);
+        int numeroTarjeta = (int)(Math.random()*tarjetas.size());
+        Tarjeta tarjetaaux = tarjetas.get(numeroTarjeta);
+        tarjetas.remove(numeroTarjeta);
         tarjetasRepartidas.add(tarjetaaux);
 
         return tarjetaaux;

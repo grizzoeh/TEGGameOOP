@@ -62,6 +62,10 @@ public class Pais {
         return (cantidadEjercitos >= cantidad + 1);
     }
 
+    public boolean tienePaisesEnemigosEnFrontera(){
+        ArrayList<String> paises = this.paisesEnemigosEnFrontera();
+        return paises.size() >= 1;
+    }
     public ArrayList<String> paisesEnemigosEnFrontera(){
         ArrayList<String> paises = new ArrayList<>();
         frontera.forEach(pais -> {if((pais.getEjercito()) != this.ejercito) paises.add(pais.obtenerNombre());} );
@@ -69,6 +73,12 @@ public class Pais {
         return paises;
     }
 
+
+    public boolean tienePaisesAliadosEnFrontera(){
+        ArrayList<String> tiene = this.paisesAliadosEnFrontera();
+        return tiene.size() >= 1;
+
+    }
     public ArrayList<String> paisesAliadosEnFrontera(){
         ArrayList<String> paises = new ArrayList<>();
         frontera.forEach(pais -> {if((pais.getEjercito()) == this.ejercito) paises.add(pais.obtenerNombre());} );

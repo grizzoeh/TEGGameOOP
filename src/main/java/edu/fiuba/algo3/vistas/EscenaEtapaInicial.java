@@ -26,8 +26,8 @@ public class EscenaEtapaInicial {
         etapa.setFont(new Font("Serif", 18));
 
         Button avanzarButton = new Button();
-
-        HBox seleccionador = SelectorDeColocacion.crearSelector(avanzarButton, controladorMaestro);
+        Button botonOpc = new Button();
+        HBox seleccionador = SelectorDeColocacion.crearSelector(botonOpc, avanzarButton, controladorMaestro);
 
         seleccionador.setSpacing(10);
         VBox contInfIzq = new VBox(etapa,seleccionador);
@@ -40,7 +40,7 @@ public class EscenaEtapaInicial {
         VBox contenedor = new VBox(contSuperior,contInferior);
         contenedor.setPadding(new Insets(10));
 
-
+        seleccionador.getChildren().remove(botonOpc);
         avanzarButton.setOnAction(new BotonAvanzarAAtaqueEventHandler(stage, controladorMaestro));
 
         Scene sceneNueva = new Scene(contenedor, 1080, 720);

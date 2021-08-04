@@ -9,10 +9,7 @@ import edu.fiuba.algo3.modelo.aexcepciones.PaisesNoContinuosException;
 import edu.fiuba.algo3.modelo.aexcepciones.PaisesNoSonDelMismoDuenoException;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Hashtable;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -127,7 +124,12 @@ public class Mapa {
 
     public ArrayList<String> paisesPuedenAtacar(Ejercito ejercito) {
         ArrayList<String> paisesParaAtacar = this.listaPaisesConEjercito(ejercito);
-        paisesParaAtacar.removeIf(pais -> !paises.get(pais).esAptoParaAtacar());
+        paisesParaAtacar.removeIf(pais -> !paises.get(pais).esAptoParaAtacar() | !paises.get(pais).tienePaisesEnemigosEnFrontera());
+        return paisesParaAtacar;
+    }
+    public ArrayList<String> paisesPuedenReagrupar(Ejercito ejercito) {
+        ArrayList<String> paisesParaAtacar = this.listaPaisesConEjercito(ejercito);
+        paisesParaAtacar.removeIf(pais -> !paises.get(pais).esAptoParaAtacar() | !paises.get(pais).tienePaisesAliadosEnFrontera());
         return paisesParaAtacar;
     }
 
@@ -206,7 +208,10 @@ public class Mapa {
     }
 
     public ArrayList<String> paisesAliadosEnFronteraDe(String pais) {
-        Pais desde = this.obtenerPais(pais);
-        return desde.paisesAliadosEnFrontera();
+        if (!Objects.equals(pais, null)){
+            Pais desde = this.obtenerPais(pais);
+            return desde.paisesAliadosEnFrontera();
+        }
+    return null;
     }
 }
