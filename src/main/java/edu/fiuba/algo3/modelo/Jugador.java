@@ -78,6 +78,16 @@ public class Jugador {
             }
         }
     }
+
+    public Tarjeta getTarjeta(String nombreTarjeta) {
+        for (Tarjeta tarjeta : tarjetasPais) {
+            if (tarjeta.obtenerPais().obtenerNombre().equals(nombreTarjeta)) {
+                return tarjeta;
+            }
+        }
+        return null;
+    }
+
     public boolean objetivoCumplido(){
         return (objetivoComun.objetivoCumplido(ejercito) || objetivoParticular.objetivoCumplido(ejercito));
     }
