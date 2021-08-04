@@ -40,8 +40,7 @@ public class TurnoAtaque implements TurnoJugable, TurnoBasico {
 	}
 
 	public Turno avanzarEtapa() {
-		if (gano) jugador.agregarTarjeta(mazo.repartirTarjeta());
-
+		if (gano && mazo.quedanTarjetas()) jugador.agregarTarjeta(mazo.repartirTarjeta());
 		return new TurnoReagrupar(jugador, mapa);
 	}
 
