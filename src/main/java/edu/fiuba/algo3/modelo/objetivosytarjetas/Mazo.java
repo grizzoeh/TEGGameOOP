@@ -52,9 +52,10 @@ public class Mazo {
 
         return (todosDistintos || mismoSimbolo);
     }
-
+    public boolean quedanTarjetas(){
+        return !(tarjetas.size() <= 0);
+    }
     public Tarjeta repartirTarjeta(){
-        if(tarjetas.size() <= 0) return null;
 
         Tarjeta tarjetaaux = tarjetas.get(0);
         tarjetas.remove(0);
