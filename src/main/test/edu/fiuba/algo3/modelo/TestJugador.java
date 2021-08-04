@@ -63,7 +63,7 @@ public class TestJugador {
         Tarjeta tarjeta = new Tarjeta(pais, "Chocolate Suizo");
 
         jugador.agregarTarjeta(tarjeta);
-        jugador.usarTarjeta(pais);
+        jugador.getTarjeta(pais.obtenerNombre());
 
         assertEquals(0, jugador.cantidadDeTarjetas());
     }

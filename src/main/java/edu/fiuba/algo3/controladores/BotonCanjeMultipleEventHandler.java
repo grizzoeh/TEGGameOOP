@@ -2,8 +2,11 @@ package edu.fiuba.algo3.controladores;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 public class BotonCanjeMultipleEventHandler implements EventHandler<ActionEvent> {
     private ControladorMaestro controladorMaestro;
@@ -29,10 +32,16 @@ public class BotonCanjeMultipleEventHandler implements EventHandler<ActionEvent>
         pais2 = pais2.split(" - ")[0];
         pais3 = pais3.split(" - ")[0];
 
-        if (controladorMaestro.sePuedenCanjearTarjetas(pais1, pais2, pais3)) {
-            controladorMaestro.canjearTarjetaMultiple(pais1, pais2, pais3);
-
-
+        if (!controladorMaestro.sePuedenCanjearTarjetas(pais1, pais2, pais3)) {
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("Canje Inválido");
+            alerta.setHeaderText("No es posible realizar el canje.");
+            alerta.setContentText("Para realizar el canje se debe cumplir que:"
+                    +"\n\t- Las tres tarjetas deben ser del mismo símbolo."
+                    +"\n\t- Las tres tarjetas deben ser de distinto símbolo.");
+            ((Stage)alerta.getDialogPane().getScene().getWindow()).getIcons().add(new Image(ProveedorDeConstantes.obtenerDireccionIconoAlerta()));
+            alerta.showAndWait();
         }
+        controladorMaestro.canjearTarjetaMultiple(pais1, pais2, pais3);
     }
 }

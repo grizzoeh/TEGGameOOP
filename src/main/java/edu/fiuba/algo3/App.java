@@ -51,14 +51,16 @@ public class App extends Application {
 
     }
     public void cerrar(Stage stage){
-        Alert alerta = new Alert(Alert.AlertType.WARNING);
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
         alerta.setTitle("Cerrar Juego");
         alerta.setHeaderText("Estas a punto de cerrar el juego!");
         alerta.setContentText("Estas seguro de que quieres salir?");
         ((Stage)alerta.getDialogPane().getScene().getWindow()).getIcons().add(new Image(ProveedorDeConstantes.obtenerDireccionIconoAlerta()));
+
         if (alerta.showAndWait().get() == ButtonType.OK){
             stage.close();
         }
+
     }
 
     public static void main(String[] args) {

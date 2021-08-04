@@ -73,8 +73,8 @@ public class ControladorMaestro {
         return teg.cantidadDeTropasDisponiblesParaAtacar(pais);
     }
 
-    public void atacar(String desde, String hacia, Integer cantidad){
-        teg.atacar(desde,hacia,cantidad);
+    public ArrayList<String> atacar(String desde, String hacia, Integer cantidad){
+        return teg.atacar(desde,hacia,cantidad);
     }
 
     public void reagrupar(String desde, String hacia, int cantidad) {

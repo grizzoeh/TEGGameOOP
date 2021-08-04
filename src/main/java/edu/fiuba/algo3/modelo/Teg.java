@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.aexcepciones.*;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
-import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 import edu.fiuba.algo3.modelo.gestiondeturnos.*;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.*;
 
@@ -54,8 +53,8 @@ public class Teg {
         return this.mapa.todosLosPaisesOcupados();
     }
 
-    public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws EtapaEquivocadaException, PaisNoLePerteneceException {
-        ((TurnoJugable) turnoActual).atacar(paisAtaque, paisDefensa, cantEjercitos);
+    public ArrayList<String> atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+        return ((TurnoJugable) turnoActual).atacar(paisAtaque, paisDefensa, cantEjercitos);
     }
 
     public void moverEjercito(String paisDesde, String paisHasta, int cantidad) throws EtapaEquivocadaException, PaisNoLePerteneceException, PaisesNoSonDelMismoDuenoException, PaisSinEjercitosSuficientesException, PaisesNoContinuosException {

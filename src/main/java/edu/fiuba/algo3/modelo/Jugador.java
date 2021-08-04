@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.aexcepciones.JugadorNoPoseeTarjetaPaisException;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 import edu.fiuba.algo3.modelo.aexcepciones.NoExisteTarjetaParaElPaisException;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.ObjetivoComun;
@@ -62,14 +63,6 @@ public class Jugador {
         return tarjetasPropias;
     }
 
-    public Tarjeta usarTarjeta(Pais unPais) {
-        Tarjeta tarjeta = tarjetasPais.stream()
-                .filter(t -> t.perteneceAEstePais(unPais))
-                .findFirst() //findFirst devuelve Optional<Tipo>, es decir o el tipo del elememento o null
-                .orElseThrow(()-> new NoExisteTarjetaParaElPaisException());
-        tarjetasPais.remove(tarjeta);
-        return tarjeta;
-    }
     public void canjearTarjetaIndividual(String unPais) {
         for (Tarjeta tarjeta : tarjetasPais) {
             if (tarjeta.obtenerPais().obtenerNombre().equals(unPais)) {
@@ -79,13 +72,14 @@ public class Jugador {
         }
     }
 
-    public Tarjeta getTarjeta(String nombreTarjeta) {
+    public Tarjeta getTarjeta(String nombreTarjeta){
         for (Tarjeta tarjeta : tarjetasPais) {
             if (tarjeta.obtenerPais().obtenerNombre().equals(nombreTarjeta)) {
                 return tarjeta;
             }
         }
-        return null;
+
+        throw new JugadorNoPoseeTarjetaPaisException();
     }
 
     public boolean objetivoCumplido(){

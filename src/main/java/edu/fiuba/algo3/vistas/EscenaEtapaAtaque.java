@@ -50,15 +50,6 @@ public class EscenaEtapaAtaque {
         avanzarButton.setText("Avanzar Etapa");
         avanzarButton.setAlignment(Pos.CENTER_RIGHT);
 
-        /*
-        Nota:
-        Aca tendriamos que decidir la forma en la que se notifica al usuario el resultado del ataque.
-        Las opciones que pensamos son
-        -Dejarlo tal como esta ahora (No informar)
-        -Tener una label, al lado del boton de avanzar el turno
-        -Generar un pop up despues de atacar
-         */
-
         atacarButton.setOnAction(new BotonAtacarEventHandler(stage, controladorMaestro, paisesDesde,paisesHacia,cantidadDeFichas, error));
         VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(stage, controladorMaestro);
         contSupDer.setSpacing(10);

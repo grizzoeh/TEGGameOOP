@@ -27,7 +27,7 @@ public class TestEntrega2 {
 
         jugador1.agregarTarjeta(tarjeta);
 
-        Tarjeta tarjetaDelJugador = jugador1.usarTarjeta(egipto);
+        Tarjeta tarjetaDelJugador = jugador1.getTarjeta(egipto.obtenerNombre());
 
         TurnoAsignarFicha turnoDeColocacion = new TurnoAsignarFicha(jugador1, mapa);
 
