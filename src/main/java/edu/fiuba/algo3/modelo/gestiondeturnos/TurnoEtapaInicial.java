@@ -25,7 +25,7 @@ public class TurnoEtapaInicial implements TurnoJugable, TurnoBasico {
         this.mazo = mazo;
     }
 
-    public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) {
+    public ArrayList<String> atacar(String paisAtaque, String paisDefensa, int cantEjercitos) {
         throw new EtapaEquivocadaException();
     }
 

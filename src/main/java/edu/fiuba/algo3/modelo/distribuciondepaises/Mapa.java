@@ -85,7 +85,7 @@ public class Mapa {
         return paises.get(paisABuscar);
     }
 
-    public boolean atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws PaisesNoContinuosException, PaisesConMismoDuenoException, PaisSinEjercitosSuficientesException {
+    public ArrayList<String> atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws PaisesNoContinuosException, PaisesConMismoDuenoException, PaisSinEjercitosSuficientesException {
         Pais paisAtacante = obtenerPais(paisAtaque);
         Pais paisDefensor = obtenerPais(paisDefensa);
 

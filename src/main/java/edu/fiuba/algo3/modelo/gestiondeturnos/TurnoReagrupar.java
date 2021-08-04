@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.aexcepciones.*;
 
+import java.util.ArrayList;
+
 public class TurnoReagrupar implements TurnoJugable, TurnoBasico{
 	private Mapa mapa;
 	private Jugador jugador;
@@ -13,7 +15,7 @@ public class TurnoReagrupar implements TurnoJugable, TurnoBasico{
 		this.mapa = mapaIngresado;
 	}
 
-	public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+	public ArrayList<String> atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws EtapaEquivocadaException, PaisNoLePerteneceException {
 		throw new EtapaEquivocadaException();
 	}
 

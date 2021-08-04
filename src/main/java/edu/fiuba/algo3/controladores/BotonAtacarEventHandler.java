@@ -2,10 +2,14 @@ package edu.fiuba.algo3.controladores;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 public class BotonAtacarEventHandler implements EventHandler<ActionEvent> {
     private Stage stage;
@@ -41,9 +45,18 @@ public class BotonAtacarEventHandler implements EventHandler<ActionEvent> {
             error.setTextFill(Color.RED);
             return;
         }
-        controladorMaestro.atacar((String) desde.getValue(), (String) hacia.getValue(), (int )cant.getValue());
+        ArrayList<String> resultado = controladorMaestro.atacar((String) desde.getValue(), (String) hacia.getValue(), (int )cant.getValue());
+
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Resultado ataque");
+        alerta.setHeaderText(resultado.get(0));
+        alerta.setContentText(resultado.get(1) +"\n"  + resultado.get(2));
+        ((Stage)alerta.getDialogPane().getScene().getWindow()).getIcons().add(new Image(ProveedorDeConstantes.obtenerIconoResultadoAtaque()));
+        alerta.showAndWait();
+
         desde.getItems().clear();
         desde.getItems().addAll(controladorMaestro.paisesPuedenAtacar());
+
 
         hacia.getItems().clear();
         cant.getItems().clear();
