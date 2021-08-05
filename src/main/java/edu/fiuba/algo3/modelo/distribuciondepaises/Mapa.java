@@ -3,10 +3,10 @@ package edu.fiuba.algo3.modelo.distribuciondepaises;
 import edu.fiuba.algo3.modelo.Combate;
 import edu.fiuba.algo3.modelo.Ejercito;
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.aexcepciones.PaisSinEjercitosSuficientesException;
-import edu.fiuba.algo3.modelo.aexcepciones.PaisesConMismoDuenoException;
-import edu.fiuba.algo3.modelo.aexcepciones.PaisesNoContinuosException;
-import edu.fiuba.algo3.modelo.aexcepciones.PaisesNoSonDelMismoDuenoException;
+import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
+import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
+import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
+import edu.fiuba.algo3.modelo.excepciones.PaisesNoSonDelMismoDuenoException;
 
 import java.io.FileNotFoundException;
 import java.util.*;

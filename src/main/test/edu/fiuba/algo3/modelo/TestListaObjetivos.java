@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
-import edu.fiuba.algo3.modelo.aexcepciones.NoHayMasObjetivosException;
+import edu.fiuba.algo3.modelo.excepciones.NoHayMasObjetivosException;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.ListaObjetivos;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.ObjetivoComun;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.ObjetivoParticular;

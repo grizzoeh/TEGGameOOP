@@ -12,4 +12,6 @@ module edu.fiuba.algo3 {
     exports edu.fiuba.algo3.controladores.titulo;
     exports edu.fiuba.algo3.controladores.introducirJugadores;
     exports edu.fiuba.algo3.controladores.mostrarJugadores;
+    exports edu.fiuba.algo3.controladores.canjearTarjeta;
+    exports edu.fiuba.algo3.controladores.ataqueReagrupacionColocacion;
 }

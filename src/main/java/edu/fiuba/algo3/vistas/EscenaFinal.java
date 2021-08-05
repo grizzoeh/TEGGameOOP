@@ -48,9 +48,6 @@ public class EscenaFinal {
          gainControl.setValue(-5.0f); // Baja el volumen decibeles
          clip.start();
 
-
-
          return new Scene(vBox, 1080, 720);
     }
-
 }

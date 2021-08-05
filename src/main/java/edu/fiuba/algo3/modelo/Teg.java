@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.aexcepciones.*;
+import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.gestiondeturnos.*;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.*;
