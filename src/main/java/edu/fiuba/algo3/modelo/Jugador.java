@@ -1,14 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.aexcepciones.JugadorNoPoseeTarjetaPaisException;
-import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
-import edu.fiuba.algo3.modelo.aexcepciones.NoExisteTarjetaParaElPaisException;
+import edu.fiuba.algo3.modelo.excepciones.JugadorNoPoseeTarjetaPaisException;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.ObjetivoComun;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.ObjetivoParticular;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.Tarjeta;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Jugador {
     private String nombre;

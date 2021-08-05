@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
-import edu.fiuba.algo3.modelo.aexcepciones.EtapaEquivocadaException;
-import edu.fiuba.algo3.modelo.aexcepciones.NoExisteTarjetaParaElPaisException;
-import edu.fiuba.algo3.modelo.aexcepciones.PaisNoLePerteneceException;
+import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
+import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaParaElPaisException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
 import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoJugable;
 import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoAsignarFicha;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.Tarjeta;

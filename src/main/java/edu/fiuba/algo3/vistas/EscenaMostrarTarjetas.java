@@ -16,6 +16,7 @@ public class EscenaMostrarTarjetas {
     public static Scene crearEscenaMostrarTarjetas(Stage stage, ControladorMaestro controladorMaestro) {
 
         VBox columnaCartas = new VBox();
+        columnaCartas.setSpacing(20);
 
         ArrayList<String> cartas = controladorMaestro.mostrarTodasTarjetasJugadorActual();
 

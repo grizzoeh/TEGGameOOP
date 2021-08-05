@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.*;
+import edu.fiuba.algo3.controladores.canjearTarjeta.BotonCanjeIndividualEventHandler;
+import edu.fiuba.algo3.controladores.canjearTarjeta.BotonCanjeMultipleEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 
 public class EscenaCanjearTarjetas {
 
-    public static Scene crearEscenaCanjearTarjetas(Stage stage, ControladorMaestro controladorMaestro) {
+    public static Scene crearEscenaCanjearTarjetas(Stage stage, ControladorMaestro controladorMaestro, Scene scene) {
         ArrayList<String> tarjetas = controladorMaestro.mostrarTodasTarjetasJugadorActual();
         ArrayList<String> paises = controladorMaestro.paisesJugadorActual();
 
@@ -74,7 +76,10 @@ public class EscenaCanjearTarjetas {
 
         Button botonCanjeMultiple = new Button();
         botonCanjeMultiple.setText("Confirmar canje multiple");
-        botonCanjeMultiple.setOnAction(new BotonCanjeMultipleEventHandler(controladorMaestro, canjeMultiple));
+
+        Label error = new Label();
+
+        botonCanjeMultiple.setOnAction(new BotonCanjeMultipleEventHandler(controladorMaestro, canjeMultiple, error, stage, scene));
 
         canjeMultiple.getChildren().add(opcion1);
         canjeMultiple.getChildren().add(opcion2);
@@ -84,12 +89,12 @@ public class EscenaCanjearTarjetas {
 
         Button botonVolver = new Button();
         botonVolver.setText("Continuar Juego");
-        botonVolver.setOnAction(new BotonVolverATableroEventHandler(stage, stage.getScene()));
+        botonVolver.setOnAction(new BotonVolverATableroEventHandler(stage, scene));
         canjeMultiple.setAlignment(Pos.CENTER);
         contenedorTarjIndiv.setAlignment(Pos.CENTER);
         contenedorTarjIndiv.setSpacing(5);
 
-        VBox contenedorGeneral = new VBox(labelCanje,contenedorTarjIndiv,labelCanjeMul, canjeMultiple,resultadoCanje);
+        VBox contenedorGeneral = new VBox(labelCanje,contenedorTarjIndiv,labelCanjeMul, canjeMultiple,resultadoCanje, error);
         contenedorGeneral.setAlignment(Pos.CENTER);
         contenedorGeneral.setSpacing(30);
 
@@ -99,6 +104,5 @@ public class EscenaCanjearTarjetas {
         contenedor.setAlignment(Pos.TOP_CENTER);
 
         return new Scene(contenedor, 1080, 720);
-
     }
 }
