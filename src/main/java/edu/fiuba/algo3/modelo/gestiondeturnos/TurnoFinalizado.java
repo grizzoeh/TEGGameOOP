@@ -5,7 +5,7 @@ public class TurnoFinalizado implements TurnoBasico {
     public TurnoJugable avanzarEtapa() {return (TurnoJugable) this;}
 
     public String enQueFaseDelTurnoEsta() {
-        return "TurnoFinalizado";
+        return "Turno Finalizado";
     }
 
     public boolean estaFinalizado() {

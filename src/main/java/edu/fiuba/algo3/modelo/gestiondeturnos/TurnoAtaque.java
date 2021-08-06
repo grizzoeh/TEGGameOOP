@@ -10,14 +10,14 @@ import java.util.ArrayList;
 public class TurnoAtaque implements TurnoJugable, TurnoBasico {
 	private Mapa mapa;
 	private Jugador jugador;
-	private boolean gano;
+	private boolean logroInvadir;
 	private Mazo mazo;
 
 	public TurnoAtaque(Jugador jugadorIngresado, Mapa mapaIngresado, Mazo mazo) {
 		this.jugador = jugadorIngresado;
 		this.mapa = mapaIngresado;
 		this.mazo = mazo;
-		gano = false;
+		logroInvadir = false;
 	}
 
 	public ArrayList<String> atacar(String paisAtaque, String paisDefensa, int cantEjercitos) {
@@ -29,7 +29,7 @@ public class TurnoAtaque implements TurnoJugable, TurnoBasico {
 		try {
 			resultado = mapa.atacar(paisAtaque, paisDefensa, cantEjercitos);
 			if(resultado.get(0) == "País Invadido"){
-				gano = true;
+				logroInvadir = true;
 			};
 		} catch (PaisesNoContinuosException | PaisesConMismoDuenoException | PaisSinEjercitosSuficientesException e) {
 			e.printStackTrace();
@@ -46,7 +46,7 @@ public class TurnoAtaque implements TurnoJugable, TurnoBasico {
 	}
 
 	public Turno avanzarEtapa() {
-		if (gano && mazo.quedanTarjetas()) jugador.agregarTarjeta(mazo.repartirTarjeta());
+		if (logroInvadir && mazo.quedanTarjetas()) jugador.agregarTarjeta(mazo.repartirTarjeta());
 		return new TurnoReagrupar(jugador, mapa);
 	}
 

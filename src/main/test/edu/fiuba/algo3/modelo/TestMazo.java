@@ -74,7 +74,7 @@ public class TestMazo {
         assertTrue(mazo.sonAptasParaCanje(tarjetas));
     }
     @Test
-    public void test06ObtenerUnaTarjetaEspecificaDevuelveLaTarjetaBuscada() throws NoExisteTarjetaParaElPaisException {
+    public void test06ObtenerUnaTarjetaEspecificaDevuelveLaTarjetaBuscada()  {
         Pais paisAux = new Pais("Qatar");
         ArrayList<Pais> paises = new ArrayList<>();
         paises.add(paisAux);
@@ -108,6 +108,26 @@ public class TestMazo {
 
         assertEquals(0, mazo.cantidadDeTarjetasEnElMazo());
         assertEquals(1, mazo.cantidadDeTarjetasRepartidas());
+    }
+    @Test
+    public void test09UnMazoSinTarjetasNoLeQuedanTarjetas() {
+        ArrayList<Pais> paises = new ArrayList<>();
+
+        Mazo mazo = new Mazo(paises);
+
+        assertFalse(mazo.quedanTarjetas());
+
+    }
+    @Test
+    public void test10UnMazoConTarjetasLeQuedanTarjetas() {
+        Pais paisAux = new Pais("Qatar");
+        ArrayList<Pais> paises = new ArrayList<>();
+        paises.add(paisAux);
+
+        Mazo mazo = new Mazo(paises);
+
+        assertTrue(mazo.quedanTarjetas());
+
     }
 
 }

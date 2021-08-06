@@ -2,10 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
-import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
-import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
-import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
-import edu.fiuba.algo3.modelo.excepciones.PaisesNoSonDelMismoDuenoException;
+import edu.fiuba.algo3.modelo.excepciones.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -146,6 +143,13 @@ public class TestMapa {
         assertThrows(PaisSinEjercitosSuficientesException.class,
                 () -> {
                     mapa.atacar("Zaire", "Etiopia", 1);
+                });
+    }
+    @Test public void testExcepcion04SiNoExisteUnPaisSeDevuelveExcepcion(){
+
+        assertThrows(NoExisteEsePaisException.class,
+                () -> {
+                    mapa.obtenerPais("Suiza");
                 });
     }
 }
