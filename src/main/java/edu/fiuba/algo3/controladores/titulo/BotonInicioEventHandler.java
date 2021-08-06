@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.controladores.titulo;
 
-import edu.fiuba.algo3.vistas.EscenaIntroducirJugadores;
+import edu.fiuba.algo3.vistas.escenasGenerales.EscenaIntroducirJugadores;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

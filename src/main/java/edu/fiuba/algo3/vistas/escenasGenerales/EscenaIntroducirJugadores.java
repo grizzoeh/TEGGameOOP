@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vistas;
+package edu.fiuba.algo3.vistas.escenasGenerales;
 
 import edu.fiuba.algo3.controladores.introducirJugadores.BotonConfirmarJugadoresEventHandler;
 import edu.fiuba.algo3.controladores.introducirJugadores.EnviarCantJugadoresEventHandler;

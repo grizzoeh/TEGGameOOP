@@ -1,18 +1,13 @@
 package edu.fiuba.algo3.controladores.canjearTarjeta;
 
 import edu.fiuba.algo3.controladores.ControladorMaestro;
-import edu.fiuba.algo3.vistas.EscenaCanjearTarjetas;
+import edu.fiuba.algo3.vistas.ataqueReagrupacionColocacion.EscenaCanjearTarjetas;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
 
 public class BotonCanjearTarjetasEventHandler implements EventHandler<ActionEvent> {
     private  ControladorMaestro controladorMaestro;

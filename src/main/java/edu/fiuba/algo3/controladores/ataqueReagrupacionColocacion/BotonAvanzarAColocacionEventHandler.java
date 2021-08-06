@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.controladores.ataqueReagrupacionColocacion;
 
 import edu.fiuba.algo3.controladores.ControladorMaestro;
-import edu.fiuba.algo3.vistas.ataqueReagrupacionColocacion.EscenaColocacionDeNuevasTropas;
+import edu.fiuba.algo3.vistas.escenasEtapas.EscenaColocacionDeNuevasTropas;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.objetivosytarjetas;
 
-import edu.fiuba.algo3.modelo.Ejercito;
+import edu.fiuba.algo3.modelo.componentesJugador.Ejercito;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;

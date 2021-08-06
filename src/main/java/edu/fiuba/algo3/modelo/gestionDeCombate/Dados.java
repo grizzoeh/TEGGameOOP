@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.gestionDeCombate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Arrays;

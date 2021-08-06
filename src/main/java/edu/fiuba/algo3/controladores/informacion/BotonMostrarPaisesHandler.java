@@ -1,11 +1,10 @@
-package edu.fiuba.algo3.controladores;
+package edu.fiuba.algo3.controladores.informacion;
 
-import edu.fiuba.algo3.vistas.EscenaMostrarPaises;
+import edu.fiuba.algo3.controladores.ControladorMaestro;
+import edu.fiuba.algo3.vistas.escenasDeInformacion.EscenaMostrarPaises;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class BotonMostrarPaisesHandler implements EventHandler<ActionEvent> {

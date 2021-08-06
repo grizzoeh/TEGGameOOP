@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.gestionDeCombate;
 
 import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 

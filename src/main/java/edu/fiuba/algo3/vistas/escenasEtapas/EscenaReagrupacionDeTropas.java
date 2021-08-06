@@ -1,11 +1,11 @@
-package edu.fiuba.algo3.vistas.ataqueReagrupacionColocacion;
+package edu.fiuba.algo3.vistas.escenasEtapas;
 
-import edu.fiuba.algo3.controladores.ataqueReagrupacionColocacion.BotonAtacarEventHandler;
-import edu.fiuba.algo3.controladores.ataqueReagrupacionColocacion.BotonAvanzarAReagrupacionEventHandler;
+import edu.fiuba.algo3.controladores.ataqueReagrupacionColocacion.BotonAvanzarAColocacionEventHandler;
+import edu.fiuba.algo3.controladores.ataqueReagrupacionColocacion.BotonElegirPaisAReagruparEventHandler;
+import edu.fiuba.algo3.controladores.ataqueReagrupacionColocacion.BotonReagruparEventHandler;
 import edu.fiuba.algo3.controladores.ControladorMaestro;
-import edu.fiuba.algo3.controladores.ataqueReagrupacionColocacion.ElegirPaisParaAtacarEventHandler;
-import edu.fiuba.algo3.vistas.LectorDeImagenMapa;
 import edu.fiuba.algo3.vistas.ataqueReagrupacionColocacion.ContenedorSuperiorDerecho;
+import edu.fiuba.algo3.vistas.ataqueReagrupacionColocacion.LectorDeImagenMapa;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,40 +18,41 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class EscenaEtapaAtaque {
-    public static Scene crearEscenaEtapaAtaque(Stage stage, ControladorMaestro controladorMaestro){
+public class EscenaReagrupacionDeTropas {
+    public static Scene crearEscenaReagrupacion(Stage stage, ControladorMaestro controladorMaestro) {
 
         ImageView imageView = LectorDeImagenMapa.crearImagenDelMapa();
 
 
-        Label etapa = new Label("ETAPA DE ATAQUE");
+        Label etapa = new Label("ETAPA DE REAGRUPACION");
         etapa.setFont(new Font("Serif", 18));
 
-        var paisesLabel = new Label("Desde:");
+        var paisesLabel = new Label("Pais Desde:");
         ComboBox paisesDesde = new ComboBox();
-        paisesDesde.getItems().addAll(controladorMaestro.paisesPuedenAtacar());
-        Label atacados = new Label("Hacia:");
+        paisesDesde.getItems().addAll( controladorMaestro.paisesPuedenReagrupar());
+        Label atacados = new Label("Pais Hacia:");
+
 
         ComboBox paisesHacia = new ComboBox();
 
-        Button atacarButton = new Button();
-        atacarButton.setText("Lanzar Ataque");
+        Button reagruparButton = new Button();
+        reagruparButton.setText("Reagrupar");
         ComboBox cantidadDeFichas = new ComboBox();
 
-        paisesDesde.setOnAction(new ElegirPaisParaAtacarEventHandler(controladorMaestro, paisesDesde,paisesHacia, cantidadDeFichas));
+        Label errores = new Label("");
 
+        paisesDesde.setOnAction(new BotonElegirPaisAReagruparEventHandler(controladorMaestro, paisesDesde, paisesHacia, cantidadDeFichas));
         Label fichas = new Label("Fichas:");
-        Label error = new Label();
 
+        reagruparButton.setOnAction(new BotonReagruparEventHandler(controladorMaestro, paisesDesde, paisesHacia, cantidadDeFichas, errores));
         Button avanzarButton = new Button();
         avanzarButton.setText("Avanzar Etapa");
         avanzarButton.setAlignment(Pos.CENTER_RIGHT);
 
-        atacarButton.setOnAction(new BotonAtacarEventHandler(stage, controladorMaestro, paisesDesde,paisesHacia,cantidadDeFichas, error));
         VBox contSupDer = ContenedorSuperiorDerecho.crearContenedor(stage, controladorMaestro);
         contSupDer.setSpacing(10);
 
-        HBox seleccionador = new HBox(paisesLabel,paisesDesde, atacados, paisesHacia,fichas, cantidadDeFichas,atacarButton, avanzarButton, error);
+        HBox seleccionador = new HBox(paisesLabel,paisesDesde, atacados, paisesHacia,fichas, cantidadDeFichas,reagruparButton, avanzarButton, errores);
         seleccionador.setSpacing(10);
         VBox contInfIzq = new VBox(etapa,seleccionador);
         contInfIzq.setPadding(new Insets(1));
@@ -65,9 +66,9 @@ public class EscenaEtapaAtaque {
 
         Scene sceneNueva = new Scene(contenedor, 1080, 720);
 
-        avanzarButton.setOnAction(new BotonAvanzarAReagrupacionEventHandler(stage, controladorMaestro));
+        avanzarButton.setOnAction(new BotonAvanzarAColocacionEventHandler(stage,controladorMaestro));
+
         return sceneNueva;
 
     }
-
 }

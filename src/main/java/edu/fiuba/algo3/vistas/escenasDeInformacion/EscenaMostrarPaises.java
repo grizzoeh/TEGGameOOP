@@ -1,14 +1,12 @@
-package edu.fiuba.algo3.vistas;
+package edu.fiuba.algo3.vistas.escenasDeInformacion;
 
-import edu.fiuba.algo3.controladores.BotonMostrarPaisesHandler;
-import edu.fiuba.algo3.controladores.BotonVolverATableroEventHandler;
+import edu.fiuba.algo3.controladores.informacion.BotonVolverATableroEventHandler;
 import edu.fiuba.algo3.controladores.ControladorMaestro;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;

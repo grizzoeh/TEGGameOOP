@@ -1,5 +1,7 @@
-package edu.fiuba.algo3.controladores;
+package edu.fiuba.algo3.controladores.informacion;
 
+import edu.fiuba.algo3.controladores.ControladorMaestro;
+import edu.fiuba.algo3.controladores.ProveedorDeConstantes;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vistas;
+package edu.fiuba.algo3.vistas.ataqueReagrupacionColocacion;
 
 import edu.fiuba.algo3.controladores.ProveedorDeConstantes;
 import javafx.scene.image.Image;
