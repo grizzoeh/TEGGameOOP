@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestEntrega2 {
     @Test
-    public void test01ActivacionDeTarjetas() throws PaisNoLePerteneceException, NoExisteTarjetaParaElPaisException {
+    public void test01ActivacionDeTarjetas() {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         Jugador jugador1 = new Jugador("Pablito Lezcano", new Ejercito("Verde"));
         jugadores.add(jugador1);

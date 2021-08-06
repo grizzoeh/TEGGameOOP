@@ -66,7 +66,7 @@ public class Mazo {
 
 
 
-    public Tarjeta obtenerTarjetaEspecifica(Pais pais) throws NoExisteTarjetaParaElPaisException {
+    public Tarjeta obtenerTarjetaEspecifica(Pais pais) {
         if (tarjetas.size() <= 0) return null;
         Tarjeta tarjeta = tarjetas.stream()
                 .filter(t -> t.perteneceAEstePais(pais))

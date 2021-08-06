@@ -212,5 +212,11 @@ public class TestPais {
         assertTrue(paisPrueba.sePuedeMoverEstaCantidadDeEjercitos(3));
 
     }
+    @Test
+    public void test23UnPaisCon4EjercitosTieneQuePoderUsar3ParaAtacar(){
+        paisPrueba.agregarEjercito(4);
+
+        assertEquals(3, paisPrueba.tropasDisponiblesParaAtacar());
+    }
 }
 

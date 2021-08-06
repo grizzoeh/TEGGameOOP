@@ -33,7 +33,7 @@ public class TestTeg {
         assertEquals("Etapa Inicial", teg.enQueFaseEstaElJuego());
     }
     @Test
-    public void test04AlAvanzarTurnoSeSigueEnLaFaseDeColocacionInicial() throws ColocacionFinalizadaException {
+    public void test04AlAvanzarTurnoSeSigueEnLaFaseDeColocacionInicial() {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ricardo");
         Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
@@ -42,7 +42,7 @@ public class TestTeg {
         assertEquals("Etapa Inicial", teg.enQueFaseEstaElJuego());
     }
     @Test
-    public void test05AlAvanzarDosVecesElTurnoNoSeSigueEnLaFaseDeColocacionInicial() throws ColocacionFinalizadaException {
+    public void test05AlAvanzarDosVecesElTurnoNoSeSigueEnLaFaseDeColocacionInicial() {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ricardo");
         Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);

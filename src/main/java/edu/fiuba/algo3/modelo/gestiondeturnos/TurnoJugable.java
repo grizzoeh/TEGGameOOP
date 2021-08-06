@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.Jugador;
 import java.util.ArrayList;
 
 public interface TurnoJugable extends Turno {
-	Turno avanzarEtapa();
 
 	ArrayList<String> atacar(String paisAtaque, String paisDefensa, int cantEjercitos);
 

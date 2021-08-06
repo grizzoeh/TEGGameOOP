@@ -85,7 +85,7 @@ public class Teg {
 
 
     public void avanzarEtapa() {
-        turnoActual = ((TurnoJugable) turnoActual).avanzarEtapa();
+        turnoActual = ((TurnoBasico) turnoActual).avanzarEtapa();
 
         if (((TurnoBasico) turnoActual).estaFinalizado()) {
             if (jugadorGano(jugadores.get(numeroJugadorActual))) {
