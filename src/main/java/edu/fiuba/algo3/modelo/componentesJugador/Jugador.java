@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.componentesJugador;
 
 import edu.fiuba.algo3.modelo.excepciones.JugadorNoPoseeTarjetaPaisException;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.ObjetivoComun;

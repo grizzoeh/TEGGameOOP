@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.gestiondeturnos;
 
-import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.componentesJugador.Jugador;
 
 import java.util.ArrayList;
 

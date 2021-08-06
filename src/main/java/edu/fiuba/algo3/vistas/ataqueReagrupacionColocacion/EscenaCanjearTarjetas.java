@@ -1,8 +1,10 @@
-package edu.fiuba.algo3.vistas;
+package edu.fiuba.algo3.vistas.ataqueReagrupacionColocacion;
 
 import edu.fiuba.algo3.controladores.*;
 import edu.fiuba.algo3.controladores.canjearTarjeta.BotonCanjeIndividualEventHandler;
 import edu.fiuba.algo3.controladores.canjearTarjeta.BotonCanjeMultipleEventHandler;
+import edu.fiuba.algo3.controladores.canjearTarjeta.ComboBoxElejirTarjetaEventHandler;
+import edu.fiuba.algo3.controladores.informacion.BotonVolverATableroEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

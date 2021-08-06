@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.distribuciondepaises;
 
-import edu.fiuba.algo3.modelo.Ejercito;
+import edu.fiuba.algo3.modelo.componentesJugador.Ejercito;
 
 import java.util.Hashtable;
 import java.util.concurrent.atomic.AtomicBoolean;

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.controladores;
+package edu.fiuba.algo3.controladores.canjearTarjeta;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;

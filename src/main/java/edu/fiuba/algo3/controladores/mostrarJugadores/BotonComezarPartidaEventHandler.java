@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.controladores.mostrarJugadores;
 
 import edu.fiuba.algo3.controladores.ControladorMaestro;
-import edu.fiuba.algo3.vistas.ataqueReagrupacionColocacion.EscenaEtapaInicial;
+import edu.fiuba.algo3.vistas.escenasEtapas.EscenaEtapaInicial;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

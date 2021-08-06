@@ -2,9 +2,9 @@ package edu.fiuba.algo3.controladores.ataqueReagrupacionColocacion;
 
 import edu.fiuba.algo3.controladores.ControladorMaestro;
 import edu.fiuba.algo3.modelo.excepciones.JuegoTerminadoException;
-import edu.fiuba.algo3.vistas.ataqueReagrupacionColocacion.EscenaEtapaAtaque;
-import edu.fiuba.algo3.vistas.ataqueReagrupacionColocacion.EscenaEtapaInicial;
-import edu.fiuba.algo3.vistas.EscenaFinal;
+import edu.fiuba.algo3.vistas.escenasEtapas.EscenaEtapaAtaque;
+import edu.fiuba.algo3.vistas.escenasEtapas.EscenaEtapaInicial;
+import edu.fiuba.algo3.vistas.escenasGenerales.EscenaFinal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

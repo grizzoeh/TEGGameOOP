@@ -4,7 +4,7 @@ import edu.fiuba.algo3.controladores.ControladorMaestro;
 import edu.fiuba.algo3.controladores.ProveedorDeConstantes;
 import edu.fiuba.algo3.modelo.excepciones.NombreInvalidoException;
 import edu.fiuba.algo3.modelo.excepciones.NombreRepetidoException;
-import edu.fiuba.algo3.vistas.EscenaColoresJugadores;
+import edu.fiuba.algo3.vistas.escenasGenerales.EscenaColoresJugadores;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

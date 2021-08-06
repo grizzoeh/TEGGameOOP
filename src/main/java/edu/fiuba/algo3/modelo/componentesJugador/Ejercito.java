@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.componentesJugador;
 
 public class Ejercito {
     private String color;

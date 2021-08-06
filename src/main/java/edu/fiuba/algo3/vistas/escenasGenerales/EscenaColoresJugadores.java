@@ -1,13 +1,12 @@
-package edu.fiuba.algo3.vistas;
+package edu.fiuba.algo3.vistas.escenasGenerales;
 
-import edu.fiuba.algo3.controladores.BotonVerReglasEventHandler;
+import edu.fiuba.algo3.controladores.informacion.BotonVerReglasEventHandler;
 import edu.fiuba.algo3.controladores.mostrarJugadores.BotonComezarPartidaEventHandler;
 import edu.fiuba.algo3.controladores.ControladorMaestro;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;

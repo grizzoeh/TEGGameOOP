@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.vistas;
+package edu.fiuba.algo3.vistas.escenasDeInformacion;
 
-import edu.fiuba.algo3.controladores.BotonVolverATableroEventHandler;
+import edu.fiuba.algo3.controladores.informacion.BotonVolverATableroEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

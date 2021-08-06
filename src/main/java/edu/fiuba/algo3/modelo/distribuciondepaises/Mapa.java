@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo.distribuciondepaises;
 
-import edu.fiuba.algo3.modelo.Combate;
-import edu.fiuba.algo3.modelo.Ejercito;
-import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.gestionDeCombate.Combate;
+import edu.fiuba.algo3.modelo.componentesJugador.Ejercito;
+import edu.fiuba.algo3.modelo.componentesJugador.Jugador;
 import edu.fiuba.algo3.modelo.excepciones.*;
 
 import java.io.FileNotFoundException;

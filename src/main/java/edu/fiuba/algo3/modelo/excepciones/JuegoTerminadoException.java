@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.excepciones;
 
-import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.componentesJugador.Jugador;
 
 public class JuegoTerminadoException extends RuntimeException {
     private Jugador jugGanador;

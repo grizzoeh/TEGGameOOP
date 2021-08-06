@@ -1,11 +1,10 @@
 package edu.fiuba.algo3.vistas.ataqueReagrupacionColocacion;
 
-import edu.fiuba.algo3.controladores.BotonMostrarPaisesHandler;
-import edu.fiuba.algo3.controladores.BotonMostrarTarjetasEventHandler;
-import edu.fiuba.algo3.controladores.BotonObjetivoEventHandler;
+import edu.fiuba.algo3.controladores.informacion.BotonMostrarPaisesHandler;
+import edu.fiuba.algo3.controladores.informacion.BotonMostrarTarjetasEventHandler;
+import edu.fiuba.algo3.controladores.informacion.BotonObjetivoEventHandler;
 import edu.fiuba.algo3.controladores.ControladorMaestro;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;

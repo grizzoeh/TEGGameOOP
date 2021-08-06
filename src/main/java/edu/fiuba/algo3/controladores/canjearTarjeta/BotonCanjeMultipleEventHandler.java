@@ -3,7 +3,7 @@ package edu.fiuba.algo3.controladores.canjearTarjeta;
 import edu.fiuba.algo3.controladores.ControladorMaestro;
 import edu.fiuba.algo3.controladores.ProveedorDeConstantes;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.Tarjeta;
-import edu.fiuba.algo3.vistas.EscenaCanjearTarjetas;
+import edu.fiuba.algo3.vistas.ataqueReagrupacionColocacion.EscenaCanjearTarjetas;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -15,8 +15,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class BotonCanjeMultipleEventHandler implements EventHandler<ActionEvent> {
