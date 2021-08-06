@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestTurnoAtaque {
-    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
+    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv", true);
     Ejercito rojo = new Ejercito("rojo");
     Jugador jugador = new Jugador("Fran", rojo);
     Mazo mazo = new Mazo(mapa.listaPaises());

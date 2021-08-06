@@ -18,7 +18,7 @@ public class Teg {
 
     public Teg(ArrayList<String> nombresJugadores, String rutaArchivo, Boolean testMode) {
         this.cantidadJugadores = nombresJugadores.size();
-        this.mapa = new Mapa(rutaArchivo);
+        this.mapa = new Mapa(rutaArchivo, testMode);
         this.jugadores = new ArrayList<Jugador>();
         this.numeroJugadorActual = 0;
 

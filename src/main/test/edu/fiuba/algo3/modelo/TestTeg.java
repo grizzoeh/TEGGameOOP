@@ -208,5 +208,18 @@ public class TestTeg {
 
         assertEquals(teg.obtenerListaJugadores().size(),3);
     }
+    @Test
+    public  void test17enUnJuegoConDosJugadoresCadaJugadorTiene25Paises(){
+        ArrayList<String> nombresJugadores = new ArrayList<>();
+        nombresJugadores.add("Ricardo");
+        nombresJugadores.add("Titan");
+
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
+
+        assertEquals(4, teg.paisesDelJugadorActual().size());
+    }
 }
+
+
+
 
