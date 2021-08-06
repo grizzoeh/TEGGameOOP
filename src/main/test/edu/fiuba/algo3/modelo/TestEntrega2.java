@@ -20,7 +20,7 @@ public class TestEntrega2 {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         Jugador jugador1 = new Jugador("Pablito Lezcano", new Ejercito("Verde"));
         jugadores.add(jugador1);
-        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv", true);
         mapa.repartirPaises(jugadores);
         Pais egipto = mapa.obtenerPais("Egipto");
         Tarjeta tarjeta = new Tarjeta(egipto, "Barco");
@@ -70,7 +70,7 @@ public class TestEntrega2 {
         jugadores.add(jugador2);
         jugadores.add(jugador3);
 
-        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv", true);
         mapa.repartirPaises(jugadores);
 
         Pais turquia = mapa.obtenerPais("Turquia");
@@ -113,7 +113,7 @@ public class TestEntrega2 {
         jugadores.add(jugador1);
         jugadores.add(jugador2);
 
-        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv", true);
         mapa.repartirPaises(jugadores);
 
         Integer cantidadDePaisesDominadosPorJug1 = mapa.paisesConEjercito(ejercitoJug1);

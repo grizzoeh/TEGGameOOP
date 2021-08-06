@@ -81,8 +81,9 @@ public class Pais {
     }
     public ArrayList<String> paisesAliadosEnFrontera(){
         ArrayList<String> paises = new ArrayList<>();
-        frontera.forEach(pais -> {if((pais.getEjercito()) == this.ejercito) paises.add(pais.obtenerNombre());} );
-        Collections.sort(paises);
+            frontera.forEach(pais -> {if((pais.getEjercito()) == this.ejercito) paises.add(pais.obtenerNombre());} );
+            Collections.sort(paises);
+
         return paises;
     }
     public int tropasDisponiblesParaAtacar() {

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestTurnoEtapaInicial {
-    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronteras.csv");
+    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronteras.csv", true);
     Ejercito azul = new Ejercito("Azul");
     Mazo mazo = new Mazo(mapa.listaPaises());
     Jugador jugador = new Jugador("Tomi", azul);

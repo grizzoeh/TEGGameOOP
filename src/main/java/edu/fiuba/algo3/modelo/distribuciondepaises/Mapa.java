@@ -16,11 +16,13 @@ public class Mapa {
     private Hashtable<String, Pais> paises;
     private Hashtable<String, Continente> continentes;
     private String rutaArchivo;
+    private Boolean testMode;
 
-    public Mapa(String rutaArchivo){
+    public Mapa(String rutaArchivo, Boolean testMode){
         this.paises = new Hashtable<String, Pais>();
         this.continentes = new Hashtable<String, Continente>();
         this.rutaArchivo = rutaArchivo;
+        this.testMode = testMode;
         this.crearContinentes();
         try {
             this.crearPaises();
@@ -56,19 +58,29 @@ public class Mapa {
         int cantidadJugadores = jugadores.size();
         Pais paisAux;
         String[] keys = paises.keySet().toArray(new String[0]);
+        ArrayList<String> keysEnArray = new ArrayList<>(Arrays.asList(keys));
         int i = 0;
         int j = 0;
         int jugActual;
+
         while(i < cantidadPaises){
             jugActual = j % cantidadJugadores;
-            paisAux = paises.get(keys[i]);
+            paisAux = paises.get(obtenerKeyRandom(keysEnArray));
+            if (testMode){
+                paisAux = paises.get(keys[i]);
+            }
             paisAux.asignarEjercito(jugadores.get(jugActual).getEjercito());
             paisAux.agregarEjercito(1);
             i++;
             j++;
         }
     }
-
+    public String obtenerKeyRandom(ArrayList<String> keys){
+        int numeroKey = (int)(Math.random()*keys.size());
+        String key = keys.get(numeroKey);
+        keys.remove(numeroKey);
+        return key;
+    }
     public boolean todosLosPaisesOcupados(){
         AtomicBoolean estanOcupados = new AtomicBoolean(true);
 
@@ -122,13 +134,19 @@ public class Mapa {
 
     public ArrayList<String> paisesPuedenAtacar(Ejercito ejercito) {
         ArrayList<String> paisesParaAtacar = this.listaPaisesConEjercito(ejercito);
+        if (paisesParaAtacar.size() != 0 ){
+            paisesParaAtacar.removeIf(pais -> !paises.get(pais).esAptoParaAtacar() | !paises.get(pais).tienePaisesAliadosEnFrontera());
+        }
         paisesParaAtacar.removeIf(pais -> !paises.get(pais).esAptoParaAtacar() | !paises.get(pais).tienePaisesEnemigosEnFrontera());
         return paisesParaAtacar;
     }
     public ArrayList<String> paisesPuedenReagrupar(Ejercito ejercito) {
-        ArrayList<String> paisesParaAtacar = this.listaPaisesConEjercito(ejercito);
-        paisesParaAtacar.removeIf(pais -> !paises.get(pais).esAptoParaAtacar() | !paises.get(pais).tienePaisesAliadosEnFrontera());
-        return paisesParaAtacar;
+        ArrayList<String> paisesParaReagrupar = this.listaPaisesConEjercito(ejercito);
+        if (paisesParaReagrupar.size() != 0 ){
+            paisesParaReagrupar.removeIf(pais -> !paises.get(pais).esAptoParaAtacar() | !paises.get(pais).tienePaisesAliadosEnFrontera());
+
+        }
+        return paisesParaReagrupar;
     }
 
     public ArrayList<Pais> listaPaises() {
@@ -210,6 +228,6 @@ public class Mapa {
             Pais desde = this.obtenerPais(pais);
             return desde.paisesAliadosEnFrontera();
         }
-    return null;
+     throw  new NoExisteEsePaisException();
     }
 }
