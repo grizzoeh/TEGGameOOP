@@ -1,11 +1,14 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.componentesJugador.Ejercito;
+import edu.fiuba.algo3.modelo.componentesJugador.Jugador;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
-import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaParaElPaisException;
+import edu.fiuba.algo3.modelo.excepciones.JugadorNoPoseeTarjetaPaisException;
 import edu.fiuba.algo3.modelo.objetivosytarjetas.Tarjeta;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestJugador {
     Jugador jugador = new Jugador("Nicolas", new Ejercito("Verde"));
@@ -58,13 +61,23 @@ public class TestJugador {
         assertEquals(1, jugador.cantidadDeTarjetas());
     }
     @Test
-    public void test08LaCantidadDeTarjetasTrasUsarUnaEsCorrecta() throws NoExisteTarjetaParaElPaisException {
+    public void test08LaCantidadDeTarjetasTrasUsarUnaEsCorrecta() {
         Pais pais = new Pais("Suiza");
         Tarjeta tarjeta = new Tarjeta(pais, "Chocolate Suizo");
 
         jugador.agregarTarjeta(tarjeta);
-        jugador.usarTarjeta(pais);
+        jugador.getTarjeta(pais.obtenerNombre());
 
         assertEquals(0, jugador.cantidadDeTarjetas());
     }
+    @Test
+    public void test09SiSePideUnaTarjetaPaisQueNoTieneSeDevuelveExcepcion() {
+
+
+        assertThrows(JugadorNoPoseeTarjetaPaisException.class,
+                () -> {
+                    jugador.getTarjeta("Suiza");
+                });
+    }
+
 }

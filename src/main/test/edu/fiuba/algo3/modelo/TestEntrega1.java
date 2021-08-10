@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.componentesJugador.Ejercito;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +15,7 @@ public class TestEntrega1 {
         jugadores.add("Nico");
         jugadores.add("Tomi");
 
-        Teg teg = new Teg(jugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(jugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv", true);
         assertTrue(teg.todosLosPaisesOcupados());
     }
 

@@ -11,17 +11,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestListaObjetivos {
-    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
+    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv", true);
 
     @Test
     public void test01AlCrearseSeInicializanLosOchoObjetivos(){
-        ListaObjetivos listaobj = new ListaObjetivos(mapa);
+        ListaObjetivos listaobj = new ListaObjetivos(mapa, false);
 
         assertEquals(listaobj.cantidadDeObjetivos(), 8);
     }
     @Test
     public void test02AlPedirElObjetivoGeneralSeDevuelveAEste(){
-        ListaObjetivos listaobj = new ListaObjetivos(mapa);
+        ListaObjetivos listaobj = new ListaObjetivos(mapa, true);
         ObjetivoComun objetivoBuscado = listaobj.asignarObjetivoComun();
 
         assertEquals(objetivoBuscado.mostrarObjetivo(), "Ocupar 30 países.");
@@ -29,7 +29,7 @@ public class TestListaObjetivos {
 
     @Test
     public void test03SiPidoUnObjetivoSeReduceLaCantidadCorrectamente(){
-        ListaObjetivos listaobj = new ListaObjetivos(mapa);
+        ListaObjetivos listaobj = new ListaObjetivos(mapa,true);
 
         int cantidad = listaobj.cantidadDeObjetivos();
         ObjetivoParticular objetiv = listaobj.asignarObjetivoParticular();
@@ -38,11 +38,10 @@ public class TestListaObjetivos {
     }
     @Test
     public void test04SiPidoMasQueTodosLosObjetivoSeLanzaExcepcion(){
-        ListaObjetivos listaobj = new ListaObjetivos(mapa);
+        ListaObjetivos listaobj = new ListaObjetivos(mapa, true);
 
         int cantidad = listaobj.cantidadDeObjetivos();
         ObjetivoParticular objetiv = listaobj.asignarObjetivoParticular();
-        objetiv = listaobj.asignarObjetivoParticular();
         objetiv = listaobj.asignarObjetivoParticular();
         objetiv = listaobj.asignarObjetivoParticular();
         objetiv = listaobj.asignarObjetivoParticular();
@@ -58,7 +57,7 @@ public class TestListaObjetivos {
     }
     @Test
     public void test05ElPedirUnObjetivoEspecificoNosDevuelveElBuscado(){
-        ListaObjetivos listaobj = new ListaObjetivos(mapa);
+        ListaObjetivos listaobj = new ListaObjetivos(mapa, false);
 
         ObjetivoParticular objetiv = listaobj.asignarObjetivoParticularEspecifico(1);
 

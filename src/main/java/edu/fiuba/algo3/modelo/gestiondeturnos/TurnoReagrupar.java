@@ -1,8 +1,10 @@
 package edu.fiuba.algo3.modelo.gestiondeturnos;
 
-import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.componentesJugador.Jugador;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.*;
+
+import java.util.ArrayList;
 
 public class TurnoReagrupar implements TurnoJugable, TurnoBasico{
 	private Mapa mapa;
@@ -13,7 +15,7 @@ public class TurnoReagrupar implements TurnoJugable, TurnoBasico{
 		this.mapa = mapaIngresado;
 	}
 
-	public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws EtapaEquivocadaException, PaisNoLePerteneceException {
+	public ArrayList<String> atacar(String paisAtaque, String paisDefensa, int cantEjercitos) throws EtapaEquivocadaException, PaisNoLePerteneceException {
 		throw new EtapaEquivocadaException();
 	}
 
@@ -49,4 +51,12 @@ public class TurnoReagrupar implements TurnoJugable, TurnoBasico{
 	}
 
 	public boolean estaFinalizado() {return false;}
+
+	public int obtenerCantidadDeFichas() {
+		throw new EtapaEquivocadaException();
+	}
+
+	public Jugador obtenerJugadorActual() {
+		return jugador;
+	}
 }

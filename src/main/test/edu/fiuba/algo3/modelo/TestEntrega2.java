@@ -1,8 +1,9 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.componentesJugador.Ejercito;
+import edu.fiuba.algo3.modelo.componentesJugador.Jugador;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
-import edu.fiuba.algo3.modelo.excepciones.NoExisteTarjetaParaElPaisException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
 import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoJugable;
 import edu.fiuba.algo3.modelo.gestiondeturnos.TurnoAsignarFicha;
@@ -16,18 +17,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestEntrega2 {
     @Test
-    public void test01ActivacionDeTarjetas() throws PaisNoLePerteneceException, NoExisteTarjetaParaElPaisException {
+    public void test01ActivacionDeTarjetas() {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         Jugador jugador1 = new Jugador("Pablito Lezcano", new Ejercito("Verde"));
         jugadores.add(jugador1);
-        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv", true);
         mapa.repartirPaises(jugadores);
         Pais egipto = mapa.obtenerPais("Egipto");
         Tarjeta tarjeta = new Tarjeta(egipto, "Barco");
 
         jugador1.agregarTarjeta(tarjeta);
 
-        Tarjeta tarjetaDelJugador = jugador1.usarTarjeta(egipto);
+        Tarjeta tarjetaDelJugador = jugador1.getTarjeta(egipto.obtenerNombre());
 
         TurnoAsignarFicha turnoDeColocacion = new TurnoAsignarFicha(jugador1, mapa);
 
@@ -41,7 +42,7 @@ public class TestEntrega2 {
         nombresJugadores.add("Gonza");
         nombresJugadores.add("Fran");
 
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
         teg.saltearColocacionInicial();
         teg.avanzarEtapa();
         teg.avanzarEtapa();
@@ -70,7 +71,7 @@ public class TestEntrega2 {
         jugadores.add(jugador2);
         jugadores.add(jugador3);
 
-        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv", true);
         mapa.repartirPaises(jugadores);
 
         Pais turquia = mapa.obtenerPais("Turquia");
@@ -113,7 +114,7 @@ public class TestEntrega2 {
         jugadores.add(jugador1);
         jugadores.add(jugador2);
 
-        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv", true);
         mapa.repartirPaises(jugadores);
 
         Integer cantidadDePaisesDominadosPorJug1 = mapa.paisesConEjercito(ejercitoJug1);

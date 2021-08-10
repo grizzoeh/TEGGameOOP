@@ -1,19 +1,19 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.componentesJugador.Jugador;
 import edu.fiuba.algo3.modelo.excepciones.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestTeg {
     @Test
     public void test01AlInicializarseSeDistribuyenTodosLosPaises(){
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ricardo");
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
 
         assertTrue(teg.todosLosPaisesOcupados());
     }
@@ -21,7 +21,7 @@ public class TestTeg {
     public void test02AlInicializarseLaCantidadDeJugadoresEsCorrecta(){
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ricardo");
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
 
         assertEquals(1, teg.cantidadJugadores());
     }
@@ -29,26 +29,26 @@ public class TestTeg {
     public void test03AlInicializarseSeComienzaEnLaFaseDeColocacionInicial(){
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ricardo");
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
 
         assertEquals("Etapa Inicial", teg.enQueFaseEstaElJuego());
     }
     @Test
-    public void test04AlAvanzarTurnoSeSigueEnLaFaseDeColocacionInicial() throws ColocacionFinalizadaException {
+    public void test04AlAvanzarTurnoSeSigueEnLaFaseDeColocacionInicial() {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ricardo");
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
-        teg.avanzarPrimeraEtapaColocacion();
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
+        teg.avanzarEtapa();
 
         assertEquals("Etapa Inicial", teg.enQueFaseEstaElJuego());
     }
     @Test
-    public void test05AlAvanzarDosVecesElTurnoNoSeSigueEnLaFaseDeColocacionInicial() throws ColocacionFinalizadaException {
+    public void test05AlAvanzarDosVecesElTurnoNoSeSigueEnLaFaseDeColocacionInicial() {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ricardo");
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
-        teg.avanzarPrimeraEtapaColocacion();
-        teg.avanzarSegundaEtapaColocacion();
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
+        teg.avanzarEtapa();
+        teg.avanzarEtapa();
 
         assertEquals("Ataque Entre Jugadores", teg.enQueFaseEstaElJuego());
     }
@@ -60,7 +60,7 @@ public class TestTeg {
     public void test06AlInicializarseSalteandoseLaColocacionEsFaseDeAtaque(){
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ricardo");
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
         teg.saltearColocacionInicial();
         assertEquals("Ataque Entre Jugadores", teg.enQueFaseEstaElJuego());
     }
@@ -68,7 +68,7 @@ public class TestTeg {
     public void test07AlAvanzarUnaEtapaDespuesDeSaltearSucedeLaReagrupacion(){
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ricardo");
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
         teg.saltearColocacionInicial();
         teg.avanzarEtapa();
 
@@ -78,7 +78,7 @@ public class TestTeg {
     public void test08AlAvanzarDosEtapasDespuesDeSaltearSucedeLaAsignacionDeNuevasFichas(){
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Bad Bunny");
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
         teg.saltearColocacionInicial();
         teg.avanzarEtapa();
         teg.avanzarEtapa();
@@ -89,7 +89,7 @@ public class TestTeg {
     public void test09AlIniciarLaPartidaLeTocaAlJugador1(){
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("BetaTester");
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
 
         assertEquals("BetaTester", teg.aQueJugadorLeToca());
     }
@@ -98,7 +98,7 @@ public class TestTeg {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ozuna");
         nombresJugadores.add("Sech");
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
         teg.saltearColocacionInicial();
 
         teg.avanzarEtapa();
@@ -112,7 +112,7 @@ public class TestTeg {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Ozuna");
         nombresJugadores.add("Sech");
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
         teg.saltearColocacionInicial();
 
         teg.avanzarEtapa();
@@ -126,7 +126,7 @@ public class TestTeg {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Carzo");
         nombresJugadores.add("Diaz");
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
         teg.saltearColocacionInicial();
 
         teg.avanzarEtapa();
@@ -144,7 +144,7 @@ public class TestTeg {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Carzo");
         nombresJugadores.add("Diaz");
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
         teg.saltearColocacionInicial();
         teg.avanzarEtapa();
         teg.avanzarEtapa();
@@ -166,7 +166,7 @@ public class TestTeg {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Carzo");
         nombresJugadores.add("Diaz");
-        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
         teg.saltearColocacionInicial();
 
         teg.avanzarEtapa();
@@ -185,4 +185,42 @@ public class TestTeg {
         assertEquals(teg.cantEjercitosEn("Zaire"), 1);
         assertEquals(teg.cantEjercitosEn("Madagascar"), 2);
     }
+    @Test
+    public void test15AlInicializarseUnJugadorNoEstaEliminado(){
+        ArrayList<String> nombresJugadores = new ArrayList<>();
+        nombresJugadores.add("Ricardo");
+
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
+        ArrayList<Jugador> jugs = teg.obtenerListaJugadores();
+
+
+        assertFalse( teg.jugadorEstaEliminado(jugs.get(0)));
+    }
+    @Test
+    public void test16SeDevuelveLaCantidadCorrectaDeJugadores(){
+        ArrayList<String> nombresJugadores = new ArrayList<>();
+        nombresJugadores.add("Ricardo");
+        nombresJugadores.add("Titan");
+        nombresJugadores.add("Lo");
+
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
+        ArrayList<Jugador> jugs = teg.obtenerListaJugadores();
+
+
+        assertEquals(teg.obtenerListaJugadores().size(),3);
+    }
+    @Test
+    public  void test17enUnJuegoConDosJugadoresCadaJugadorTiene25Paises(){
+        ArrayList<String> nombresJugadores = new ArrayList<>();
+        nombresJugadores.add("Ricardo");
+        nombresJugadores.add("Titan");
+
+        Teg teg = new Teg(nombresJugadores, "recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
+
+        assertEquals(4, teg.paisesDelJugadorActual().size());
+    }
 }
+
+
+
+

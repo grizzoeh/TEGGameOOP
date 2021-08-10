@@ -52,12 +52,13 @@ public class Mazo {
 
         return (todosDistintos || mismoSimbolo);
     }
-
+    public boolean quedanTarjetas(){
+        return !(tarjetas.size() <= 0);
+    }
     public Tarjeta repartirTarjeta(){
-        if(tarjetas.size() <= 0) return null;
-
-        Tarjeta tarjetaaux = tarjetas.get(0);
-        tarjetas.remove(0);
+        int numeroTarjeta = (int)(Math.random()*tarjetas.size());
+        Tarjeta tarjetaaux = tarjetas.get(numeroTarjeta);
+        tarjetas.remove(numeroTarjeta);
         tarjetasRepartidas.add(tarjetaaux);
 
         return tarjetaaux;
@@ -65,7 +66,7 @@ public class Mazo {
 
 
 
-    public Tarjeta obtenerTarjetaEspecifica(Pais pais) throws NoExisteTarjetaParaElPaisException {
+    public Tarjeta obtenerTarjetaEspecifica(Pais pais) {
         if (tarjetas.size() <= 0) return null;
         Tarjeta tarjeta = tarjetas.stream()
                 .filter(t -> t.perteneceAEstePais(pais))

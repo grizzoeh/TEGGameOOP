@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.componentesJugador.Ejercito;
+import edu.fiuba.algo3.modelo.componentesJugador.Jugador;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
@@ -13,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestTurnoAsignarFicha {
-    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronteras.csv");
+    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronteras.csv", true);
     Ejercito rojo = new Ejercito("rojo");
     Jugador jugador = new Jugador("Fran", rojo);
     ArrayList lista = new ArrayList<>();
@@ -63,7 +65,7 @@ public class TestTurnoAsignarFicha {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         Jugador jugador1 = new Jugador("Pablito Lezcano", new Ejercito("Verde"));
         jugadores.add(jugador1);
-        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv", true);
         mapa.repartirPaises(jugadores);
 
         Pais egipto = mapa.obtenerPais("Egipto");

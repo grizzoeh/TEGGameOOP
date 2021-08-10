@@ -1,27 +1,40 @@
 package edu.fiuba.algo3.modelo.gestiondeturnos;
 
-import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.componentesJugador.Jugador;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.*;
+import edu.fiuba.algo3.modelo.objetivosytarjetas.Mazo;
+
+import java.util.ArrayList;
 
 public class TurnoAtaque implements TurnoJugable, TurnoBasico {
 	private Mapa mapa;
 	private Jugador jugador;
+	private boolean logroInvadir;
+	private Mazo mazo;
 
-	public TurnoAtaque(Jugador jugadorIngresado, Mapa mapaIngresado) {
+	public TurnoAtaque(Jugador jugadorIngresado, Mapa mapaIngresado, Mazo mazo) {
 		this.jugador = jugadorIngresado;
 		this.mapa = mapaIngresado;
+		this.mazo = mazo;
+		logroInvadir = false;
 	}
 
-	public void atacar(String paisAtaque, String paisDefensa, int cantEjercitos) {
+	public ArrayList<String> atacar(String paisAtaque, String paisDefensa, int cantEjercitos) {
+		ArrayList<String> resultado = null;
+
 		if(!mapa.paisLePertenece(paisAtaque, jugador)) {
 			throw new PaisNoLePerteneceException();
 		}
 		try {
-			mapa.atacar(paisAtaque, paisDefensa, cantEjercitos);
+			resultado = mapa.atacar(paisAtaque, paisDefensa, cantEjercitos);
+			if(resultado.get(0) == "País Invadido"){
+				logroInvadir = true;
+			};
 		} catch (PaisesNoContinuosException | PaisesConMismoDuenoException | PaisSinEjercitosSuficientesException e) {
 			e.printStackTrace();
 		}
+		return resultado;
 	}
 
 	public void asignarEjercito(String pais, int cantidad) {
@@ -33,6 +46,7 @@ public class TurnoAtaque implements TurnoJugable, TurnoBasico {
 	}
 
 	public Turno avanzarEtapa() {
+		if (logroInvadir && mazo.quedanTarjetas()) jugador.agregarTarjeta(mazo.repartirTarjeta());
 		return new TurnoReagrupar(jugador, mapa);
 	}
 
@@ -52,4 +66,12 @@ public class TurnoAtaque implements TurnoJugable, TurnoBasico {
 	}
 
 	public boolean estaFinalizado() {return false;}
+
+	public int obtenerCantidadDeFichas() {
+		throw new EtapaEquivocadaException();
+	}
+
+	public Jugador obtenerJugadorActual() {
+		return jugador;
+	}
 }

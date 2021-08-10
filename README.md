@@ -1,4 +1,4 @@
-![tp2](https://github.com/grizzoeh/algo3_tp2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/grizzoeh/algo3_tp2/branch/Entrega-2/graph/badge.svg)](https://codecov.io/gh/grizzoeh/algo3_tp2)
+![tp2](https://github.com/grizzoeh/algo3_tp2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/grizzoeh/algo3_tp2/branch/Entrega-4/graph/badge.svg)](https://codecov.io/gh/grizzoeh/algo3_tp2)
 
 # TP2 Algoritmos 3: "A.L.T.E.G.O."
 

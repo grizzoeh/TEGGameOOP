@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.componentesJugador.Ejercito;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
 import org.junit.jupiter.api.Test;
 
@@ -211,6 +212,12 @@ public class TestPais {
 
         assertTrue(paisPrueba.sePuedeMoverEstaCantidadDeEjercitos(3));
 
+    }
+    @Test
+    public void test23UnPaisCon4EjercitosTieneQuePoderUsar3ParaAtacar(){
+        paisPrueba.agregarEjercito(4);
+
+        assertEquals(3, paisPrueba.tropasDisponiblesParaAtacar());
     }
 }
 

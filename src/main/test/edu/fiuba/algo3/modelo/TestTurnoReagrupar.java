@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.componentesJugador.Ejercito;
+import edu.fiuba.algo3.modelo.componentesJugador.Jugador;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.EtapaEquivocadaException;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoLePerteneceException;
@@ -14,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestTurnoReagrupar {
-    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
+    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv", true);
     Ejercito rojo = new Ejercito("rojo");
     Jugador jugador = new Jugador("Fran", rojo);
     ArrayList lista = new ArrayList<>();

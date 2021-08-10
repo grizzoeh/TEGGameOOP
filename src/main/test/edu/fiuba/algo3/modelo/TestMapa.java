@@ -1,11 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.componentesJugador.Ejercito;
+import edu.fiuba.algo3.modelo.componentesJugador.Jugador;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Pais;
-import edu.fiuba.algo3.modelo.excepciones.PaisSinEjercitosSuficientesException;
-import edu.fiuba.algo3.modelo.excepciones.PaisesConMismoDuenoException;
-import edu.fiuba.algo3.modelo.excepciones.PaisesNoContinuosException;
-import edu.fiuba.algo3.modelo.excepciones.PaisesNoSonDelMismoDuenoException;
+import edu.fiuba.algo3.modelo.excepciones.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestMapa {
-    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
+    Mapa mapa = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv", true);
     @Test
     public void test01TodosLosPaisesSeInicializanConAlMenosUnEjercito() {
         ArrayList<Jugador> jugadores = new ArrayList<>();
@@ -90,7 +89,7 @@ public class TestMapa {
     }
     @Test
     public void test07MapaAtacarFuncionaCorrectamenteEnCasoQuePuedeAtacar() {
-        Mapa mapaAux = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv");
+        Mapa mapaAux = new Mapa("recursos/archivosDeTexto/fronterasParaPrueba.csv",true);
         ArrayList<Jugador> jugadores = new ArrayList<>();
         Jugador jugador1 = new Jugador("Esteban", new Ejercito("Blanco"));
         Jugador jugador2 = new Jugador("Franco", new Ejercito("Rojo"));
@@ -146,6 +145,13 @@ public class TestMapa {
         assertThrows(PaisSinEjercitosSuficientesException.class,
                 () -> {
                     mapa.atacar("Zaire", "Etiopia", 1);
+                });
+    }
+    @Test public void testExcepcion04SiNoExisteUnPaisSeDevuelveExcepcion(){
+
+        assertThrows(NoExisteEsePaisException.class,
+                () -> {
+                    mapa.obtenerPais("Suiza");
                 });
     }
 }

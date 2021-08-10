@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.objetivosytarjetas;
 
 import edu.fiuba.algo3.modelo.distribuciondepaises.Continente;
-import edu.fiuba.algo3.modelo.Ejercito;
+import edu.fiuba.algo3.modelo.componentesJugador.Ejercito;
 
 public class Subobjetivo {
     private Continente continenteAOcupar;
@@ -13,7 +13,9 @@ public class Subobjetivo {
     }
 
     public boolean cumplido(Ejercito ejercito){
+
         if(cantidadPaises == 0)
+
             return continenteAOcupar.jugadorControlaContinente(ejercito);
 
         return (cantidadPaises == continenteAOcupar.cuantosPaisesDelContinenteDomina(ejercito));

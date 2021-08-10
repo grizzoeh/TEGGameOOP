@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.objetivosytarjetas;
 
-import edu.fiuba.algo3.modelo.Ejercito;
+import edu.fiuba.algo3.modelo.componentesJugador.Ejercito;
 import edu.fiuba.algo3.modelo.distribuciondepaises.Mapa;
 
 public class ObjetivoComun implements Objetivo{
@@ -14,7 +14,7 @@ public class ObjetivoComun implements Objetivo{
 
     @Override
     public boolean objetivoCumplido(Ejercito ejercito) {
-        return (30 == mapa.paisesConEjercito(ejercito));
+        return (30 <= mapa.paisesConEjercito(ejercito));
     }
     @Override
     public String mostrarObjetivo(){
