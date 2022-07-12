@@ -1,5 +1,14 @@
 ![tp2](https://github.com/grizzoeh/algo3_tp2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/grizzoeh/algo3_tp2/branch/Entrega-4/graph/badge.svg)](https://codecov.io/gh/grizzoeh/algo3_tp2)
 
+# TEG Game
+Teg is an Argentinian strategy board wargame similar to Risk, in which the player with most conquered countries wins.
+This is the implementation of this game, developed using Object-oriented programming, coded in Java.
+
+This project was part of the final assigment of the subject "Algorithms and Programming III", University of Buenos Aires.
+
+
+Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
+
 # TP2 Algoritmos 3: "A.L.T.E.G.O."
 
 
